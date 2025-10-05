@@ -1954,7 +1954,7 @@ static const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_LATIAS - 1]      = ANIM_SWING_CONCAVE_FAST_SHORT,
     [SPECIES_LATIOS - 1]      = ANIM_V_SHAKE,
     [SPECIES_JIRACHI - 1]     = ANIM_SWING_CONVEX,
-    [SPECIES_DEOXYS - 1]      = ANIM_GROW_VIBRATE,
+    [SPECIES_DEOXYS - 1]      = ANIM_H_PIVOT,
     [SPECIES_CHIMECHO - 1]    = ANIM_H_SLIDE_WOBBLE,
     [SPECIES_ARCEUS - 1]      = ANIM_GROW_VIBRATE,
     [SPECIES_AMBIPOM - 1]     = ANIM_BACK_AND_LUNGE,
@@ -5033,14 +5033,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                     rolls++;
                 } while (shinyValue >= 128 && rolls < shinyRolls);   
         }
-        if (FlagGet(FLAG_FORCE_SHINY))
-        {
-            u8 nature = personality % NUM_NATURES;  // keep current nature
-            do {
-                personality = Random32();
-                personality = ((((Random() % SHINY_ODDS) ^ (HIHALF(value) ^ LOHALF(value))) ^ LOHALF(personality)) << 16) | LOHALF(personality);
-            } while (nature != GetNatureFromPersonality(personality));
-        }
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
@@ -6165,6 +6157,9 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
             u16 move;
 
             moveLevel = (gLevelUpLearnsets[species][i] & LEVEL_UP_MOVE_LV);
+            
+            if (moveLevel == 0)
+                continue;
 
             if (moveLevel > (level << 9))
                 break;
@@ -6617,41 +6612,21 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 }
         }
 
-        // Altaria gets faster, and holds a Chesto for the rematches
-        if ((attacker->species == SPECIES_ALTARIA) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_SITRUS))
+        // Altaria gets faster, and holds a Chesto for the rematches.
+        if ((attacker->species == SPECIES_ALTARIA) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_CHESTO))
         {
             attacker->ability = ABILITY_SPEED_BOOST;
-        }
-        else if ((attacker->species == SPECIES_ALTARIA) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_CHESTO))
-        {
-
-            attacker->ability = ABILITY_SPEED_BOOST;
-        }
-        // Altaria gests bulkier during the rematches
-        if ((defender->species == SPECIES_ALTARIA) && (defenderHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_CHESTO))
-        {
-            defense = (115 * defense) / 100;
-            spDefense = (115 * spDefense) / 100;
         }
         
-        // Kingdra gets a 15% atk and sp.atk boost
+        // Kingdra gets Drizzle
         if ((attacker->species == SPECIES_KINGDRA) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_CHESTO))
         {
-            spAttack = (115 * spAttack) / 100;
-            attack = (115 * attack) / 100;
+            attacker->ability = ABILITY_DRIZZLE;
         }
-        // Kingdra gets a 20% atk and sp.atk boost for rematches
+        // Kingdra gets Drizzle, and Liechi modifier for rematches
         else if ((attacker->species == SPECIES_KINGDRA) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_LIECHI))
         {
-            spAttack = (120 * spAttack) / 100;
-            attack = (120 * attack) / 100;
-        }
-
-        // Drake's Salamence gets way stronger and is now a menace, like Goopey
-        if ((attacker->species == SPECIES_SALAMENCE) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_SITRUS))
-        {
-            spAttack = (130 * spAttack) / 100;
-            attack = (130 * attack) / 100;
+            attacker->ability = ABILITY_DRIZZLE;
         }
 
         // Dusknoir gets Levitate
@@ -6664,31 +6639,28 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             attacker->ability = ABILITY_LEVITATE;
         }
         
-        // Champion: Whiscash gets a 10% def and sp. def boost
-        if ((attacker->species == SPECIES_WHISCASH) && (defenderHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER))
+        // Whiscash gets Drizzle, and Milotic gets Swift Swim together with Marvel Scale
+        if ((attacker->species == SPECIES_WHISCASH) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER))
         {
-            defense = (110 * defense) / 100;
-            spDefense = (110 * spDefense) / 100;
+            attacker->ability = ABILITY_DRIZZLE;
         }
-        // Champion: Milotic gets Swift Swim
         if ((attacker->species == SPECIES_MILOTIC) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER))
         {
             attacker->ability = ABILITY_SWIFT_SWIM;
         }
-        // Rematch, now holds leftovers
         else if ((attacker->species == SPECIES_MILOTIC) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_LEFTOVERS))
         {
             attacker->ability = ABILITY_SWIFT_SWIM;
         }
-        // Champion: permanent Marvel Scale, no status needed
         if ((defender->species == SPECIES_MILOTIC) && (defenderHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER))
         {
-            defense = (150 * defense) / 100;
+            if (defender->status1)
+                defense = (150 * defense) / 100;
         }
-        // Rematch, now holds leftovers
         else if ((defender->species == SPECIES_MILOTIC) && (defenderHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_LEFTOVERS))
         {
-            defense = (150 * defense) / 100;
+            if (defender->status1)
+                defense = (150 * defense) / 100;
         }
         
         // Solrock and Lunatone get a 15% dmg boost if they are together on the field, and a Sitrus berry.
@@ -6700,10 +6672,10 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         {
             spAttack = (115 * spAttack) / 100;
         }
-        // Lunatone with chesto for rematches, +5% extra sp.atk
+        // Lunatone with chesto for rematches
         else if (attacker->species == SPECIES_LUNATONE && ((ABILITY_ON_FIELD2(ABILITY_LEVITATE)) && (attackerHoldEffect == HOLD_EFFECT_HARD_MODE_MODIFIER_CHESTO)))
         {
-            spAttack = (120 * spAttack) / 100;
+            spAttack = (115 * spAttack) / 100;
         }
     }
         
@@ -6731,8 +6703,6 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         gBattleMovePower = (150 * gBattleMovePower) / 100;
     if ((attacker->species == SPECIES_SPINDA) && ((Random() % 100) <= 2))
         gBattleMovePower = (200 * gBattleMovePower) / 100;
-    if ((attacker->species == SPECIES_GROUDON) && (moveType == TYPE_FIRE))
-        gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     // Self-destruct / Explosion cut defense in half
     if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
@@ -8214,7 +8184,7 @@ u8 GetAbilityBySpecies(u16 species, u8 abilityNum)
             || species == SPECIES_ZAPDOS 
             || species == SPECIES_MOLTRES
             || species == SPECIES_MEWTWO
-            || species == SPECIES_RAIKOU
+            || species == SPECIES_RAICHU
             || species == SPECIES_ENTEI
             || species == SPECIES_SUICUNE
             || species == SPECIES_HO_OH
@@ -11528,7 +11498,7 @@ void RandomizeTypeEffectivenessListEWRAM(u16 seed)
     memcpy(stemp, sOneTypeChallengeValidTypes, sizeof(sOneTypeChallengeValidTypes));
     ShuffleListU8(stemp, NELEMS(sOneTypeChallengeValidTypes), seed);
 
-    sTypeEffectivenessList[TYPE_MYSTERY] = TYPE_NORMAL;
+    sTypeEffectivenessList[TYPE_MYSTERY] = TYPE_MYSTERY;
     for (i=0; i<NUMBER_OF_MON_TYPES; i++)
     {
         if (i != TYPE_MYSTERY)
@@ -11674,8 +11644,7 @@ u8 GetTypeBySpecies(u16 species, u8 typeNum)
     || species == SPECIES_DELCATTY
     || species == SPECIES_GULPIN
     || species == SPECIES_SWALOT
-    || species == SPECIES_LUVDISC
-    || species == SPECIES_ELECTIVIRE))
+    || species == SPECIES_LUVDISC))
     {
         if (typeNum == 1)
             type = gSpeciesInfo[species].types_old[0];
@@ -11920,4 +11889,37 @@ void FixSavePokemon1(struct BoxPokemon *boxMon)
     }
     
     EncryptBoxMon(boxMon);
+}
+
+u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+    // since you can learn more than one move per level
+    // the game needs to know whether you decided to
+    // learn it or keep the old set to avoid asking
+    // you to learn the same move over and over again
+    if (gSaveBlock1Ptr->tx_Mode_Modern_Moves == 0) //If using the original movepool, just skip the code and return
+        return 0;
+    if (firstMove)
+    {
+        sLearningMoveTableID = 0;
+    }
+    if (gSaveBlock1Ptr->tx_Mode_Modern_Moves == 1)
+    {
+        while(gLevelUpLearnsets[species][sLearningMoveTableID] != LEVEL_UP_END)
+        {
+            u16 moveLevel;
+            moveLevel = (gLevelUpLearnsets[species][sLearningMoveTableID] & LEVEL_UP_MOVE_LV);
+            while (moveLevel == 0 || moveLevel == (level << 9))
+            {
+                gMoveToLearn = (gLevelUpLearnsets[species][sLearningMoveTableID] & LEVEL_UP_MOVE_ID);
+                sLearningMoveTableID++;
+                return GiveMoveToMon(mon, gMoveToLearn);
+            }
+            sLearningMoveTableID++;
+        }
+    }
+    return 0;
 }

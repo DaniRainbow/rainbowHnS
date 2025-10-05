@@ -1506,15 +1506,15 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_HEALING_HEART] =
+    [ITEM_078] =
     {
-        .name = _("HEALING HEART"),
-        .itemId = ITEM_HEALING_HEART,
+        .name = _("????????"),
+        .itemId = ITEM_NONE,
         .price = 0,
-        .description = sHealingHeart,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .fieldUseFunc = ItemUseOutOfBattle_HealingHeart,
+        .description = sDummyDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
 // Mail
@@ -6393,15 +6393,15 @@ const struct Item gItems2[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_HEALING_HEART] =
+    [ITEM_078] =
     {
-        .name = _("HEALING HEART"),
-        .itemId = ITEM_HEALING_HEART,
+        .name = _("????????"),
+        .itemId = ITEM_NONE,
         .price = 0,
-        .description = sHealingHeart,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .fieldUseFunc = ItemUseOutOfBattle_HealingHeart,
+        .description = sDummyDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
 // Mail

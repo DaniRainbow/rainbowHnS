@@ -3,6 +3,7 @@
 
 #include "constants/moves.h"
 
+#define SPECIES_SHINY_TAG 500
 #define N_FOLLOWER_HAPPY_MESSAGES 31
 #define N_FOLLOWER_NEUTRAL_MESSAGES 14
 #define N_FOLLOWER_SAD_MESSAGES 3

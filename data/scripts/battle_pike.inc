@@ -86,7 +86,6 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_RightRoomWarp::
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_RoomWarp::
-	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	pike_get PIKE_DATA_WIN_STREAK
 	addvar VAR_RESULT, 1
 	pike_set PIKE_DATA_WIN_STREAK, VAR_RESULT

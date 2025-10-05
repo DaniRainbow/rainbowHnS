@@ -460,17 +460,7 @@ bool8 TryRunFromBattle(u8 battler)
                 if (speedVar > (Random() & 0xFF))
                     effect++;
             }
-            else if ((!InBattlePyramid()) 
-            //&& ((gBattleMons[battler].speed * 0.3) < gBattleMons[BATTLE_OPPOSITE(battler)].speed) 
-            && (gSaveBlock1Ptr->tx_Challenges_LessEscapes == 1))
-            {
-                speedVar = (gBattleMons[battler].speed * 128) / (gBattleMons[BATTLE_OPPOSITE(battler)].speed) + (gBattleStruct->runTries * 30);
-                if (speedVar > (Random() & 512))
-                    effect++;
-            }
-            else if ((!InBattlePyramid()) 
-            && (gBattleMons[battler].speed < gBattleMons[BATTLE_OPPOSITE(battler)].speed) 
-            && (gSaveBlock1Ptr->tx_Challenges_LessEscapes == 0))
+            else if (gBattleMons[battler].speed < gBattleMons[BATTLE_OPPOSITE(battler)].speed)
             {
                 speedVar = (gBattleMons[battler].speed * 128) / (gBattleMons[BATTLE_OPPOSITE(battler)].speed) + (gBattleStruct->runTries * 30);
                 if (speedVar > (Random() & 0xFF))

@@ -385,7 +385,8 @@ void UpdatePulseBlend(struct PulseBlend *pulseBlend)
                 if (--pulseBlendPalette->delayCounter == 0xFF)
                 {
                     pulseBlendPalette->delayCounter = pulseBlendPalette->pulseBlendSettings.delay;
-                    CpuFastCopy(gPlttBufferUnfaded + pulseBlendPalette->pulseBlendSettings.paletteOffset, gPlttBufferFaded + pulseBlendPalette->pulseBlendSettings.paletteOffset, PLTT_SIZE_4BPP);
+                    // TODO: Optimize pulse blending
+                    CpuFastCopy(gPlttBufferUnfaded + pulseBlendPalette->pulseBlendSettings.paletteOffset, gPlttBufferFaded + pulseBlendPalette->pulseBlendSettings.paletteOffset, 32);
                     UpdatePalettesWithTime(1 << (pulseBlendPalette->pulseBlendSettings.paletteOffset >> 4));
                     // pulseBlendSettings has a numColors field, but it is only ever set to 16 (for mirage tower)
                     // So, it's ok to use the fine blending here which blends the entire palette

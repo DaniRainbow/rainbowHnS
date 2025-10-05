@@ -1,7 +1,6 @@
 #include "global.h"
 #include "play_time.h"
 #include "rtc_include.h"
-#include "rtc.h"
 
 enum
 {

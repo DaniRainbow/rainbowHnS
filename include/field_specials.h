@@ -3,7 +3,6 @@
 
 extern bool8 gBikeCyclingChallenge;
 extern u8 gBikeCollisions;
-extern u16 gScrollableMultichoice_ScrollOffset;
 
 u8 GetLeadMonIndex(void);
 u8 IsDestinationBoxFull(void);

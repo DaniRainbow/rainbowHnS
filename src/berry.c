@@ -1383,10 +1383,16 @@ void Berry_Ready(u8 taskId)
     u8 i;
     struct BerryTree *tree;
 
-    tree = &gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)];
-    if (tree->stage != BERRY_STAGE_NO_BERRY)
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        tree->stage = BERRY_STAGE_FLOWERING;
-        BerryTreeGrow(tree);
+        if (gObjectEvents[i].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH)
+        {
+            tree = &gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)];
+            if (tree->stage != BERRY_STAGE_NO_BERRY)
+            {
+                tree->stage = BERRY_STAGE_FLOWERING;
+                BerryTreeGrow(tree);
+            }
+        }
     }
 }

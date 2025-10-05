@@ -543,31 +543,15 @@ static void StatsChangeAnimation_Step2(u8 taskId)
         gTasks[taskId].tVelocity = 3;
     }
 
-    if (gSaveBlock2Ptr->optionsFastBattle == 0)
+    if (!sAnimStatsChangeData->aSharply)
     {
-        if (!sAnimStatsChangeData->aSharply)
-        {
-            gTasks[taskId].tTargetBlend = 10;
-            gTasks[taskId].tWaitTime = 2;
-        }
-        else
-        {
-            gTasks[taskId].tTargetBlend = 13;
-            gTasks[taskId].tWaitTime = 3;
-        }
+        gTasks[taskId].tTargetBlend = 10;
+        gTasks[taskId].tWaitTime = 20;
     }
     else
     {
-        if (!sAnimStatsChangeData->aSharply)
-        {
-            gTasks[taskId].tTargetBlend = 10;
-            gTasks[taskId].tWaitTime = 20;
-        }
-        else
-        {
-            gTasks[taskId].tTargetBlend = 13;
-            gTasks[taskId].tWaitTime = 30;
-        }
+        gTasks[taskId].tTargetBlend = 13;
+        gTasks[taskId].tWaitTime = 30;
     }
 
     gTasks[taskId].tAnimSpriteId1 = spriteId;

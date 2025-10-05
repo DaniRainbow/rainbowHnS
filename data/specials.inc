@@ -584,4 +584,3 @@ gSpecials::
 	def_special ShowBugContestChosenMon
 	def_special DoPokemonLeagueLightingEffect
 	def_special SetVermilionTrashCans
-	def_special SwitchMonAbility
