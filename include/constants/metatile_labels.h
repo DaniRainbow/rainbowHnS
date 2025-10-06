@@ -21,7 +21,7 @@
 #define METATILE_BattleFrontier_Elevator_Mid1            0x332
 #define METATILE_BattleFrontier_Elevator_Mid2            0x015
 #define METATILE_BattleFrontier_Elevator_Top0            0x329
-#define METATILE_BattleFrontier_Elevator_Top1            0x32A
+#define METATILE_BattleFrontier_Elevator_Top1            0x33C
 #define METATILE_BattleFrontier_Elevator_Top2            0x32A
 
 // gTileset_BattleFrontierOutsideEast
@@ -124,10 +124,12 @@
 #define METATILE_BrendansMaysHouse_MovingBox_Open    0x270
 
 // gTileset_Building
-#define METATILE_Building_PC_Off  0x062
-#define METATILE_Building_PC_On   0x063
-#define METATILE_Building_TV_Off  0x035
-#define METATILE_Building_TV_On   0x061
+#define METATILE_Building_Frontier_TV_Off  0x002
+#define METATILE_Building_Frontier_TV_On   0x003
+#define METATILE_Building_PC_Off           0x062
+#define METATILE_Building_PC_On            0x063
+#define METATILE_Building_TV_Off           0x035
+#define METATILE_Building_TV_On            0x061
 
 // gTileset_Cave
 #define METATILE_Cave_CrackedFloor                       0x22F
