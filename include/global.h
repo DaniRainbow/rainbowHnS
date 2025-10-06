@@ -1129,6 +1129,7 @@ struct SaveBlock1
         u8 tx_Challenges_OneTypeChallenge:5;
         u8 tx_Challenges_PartyLimit:3;
         //
+        u8 tx_Challenges_TrainerDifficulty:1;
         u8 tx_Challenges_NoItemPlayer:1;
         u8 tx_Challenges_NoItemTrainer:1;
         u8 tx_Challenges_PkmnCenter:2;

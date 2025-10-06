@@ -3,6 +3,7 @@
 //tx_randomizer_and_challenges
 
 // default options set by the dev
+#define TX_HARDMDODE                    FALSE
 #define TX_RANDOM_STARTER               FALSE
 #define TX_RANDOM_WILD_POKEMON          FALSE
 #define TX_RANDOM_TRAINER               FALSE
@@ -27,6 +28,7 @@
 #define TX_NUZLOCKE_NICKNAMING 1
 #define TX_NUZLOCKE_DELETION 0
 
+#define TX_CHALLENGE_TRAINER_DIFFICULTY 0 //0 normal, 1 hard
 #define TX_DIFFICULTY_PARTY_LIMIT 0
 #define TX_DIFFICULTY_LEVEL_CAP 0
 #define TX_DIFFICULTY_EXP_MULTIPLIER 0

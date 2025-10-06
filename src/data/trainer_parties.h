@@ -20878,6 +20878,11 @@ static const struct TrainerMonItemCustomMoves sParty_Lance2[] = { //EliteFourGro
 static const struct TrainerMonNoItemDefaultMoves sParty_Rival_Chikorita1[] = { //RivalGroup
     {
     .iv = 0,
+    .lvl = 50,
+    .species = SPECIES_ZUBAT,
+    },
+    {
+    .iv = 0,
     .lvl = 5,
     .species = SPECIES_CHIKORITA,
     },

@@ -56,6 +56,7 @@ bool8 IsDifficultyOptionsActivated(void)
         || gSaveBlock1Ptr->tx_Challenges_ExpMultiplier
         || gSaveBlock1Ptr->tx_Challenges_NoItemPlayer
         || gSaveBlock1Ptr->tx_Challenges_NoItemTrainer
+        || gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty
         || gSaveBlock1Ptr->tx_Challenges_PkmnCenter)
         return TRUE;
 
@@ -494,6 +495,7 @@ void PrintTXSaveData(void)
     MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_LevelCap"         , gSaveBlock1Ptr->tx_Challenges_LevelCap);
     MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_ExpMultiplier"    , gSaveBlock1Ptr->tx_Challenges_ExpMultiplier);
     MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_NoItemPlayer"     , gSaveBlock1Ptr->tx_Challenges_NoItemPlayer);
+    MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_TrainerDifficulty" , gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty);
     MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_NoItemTrainer"    , gSaveBlock1Ptr->tx_Challenges_NoItemTrainer);
     MgbaPrintf(MGBA_LOG_DEBUG, "%d tx_Challenges_PkmnCenter"       , gSaveBlock1Ptr->tx_Challenges_PkmnCenter);
 
@@ -542,6 +544,7 @@ void TestRandomizerValues(u8 type)
     save_values[24] = gSaveBlock1Ptr->tx_Nuzlocke_SpeciesClause;
     save_values[25] = gSaveBlock1Ptr->tx_Nuzlocke_ShinyClause;
     save_values[26] = gSaveBlock1Ptr->tx_Nuzlocke_Nicknaming;
+    save_values[27] = gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty;
 
     gSaveBlock1Ptr->tx_Random_WildPokemon           = TRUE;
     gSaveBlock1Ptr->tx_Random_Similar               = FALSE;
@@ -594,5 +597,6 @@ void TestRandomizerValues(u8 type)
     gSaveBlock1Ptr->tx_Nuzlocke_SpeciesClause       =   save_values[24];
     gSaveBlock1Ptr->tx_Nuzlocke_ShinyClause         =   save_values[25];
     gSaveBlock1Ptr->tx_Nuzlocke_Nicknaming          =   save_values[26];
+    gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty =   save_values[27];
     #endif
 }

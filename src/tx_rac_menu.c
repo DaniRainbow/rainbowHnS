@@ -102,6 +102,7 @@ enum
 
 enum
 {
+    MENUITEM_DIFFICULTY_TRAINERS,
     MENUITEM_DIFFICULTY_EXP_MULTIPLIER,
     MENUITEM_DIFFICULTY_LEVEL_CAP,
     MENUITEM_DIFFICULTY_ITEM_PLAYER,
@@ -275,6 +276,7 @@ static void DrawChoices_Nuzlocke_Nicknaming(int selection, int y);
 static void DrawChoices_Nuzlocke_Deletion(int selection, int y);
 
 static void DrawChoices_Challenges_PartyLimit(int selection, int y);
+static void DrawChoices_Challenges_TrainerDifficulty(int selection, int y);
 static void DrawChoices_Challenges_LevelCap(int selection, int y);
 static void DrawChoices_Challenges_ExpMultiplier(int selection, int y);
 static void DrawChoices_Challenges_YesNo(int selection, int y, bool8 active);
@@ -423,6 +425,7 @@ struct // MENU_DIFFICULTY
     int (*processInput)(int selection);
 } static const sItemFunctionsDifficulty[MENUITEM_DIFFICULTY_COUNT] =
 {
+    [MENUITEM_DIFFICULTY_TRAINERS]              = {DrawChoices_Challenges_TrainerDifficulty,         ProcessInput_Options_Two},
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = {DrawChoices_Challenges_PartyLimit,       ProcessInput_Options_Hardcoded},
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = {DrawChoices_Challenges_LevelCap,         ProcessInput_Options_Three},
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = {DrawChoices_Challenges_ExpMultiplier,    ProcessInput_Options_Four},
@@ -559,6 +562,7 @@ static const u8 *const sOptionMenuItemsNamesNuzlocke[MENUITEM_NUZLOCKE_COUNT] =
 };
 
 //MENU_DIFFICULTY
+static const u8 sText_Trainers[]           = _("{COLOR 3}{SHADOW 3}TRAINER DIFFICULTY");
 static const u8 sText_PartyLimit[]          = _("{COLOR 3}{SHADOW 3}PARTY LIMIT");
 static const u8 sText_LevelCap[]            = _("LEVEL CAP");
 static const u8 sText_ExpMultiplier[]       = _("EXP MULTIPLIER");
@@ -571,6 +575,7 @@ static const u8 sText_LimitDifficulty[]     = _("{COLOR 3}{SHADOW 3}LOCK DIFFICU
 static const u8 sText_MaxPartyIvs[]         = _("PLAYER IVs");
 static const u8 *const sOptionMenuItemsNamesDifficulty[MENUITEM_DIFFICULTY_COUNT] =
 {
+    [MENUITEM_DIFFICULTY_TRAINERS]              = sText_Trainers,
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = sText_PartyLimit,
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = sText_LevelCap,
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = sText_ExpMultiplier,
@@ -865,6 +870,8 @@ static const u8 *const sOptionMenuItemDescriptionsNuzlocke[MENUITEM_NUZLOCKE_COU
     [MENUITEM_NUZLOCKE_NEXT]                = {sText_Description_Nuzlocke_Next,                 sText_Empty,                                        sText_Empty,                        sText_Empty},
 };
 
+static const u8 sText_Description_Difficulty_Trainers_Normal[]         = _("Enemy trainers have POKéMON\nwith balanced levels and movesets.");
+static const u8 sText_Description_Difficulty_Trainers_Hard[]           = _("Enemy trainers have higher level POKéMON\nand better movesets.");   
 static const u8 sText_Description_Difficulty_Party_Limit[]              = _("{COLOR 7}{COLOR 8}This feature is not currently\nsupported for this game.");
 static const u8 sText_Description_Difficulty_LevelCap_Base[]            = _("No level cap. Overleveling possible.\n");
 static const u8 sText_Description_Difficulty_LevelCap_Normal[]          = _("Maximum level is based on the\nnext gym's {COLOR 7}{COLOR 8}highest POKéMON level.");
@@ -894,6 +901,7 @@ static const u8 sText_Description_Difficulty_MaxPartyIvs_On[]           = _("The
 static const u8 sText_Description_Difficulty_MaxPartyIvs_On_HP[]        = _("IVs are set between 30 and 31\nto allow different Hidden Powers.");
 static const u8 *const sOptionMenuItemDescriptionsDifficulty[MENUITEM_DIFFICULTY_COUNT][4] =
 {
+    [MENUITEM_DIFFICULTY_TRAINERS]              = {sText_Description_Difficulty_Trainers_Normal,    sText_Description_Difficulty_Trainers_Hard,                   sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = {sText_Description_Difficulty_Party_Limit,        sText_Empty,                                        sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = {sText_Description_Difficulty_LevelCap_Base,      sText_Description_Difficulty_LevelCap_Normal,       sText_Description_Difficulty_LevelCap_Hard,     sText_Empty},
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = {sText_Description_Difficulty_ExpMultiplier_1_0,  sText_Description_Difficulty_ExpMultiplier_1_5,     sText_Description_Difficulty_ExpMultiplier_2_0, sText_Description_Difficulty_ExpMultiplier_0_0},
@@ -1006,6 +1014,7 @@ static const u8 *const sOptionMenuItemDescriptionsDisabledNuzlocke[MENUITEM_NUZL
 
 static const u8 *const sOptionMenuItemDescriptionsDisabledDifficulty[MENUITEM_DIFFICULTY_COUNT] =
 {
+    [MENUITEM_DIFFICULTY_TRAINERS]              = sText_Empty,
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = sText_Empty,
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = sText_Empty,
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = sText_Empty,
@@ -1472,6 +1481,7 @@ void CB2_InitTxRandomizerChallengesMenu(void)
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_DELETION]          = gSaveBlock1Ptr->tx_Nuzlocke_Deletion;
         
         // MENU_DIFFICULTY
+        sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS]       = gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty;
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_PARTY_LIMIT]    = gSaveBlock1Ptr->tx_Challenges_PartyLimit;
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_LEVEL_CAP]      = gSaveBlock1Ptr->tx_Challenges_LevelCap;
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_EXP_MULTIPLIER] = gSaveBlock1Ptr->tx_Challenges_ExpMultiplier;
@@ -1853,6 +1863,7 @@ void SaveData_TxRandomizerAndChallenges(void)
         gSaveBlock1Ptr->tx_Nuzlocke_Nicknaming      = FALSE;
     }
     // MENU_DIFFICULTY
+    gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty       = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS];
     gSaveBlock1Ptr->tx_Challenges_PartyLimit    = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_PARTY_LIMIT];
     gSaveBlock1Ptr->tx_Challenges_LevelCap      = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_LEVEL_CAP];
     gSaveBlock1Ptr->tx_Challenges_ExpMultiplier = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_EXP_MULTIPLIER];
@@ -2382,6 +2393,18 @@ static void DrawChoices_Challenges_ItemsPlayer(int selection, int y)
     bool8 active = CheckConditions(MENUITEM_DIFFICULTY_ITEM_PLAYER);
     DrawChoices_Challenges_YesNo(selection, y, active);
 }
+static void DrawChoices_Challenges_TrainerDifficulty(int selection, int y)
+{
+    bool8 active = CheckConditions(MENUITEM_DIFFICULTY_TRAINERS);
+    u8 styles[3] = {0};
+    const u8 *order[] = {sText_Off, sText_Description_Difficulty_Trainers_Normal, sText_Description_Difficulty_Trainers_Hard};
+    int xMid = GetMiddleX(sText_Off, sText_Description_Difficulty_Trainers_Normal, sText_Description_Difficulty_Trainers_Hard);
+    styles[selection] = 1;
+
+   DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
+   DrawOptionMenuChoice(sText_Description_Difficulty_Trainers_Normal, xMid, y, styles[1], active);
+   DrawOptionMenuChoice(sText_Description_Difficulty_Trainers_Hard, GetStringRightAlignXOffset(1, sText_Description_Difficulty_Trainers_Hard, 198), y, styles[2], active);
+}
 static void DrawChoices_Challenges_ItemsTrainer(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_DIFFICULTY_ITEM_TRAINER);
@@ -2434,6 +2457,8 @@ static void DrawChoices_Challenges_PartyLimit(int selection, int y)
 
 static const u8 sText_Challenges_LevelCap_Normal[]  = _("NORMAL");
 static const u8 sText_Challenges_LevelCap_Hard[]    = _("HARD");
+static const u8 sText_Difficulty_Trainers_Normal[] = _("NORMAL");
+static const u8 sText_Difficulty_Trainers_Hard[]   = _("HARD");
 static void DrawChoices_Challenges_LevelCap(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_DIFFICULTY_LEVEL_CAP);
