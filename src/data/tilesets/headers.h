@@ -25,6 +25,30 @@ const struct Tileset gTileset_General =
     .callback = InitTilesetAnim_HoennGeneral,
 };
 
+const struct Tileset gTileset_General_Frontier_East =
+{
+    .isCompressed = TRUE,
+    //.swapPalettes = SWAP_PAL(4),
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_General_Frontier_East,
+    .palettes = gTilesetPalettes_General,
+    .metatiles = gMetatiles_General,
+    .metatileAttributes = gMetatileAttributes_General,
+    .callback = InitTilesetAnim_HoennGeneral,
+};
+
+const struct Tileset gTileset_General_Frontier_West =
+{
+    .isCompressed = TRUE,
+    //.swapPalettes = SWAP_PAL(4),
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_General_Frontier_West,
+    .palettes = gTilesetPalettes_General,
+    .metatiles = gMetatiles_General,
+    .metatileAttributes = gMetatileAttributes_General,
+    .callback = InitTilesetAnim_HoennGeneral,
+};
+
 const struct Tileset gTileset_Petalburg =
 {
     .isCompressed = TRUE,

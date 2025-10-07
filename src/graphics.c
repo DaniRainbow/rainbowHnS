@@ -1486,6 +1486,8 @@ const u16 ALIGNED(4) gTilesetPalettes_General[][16] =
 };
 
 const u32 gTilesetTiles_General[] = INCBIN_U32("data/tilesets/primary/general/tiles.4bpp.lz");
+const u32 gTilesetTiles_General_Frontier_East[] = INCBIN_U32("data/tilesets/primary/general_frontier_east/tiles.4bpp.lz");
+const u32 gTilesetTiles_General_Frontier_West[] = INCBIN_U32("data/tilesets/primary/general_frontier_west/tiles.4bpp.lz");
 
 // trade/egg hatch
 
