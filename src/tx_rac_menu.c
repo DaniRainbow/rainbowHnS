@@ -562,7 +562,7 @@ static const u8 *const sOptionMenuItemsNamesNuzlocke[MENUITEM_NUZLOCKE_COUNT] =
 };
 
 //MENU_DIFFICULTY
-static const u8 sText_Trainers[]           = _("{COLOR 3}{SHADOW 3}TRAINER DIFFICULTY");
+static const u8 sText_Trainers[]           = _("Hardmode");
 static const u8 sText_PartyLimit[]          = _("{COLOR 3}{SHADOW 3}PARTY LIMIT");
 static const u8 sText_LevelCap[]            = _("LEVEL CAP");
 static const u8 sText_ExpMultiplier[]       = _("EXP MULTIPLIER");
@@ -870,8 +870,8 @@ static const u8 *const sOptionMenuItemDescriptionsNuzlocke[MENUITEM_NUZLOCKE_COU
     [MENUITEM_NUZLOCKE_NEXT]                = {sText_Description_Nuzlocke_Next,                 sText_Empty,                                        sText_Empty,                        sText_Empty},
 };
 
-static const u8 sText_Description_Difficulty_Trainers_Normal[]         = _("Enemy trainers have POKéMON\nwith balanced levels and movesets.");
-static const u8 sText_Description_Difficulty_Trainers_Hard[]           = _("Enemy trainers have higher level POKéMON\nand better movesets.");   
+static const u8 sText_Description_Difficulty_Trainers_Normal[]         = _("Trainers have POKéMON\nwith balanced levels and movesets.");
+static const u8 sText_Description_Difficulty_Trainers_Hard[]           = _("Trainers have stronger POKéMON\nwith higher levels");
 static const u8 sText_Description_Difficulty_Party_Limit[]              = _("{COLOR 7}{COLOR 8}This feature is not currently\nsupported for this game.");
 static const u8 sText_Description_Difficulty_LevelCap_Base[]            = _("No level cap. Overleveling possible.\n");
 static const u8 sText_Description_Difficulty_LevelCap_Normal[]          = _("Maximum level is based on the\nnext gym's {COLOR 7}{COLOR 8}highest POKéMON level.");
@@ -901,7 +901,7 @@ static const u8 sText_Description_Difficulty_MaxPartyIvs_On[]           = _("The
 static const u8 sText_Description_Difficulty_MaxPartyIvs_On_HP[]        = _("IVs are set between 30 and 31\nto allow different Hidden Powers.");
 static const u8 *const sOptionMenuItemDescriptionsDifficulty[MENUITEM_DIFFICULTY_COUNT][4] =
 {
-    [MENUITEM_DIFFICULTY_TRAINERS]              = {sText_Description_Difficulty_Trainers_Normal,    sText_Description_Difficulty_Trainers_Hard,                   sText_Empty,                                    sText_Empty},
+    [MENUITEM_DIFFICULTY_TRAINERS]              = {sText_Description_Difficulty_Trainers_Hard,   sText_Description_Difficulty_Trainers_Normal,       sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = {sText_Description_Difficulty_Party_Limit,        sText_Empty,                                        sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = {sText_Description_Difficulty_LevelCap_Base,      sText_Description_Difficulty_LevelCap_Normal,       sText_Description_Difficulty_LevelCap_Hard,     sText_Empty},
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = {sText_Description_Difficulty_ExpMultiplier_1_0,  sText_Description_Difficulty_ExpMultiplier_1_5,     sText_Description_Difficulty_ExpMultiplier_2_0, sText_Description_Difficulty_ExpMultiplier_0_0},
@@ -2396,14 +2396,7 @@ static void DrawChoices_Challenges_ItemsPlayer(int selection, int y)
 static void DrawChoices_Challenges_TrainerDifficulty(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_DIFFICULTY_TRAINERS);
-    u8 styles[3] = {0};
-    const u8 *order[] = {sText_Off, sText_Description_Difficulty_Trainers_Normal, sText_Description_Difficulty_Trainers_Hard};
-    int xMid = GetMiddleX(sText_Off, sText_Description_Difficulty_Trainers_Normal, sText_Description_Difficulty_Trainers_Hard);
-    styles[selection] = 1;
-
-   DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
-   DrawOptionMenuChoice(sText_Description_Difficulty_Trainers_Normal, xMid, y, styles[1], active);
-   DrawOptionMenuChoice(sText_Description_Difficulty_Trainers_Hard, GetStringRightAlignXOffset(1, sText_Description_Difficulty_Trainers_Hard, 198), y, styles[2], active);
+    DrawChoices_Challenges_YesNo(selection, y, active);
 }
 static void DrawChoices_Challenges_ItemsTrainer(int selection, int y)
 {

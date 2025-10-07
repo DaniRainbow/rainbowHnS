@@ -5756,8 +5756,8 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Rival_Chikorita1),
+        .party2 = NO_ITEM_DEFAULT_MOVES(sParty_Rival_Chikorita1_Hard),
     },
-
 
     [TRAINER_RIVAL_CHIKORITA_2] =
     {

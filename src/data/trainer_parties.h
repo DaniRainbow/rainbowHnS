@@ -6,6 +6,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Sawyer1[] = {
     }
 };
 
+
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout1[] = {
     {
     .iv = 0,
@@ -20878,13 +20879,22 @@ static const struct TrainerMonItemCustomMoves sParty_Lance2[] = { //EliteFourGro
 static const struct TrainerMonNoItemDefaultMoves sParty_Rival_Chikorita1[] = { //RivalGroup
     {
     .iv = 0,
-    .lvl = 50,
-    .species = SPECIES_ZUBAT,
+    .lvl = 5,
+    .species = SPECIES_CHIKORITA,
+    },
+};
+
+static const struct TrainerMonNoItemCustomMoves sParty_Rival_Chikorita1_Hard[] = { //RivalGroup
+    {
+    .iv = 0,
+    .lvl = 80,
+    .species = SPECIES_HONCHKROW,
     },
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_CHIKORITA,
+    .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
     },
 };
 static const struct TrainerMonNoItemCustomMoves sParty_Rival_Chikorita2[] = { //RivalGroup
