@@ -20907,7 +20907,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Rival_Chikorita3[] = { //
     .iv = 0,
     .lvl = 22,
     .species = SPECIES_LARVITAR,
-    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_NONE},
+    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM},
     },
     {
     .iv = 0,
@@ -21131,7 +21131,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Rival_Cyndaquil3[] = { //
     .iv = 0,
     .lvl = 22,
     .species = SPECIES_LARVITAR,
-    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_NONE},
+    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM},
     },
     {
     .iv = 0,
@@ -21354,7 +21354,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Rival_Totodile3[] = { //R
     .iv = 0,
     .lvl = 22,
     .species = SPECIES_LARVITAR,
-    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_NONE},
+    .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM},
     },
     {
     .iv = 0,

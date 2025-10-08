@@ -83,6 +83,15 @@ VioletCity_PokemonCenter_EventScript_Man::
 	release
 	end
 
+VioletCity_PokemonCenter_Text_BookshelfMan::
+	lock
+	faceplayer
+	msgbox VioletCity_PokeCenter_Text_FarawayLink, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
 VioletCity_PokeCenter_Text_ElmsAideFavor:
 	.string "{PLAYER}, long time, no see.\p"
 	.string "PROF.ELM asked me to find you.\p"

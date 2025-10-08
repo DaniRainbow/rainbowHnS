@@ -3780,6 +3780,12 @@ static void Cmd_getexp(void)
     u16 *exp = &gBattleStruct->expValue;
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
+        // Disable EXP gain during the Bug Catching Contest
+    if (FlagGet(FLAG_SYS_BUG_CONTEST_MODE))
+    {
+        // Skip all EXP distribution logic
+        gBattleScripting.getexpState = 6; // jump to "we're done" case
+    }
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
 
     switch (gBattleScripting.getexpState)
