@@ -1093,48 +1093,64 @@ static u8 GetSumOfEnemyPartyLevel(u16 opponentId, u8 numMons)
     u8 i;
     u8 sum;
     u32 count = numMons;
+    const struct Trainer *trainer = &gTrainers[opponentId];
 
-    if (gTrainers[opponentId].partySize < count)
-        count = gTrainers[opponentId].partySize;
+    
+
+    // Choose party and partySize based on difficulty flag
+    union TrainerMonPtr partyPtr;
+    u8 partySize;
+    if (gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty)
+    {
+        partyPtr = trainer->partyHard;
+        partySize = trainer->partyHardSize;
+        MgbaPrintf(MGBA_LOG_DEBUG, "Difficulty setting: %d", gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty);
+    }
+    
+    else
+    {
+        partyPtr = trainer->party;
+        partySize = trainer->partySize;
+        MgbaPrintf(MGBA_LOG_DEBUG, "Difficulty setting: %d", gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty);
+    }
+
+    if (partySize < count)
+        count = partySize;
 
     sum = 0;
 
-    switch (gTrainers[opponentId].partyFlags)
+    switch (trainer->partyFlags)
     {
     case 0:
         {
             const struct TrainerMonNoItemDefaultMoves *party;
-            party = gTrainers[opponentId].party.NoItemDefaultMoves;
+            party = partyPtr.NoItemDefaultMoves;
             for (i = 0; i < count; i++)
-                //sum += party[i].lvl;
-                sum += GetScaledLevel(party[i].lvl); //difficulty
+                sum += GetScaledLevel(party[i].lvl);
         }
         break;
     case F_TRAINER_PARTY_CUSTOM_MOVESET:
         {
             const struct TrainerMonNoItemCustomMoves *party;
-            party = gTrainers[opponentId].party.NoItemCustomMoves;
+            party = partyPtr.NoItemCustomMoves;
             for (i = 0; i < count; i++)
-                //sum += party[i].lvl;
-                sum += GetScaledLevel(party[i].lvl); //difficulty
+                sum += GetScaledLevel(party[i].lvl);
         }
         break;
     case F_TRAINER_PARTY_HELD_ITEM:
         {
             const struct TrainerMonItemDefaultMoves *party;
-            party = gTrainers[opponentId].party.ItemDefaultMoves;
+            party = partyPtr.ItemDefaultMoves;
             for (i = 0; i < count; i++)
-                //sum += party[i].lvl;
-                sum += GetScaledLevel(party[i].lvl); //difficulty
+                sum += GetScaledLevel(party[i].lvl);
         }
         break;
     case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
         {
             const struct TrainerMonItemCustomMoves *party;
-            party = gTrainers[opponentId].party.ItemCustomMoves;
+            party = partyPtr.ItemCustomMoves;
             for (i = 0; i < count; i++)
-                //sum += party[i].lvl;
-                sum += GetScaledLevel(party[i].lvl); //difficulty
+                sum += GetScaledLevel(party[i].lvl);
         }
         break;
     }

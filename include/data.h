@@ -80,6 +80,12 @@ struct TrainerMonItemCustomMoves
 #define ITEM_DEFAULT_MOVES(party) { .ItemDefaultMoves = party }, .partySize = ARRAY_COUNT(party), .partyFlags = F_TRAINER_PARTY_HELD_ITEM
 #define ITEM_CUSTOM_MOVES(party) { .ItemCustomMoves = party }, .partySize = ARRAY_COUNT(party), .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM
 
+#define NO_ITEM_DEFAULT_MOVES_HARD(partyHard) { .NoItemDefaultMoves = partyHard }, .partyHardSize = ARRAY_COUNT(partyHard), .partyFlags = 0
+#define NO_ITEM_CUSTOM_MOVES_HARD(partyHard) { .NoItemCustomMoves = partyHard }, .partyHardSize = ARRAY_COUNT(partyHard), .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET
+#define ITEM_DEFAULT_MOVES_HARD(partyHard) { .ItemDefaultMoves = partyHard }, .partyHardSize = ARRAY_COUNT(partyHard), .partyFlags = F_TRAINER_PARTY_HELD_ITEM
+#define ITEM_CUSTOM_MOVES_HARD(partyHard) { .ItemCustomMoves = partyHard }, .partyHardSize = ARRAY_COUNT(partyHard), .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM
+
+
 union TrainerMonPtr
 {
     const struct TrainerMonNoItemDefaultMoves *NoItemDefaultMoves;
@@ -99,7 +105,9 @@ struct Trainer
     /*0x18*/ bool8 doubleBattle;
     /*0x1C*/ u32 aiFlags;
     /*0x20*/ u8 partySize;
+    /*0x21*/ u8 partyHardSize;
     /*0x24*/ union TrainerMonPtr party;
+    /*0x28*/ union TrainerMonPtr partyHard;
 };
 
 #define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic_gender & 0x7F))
