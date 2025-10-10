@@ -1056,7 +1056,7 @@
       "name": "LilycoveCity_ContestHall_Layout",
       "width": 51,
       "height": 33,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_Building_Contest",
       "secondary_tileset": "gTileset_Contest",
       "border_filepath": "data/layouts/LilycoveCity_ContestHall/border.bin",
       "blockdata_filepath": "data/layouts/LilycoveCity_ContestHall/map.bin"
@@ -2246,7 +2246,7 @@
       "name": "ContestHall_Layout",
       "width": 15,
       "height": 11,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Building_Contest",
       "secondary_tileset": "gTileset_Contest",
       "border_filepath": "data/layouts/ContestHall/border.bin",
       "blockdata_filepath": "data/layouts/ContestHall/map.bin"
