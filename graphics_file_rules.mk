@@ -176,7 +176,7 @@ $(TILESETGFXDIR)/secondary/inside_of_truck/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 62 -Wnum_tiles
 
 $(TILESETGFXDIR)/secondary/contest/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 430 -Wnum_tiles
+	$(GFX) $< $@ -num_tiles 384 -Wnum_tiles
 
 $(TILESETGFXDIR)/secondary/lilycove_museum/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 431 -Wnum_tiles
