@@ -53,8 +53,8 @@ BattleFrontier_BattleTowerMultiCorridor_EventScript_EnterCorridor::
 	setflag FLAG_ENABLE_MULTI_CORRIDOR_DOOR
 	setvar VAR_0x8004, 14  @ x coord of far door, used by DrawDoor
 	setvar VAR_0x8005, 1   @ y coord of far door, used by DrawDoor
-	@opendoor 1, 1
-	@waitdooranim
+	opendoor 1, 1
+	waitdooranim
 	clearflag FLAG_ENABLE_MULTI_CORRIDOR_DOOR
 	showobjectat LOCALID_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR
 	showobjectat LOCALID_PARTNER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR
@@ -64,8 +64,8 @@ BattleFrontier_BattleTowerMultiCorridor_EventScript_EnterCorridor::
 	setflag FLAG_ENABLE_MULTI_CORRIDOR_DOOR
 	setvar VAR_0x8004, 14  @ x coord of far door, used by DrawDoor
 	setvar VAR_0x8005, 1   @ y coord of far door, used by DrawDoor
-	@closedoor 1, 1
-	@waitdooranim
+	closedoor 1, 1
+	waitdooranim
 	clearflag FLAG_ENABLE_MULTI_CORRIDOR_DOOR
 	applymovement LOCALID_PLAYER, BattleFrontier_BattleTowerMultiCorridor_Movement_PlayerWalkToDoor
 	applymovement LOCALID_PARTNER, BattleFrontier_BattleTowerMultiCorridor_Movement_PartnerWalkToDoor
