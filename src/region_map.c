@@ -711,12 +711,11 @@ static const struct SpritePalette sFlyTargetIconsSpritePalette =
 };
 
 static const u16 sRedOutlineFlyDestinations[][2] =
-{/*
+{
     {
-        FLAG_VISITED_FUCHSIA_CITY,
+        FLAG_VISITED_BATTLE_FRONTIER,
         MAPSEC_BATTLE_FRONTIER
     },
-    */
     {
         -1,
         MAPSEC_NONE
@@ -1603,6 +1602,8 @@ static u8 GetMapsecType(u16 mapSecId)
         return FlagGet(FLAG_VISITED_MT_SILVER) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_ROUTE_26:
         return FlagGet(FLAG_VISITED_RECEPTION_GATE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_BATTLE_FRONTIER:
+        return FlagGet(FLAG_VISITED_BATTLE_FRONTIER) ? MAPSECTYPE_BATTLE_FRONTIER : MAPSECTYPE_NONE;
     default:
         return MAPSECTYPE_ROUTE;
     }
