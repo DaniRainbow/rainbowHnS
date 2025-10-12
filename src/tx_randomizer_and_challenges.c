@@ -325,7 +325,7 @@ enum LevelCap {
 };
 static const u8 sLevelCapTable_Normal[] = //HNS UPDATED
 {
-    [LEVEL_CAP_NO_BADGES]   = 10, 
+    [LEVEL_CAP_NO_BADGES]   = 11, 
     [LEVEL_CAP_BADGE_1]     = 16, 
     [LEVEL_CAP_BADGE_2]     = 21,
     [LEVEL_CAP_BADGE_3]     = 25,

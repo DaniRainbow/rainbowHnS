@@ -85,7 +85,7 @@ static void CreateInitialRoamerMon(bool16 createEntei)
     else
         ROAMER->species = SPECIES_ENTEI;
 
-    CreateMon(&gEnemyParty[0], ROAMER->species, 60, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(&gEnemyParty[0], ROAMER->species, 40, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     ROAMER->level = 40;
     ROAMER->status = 0;
     ROAMER->active = TRUE;
