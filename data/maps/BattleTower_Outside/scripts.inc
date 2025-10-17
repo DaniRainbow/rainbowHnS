@@ -7,6 +7,27 @@ BattleTower_Outside_EventScript_BattleTowerSign::
 	closemessage	
 	release
 	end
+
+BattleTower_Outside_EventScript_Tent_Factory::
+	lock
+	msgbox BattleTower_Battle_Tent_Text_Factory, MSGBOX_SIGN	
+	closemessage	
+	release
+	end
+
+BattleTower_Outside_EventScript_Tent_Palace::
+	lock
+	msgbox BattleTower_Battle_Tent_Text_Palace, MSGBOX_SIGN	
+	closemessage	
+	release
+	end
+
+BattleTower_Outside_EventScript_Tent_Arena::
+	lock
+	msgbox BattleTower_Battle_Tent_Text_Arena, MSGBOX_SIGN	
+	closemessage	
+	release
+	end
 	
 BattleTower_Outside_EventScript_Engineer::
 	lock
@@ -57,9 +78,22 @@ BattleTowerOutsideSailorText:
 	.string "I have to win it all. That I must!$"
 
 BattleTowerOutsideSignText:
-	.string "{RIGHT_ARROW} TRAINER HILL ENTRANCE\p"
+	.string "{UP_ARROW} TRAINER HILL ENTRANCE\p"
 	.string "“Scale the heights, you hot-blooded\n"
-	.string "TRAINERS!”$"
+	.string "TRAINERS!”\p"
+	.string "{RIGHT_ARROW} BATTLE TENTS.$"
+
+BattleTower_Battle_Tent_Text_Factory:
+	.string "BATTLE TENT: FACTORY\n"
+	.string "“Find it! The ultimate POKéMON!”$"
+
+BattleTower_Battle_Tent_Text_Palace:
+	.string "BATTLE TENT: PALACE\n"
+	.string "“Feast Your Eyes on Battles!”$"
+
+BattleTower_Battle_Tent_Text_Arena:
+	.string "BATTLE TENT: ARENA\n"
+	.string "“May the Greatest Teams Gather!”$"
 
 BattleTowerOutsideText_Closed:
 	.string "The TRAINER HILL is currently\n"
