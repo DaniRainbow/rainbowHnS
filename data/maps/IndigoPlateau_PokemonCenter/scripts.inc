@@ -39,7 +39,7 @@ IndigoPlateau_Text_ShigyNinja:
 	.string "all of them are wonderfully unique.\p"
 	.string "You should be proud of yourself\n"
 	.string "for getting this far!\p"
-	.string "Now, go get em'!$"
+	.string "Now, go get 'em!$"
 
 IndigoPlateau_Text_Blackbelt:
 	.string "The POKéMON LEAGUE is not taking\n"
