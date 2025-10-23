@@ -23705,12 +23705,12 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Wilton4_Hard[]
     },
     {
     .iv = 255,
-    .lvl = 46,
+    .lvl = 47,
     .species = SPECIES_WAILORD,
     },
     {
     .iv = 255,
-    .lvl = 46,
+    .lvl = 47,
     .species = SPECIES_HARIYAMA,
     },
     {
@@ -23734,17 +23734,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Wilton5_Hard[]
     },
     {
     .iv = 255,
-    .lvl = 61,
+    .lvl = 62,
     .species = SPECIES_WAILORD,
     },
     {
     .iv = 255,
-    .lvl = 61,
+    .lvl = 62,
     .species = SPECIES_HARIYAMA,
     },
     {
     .iv = 255,
-    .lvl = 60,
+    .lvl = 63,
     .species = SPECIES_SLAKING,
     },
     {
@@ -23800,17 +23800,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Keira_Hard[]
     {
     .iv = 255,
     .lvl = 44,
-    .species = SPECIES_MAGNETON,
+    .species = SPECIES_ELECTRODE,
     },
     {
     .iv = 255,
     .lvl = 44,
-    .species = SPECIES_FORRETRESS,
+    .species = SPECIES_METAGROSS,
     },
     {
     .iv = 255,
     .lvl = 44,
-    .species = SPECIES_SKARMORY,
+    .species = SPECIES_STEELIX,
     }
 };
 
