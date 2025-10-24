@@ -2231,20 +2231,6 @@ const struct Trainer gTrainers[] = {
     },
 
 
-    [TRAINER_ROXANNE] =
-    {
-        .trainerClass = TRAINER_CLASS_EXPERT,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_GIRL_2,
-        .trainerPic = TRAINER_PIC_EXPERT_F,
-        .trainerName = _("ROXANNE"),
-        .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Roxanne),
-        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Roxanne_Hard),
-    },
-
-
     [TRAINER_CLARISSA] =
     {
         .trainerClass = TRAINER_CLASS_EXPERT,
@@ -3771,20 +3757,6 @@ const struct Trainer gTrainers[] = {
     },
 
 
-    [TRAINER_SIDNEY] =
-    {
-        .trainerClass = TRAINER_CLASS_HIKER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_BOY_2,
-        .trainerPic = TRAINER_PIC_HIKER,
-        .trainerName = _("SIDNEY"),
-        .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Sidney),
-        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Sidney_Hard),
-    },
-
-
     [TRAINER_KENNY] =
     {
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -4340,20 +4312,6 @@ const struct Trainer gTrainers[] = {
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Greg),
         .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Greg_Hard),
-    },
-
-
-    [TRAINER_NORMAN] =
-    {
-        .trainerClass = TRAINER_CLASS_PSYCHIC_M,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_BOY_1,
-        .trainerPic = TRAINER_PIC_PSYCHIC_M,
-        .trainerName = _("NORMAN"),
-        .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Norman),
-        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Norman_Hard),
     },
 
 
