@@ -17893,35 +17893,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Rival_Chikorita1_Hard[] 
     .lvl = 7,
     .species = SPECIES_CHIKORITA,
     },
-    {
-    .iv = 31,
-    .lvl = 6,
-    .species = SPECIES_HOPPIP,
-    }
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_Rival_Chikorita2_Hard[] = {
     {
     .iv = 40,
-    .lvl = 18,
+    .lvl = 16,
     .species = SPECIES_REMORAID,
     .moves = {MOVE_WATER_GUN, MOVE_BUBBLE_BEAM, MOVE_AURORA_BEAM, MOVE_PSYBEAM}
     },
     {
     .iv = 37,
-    .lvl = 17,
+    .lvl = 16,
     .species = SPECIES_ZUBAT,
     .moves = {MOVE_ABSORB, MOVE_SUPERSONIC, MOVE_POISON_STING, MOVE_ASTONISH}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 17,
     .species = SPECIES_LARVITAR,
     .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 18,
     .species = SPECIES_BAYLEEF,
     .moves = {MOVE_RAZOR_LEAF, MOVE_REFLECT, MOVE_POISON_POWDER, MOVE_TACKLE}
     }
@@ -18149,35 +18144,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Rival_Cyndaquil1_Hard[] 
     .lvl = 7,
     .species = SPECIES_CYNDAQUIL,
     },
-    {
-    .iv = 31,
-    .lvl = 6,
-    .species = SPECIES_TORCHIC,
-    }
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_Rival_Cyndaquil2_Hard[] = {
     {
     .iv = 40,
-    .lvl = 18,
+    .lvl = 16,
     .species = SPECIES_REMORAID,
     .moves = {MOVE_WATER_GUN, MOVE_BUBBLE_BEAM, MOVE_AURORA_BEAM, MOVE_PSYBEAM}
     },
     {
     .iv = 37,
-    .lvl = 17,
+    .lvl = 16,
     .species = SPECIES_ZUBAT,
     .moves = {MOVE_ABSORB, MOVE_SUPERSONIC, MOVE_POISON_STING, MOVE_ASTONISH}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 17,
     .species = SPECIES_LARVITAR,
     .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 18,
     .species = SPECIES_QUILAVA,
     .moves = {MOVE_LEER, MOVE_SMOKESCREEN, MOVE_EMBER, MOVE_TACKLE}
     }
@@ -18405,35 +18395,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Rival_Totodile1_Hard[] =
     .lvl = 7,
     .species = SPECIES_TOTODILE,
     },
-    {
-    .iv = 31,
-    .lvl = 6,
-    .species = SPECIES_WINGULL,
-    }
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_Rival_Totodile2_Hard[] = {
     {
     .iv = 40,
-    .lvl = 18,
+    .lvl = 16,
     .species = SPECIES_HOUNDOUR,
     .moves = {MOVE_EMBER, MOVE_BITE, MOVE_SMOG, MOVE_ROAR}
     },
     {
     .iv = 37,
-    .lvl = 17,
+    .lvl = 16,
     .species = SPECIES_ZUBAT,
     .moves = {MOVE_ABSORB, MOVE_SUPERSONIC, MOVE_POISON_STING, MOVE_ASTONISH}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 17,
     .species = SPECIES_LARVITAR,
     .moves = {MOVE_BITE, MOVE_ROCK_THROW, MOVE_SCREECH, MOVE_SANDSTORM}
     },
     {
     .iv = 43,
-    .lvl = 19,
+    .lvl = 18,
     .species = SPECIES_CROCONAW,
     .moves = {MOVE_SCRATCH, MOVE_RAGE, MOVE_BUBBLE_BEAM, MOVE_LEER}
     }

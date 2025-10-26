@@ -799,7 +799,7 @@ static void CB2_InitBattleInternal(void)
         SetMainCallback2(CB2_HandleStartBattle);
 
 #if TX_DEBUG_SYSTEM_ENABLE == FALSE 
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
+    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
     {
         CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A, TRUE);
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
@@ -809,7 +809,7 @@ static void CB2_InitBattleInternal(void)
 #else
     if (!gIsDebugBattle)
     {
-        if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
+        if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
             CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A, TRUE);
             if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
