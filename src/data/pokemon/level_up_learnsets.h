@@ -2843,8 +2843,6 @@ static const u16 sQuilavaLevelUpLearnset[] = {
 static const u16 sTyphlosionLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
-    LEVEL_UP_MOVE( 1, MOVE_SMOKESCREEN),
-    LEVEL_UP_MOVE( 1, MOVE_EMBER),
     LEVEL_UP_MOVE( 1, MOVE_AGILITY),
     LEVEL_UP_MOVE( 6, MOVE_SMOKESCREEN),
     LEVEL_UP_MOVE(12, MOVE_EMBER),
@@ -2861,6 +2859,7 @@ static const u16 sTyphlosionLevelUpLearnset[] = {
     LEVEL_UP_MOVE(60, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE(61, MOVE_EARTH_POWER),
     LEVEL_UP_MOVE(64, MOVE_DOUBLE_EDGE),
+    LEVEL_UP_MOVE(66, MOVE_PLAY_ROUGH),
     LEVEL_UP_MOVE(68, MOVE_FLASH_CANNON),
     LEVEL_UP_END
 };
