@@ -73,7 +73,26 @@ Debug_Script_2::
 	end
 
 Debug_Script_3::
+	callnative CheckNuzlockeMode
+	buffernumberstring STR_VAR_1, VAR_UNUSED_0x40DB
+	msgbox Text_Easy_Mode, MSGBOX_DEFAULT
+	closemessage
+	buffernumberstring STR_VAR_1, VAR_UNUSED_0x40DC
+	msgbox Text_Normal_Mode, MSGBOX_DEFAULT
+	closemessage
+	buffernumberstring STR_VAR_1, VAR_UNUSED_0x40FB
+	msgbox Text_Hard_Mode, MSGBOX_DEFAULT
+	closemessage
 	end
+
+Text_Easy_Mode::
+	.string "Easy mode is {STR_VAR_1}$"
+
+Text_Normal_Mode::
+	.string "Normal mode is {STR_VAR_1}$"
+
+Text_Hard_Mode::
+	.string "Hard mode is {STR_VAR_1}$"
 
 Debug_Script_4::
 	end

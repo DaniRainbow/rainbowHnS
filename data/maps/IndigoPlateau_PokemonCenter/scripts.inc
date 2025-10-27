@@ -2,12 +2,11 @@
 .set LOCALID_INDIGOPLATEAU_ABRA, 6
 
 IndigoPlateau_PokemonCenter_MapScripts::
-	@map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, IndigoPlateau_PokemonCenter_OnFrame 
+	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_Pokecenter_OnTransition
 	.byte 0
 
 IndigoPlateau_PokemonCenter_OnFrame::
-	setrespawn HEAL_LOCATION_INDIGO_PLATEAU
 	map_script_2 VAR_LEAGUE_STATE, 0, IndigoPlateau_PokemonCenter_Enter
 	map_script_2 VAR_LEAGUE_STATE, 2, IndigoPlateau_PokemonCenter_Enter
 	map_script_2 VAR_LEAGUE_STATE, 3, IndigoPlateau_PokemonCenter_Enter
@@ -20,6 +19,11 @@ IndigoPlateau_PokemonCenter_Enter::
 	setflag FLAG_VISITED_INDIGO_PLATEAU
 	setvar VAR_LEAGUE_STATE, 1
 	end
+
+IndigoPlateau_Pokecenter_OnTransition::
+	setrespawn HEAL_LOCATION_INDIGO_PLATEAU
+	end
+
 
 IndigoPlateau_EventScript_Cooltrainer::
 	msgbox IndigoPlateau_Text_CooltrainerM, MSGBOX_NPC

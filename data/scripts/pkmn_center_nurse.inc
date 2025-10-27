@@ -37,6 +37,7 @@ EventScript_PkmnCenterNurse_HealPkmn::
 EventScript_PkmnCenterNurse_HealPkmnFast::
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	special HealPlayerParty
+	playse SE_M_MORNING_SUN
 	goto EventScript_PkmnCenterNurse_ReturnPkmn
 	release
 	end

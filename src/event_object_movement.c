@@ -2724,7 +2724,7 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType) {
     sprite->affineAnimBeginning = TRUE;
     sprite->coordOffsetEnabled = TRUE;
     switch (lightType) {
-    case 0: // Rustboro lanterns
+    case 0: // Lanterns
         sprite->centerToCornerVecX = -(32 >> 1);
         sprite->centerToCornerVecY = -(32 >> 1);
         sprite->oam.priority = 1;
@@ -2739,6 +2739,25 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType) {
         sprite->oam.priority = 2;
         sprite->subpriority = 0xFF;
         sprite->oam.objMode = 1; // BLEND
+        break;
+    case 3: // Street lamps
+        sprite->centerToCornerVecX = -(16 >> 1);
+        sprite->centerToCornerVecY = -(16 >> 1);
+        sprite->oam.priority = 1;
+        sprite->oam.objMode = 1; // BLEND
+        sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+        sprite->x += 8;
+        sprite->y += 7 + sprite->centerToCornerVecY;
+        break;
+    case 4: // Lighthouse
+        sprite->centerToCornerVecX = -(32 >> 1);
+        sprite->centerToCornerVecY = -(32 >> 1);
+        sprite->oam.priority = 1;
+        sprite->oam.objMode = 1; // BLEND
+        sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+        sprite->x += 8;
+        sprite->y += 28 + sprite->centerToCornerVecY;
+        break;
     }
 }
 
