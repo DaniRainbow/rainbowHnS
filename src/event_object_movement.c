@@ -2165,6 +2165,32 @@ static u8 LoadDynamicFollowerPalette(u16 species, u8 form, bool32 shiny)
         return paletteNum;
 
     spritePalette.data = (u16*)((shiny ? gMonShinyPaletteTable : gMonPaletteTable)[species].data);
+    if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+        spritePalette.data = (u16*)((shiny ? gMonShinyPaletteTable_Modern : gMonPaletteTable)[species].data);
     if (species < ARRAY_COUNT(gFollowerPalettes) && gFollowerPalettes[species][shiny & 1])
         spritePalette.data = gFollowerPalettes[species][shiny & 1];
 
@@ -2670,7 +2696,7 @@ void UpdateLightSprite(struct Sprite *sprite) {
         return;
     }
 
-    if (gTimeOfDay != TIME_OF_DAY_NIGHT) {
+    if (gTimeOfDay != TIME_OF_DAY_NIGHT && sprite->data[5] != 4) { //Case 4 (Lighthouse and Glow Lichen) will remain on during daytime
         sprite->invisible = TRUE;
         return;
     }
@@ -2724,7 +2750,7 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType) {
     sprite->affineAnimBeginning = TRUE;
     sprite->coordOffsetEnabled = TRUE;
     switch (lightType) {
-    case 0: // Rustboro lanterns
+    case 0: // Lanterns
         sprite->centerToCornerVecX = -(32 >> 1);
         sprite->centerToCornerVecY = -(32 >> 1);
         sprite->oam.priority = 1;
@@ -2739,6 +2765,26 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType) {
         sprite->oam.priority = 2;
         sprite->subpriority = 0xFF;
         sprite->oam.objMode = 1; // BLEND
+        break;
+    case 3: // Street lamps
+        sprite->centerToCornerVecX = -(16 >> 1);
+        sprite->centerToCornerVecY = -(16 >> 1);
+        sprite->oam.priority = 1;
+        sprite->oam.objMode = 1; // BLEND
+        sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+        sprite->x += 8;
+        sprite->y += 7 + sprite->centerToCornerVecY;
+        break;
+    case 4: // Lighthouse and Glow Lichen
+        sprite->centerToCornerVecX = -(32 >> 1);
+        sprite->centerToCornerVecY = -(32 >> 1);
+        sprite->oam.priority = 2;
+        sprite->subpriority = 0xFF;
+        sprite->oam.objMode = 1; // BLEND
+        sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+        sprite->x += 8;
+        sprite->y += 28 + sprite->centerToCornerVecY;
+        break;
     }
 }
 

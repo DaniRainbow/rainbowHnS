@@ -220,5 +220,5 @@ Route27_Text_FisherScottBeaten:
     .string "No! Not in this battle!$"
 
 Route27_Text_FisherScottAfter:
-    .string "Just like in fish-ing, it's all over\n"
+    .string "Just like in fishing, it's all over\n"
     .string "in POKéMON if you give up.$"

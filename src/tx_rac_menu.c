@@ -61,8 +61,8 @@ enum
 {
     MENUITEM_FEATURES_RTC_TYPE,
     MENUITEM_FEATURES_SHINY_CHANCE,
+    MENUITEM_FEATURES_SHINY_COLOR,
     MENUITEM_FEATURES_ITEM_DROP,
-    MENUITEM_FEATURES_PKMN_DEATH,
     MENUITEM_FEATURES_FRONTIER_BANS,
     //MENUITEM_FEATURES_UNLIMITED_WT,
     //MENUITEM_FEATURES_EASY_FEEBAS,
@@ -308,7 +308,6 @@ static void DrawChoices_Features_ItemDrop(int selection, int y);
 static void DrawChoices_Mode_InfiniteTMs(int selection, int y);
 static void DrawChoices_Mode_SurvivePoison(int selection, int y);
 static void DrawChoices_Features_EasyFeebas(int selection, int y);
-static void DrawChoices_Features_Pkmn_Death(int selection, int y);
 static void DrawChoices_Features_Rtc_Type(int selection, int y);
 static void DrawChoices_Features_Unlimited_WT(int selection, int y);
 static void DrawChoices_Mode_Synchronize(int selection, int y);
@@ -325,6 +324,7 @@ static void DrawChoices_Features_FrontierBans(int selection, int y);
 //static void DrawChoices_Difficulty_HardExp(int selection, int y);
 static void DrawChoices_Mode_New_Effectiveness(int selection, int y);
 static void DrawChoices_Difficulty_Escape_Rope_Dig(int selection, int y);
+static void DrawChoices_Features_Shiny_Colors(int selection, int y);
 
 static void PrintCurrentSelections(void);
 
@@ -385,9 +385,9 @@ struct // MENU_FEATURES
     [MENUITEM_FEATURES_SHINY_CHANCE]          = {DrawChoices_Features_ShinyChance,          ProcessInput_Options_Five},
     [MENUITEM_FEATURES_ITEM_DROP]             = {DrawChoices_Features_ItemDrop,             ProcessInput_Options_Two},
     //[MENUITEM_FEATURES_EASY_FEEBAS]           = {DrawChoices_Features_EasyFeebas,           ProcessInput_Options_Two},
-    [MENUITEM_FEATURES_PKMN_DEATH]            = {DrawChoices_Features_Pkmn_Death,           ProcessInput_Options_Two},
     //[MENUITEM_FEATURES_UNLIMITED_WT]          = {DrawChoices_Features_Unlimited_WT,         ProcessInput_Options_Two},
     [MENUITEM_FEATURES_FRONTIER_BANS]         = {DrawChoices_Features_FrontierBans,         ProcessInput_Options_Two},
+    [MENUITEM_FEATURES_SHINY_COLOR]           = {DrawChoices_Features_Shiny_Colors,          ProcessInput_Options_Two},
     [MENUITEM_FEATURES_NEXT]                  = {NULL, NULL},
 };
 
@@ -422,7 +422,7 @@ struct // MENU_NUZLOCKE
     int (*processInput)(int selection);
 } static const sItemFunctionsNuzlocke[MENUITEM_NUZLOCKE_COUNT] =
 {
-    [MENUITEM_NUZLOCKE_NUZLOCKE]        = {DrawChoices_Challenges_Nuzlocke,     ProcessInput_Options_Three},
+    [MENUITEM_NUZLOCKE_NUZLOCKE]        = {DrawChoices_Challenges_Nuzlocke,     ProcessInput_Options_Four},
     [MENUITEM_NUZLOCKE_SPECIES_CLAUSE]  = {DrawChoices_Nuzlocke_SpeciesClause,  ProcessInput_Options_Two},
     [MENUITEM_NUZLOCKE_SHINY_CLAUSE]    = {DrawChoices_Nuzlocke_ShinyClause,    ProcessInput_Options_Two},
     [MENUITEM_NUZLOCKE_NICKNAMING]      = {DrawChoices_Nuzlocke_Nicknaming,     ProcessInput_Options_Two},
@@ -511,9 +511,9 @@ static const u8 sText_RTC_Type[]            = _("CLOCK TYPE");
 static const u8 sText_ShinyChance[]         = _("SHINY CHANCE");
 static const u8 sText_ItemDrop[]            = _("ITEM DROP");
 static const u8 sText_EasyFeebas[]          = _("{COLOR 3}{SHADOW 3}EASIER FEEBAS");
-static const u8 sText_Pkmn_Death[]          = _("{COLOR 7}{COLOR 8}PERMA FAINT"); //Original Color is {COLOR 7}{COLOR 8}
 static const u8 sText_Unlimited_WT[]        = _("{COLOR 3}{SHADOW 3}UNLIMITED WT");
 static const u8 sText_FrontierBans[]        = _("FRONTIER BANS");
+static const u8 sText_Shiny_Colors[]        = _("SHINY COLORS");
 
 // Menu left side option names text
 static const u8 *const sOptionMenuItemsNamesFeatures[MENUITEM_FEATURES_COUNT] =
@@ -522,9 +522,9 @@ static const u8 *const sOptionMenuItemsNamesFeatures[MENUITEM_FEATURES_COUNT] =
     [MENUITEM_FEATURES_SHINY_CHANCE]              = sText_ShinyChance,
     [MENUITEM_FEATURES_ITEM_DROP]                 = sText_ItemDrop,
     //[MENUITEM_FEATURES_EASY_FEEBAS]               = sText_EasyFeebas,
-    [MENUITEM_FEATURES_PKMN_DEATH]                = sText_Pkmn_Death,
     //[MENUITEM_FEATURES_UNLIMITED_WT]              = sText_Unlimited_WT,
     [MENUITEM_FEATURES_FRONTIER_BANS]             = sText_FrontierBans,
+    [MENUITEM_FEATURES_SHINY_COLOR]               = sText_Shiny_Colors,
     [MENUITEM_FEATURES_NEXT]                      = sText_Next,
 };
 
@@ -677,7 +677,6 @@ static bool8 CheckConditions(int selection)
     case MENU_FEATURES:
         switch(selection)
         {
-            case MENUITEM_FEATURES_PKMN_DEATH:              return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
             //case MENUITEM_FEATURES_UNLIMITED_WT:            return FALSE;
             //case MENUITEM_FEATURES_EASY_FEEBAS:             return FALSE;
             //case MENUITEM_FEATURES_FRONTIER_BANS:           return FALSE;
@@ -723,10 +722,26 @@ static bool8 CheckConditions(int selection)
     case MENU_NUZLOCKE:
         switch(selection)
         {
-        case MENUITEM_NUZLOCKE_SPECIES_CLAUSE:  return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
-        case MENUITEM_NUZLOCKE_SHINY_CLAUSE:    return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
-        case MENUITEM_NUZLOCKE_NICKNAMING:      return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
-        case MENUITEM_NUZLOCKE_DELETION:        return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+        case MENUITEM_NUZLOCKE_SPECIES_CLAUSE:
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) == 0)
+                return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+            else
+                return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+        case MENUITEM_NUZLOCKE_SHINY_CLAUSE:
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) == 0)
+                return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+            else
+                return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+        case MENUITEM_NUZLOCKE_NICKNAMING:
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) == 0)
+                return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+            else
+                return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+        case MENUITEM_NUZLOCKE_DELETION:
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) == 0)
+                return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+            else
+                return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
         default:                                return TRUE;
         }
     case MENU_DIFFICULTY:
@@ -813,12 +828,12 @@ static const u8 sText_Description_Features_ShinyChance_1024[]         = _("High 
 static const u8 sText_Description_Features_ShinyChance_512[]          = _("Very high chance of SHINY encounter.");
 static const u8 sText_Description_Features_EasyFeebas_On[]            = _("FEEBAS is easier to catch and spawns\neverywhere in ROUTE 119.");
 static const u8 sText_Description_Features_EasyFeebas_Off[]           = _("FEEBAS is encountered in random\nspots in ROUTE 119.");
-static const u8 sText_Description_Features_Pkmn_Death_On[]            = _("{COLOR 7}{COLOR 8}YOUR {PKMN} WON'T RECOVER FROM FAINTING!\nGetting to zero {PKMN} resets the game."); //{COLOR 1}{COLOR 2} 
-static const u8 sText_Description_Features_Pkmn_Death_Off[]           = _("{PKMN} will recover from fainting after\nhealing in a POKéCENTER. Default.");
 static const u8 sText_Description_Features_Unlimited_WT_On[]          = _("Enables a daily limit of 3\nWonderTrades. Recommended.");
 static const u8 sText_Description_Features_Unlimited_WT_Off[]         = _("WonderTrades have no daily limit.");
 static const u8 sText_Description_Features_FrontierBans_Unban[]       = _("All legendaries are allowed to\nparticipate in the BATTLE FRONTIER.");
 static const u8 sText_Description_Features_FrontierBans_Ban[]         = _("Powerful legendary {PKMN} are banned\nin the BATTLE FRONTIER. Default.");
+static const u8 sText_Description_Features_Shiny_Colors_Original[]    = _("Original shiny color palette for all\nPOKéMON. Default.");
+static const u8 sText_Description_Features_Shiny_Colors_Modern[]      = _("Some shiny POKéMON have brand new\ncolor palettes.");
 
 static const u8 sText_Description_Features_Next[]                     = _("Continue to Randomizer options.");
 
@@ -828,9 +843,9 @@ static const u8 *const sOptionMenuItemDescriptionsFeatures[MENUITEM_FEATURES_COU
     [MENUITEM_FEATURES_SHINY_CHANCE]          = {sText_Description_Features_ShinyChance_8192,       sText_Description_Features_ShinyChance_4096,      sText_Description_Features_ShinyChance_2048,        sText_Description_Features_ShinyChance_1024,        sText_Description_Features_ShinyChance_512},
     [MENUITEM_FEATURES_ITEM_DROP]             = {sText_Description_Features_ItemDrop_Off,           sText_Description_Features_ItemDrop_On,           sText_Empty,                                        sText_Empty,                                        sText_Empty},
     //[MENUITEM_FEATURES_EASY_FEEBAS]           = {sText_Description_Features_EasyFeebas_Off,         sText_Description_Features_EasyFeebas_On,         sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    [MENUITEM_FEATURES_PKMN_DEATH]            = {sText_Description_Features_Pkmn_Death_Off,         sText_Description_Features_Pkmn_Death_On,         sText_Empty,                                        sText_Empty,                                        sText_Empty},
     //[MENUITEM_FEATURES_UNLIMITED_WT]          = {sText_Description_Features_Unlimited_WT_On,        sText_Description_Features_Unlimited_WT_Off,      sText_Empty,                                        sText_Empty,                                        sText_Empty},
     [MENUITEM_FEATURES_FRONTIER_BANS]         = {sText_Description_Features_FrontierBans_Ban,       sText_Description_Features_FrontierBans_Unban,    sText_Empty,                                        sText_Empty,                                        sText_Empty},
+    [MENUITEM_FEATURES_SHINY_COLOR]           = {sText_Description_Features_Shiny_Colors_Original,  sText_Description_Features_Shiny_Colors_Modern,    sText_Empty,                                        sText_Empty,                                        sText_Empty},
     [MENUITEM_FEATURES_NEXT]                  = {sText_Description_Features_Next,                   sText_Empty,                                      sText_Empty,                                        sText_Empty,                                        sText_Empty},
 };
 
@@ -886,6 +901,7 @@ static const u8 *const sOptionMenuItemDescriptionsRandomizer[MENUITEM_RANDOM_COU
 };
 
 static const u8 sText_Description_Nuzlocke_Base[]               = _("Nuzlocke mode is disabled.");
+static const u8 sText_Description_Nuzlocke_Easy[]               = _("Fainted {PKMN} can't be used anymore!\nNo more rules are enforced.");
 static const u8 sText_Description_Nuzlocke_Normal[]             = _("One catch per route! Fainted POKéMON\ncan't be used anymore.");
 static const u8 sText_Description_Nuzlocke_Hard[]               = _("Same rules as NORMAL but also\n{COLOR 7}{COLOR 8}deletes SAVE on battle loss!");
 static const u8 sText_Description_Nuzlocke_SpeciesClause_Off[]  = _("The player always has to catch the\nfirst POKéMON per route.");
@@ -896,10 +912,10 @@ static const u8 sText_Description_Nuzlocke_Nicknaming_Off[]     = _("Nicknames a
 static const u8 sText_Description_Nuzlocke_Nicknaming_On[]      = _("Forces the player to nickname every\nPOKéMON. {COLOR 7}{COLOR 8}RECOMMENDED!");
 static const u8 sText_Description_Nuzlocke_Deletion_Cemetery[]  = _("Fainted POKéMON are sent to the PC\nafter battle and can't be retrieved.");
 static const u8 sText_Description_Nuzlocke_Deletion_Deletion[]  = _("Fainted POKéMON are {COLOR 7}{COLOR 8}released{COLOR 1}{COLOR 2} after\nbattle!");
-static const u8 sText_Description_Nuzlocke_Next[]                   = _("Continue to difficulty options.");
+static const u8 sText_Description_Nuzlocke_Next[]               = _("Continue to difficulty options.");
 static const u8 *const sOptionMenuItemDescriptionsNuzlocke[MENUITEM_NUZLOCKE_COUNT][4] =
 {
-    [MENUITEM_NUZLOCKE_NUZLOCKE]            = {sText_Description_Nuzlocke_Base,                 sText_Description_Nuzlocke_Normal,                  sText_Description_Nuzlocke_Hard,    sText_Empty},
+    [MENUITEM_NUZLOCKE_NUZLOCKE]            = {sText_Description_Nuzlocke_Base,                 sText_Description_Nuzlocke_Easy,                    sText_Description_Nuzlocke_Normal,  sText_Description_Nuzlocke_Hard},
     [MENUITEM_NUZLOCKE_SPECIES_CLAUSE]      = {sText_Description_Nuzlocke_SpeciesClause_On,     sText_Description_Nuzlocke_SpeciesClause_Off,       sText_Empty,                        sText_Empty},
     [MENUITEM_NUZLOCKE_SHINY_CLAUSE]        = {sText_Description_Nuzlocke_ShinyClause_On,       sText_Description_Nuzlocke_ShinyClause_Off,         sText_Empty,                        sText_Empty},
     [MENUITEM_NUZLOCKE_NICKNAMING]          = {sText_Description_Nuzlocke_Nicknaming_On,        sText_Description_Nuzlocke_Nicknaming_Off,          sText_Empty,                        sText_Empty},
@@ -1015,16 +1031,15 @@ static const u8 *const sOptionMenuItemDescriptionsDisabledMode[MENUITEM_MODE_COU
 };
 
 // Disabled descriptions
-static const u8 sText_Description_Disabled_Features_PkmnDeath[]  = _("Already enabled via\nthe Nuzlocke Challenge.");
 static const u8 *const sOptionMenuItemDescriptionsDisabledFeatures[MENUITEM_FEATURES_COUNT] =
 {
     [MENUITEM_FEATURES_RTC_TYPE]              = sText_Empty,
     [MENUITEM_FEATURES_SHINY_CHANCE]          = sText_Empty,
     [MENUITEM_FEATURES_ITEM_DROP]             = sText_Empty,
     //[MENUITEM_FEATURES_EASY_FEEBAS]           = sText_Description_Disabled_Feature,
-    [MENUITEM_FEATURES_PKMN_DEATH]            = sText_Description_Disabled_Features_PkmnDeath,
     //[MENUITEM_FEATURES_UNLIMITED_WT]          = sText_Description_Disabled_Feature,
     [MENUITEM_FEATURES_FRONTIER_BANS]         = sText_Empty,
+    [MENUITEM_FEATURES_SHINY_COLOR]           = sText_Empty,
     [MENUITEM_FEATURES_NEXT]                  = sText_Empty,
 };
 
@@ -1433,9 +1448,9 @@ void CB2_InitTxRandomizerChallengesMenu(void)
         gSaveBlock1Ptr->tx_Features_ShinyChance             = TX_FEATURES_SHINY_CHANCE;
         gSaveBlock1Ptr->tx_Features_WildMonDropItems        = TX_FEATURES_ITEM_DROP;
         //gSaveBlock1Ptr->tx_Features_EasierFeebas            = TX_FEATURES_EASIER_FEEBAS;
-        gSaveBlock1Ptr->tx_Features_PkmnDeath               = TX_FEATURES_PKMN_DEATH;
         gSaveBlock1Ptr->tx_Features_Unlimited_WT            = TX_FEATURES_UNLIMITED_WT;
         gSaveBlock1Ptr->tx_Features_FrontierBans            = TX_FEATURES_FRONTIER_BANS;
+        gSaveBlock1Ptr->tx_Features_ShinyColors             = TX_FEATURES_SHINY_COLORS;
 
         gSaveBlock1Ptr->tx_Random_Starter                   = TX_RANDOM_STARTER;
         gSaveBlock1Ptr->tx_Random_WildPokemon               = TX_RANDOM_WILD_POKEMON;
@@ -1506,9 +1521,9 @@ void CB2_InitTxRandomizerChallengesMenu(void)
         sOptions->sel_features[MENUITEM_FEATURES_SHINY_CHANCE]           = gSaveBlock1Ptr->tx_Features_ShinyChance;
         sOptions->sel_features[MENUITEM_FEATURES_ITEM_DROP]              = gSaveBlock1Ptr->tx_Features_WildMonDropItems;
         //sOptions->sel_features[MENUITEM_FEATURES_EASY_FEEBAS]            = gSaveBlock1Ptr->tx_Features_EasierFeebas;
-        sOptions->sel_features[MENUITEM_FEATURES_PKMN_DEATH]             = gSaveBlock1Ptr->tx_Features_PkmnDeath;
         //sOptions->sel_features[MENUITEM_FEATURES_UNLIMITED_WT]           = gSaveBlock1Ptr->tx_Features_Unlimited_WT;
         sOptions->sel_features[MENUITEM_FEATURES_FRONTIER_BANS]          = gSaveBlock1Ptr->tx_Features_FrontierBans;
+        sOptions->sel_features[MENUITEM_FEATURES_SHINY_COLOR]            = gSaveBlock1Ptr->tx_Features_ShinyColors;
         
         //MENU RANDOMIZER
         sOptions->sel_randomizer[MENUITEM_RANDOM_OFF_ON]                     = FALSE;
@@ -1532,6 +1547,8 @@ void CB2_InitTxRandomizerChallengesMenu(void)
             sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE] = 2;
         else if (gSaveBlock1Ptr->tx_Challenges_Nuzlocke)
             sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE] = 1;
+        else if (gSaveBlock1Ptr->tx_Nuzlocke_EasyMode)
+            sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE] = 0;
         else
             sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE] = 0;
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_SPECIES_CLAUSE]    = !gSaveBlock1Ptr->tx_Nuzlocke_SpeciesClause;
@@ -1858,9 +1875,9 @@ void SaveData_TxRandomizerAndChallenges(void)
     gSaveBlock1Ptr->tx_Features_ShinyChance                 = sOptions->sel_features[MENUITEM_FEATURES_SHINY_CHANCE]; 
     gSaveBlock1Ptr->tx_Features_WildMonDropItems            = sOptions->sel_features[MENUITEM_FEATURES_ITEM_DROP]; 
     //gSaveBlock1Ptr->tx_Features_EasierFeebas                = sOptions->sel_features[MENUITEM_FEATURES_EASY_FEEBAS]; 
-    gSaveBlock1Ptr->tx_Features_PkmnDeath                   = sOptions->sel_features[MENUITEM_FEATURES_PKMN_DEATH]; 
     //gSaveBlock1Ptr->tx_Features_Unlimited_WT                = sOptions->sel_features[MENUITEM_FEATURES_UNLIMITED_WT]; 
     gSaveBlock1Ptr->tx_Features_FrontierBans                = sOptions->sel_features[MENUITEM_FEATURES_FRONTIER_BANS]; 
+    gSaveBlock1Ptr->tx_Features_ShinyColors                 = sOptions->sel_features[MENUITEM_FEATURES_SHINY_COLOR];
     // MENU_RANDOMIZER
     if (sOptions->sel_randomizer[MENUITEM_RANDOM_OFF_ON] == TRUE)
     {
@@ -1901,14 +1918,22 @@ void SaveData_TxRandomizerAndChallenges(void)
     switch (sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE])
     {
     case 0:
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode           = FALSE;
         gSaveBlock1Ptr->tx_Challenges_Nuzlocke          = FALSE;
         gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore  = FALSE;
         break;
     case 1:
-        gSaveBlock1Ptr->tx_Challenges_Nuzlocke          = TRUE;
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode           = TRUE;
+        gSaveBlock1Ptr->tx_Challenges_Nuzlocke          = FALSE;
         gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore  = FALSE;
         break;
     case 2:
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode           = FALSE;
+        gSaveBlock1Ptr->tx_Challenges_Nuzlocke          = TRUE;
+        gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore  = FALSE;
+        break;
+    case 3:
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode           = FALSE;
         gSaveBlock1Ptr->tx_Challenges_Nuzlocke          = TRUE;
         gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore  = TRUE;
         break;
@@ -2390,18 +2415,16 @@ static void DrawChoices_Nuzlocke_OnOff(int selection, int y, bool8 active)
     DrawOptionMenuChoice(sText_On, 104, y, styles[0], active);
     DrawOptionMenuChoice(sText_Off, GetStringRightAlignXOffset(1, sText_Off, 198), y, styles[1], active);
 }
+
+static const u8 sText_Challenges_Nuzlocke_Easy[]        = _("EASY");
 static const u8 sText_Challenges_Nuzlocke_Normal[]      = _("NORMAL");
 static const u8 sText_Challenges_Nuzlocke_Hardcore[]    = _("HARD");
+static const u8 *const sText_Nuzlocke_Strings[] = {sText_Off, sText_Challenges_Nuzlocke_Easy, sText_Challenges_Nuzlocke_Normal, sText_Challenges_Nuzlocke_Hardcore};
+
 static void DrawChoices_Challenges_Nuzlocke(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_NUZLOCKE_NUZLOCKE);
-    u8 styles[3] = {0};
-    int xMid = GetMiddleX(sText_Off, sText_Challenges_Nuzlocke_Normal, sText_Challenges_Nuzlocke_Hardcore);
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
-    DrawOptionMenuChoice(sText_Challenges_Nuzlocke_Normal, xMid, y, styles[1], active);
-    DrawOptionMenuChoice(sText_Challenges_Nuzlocke_Hardcore, GetStringRightAlignXOffset(1, sText_Challenges_Nuzlocke_Hardcore, 198), y, styles[2], active);
+    DrawChoices_Options_Four(sText_Nuzlocke_Strings, selection, y, active);
 
     if (selection == 0)
     {
@@ -2409,8 +2432,20 @@ static void DrawChoices_Challenges_Nuzlocke(int selection, int y)
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_SHINY_CLAUSE]      = !TX_NUZLOCKE_SHINY_CLAUSE; 
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NICKNAMING]        = !TX_NUZLOCKE_NICKNAMING;
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_DELETION]          = TX_NUZLOCKE_DELETION;
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 0; //off
     }
+    else if (selection == 1)
+    {
+        sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_SPECIES_CLAUSE]    = !TX_NUZLOCKE_SPECIES_CLAUSE;
+        sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_SHINY_CLAUSE]      = !TX_NUZLOCKE_SHINY_CLAUSE; 
+        sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NICKNAMING]        = !TX_NUZLOCKE_NICKNAMING;
+        sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_DELETION]          = TX_NUZLOCKE_DELETION;
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 1; //on
+    }
+    else
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 0; //off
 }
+
 
 static void DrawChoices_Nuzlocke_SpeciesClause(int selection, int y)
 {
@@ -2779,25 +2814,6 @@ static void DrawChoices_Mode_SurvivePoison(int selection, int y)
     //DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
     //DrawOptionMenuChoice(sText_On, GetStringRightAlignXOffset(1, sText_On, 198), y, styles[1], active);
 }*/
-
-static void DrawChoices_Features_Pkmn_Death(int selection, int y)
-{
-    bool8 active = CheckConditions(MENUITEM_FEATURES_PKMN_DEATH);
-    u8 styles[2] = {0};
-    styles[selection] = 1;
-
-    if (selection == 0)
-    {
-        gSaveBlock1Ptr->tx_Features_PkmnDeath = 0; //off
-    }
-    else
-    {
-        gSaveBlock1Ptr->tx_Features_PkmnDeath = 1; //on
-    }
-
-    DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
-    DrawOptionMenuChoice(sText_On, GetStringRightAlignXOffset(1, sText_On, 198), y, styles[1], active);
-}
 
 static void DrawChoices_Challenges_PCHeal(int selection, int y)
 {
@@ -3175,6 +3191,25 @@ static void DrawChoices_Difficulty_HardExp(int selection, int y)
     DrawOptionMenuChoice(sText_Difficulty_HardExp_Enabled, 104, y, styles[0], active);
     DrawOptionMenuChoice(sText_Difficulty_HardExp_Disabled, GetStringRightAlignXOffset(1, sText_Difficulty_HardExp_Disabled, 198), y, styles[1], active);
 }*/
+
+static void DrawChoices_Features_Shiny_Colors(int selection, int y)
+{
+    bool8 active = CheckConditions(MENUITEM_FEATURES_SHINY_COLOR);
+    u8 styles[2] = {0};
+    styles[selection] = 1;
+
+    if (selection == 0)
+    {
+        gSaveBlock1Ptr->tx_Features_ShinyColors = 0; //Old shinies
+    }
+    else
+    {
+        gSaveBlock1Ptr->tx_Features_ShinyColors = 1; //New shinies
+    }
+
+    DrawOptionMenuChoice(sText_Off, 104, y, styles[0], active);
+    DrawOptionMenuChoice(sText_On, GetStringRightAlignXOffset(1, sText_On, 198), y, styles[1], active);
+}
 
 
 // Background tilemap

@@ -23,7 +23,7 @@ static void (*sSecondaryTilesetAnimCallback)(u16);
 
 static void _InitPrimaryTilesetAnimation(void);
 static void _InitSecondaryTilesetAnimation(void);
-static void TilesetAnim_General(u16);
+static void TilesetAnim_JohtoGeneral(u16);
 static void TilesetAnim_HoennGeneral(u16);
 static void TilesetAnim_Building(u16);
 static void TilesetAnim_Rustboro(u16);
@@ -824,11 +824,11 @@ static void _InitSecondaryTilesetAnimation(void)
         gMapHeader.mapLayout->secondaryTileset->callback();
 }
 
-void InitTilesetAnim_General(void)
+void InitTilesetAnim_JohtoGeneral(void)
 {
     sPrimaryTilesetAnimCounter = 0;
     sPrimaryTilesetAnimCounterMax = 256;
-    sPrimaryTilesetAnimCallback = TilesetAnim_General;
+    sPrimaryTilesetAnimCallback = TilesetAnim_JohtoGeneral;
 }
 
 
@@ -862,7 +862,7 @@ static void TilesetAnim_HoennGeneral(u16 timer)
 }
 
 
-static void TilesetAnim_General(u16 timer)
+static void TilesetAnim_JohtoGeneral(u16 timer)
 {
     /*
     if (timer % 16 == 0)
@@ -912,9 +912,19 @@ static void QueueAnimTiles_General_SandWaterEdge(u16 timer)
 
 static void QueueAnimTiles_General_Waterfall(u16 timer)
 {
-    u16 i = timer % ARRAY_COUNT(gTilesetAnims_General_Waterfall);
-    AppendTilesetAnimToBuffer(gTilesetAnims_General_Waterfall[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(450)), 6 * TILE_SIZE_4BPP);
+    // Read Johto waterfall frames from the combined water_current_landwatersedge sheet.
+    // => waterfall starts at tile index 34 in each frame.
+
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_General_Water);   // Johto combined frames already defined
+    const u16 *frame = gTilesetAnims_General_Water[i];
+
+    // Each 4bpp tile = 32 bytes = 16 u16
+    const u16 *src = frame + (34 * (TILE_SIZE_4BPP / 2));       // skip 34 tiles to reach waterfall
+    AppendTilesetAnimToBuffer(src,
+        (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(450)),               // unchanged dest for waterfall (12 tiles)
+        12 * TILE_SIZE_4BPP);
 }
+
 
 
 

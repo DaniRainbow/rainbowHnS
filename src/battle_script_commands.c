@@ -839,9 +839,9 @@ static const u16 sRarePickupItems[] =
     ITEM_WHITE_HERB,
     ITEM_NUGGET,
     ITEM_ELIXIR,
-    ITEM_NUGGET,
+    ITEM_BIG_NUGGET,
     ITEM_LEFTOVERS,
-    ITEM_NUGGET,
+    ITEM_BIG_NUGGET,
 };
 
 static const u16 sRarePickupItemsFiniteTMs[] =
@@ -3950,7 +3950,7 @@ static void Cmd_getexp(void)
                 {
                     if((Random() % 3) == 1)
                         PlayBGM(MUS_HG_VICTORY_WILD); 
-                    if((Random() % 3) == 2)
+                    else if((Random() % 3) == 2)
                         PlayBGM(MUS_HG_VICTORY_WILD); 
                     else
                         PlayBGM(MUS_HG_VICTORY_WILD); 

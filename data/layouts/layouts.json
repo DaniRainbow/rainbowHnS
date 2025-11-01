@@ -5414,10 +5414,10 @@
     {
       "id": "LAYOUT_MT_MOON_CAVE",
       "name": "MtMoon_Cave_Layout",
-      "width": 40,
-      "height": 21,
+      "width": 50,
+      "height": 40,
       "primary_tileset": "gTileset_Johto_General",
-      "secondary_tileset": "gTileset_Cave_Default",
+      "secondary_tileset": "gTileset_Cave_MtMoon",
       "border_filepath": "data/layouts/MtMoon_Cave/border.bin",
       "blockdata_filepath": "data/layouts/MtMoon_Cave/map.bin"
     },
@@ -5504,7 +5504,7 @@
     {
       "id": "LAYOUT_WHIRL_ISLANDS_1F",
       "name": "WhirlIslands_1F_Layout",
-      "width": 89,
+      "width": 60,
       "height": 60,
       "primary_tileset": "gTileset_Johto_NorthEast",
       "secondary_tileset": "gTileset_WhirlIslands",
@@ -5514,9 +5514,9 @@
     {
       "id": "LAYOUT_WHIRL_ISLANDS_B1F",
       "name": "WhirlIslands_B1F_Layout",
-      "width": 94,
-      "height": 40,
-      "primary_tileset": "gTileset_Johto_General",
+      "width": 86,
+      "height": 80,
+      "primary_tileset": "gTileset_Johto_NorthEast",
       "secondary_tileset": "gTileset_WhirlIslands",
       "border_filepath": "data/layouts/WhirlIslands_B1F/border.bin",
       "blockdata_filepath": "data/layouts/WhirlIslands_B1F/map.bin"
@@ -5524,9 +5524,9 @@
     {
       "id": "LAYOUT_WHIRL_ISLANDS_B2F",
       "name": "WhirlIslands_B2F_Layout",
-      "width": 50,
-      "height": 47,
-      "primary_tileset": "gTileset_Johto_General",
+      "width": 70,
+      "height": 27,
+      "primary_tileset": "gTileset_Johto_NorthEast",
       "secondary_tileset": "gTileset_WhirlIslands",
       "border_filepath": "data/layouts/WhirlIslands_B2F/border.bin",
       "blockdata_filepath": "data/layouts/WhirlIslands_B2F/map.bin"
@@ -8274,10 +8274,10 @@
     {
       "id": "LAYOUT_WORLD_HUB2",
       "name": "WorldHub2_Layout",
-      "width": 30,
+      "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_Johto_General",
-      "secondary_tileset": "gTileset_House_Lab",
+      "secondary_tileset": "gTileset_WhirlIslands",
       "border_filepath": "data/layouts/WorldHub2/border.bin",
       "blockdata_filepath": "data/layouts/WorldHub2/map.bin"
     },
@@ -8740,6 +8740,46 @@
       "secondary_tileset": "gTileset_Cave_Default",
       "border_filepath": "data/layouts/Route19_Cave/border.bin",
       "blockdata_filepath": "data/layouts/Route19_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_WHIRL_ISLANDS_LUGIA_CHAMBER",
+      "name": "WhirlIslands_LugiaChamber_Layout",
+      "width": 59,
+      "height": 40,
+      "primary_tileset": "gTileset_Johto_NorthEast",
+      "secondary_tileset": "gTileset_WhirlIslands",
+      "border_filepath": "data/layouts/WhirlIslands_LugiaChamber/border.bin",
+      "blockdata_filepath": "data/layouts/WhirlIslands_LugiaChamber/map.bin"
+    },
+    {
+      "id": "LAYOUT_WHIRL_ISLANDS_DESCENT",
+      "name": "WhirlIslands_Descent_Layout",
+      "width": 70,
+      "height": 101,
+      "primary_tileset": "gTileset_Johto_NorthEast",
+      "secondary_tileset": "gTileset_WhirlIslands",
+      "border_filepath": "data/layouts/WhirlIslands_Descent/border.bin",
+      "blockdata_filepath": "data/layouts/WhirlIslands_Descent/map.bin"
+    },
+    {
+      "id": "LAYOUT_WHIRL_ISLANDS_B3F",
+      "name": "WhirlIslands_B3F_Layout",
+      "width": 70,
+      "height": 27,
+      "primary_tileset": "gTileset_Johto_NorthEast",
+      "secondary_tileset": "gTileset_WhirlIslands",
+      "border_filepath": "data/layouts/WhirlIslands_B3F/border.bin",
+      "blockdata_filepath": "data/layouts/WhirlIslands_B3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WHIRL_ISLANDS_B1F_INNER",
+      "name": "WhirlIslands_B1F_Inner_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_Johto_NorthEast",
+      "secondary_tileset": "gTileset_WhirlIslands",
+      "border_filepath": "data/layouts/WhirlIslands_B1F_Inner/border.bin",
+      "blockdata_filepath": "data/layouts/WhirlIslands_B1F_Inner/map.bin"
     }
   ]
 }

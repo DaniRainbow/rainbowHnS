@@ -993,7 +993,7 @@ const struct Tileset gTileset_Johto_General =
     .palettes = gTilesetPalettes_Johto_General,
     .metatiles = gMetatiles_Johto_General,
     .metatileAttributes = gMetatileAttributes_Johto_General,
-    .callback = InitTilesetAnim_General,
+    .callback = InitTilesetAnim_JohtoGeneral,
 };
 
 const struct Tileset gTileset_Kanto_PokemonCenter =
@@ -1312,7 +1312,7 @@ const struct Tileset gTileset_Kanto_General =
     .palettes = gTilesetPalettes_Kanto_General,
     .metatiles = gMetatiles_Kanto_General,
     .metatileAttributes = gMetatileAttributes_Kanto_General,
-    .callback = InitTilesetAnim_General,
+    .callback = InitTilesetAnim_JohtoGeneral,
 };
 
 const struct Tileset gTileset_Route38_Farmland =
@@ -1499,7 +1499,7 @@ const struct Tileset gTileset_Johto_NorthEast =
     .palettes = gTilesetPalettes_Johto_NorthEast,
     .metatiles = gMetatiles_Johto_NorthEast,
     .metatileAttributes = gMetatileAttributes_Johto_NorthEast,
-    .callback = InitTilesetAnim_General,
+    .callback = InitTilesetAnim_JohtoGeneral,
 };
 
 const struct Tileset gTileset_Blackthorn =
@@ -1763,7 +1763,7 @@ const struct Tileset gTileset_Johto_South =
     .palettes = gTilesetPalettes_Johto_South,
     .metatiles = gMetatiles_Johto_South,
     .metatileAttributes = gMetatileAttributes_Johto_South,
-    .callback = InitTilesetAnim_General,
+    .callback = InitTilesetAnim_JohtoGeneral,
 };
 
 const struct Tileset gTileset_VioletCity =
@@ -1818,7 +1818,7 @@ const struct Tileset gTileset_Johto_NorthWest =
     .palettes = gTilesetPalettes_Johto_NorthWest,
     .metatiles = gMetatiles_Johto_NorthWest,
     .metatileAttributes = gMetatileAttributes_Johto_NorthWest,
-    .callback = InitTilesetAnim_General,
+    .callback = InitTilesetAnim_JohtoGeneral,
 };
 
 const struct Tileset gTileset_BellchimeTrail =
@@ -2005,5 +2005,16 @@ const struct Tileset gTileset_SeaCottage =
     .palettes = gTilesetPalettes_SeaCottage,
     .metatiles = gMetatiles_SeaCottage,
     .metatileAttributes = gMetatileAttributes_SeaCottage,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_MtMoon =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_MtMoon,
+    .palettes = gTilesetPalettes_Cave_MtMoon,
+    .metatiles = gMetatiles_Cave_MtMoon,
+    .metatileAttributes = gMetatileAttributes_Cave_MtMoon,
     .callback = NULL,
 };

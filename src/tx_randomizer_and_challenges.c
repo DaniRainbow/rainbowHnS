@@ -16,8 +16,8 @@ bool8 AreFeaturesActivated(void)
         || gSaveBlock1Ptr->tx_Features_WildMonDropItems
         || gSaveBlock1Ptr->tx_Mode_AlternateSpawns
         || gSaveBlock1Ptr->tx_Mode_InfiniteTMs
-        || gSaveBlock1Ptr->tx_Mode_PoisonSurvive
-        || gSaveBlock1Ptr->tx_Features_EasierFeebas)
+        || gSaveBlock1Ptr->tx_Mode_PoisonSurvive)
+        //|| gSaveBlock1Ptr->tx_Features_EasierFeebas)
         return TRUE;
 
     return FALSE;
@@ -139,6 +139,7 @@ bool8 HMsOverwriteOptionActive(void)
 
 const u8 NuzlockeLUT[] = 
 {
+    //0
     //Kanto Routes
     [MAPSEC_ROUTE_1]          = 0x0,
     [MAPSEC_ROUTE_2]          = 0x1,
@@ -148,6 +149,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_6]          = 0x5,
     [MAPSEC_ROUTE_7]          = 0x6,
     [MAPSEC_ROUTE_8]          = 0x7,
+    //1
     [MAPSEC_ROUTE_9]          = 0x8,
     [MAPSEC_ROUTE_10]         = 0x9,
     [MAPSEC_ROUTE_11]         = 0xA,
@@ -156,6 +158,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_14]         = 0xD,
     [MAPSEC_ROUTE_15]         = 0xE,
     [MAPSEC_ROUTE_16]         = 0xF,
+    //2
     [MAPSEC_ROUTE_17]         = 0x10,
     [MAPSEC_ROUTE_18]         = 0x11,
     [MAPSEC_ROUTE_19]         = 0x12,
@@ -164,6 +167,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_22]         = 0x15,
     [MAPSEC_ROUTE_23]         = 0x16,
     [MAPSEC_ROUTE_24]         = 0x17,
+    //3
     [MAPSEC_ROUTE_25]         = 0x18,
     //Johto-Kanto Routes
     [MAPSEC_ROUTE_26]         = 0x19,
@@ -174,6 +178,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_30]         = 0x1D,
     [MAPSEC_ROUTE_31]         = 0x1E,
     [MAPSEC_ROUTE_32]         = 0x1F,
+    //4
     [MAPSEC_ROUTE_33]         = 0x20,
     [MAPSEC_ROUTE_34]         = 0x21,
     [MAPSEC_ROUTE_35]         = 0x22,
@@ -182,6 +187,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_38]         = 0x25,
     [MAPSEC_ROUTE_39]         = 0x26,
     [MAPSEC_ROUTE_40]         = 0x27,
+    //5
     [MAPSEC_ROUTE_41]         = 0x28,
     [MAPSEC_ROUTE_42]         = 0x29,
     [MAPSEC_ROUTE_43]         = 0x2A,
@@ -190,6 +196,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ROUTE_46]         = 0x2D,
     [MAPSEC_ROUTE_47]         = 0x2E,
     [MAPSEC_ROUTE_48]         = 0x2F,
+    //6
     //Dungeons: Johto
     [MAPSEC_DARK_CAVE]        = 0x30,
     [MAPSEC_SPROUT_TOWER]     = 0x31,
@@ -199,6 +206,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_ILEX_FOREST]      = 0x35,
     [MAPSEC_NATIONAL_PARK]    = 0x36,
     [MAPSEC_LAKE_OF_RAGE]     = 0x37,
+    //7
     [MAPSEC_ICE_PATH]         = 0x38,
     [MAPSEC_MT_SILVER]        = 0x39,
     [MAPSEC_TOHJO_FALLS]      = 0x3A,
@@ -207,6 +215,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_CLIFF_CAVE]       = 0x3D,
     [MAPSEC_ROCKET_HIDEOUT]   = 0x3E,
     [MAPSEC_TIN_TOWER]        = 0x3F,
+    //8
     [MAPSEC_MT_MORTAR]        = 0x40,
     [MAPSEC_WHIRL_ISLANDS]    = 0x41,
     [MAPSEC_BURNED_TOWER]     = 0x42,
@@ -216,6 +225,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_SEAFOAM_ISLANDS]  = 0x45,
     [MAPSEC_VIRIDIAN_FOREST]  = 0x46,
     [MAPSEC_MT_MOON]          = 0x47,
+    //9
     [MAPSEC_DIGLETTS_CAVE]    = 0x48,
     [MAPSEC_VICTORY_ROAD]     = 0x49,
     [MAPSEC_CERULEAN_CAVE]    = 0x4A,
@@ -225,6 +235,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_AZALEA_TOWN]      = 0x4D,
     [MAPSEC_MAHOGANY_TOWN]    = 0x4E,
     [MAPSEC_CIANWOOD_CITY]    = 0x4F,
+    //10
     [MAPSEC_GOLDENROD_CITY]   = 0x50,
     [MAPSEC_CHERRYGROVE_CITY] = 0x51,
     [MAPSEC_NEW_BARK_TOWN]    = 0x52,
@@ -234,6 +245,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_VERMILION_CITY]   = 0x55,
     [MAPSEC_CERULEAN_CITY]    = 0x56,
     [MAPSEC_CINNABAR_ISLAND]  = 0x57,
+    //11
     [MAPSEC_SAFFRON_CITY]     = 0x58,
     [MAPSEC_FUCHSIA_CITY]     = 0x59, //This covers the Safari Zone too
     [MAPSEC_CELADON_CITY]     = 0x5A,
@@ -330,7 +342,7 @@ void NuzlockeDeleteFaintedPartyPokemon(void) // @Kurausukun
                     AddBagItem(monItem, 1);
                     SetMonData(pokemon, MON_DATA_HELD_ITEM, &item);
                 }
-                if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
+                if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
                     NuzlockeDeletePartyMonOption(i);
                 else
                     NuzlockeDeletePartyMon(i);

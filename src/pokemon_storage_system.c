@@ -97,7 +97,7 @@ enum {
     MSG_CHANGED_TO_ITEM,
     MSG_CANT_STORE_MAIL,
     MSG_NUZLOCKE,
-    MSG_DEAD_POKEMON,
+    MSG_FAINTED_FOREVER,
 };
 
 // IDs for how to resolve variables in the above messages
@@ -1131,7 +1131,7 @@ static const struct StorageMessage sMessages[] =
     [MSG_CHANGED_TO_ITEM]      = {gText_ChangedToNewItem,        MSG_VAR_ITEM_NAME},
     [MSG_CANT_STORE_MAIL]      = {gText_MailCantBeStored,        MSG_VAR_NONE},
     [MSG_NUZLOCKE]             = {gText_NuzlockeFainted,         MSG_VAR_NONE},
-    [MSG_DEAD_POKEMON]         = {gText_DeadPokemon,             MSG_VAR_NONE},
+    [MSG_FAINTED_FOREVER]      = {gText_FaintedForever,          MSG_VAR_NONE},
 };
 
 static const struct WindowTemplate sYesNoWindowTemplate =
@@ -2794,8 +2794,8 @@ static void Task_OnSelectedMon(u8 taskId)
         break;
     case 7: //tx_randomizer_and_challenges
         PlaySE(SE_FAILURE);
-        if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
-            PrintMessage(MSG_DEAD_POKEMON);
+        if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
+            PrintMessage(MSG_FAINTED_FOREVER);
         else
             PrintMessage(MSG_NUZLOCKE);
         sStorage->state = 6;
@@ -2873,16 +2873,16 @@ static void Task_WithdrawMon(u8 taskId)
         }
         else if (GetCurrentBoxMonData(sCursorPosition, MON_DATA_NUZLOCKE_RIBBON)) //tx_randomizer_and_challenges
         {
-            if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
-                PrintMessage(MSG_DEAD_POKEMON);
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
+                PrintMessage(MSG_FAINTED_FOREVER);
             else
                 PrintMessage(MSG_NUZLOCKE);
             sStorage->state = 1;
         }
         else if (sIsMonBeingMoved && GetMonData(&sStorage->movingMon, MON_DATA_NUZLOCKE_RIBBON))
         {
-            if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
-                PrintMessage(MSG_DEAD_POKEMON);
+            if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
+                PrintMessage(MSG_FAINTED_FOREVER);
             else
                 PrintMessage(MSG_NUZLOCKE);
             sStorage->state = 1;
@@ -3031,7 +3031,7 @@ static void Task_ReleaseMon(u8 taskId)
                     sStorage->state++;
                     break;
                 }
-                else if ((!canRelease) && (gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
+                else if ((!canRelease) && (gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
                 {
                     sStorage->state++;
                     break;
