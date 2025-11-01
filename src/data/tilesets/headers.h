@@ -2018,3 +2018,14 @@ const struct Tileset gTileset_Cave_MtMoon =
     .metatileAttributes = gMetatileAttributes_Cave_MtMoon,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_JohtoBikeShop =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_JohtoBikeShop,
+    .palettes = gTilesetPalettes_JohtoBikeShop,
+    .metatiles = gMetatiles_JohtoBikeShop,
+    .metatileAttributes = gMetatileAttributes_JohtoBikeShop,
+    .callback = NULL,
+};

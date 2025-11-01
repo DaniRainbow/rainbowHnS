@@ -6907,7 +6907,7 @@
       "width": 11,
       "height": 10,
       "primary_tileset": "gTileset_Johto_Building",
-      "secondary_tileset": "gTileset_BikeShop",
+      "secondary_tileset": "gTileset_JohtoBikeShop",
       "border_filepath": "data/layouts/GoldenrodCity_BikeShop/border.bin",
       "blockdata_filepath": "data/layouts/GoldenrodCity_BikeShop/map.bin"
     },
