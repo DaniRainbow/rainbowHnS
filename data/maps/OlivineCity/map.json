@@ -483,7 +483,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_OLIVINE_CITY_GYM_JASMINE"
     }
   ],
   "warp_events": [
