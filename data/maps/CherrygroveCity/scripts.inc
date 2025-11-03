@@ -195,11 +195,28 @@ CherryGroveCity_EventScript_Corsola::
 CherryGroveCity_EventScript_Krabby::
 	lock
 	faceplayer
+	random 10
+	copyvar VAR_0x8004, VAR_RESULT
+	goto_if_eq VAR_0x8004, 1, CherryGroveCity_EventScript_KrabbyBerry
 	waitse
 	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
 	msgbox CherryGroveCity_Text_Krabby, MSGBOX_DEFAULT
 	waitmoncry
 	release
+	setvar VAR_0x8004, 0
+	end
+
+CherryGroveCity_EventScript_KrabbyBerry::
+	waitse
+	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
+	msgbox CherryGroveCity_Text_Krabby, MSGBOX_DEFAULT
+	waitmoncry
+	giveitem ITEM_LAVA_COOKIE, 1
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox CherryGroveCity_Text_GenerousKrabby, MSGBOX_DEFAULT
+	waitmessage
+	release
+	setvar VAR_0x8004, 0
 	end
 
 CherryGroveCity_EventScript_Sign::
@@ -390,6 +407,9 @@ CherryGroveCity_Text_Corsola:
 
 CherryGroveCity_Text_Krabby:
 	.string "KRABBY: KOOOOKEEE!$"
+
+CherryGroveCity_Text_GenerousKrabby:
+	.string "Krabby has a foamy smile.$"
 
 CherryGroveCity_Movement_Trigger_Gent:
 	walk_down
