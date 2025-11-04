@@ -378,7 +378,8 @@ void NewGameInitPCItems(void)
             i++;
         }
     }
-    else{
+    else
+    {
         while (TRUE)
         {
             if (sNewGamePCItems[i][0] == ITEM_NONE || sNewGamePCItems[i][1] == 0)
@@ -388,7 +389,7 @@ void NewGameInitPCItems(void)
             i++;
         }
     }
-}
+};
 
 void BedroomPC(void)
 {
