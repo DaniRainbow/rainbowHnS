@@ -2105,10 +2105,9 @@ static u16 GetTutorMove(u8 tutor)
 
 bool8 CanLearnTutorMove(u16 species, u8 tutor)
 {
-    if (sTutorLearnsets[species] & (1 << tutor))
+    if ((sTutorLearnsets[species] & (1ULL << tutor)) != 0)
         return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
 //HnS Gpt function for headbutt
@@ -2544,14 +2543,12 @@ void DisplayPartyMenuStdMessage(u32 stringId)
 
         if (stringId == PARTY_MSG_CHOOSE_MON)
         {
-            if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD)
-                stringId = PARTY_MSG_CHOOSE_MON_2;
-            else if (gPartyMenu.menuType == PARTY_MENU_TYPE_IN_BATTLE)
-                // Avoid the “Choose a Pokémon for {STR_VAR_2}” template in battle,
-                // since STR_VAR_2 may be unset in some switch paths.
-                stringId = PARTY_MSG_CHOOSE_MON_2;
-            else if (!ShouldUseChooseMonText())
+            if (sPartyMenuInternal->chooseHalf){
+                stringId = PARTY_MSG_CHOOSE_MON_AND_CONFIRM;
+            }
+            else if (!ShouldUseChooseMonText()){
                 stringId = PARTY_MSG_CHOOSE_MON_OR_CANCEL;
+            }
         }
 
         DrawStdFrameWithCustomTileAndPalette(*windowPtr, FALSE, 0x4F, 13);
@@ -2666,41 +2663,77 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
 static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 {
     u8 i, j;
-    bool8 hasFlashAlready, hasFlyAlread = FALSE;
+    bool8 hasFlashAlready = FALSE;
+    bool8 hasFlyAlread = FALSE;
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
 
-    // Add field moves to action list
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    if (HMsOverwriteOptionActive()) //tx_randomizer_and_challenges  
     {
-        for (j = 0; sFieldMoves[j] != FIELD_MOVES_COUNT; j++)
+        if (slotId == 0)
         {
-            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
+            for (i = 0; i < MAX_MON_MOVES; i++)
             {
-                //tx_randomizer_and_challenges
-                if (sFieldMoves[j] == MOVE_FLASH)
-                    hasFlashAlready = TRUE;
-                if (sFieldMoves[j] == MOVE_FLY)
-                    hasFlyAlread = TRUE;
-                if (sFieldMoves[j] != MOVE_FLY || !CheckBagHasItem(ITEM_HM02, 1)) // If Mon already knows FLY, prevent it from being added to action list
-                    if (sFieldMoves[j] != MOVE_FLASH || !CheckBagHasItem(ITEM_HM05, 1)) // If Mon already knows FLASH, prevent it from being added to action list
+                for (j = 0; sFieldMoves[j] != FIELD_MOVES_COUNT; j++)
+                {
+                    if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
+                    {
+                        
+                        if (sFieldMoves[j] == MOVE_FLY)
+                            hasFlyAlread = TRUE;
+                        if (sFieldMoves[j] == MOVE_FLASH)
+                            hasFlashAlready = TRUE;
                         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
                         break;
+                    }
+                }
             }
+            if (CheckBagHasItem(ITEM_HM02, 1) && (sPartyMenuInternal->numActions < 5) && !hasFlyAlread)
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
+            if (CheckBagHasItem(ITEM_HM05, 1) && (sPartyMenuInternal->numActions < 5) && !hasFlashAlready)
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
+        }
+        else
+        {
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                for (j = 0; sFieldMoves[j] != FIELD_MOVES_COUNT; j++)
+                {
+                    if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
+                    {   
+                    if (sFieldMoves[j] != MOVE_FLY) // If Mon already knows FLY, prevent it from being added to action list
+                        if (sFieldMoves[j] != MOVE_FLASH) // If Mon already knows FLASH, prevent it from being added to action list
+                        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+                        break;
+                    }
+                }
+            }
+            if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM02 - ITEM_TM01)) // If Mon can learn HM02 and action list consists of < 4 moves, add FLY to action list
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
+            if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM05 - ITEM_TM01)) // If Mon can learn HM05 and action list consists of < 4 moves, add FLASH to action list
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
         }
     }
-
-    if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM02 - ITEM_TM01) && CheckBagHasItem(ITEM_HM02, 1)) // If Mon can learn HM02 and action list consists of < 4 moves, add FLY to action list
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
-    if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM05 - ITEM_TM01) && CheckBagHasItem(ITEM_HM05, 1)) // If Mon can learn HM05 and action list consists of < 4 moves, add FLASH to action list
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
-    if (HMsOverwriteOptionActive() && slotId == 0) //tx_randomizer_and_challenges
+    else
     {
-        if (CheckBagHasItem(ITEM_HM05, 1) && !hasFlashAlready)
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
-        if (CheckBagHasItem(ITEM_HM02, 1) && !hasFlyAlread)
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            for (j = 0; sFieldMoves[j] != FIELD_MOVES_COUNT; j++)
+            {
+                if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
+                {
+                    if (sFieldMoves[j] != MOVE_FLY) // If Mon already knows FLY, prevent it from being added to action list
+                        if (sFieldMoves[j] != MOVE_FLASH) // If Mon already knows FLASH, prevent it from being added to action list
+                            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+                            break;
+                }
+            }
+        }
+        if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM02 - ITEM_TM01)) // If Mon can learn HM02 and action list consists of < 4 moves, add FLY to action list
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
+        if (sPartyMenuInternal->numActions < 5 && CanMonLearnTMHM(&mons[slotId], ITEM_HM05 - ITEM_TM01)) // If Mon can learn HM05 and action list consists of < 4 moves, add FLASH to action list
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
     }
     if (!InBattlePike())
     {
@@ -5836,12 +5869,10 @@ static bool8 GetBattleEntryEligibility(struct Pokemon *mon)
     u16 i = 0;
     u16 species;
     u16* gFrontierBannedSpecies;
-    if (gSaveBlock2Ptr->optionsDifficulty == 1)
+    if (gSaveBlock1Ptr->tx_Features_FrontierBans == 0)
         gFrontierBannedSpecies = gFrontierBannedSpeciesNormal;
-    if (gSaveBlock2Ptr->optionsDifficulty == 0)
+    else if (gSaveBlock1Ptr->tx_Features_FrontierBans == 1)
         gFrontierBannedSpecies = gFrontierBannedSpeciesEasy;
-    if (gSaveBlock2Ptr->optionsDifficulty == 2)
-        gFrontierBannedSpecies = gFrontierBannedSpeciesHard;
 
     if (GetMonData(mon, MON_DATA_IS_EGG)
         || GetMonData(mon, MON_DATA_LEVEL) > GetBattleEntryLevelCap()

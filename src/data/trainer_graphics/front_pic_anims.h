@@ -410,6 +410,34 @@ static const union AnimCmd *const sAnims_SwimmingTriathleteM[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_SalonMaidenAnabel[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_DomeAceTucker[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_PalaceMavenSpenser[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_ArenaTycoonGreta[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_FactoryHeadNoland[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_PikeQueenLucy[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_PyramidKingBrandon[] ={
+    sAnim_GeneralFrame0,
+};
+
 const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
 {
     [TRAINER_PIC_HIKER] = sAnims_Hiker,
@@ -516,4 +544,11 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_RUNNING_TRIATHLETE_M] = sAnims_RunningTriathleteM,
     [TRAINER_PIC_RUNNING_TRIATHLETE_F] = sAnims_RunningTriathleteF,
     [TRAINER_PIC_SWIMMING_TRIATHLETE_M] = sAnims_SwimmingTriathleteM,
+    [TRAINER_PIC_SALON_MAIDEN_ANABEL] = sAnims_SalonMaidenAnabel,
+    [TRAINER_PIC_DOME_ACE_TUCKER] = sAnims_DomeAceTucker,
+    [TRAINER_PIC_PALACE_MAVEN_SPENSER] = sAnims_PalaceMavenSpenser,
+    [TRAINER_PIC_ARENA_TYCOON_GRETA] = sAnims_ArenaTycoonGreta,
+    [TRAINER_PIC_FACTORY_HEAD_NOLAND] = sAnims_FactoryHeadNoland,
+    [TRAINER_PIC_PIKE_QUEEN_LUCY] = sAnims_PikeQueenLucy,
+    [TRAINER_PIC_PYRAMID_KING_BRANDON] = sAnims_PyramidKingBrandon,
 };

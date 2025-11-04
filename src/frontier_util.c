@@ -691,15 +691,18 @@ static const struct WindowTemplate sRankingHallRecordsWindowTemplate =
 // Second field - whether the character is female.
 static const u8 sFrontierBrainObjEventGfx[NUM_FRONTIER_FACILITIES][2] =
 {
-    [FRONTIER_FACILITY_TOWER]   = {OBJ_EVENT_GFX_BROCK,  TRUE},
-    [FRONTIER_FACILITY_DOME]    = {OBJ_EVENT_GFX_MISTY,  FALSE},
-    [FRONTIER_FACILITY_PALACE]  = {OBJ_EVENT_GFX_SURGE, FALSE},
-    [FRONTIER_FACILITY_ARENA]   = {OBJ_EVENT_GFX_ERIKA,   TRUE},
-    [FRONTIER_FACILITY_FACTORY] = {OBJ_EVENT_GFX_JANINE,  FALSE},
-    [FRONTIER_FACILITY_PIKE]    = {OBJ_EVENT_GFX_SABRINA,    TRUE},
-    [FRONTIER_FACILITY_PYRAMID] = {OBJ_EVENT_GFX_GIOVANNI, FALSE},
+    [FRONTIER_FACILITY_TOWER]   = {OBJ_EVENT_GFX_ANABEL,  TRUE},
+    [FRONTIER_FACILITY_DOME]    = {OBJ_EVENT_GFX_TUCKER,  FALSE},
+    [FRONTIER_FACILITY_PALACE]  = {OBJ_EVENT_GFX_SPENSER, FALSE},
+    [FRONTIER_FACILITY_ARENA]   = {OBJ_EVENT_GFX_GRETA,   TRUE},
+    [FRONTIER_FACILITY_FACTORY] = {OBJ_EVENT_GFX_NOLAND,  FALSE},
+    [FRONTIER_FACILITY_PIKE]    = {OBJ_EVENT_GFX_LUCY,    TRUE},
+    [FRONTIER_FACILITY_PYRAMID] = {OBJ_EVENT_GFX_BRANDON, FALSE},
 };
 
+
+//HnS uses gFrontierBannedSpeciesNormal list when using "Frontier Bans" set to "Ban", and the "gFrontierBannedSpeciesEasy" when set to "Unban"
+//Hardmode list is not used in HnS.
 const u16 gFrontierBannedSpeciesNormal[] =
 {
         SPECIES_MEWTWO, SPECIES_HO_OH, SPECIES_LUGIA,
@@ -759,13 +762,13 @@ static const u8 *const sHallFacilityToRecordsText[] =
 
 static const u16 sFrontierBrainTrainerIds[NUM_FRONTIER_FACILITIES] =
 {
-    [FRONTIER_FACILITY_TOWER]   = TRAINER_BRET,
-    [FRONTIER_FACILITY_DOME]    = TRAINER_TUCKER,
-    [FRONTIER_FACILITY_PALACE]  = TRAINER_SPENSER,
-    [FRONTIER_FACILITY_ARENA]   = TRAINER_SAM,
-    [FRONTIER_FACILITY_FACTORY] = TRAINER_NOLAND,
-    [FRONTIER_FACILITY_PIKE]    = TRAINER_LUCY,
-    [FRONTIER_FACILITY_PYRAMID] = TRAINER_BRANDON,
+    [FRONTIER_FACILITY_TOWER]   = TRAINER_ANABEL_BF_BRAIN,
+    [FRONTIER_FACILITY_DOME]    = TRAINER_TUCKER_BF_BRAIN,
+    [FRONTIER_FACILITY_PALACE]  = TRAINER_SPENSER_BF_BRAIN,
+    [FRONTIER_FACILITY_ARENA]   = TRAINER_GRETA_BF_BRAIN,
+    [FRONTIER_FACILITY_FACTORY] = TRAINER_NOLAND_BF_BRAIN,
+    [FRONTIER_FACILITY_PIKE]    = TRAINER_LUCY_BF_BRAIN,
+    [FRONTIER_FACILITY_PYRAMID] = TRAINER_BRANDON_BF_BRAIN,
 };
 
 static const u8 *const sFrontierBrainPlayerLostSilverTexts[NUM_FRONTIER_FACILITIES] =
@@ -1932,6 +1935,17 @@ static void GiveBattlePoints(void)
     points = sBattlePointAwards[challengeNum][facility][battleMode];
     if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
         points += 10;
+    //Increment BP with each win streak
+    if ((challengeNum > 10) && (challengeNum <= 20)) 
+        points *= 1.2;
+    else if ((challengeNum > 20) && (challengeNum <= 30))
+        points *= 1.5;
+    else if ((challengeNum > 30) && (challengeNum <= 40))
+        points *= 1.8;
+    else if ((challengeNum > 40) && (challengeNum <= 50))
+        points *= 2.0;
+    else if (challengeNum > 50)
+        points *= 3.0;
     gSaveBlock2Ptr->frontier.battlePoints += points;
     ConvertIntToDecimalStringN(gStringVar1, points, STR_CONV_MODE_LEFT_ALIGN, 2);
     if (gSaveBlock2Ptr->frontier.battlePoints > MAX_BATTLE_FRONTIER_POINTS)
@@ -2016,12 +2030,10 @@ static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monL
 {
     s32 i = 0;
     u16* gFrontierBannedSpecies;
-    if (gSaveBlock2Ptr->optionsDifficulty == 1)
+    if (gSaveBlock1Ptr->tx_Features_FrontierBans == 0)
         gFrontierBannedSpecies = gFrontierBannedSpeciesNormal;
-    if (gSaveBlock2Ptr->optionsDifficulty == 0)
+    else if (gSaveBlock1Ptr->tx_Features_FrontierBans == 1)
         gFrontierBannedSpecies = gFrontierBannedSpeciesEasy;
-    if (gSaveBlock2Ptr->optionsDifficulty == 2)
-        gFrontierBannedSpecies = gFrontierBannedSpeciesHard;
 
     if (species == SPECIES_EGG || species == SPECIES_NONE)
         return;
@@ -2118,12 +2130,10 @@ static void CheckPartyIneligibility(void)
         s32 i;
         s32 caughtBannedMons = 0;
         u16* gFrontierBannedSpecies;
-        if (gSaveBlock2Ptr->optionsDifficulty == 1)
+        if (gSaveBlock1Ptr->tx_Features_FrontierBans == 0)
             gFrontierBannedSpecies = gFrontierBannedSpeciesNormal;
-        if (gSaveBlock2Ptr->optionsDifficulty == 0)
+        else if (gSaveBlock1Ptr->tx_Features_FrontierBans == 1)
             gFrontierBannedSpecies = gFrontierBannedSpeciesEasy;
-        if (gSaveBlock2Ptr->optionsDifficulty == 2)
-            gFrontierBannedSpecies = gFrontierBannedSpeciesHard;
         s32 species = gFrontierBannedSpecies[0];
         for (i = 0; species != 0xFFFF; i++, species = gFrontierBannedSpecies[i])
         {

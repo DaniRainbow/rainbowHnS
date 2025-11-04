@@ -2,7 +2,7 @@
   "id": "MAP_TRAINER_HILL_ELEVATOR",
   "name": "TrainerHill_Elevator",
   "layout": "LAYOUT_BATTLE_ELEVATOR",
-  "music": "MUS_B_TOWER_RS",
+  "music": "MUS_HG_POKEATHLON_LOBBY",
   "region_map_section": "MAPSEC_TRAINER_HILL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_KURT",
+      "graphics_id": "OBJ_EVENT_GFX_WORKER_F",
       "x": 0,
       "y": 6,
       "elevation": 3,
@@ -30,14 +30,14 @@
   ],
   "warp_events": [
     {
-      "x": 1,
+      "x": 2,
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_TRAINER_HILL_ROOF",
       "dest_warp_id": "1"
     },
     {
-      "x": 2,
+      "x": 3,
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_TRAINER_HILL_ROOF",

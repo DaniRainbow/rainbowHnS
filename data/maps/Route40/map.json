@@ -24,8 +24,8 @@
       "direction": "down"
     },
     {
-      "map": "MAP_BATTLE_TOWER_OUTSIDE",
-      "offset": -1,
+      "map": "MAP_TRAINER_HILL_COURTYARD",
+      "offset": -2,
       "direction": "up"
     }
   ],
@@ -278,19 +278,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 11,
-      "y": 14,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleTower_Outside_EventScript_Engineer",
-      "flag": "FLAG_HIDE_BATTLEFRONTIER_ENGINEER"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 19,
       "y": 13,
@@ -372,28 +359,28 @@
       "x": 11,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_GATE_ROUTE40_BATTLE_TOWER_OUTSIDE",
+      "dest_map": "MAP_GATE_ROUTE40_TRAINER_HILL_COURTYARD",
       "dest_warp_id": "0"
     },
     {
       "x": 11,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_GATE_ROUTE40_BATTLE_TOWER_OUTSIDE",
+      "dest_map": "MAP_GATE_ROUTE40_TRAINER_HILL_COURTYARD",
       "dest_warp_id": "1"
     },
     {
       "x": 12,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_GATE_ROUTE40_BATTLE_TOWER_OUTSIDE",
+      "dest_map": "MAP_GATE_ROUTE40_TRAINER_HILL_COURTYARD",
       "dest_warp_id": "1"
     },
     {
       "x": 10,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_GATE_ROUTE40_BATTLE_TOWER_OUTSIDE",
+      "dest_map": "MAP_GATE_ROUTE40_TRAINER_HILL_COURTYARD",
       "dest_warp_id": "1"
     }
   ],

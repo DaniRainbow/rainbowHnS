@@ -150,7 +150,7 @@ const u32 gObjectEventPic_PsychicM[] = INCBIN_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_Gentleman[] = INCBIN_U32("graphics/object_events/pics/people/gentleman.4bpp");
 const u32 gObjectEventPic_Sailor[] = INCBIN_U32("graphics/object_events/pics/people/sailor.4bpp");
 const u32 gObjectEventPic_Fisherman[] = INCBIN_U32("graphics/object_events/pics/people/fisherman.4bpp");
-const u32 gObjectEventPic_RunningTriathleteM[] = INCBIN_U32("graphics/object_events/pics/people/running_triathlete_m.4bpp");
+const u32 gObjectEventPic_Scott_New[] = INCBIN_U32("graphics/object_events/pics/people/scott.4bpp");
 const u32 gObjectEventPic_BattleGirl[] = INCBIN_U32("graphics/object_events/pics/people/battle_girl.4bpp");
 const u32 gObjectEventPic_Engineer[] = INCBIN_U32("graphics/object_events/pics/people/engineer.4bpp");
 const u32 gObjectEventPic_Burglar[] = INCBIN_U32("graphics/object_events/pics/people/burglar.4bpp");
@@ -316,6 +316,7 @@ const u32 gFieldEffectObjectPic_ShadowMedium[] = INCBIN_U32("graphics/field_effe
 const u32 gFieldEffectObjectPic_ShadowLarge[] = INCBIN_U32("graphics/field_effects/pics/shadow_large.4bpp");
 const u32 gFieldEffectObjectPic_ShadowExtraLarge[] = INCBIN_U32("graphics/field_effects/pics/shadow_extra_large.4bpp");
 const u32 gFieldEffectObjectPic_BallLight[] = INCBIN_U32("graphics/object_events/pics/misc/light.4bpp");
+const u32 gFieldEffectObjectPic_SmallLight[] = INCBIN_U32("graphics/object_events/pics/misc/small_light.4bpp");
 const u32 gFieldEffectObjectPic_PokeCenterLight[] = INCBIN_U32("graphics/object_events/pics/misc/poke_center_light.4bpp");
 const u32 gFieldEffectObjectPic_MartLight[] = INCBIN_U32("graphics/object_events/pics/misc/mart_light.4bpp");
 static const u32 sFiller[0x48] = {};
@@ -382,8 +383,19 @@ const u32 gObjectEventPic_Giovanni[] = INCBIN_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_PokeBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_poke.4bpp");
 const u32 gObjectEventPic_TrainMid[] = INCBIN_U32("graphics/object_events/pics/misc/train_mid.4bpp");
 const u32 gObjectEventPic_TrainBack[] = INCBIN_U32("graphics/object_events/pics/misc/train_back.4bpp");
+//Added for the Battle Frontier
 const u32 gObjectEventPic_SwimmerM_Land[] = INCBIN_U32("graphics/object_events/pics/people/swimmer_m_land.4bpp");
 const u32 gObjectEventPic_SwimmerF_Land[] = INCBIN_U32("graphics/object_events/pics/people/swimmer_f_land.4bpp");
+const u32 gObjectEventPic_Tuber_M[] = INCBIN_U32("graphics/object_events/pics/people/tuber_m.4bpp");
+const u32 gObjectEventPic_Tuber_F[] = INCBIN_U32("graphics/object_events/pics/people/tuber_f.4bpp");
+//New frontier brain Ow
+const u32 gObjectEventPic_Anabel_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/anabel.4bpp");
+const u32 gObjectEventPic_Tucker_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/tucker.4bpp");
+const u32 gObjectEventPic_Spenser_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/spenser.4bpp");
+const u32 gObjectEventPic_Greta_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/greta.4bpp");
+const u32 gObjectEventPic_Noland_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/noland.4bpp");
+const u32 gObjectEventPic_Lucy_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/lucy.4bpp");
+const u32 gObjectEventPic_Brandon_New[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/brandon.4bpp");
 
 
 // Normally, INCBIN_COMP acts like INCBIN_U32, but appends `.lz` to the file, compressing it;

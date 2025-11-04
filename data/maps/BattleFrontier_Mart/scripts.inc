@@ -1,4 +1,5 @@
 .set LOCALID_OLD_WOMAN, 2
+.set LOCALID_SECOND_CLERK, 5
 .set LOCALID_TM_CLERK, 6
 
 BattleFrontier_Mart_MapScripts::
@@ -6,8 +7,15 @@ BattleFrontier_Mart_MapScripts::
 	.byte 0
 
 BattleFrontier_Mart_OnTransition::
+	call_if_set FLAG_FINITE_TMS, BattleFrontier_Mart_TMClerkCheck
 	call_if_unset FLAG_FINITE_TMS, BattleFrontier_Mart_HideTMClerk
-	call_if_set FLAG_FINITE_TMS, BattleFrontier_Mart_ShowTMClerk
+	call_if_unset FLAG_DEFEATED_RED, BattleFrontier_Mart_HideSecondClerk
+	call_if_set FLAG_DEFEATED_RED, BattleFrontier_Mart_ShowSecondClerk
+	end
+
+BattleFrontier_Mart_TMClerkCheck::
+	call_if_unset FLAG_DEFEATED_RED, BattleFrontier_Mart_HideTMClerk
+	call_if_set FLAG_DEFEATED_RED, BattleFrontier_Mart_ShowTMClerk
 	end
 
 BattleFrontier_Mart_HideTMClerk::
@@ -18,6 +26,16 @@ BattleFrontier_Mart_HideTMClerk::
 BattleFrontier_Mart_ShowTMClerk::
 	clearflag FLAG_FINITE_TMS_CLERK
 	addobject LOCALID_TM_CLERK
+	return
+
+BattleFrontier_Mart_HideSecondClerk::
+	setflag FLAG_FRONTIER_SECOND_CLERK
+	removeobject LOCALID_SECOND_CLERK
+	return
+
+BattleFrontier_Mart_ShowSecondClerk::
+	clearflag FLAG_FRONTIER_SECOND_CLERK
+	addobject LOCALID_SECOND_CLERK
 	return
 
 BattleFrontier_Mart_EventScript_Clerk::

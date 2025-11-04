@@ -8,7 +8,7 @@ BattleFrontier_ReceptionGate_MapScripts::
 	.byte 0
 
 BattleFrontier_ReceptionGate_OnTransition:
-	setflag FLAG_VISITED_FUCHSIA_CITY
+	setflag FLAG_VISITED_BATTLE_FRONTIER
 	end
 
 BattleFrontier_ReceptionGate_OnFrame:
@@ -326,15 +326,22 @@ BattleFrontier_ReceptionGate_Text_EnjoyBattleFrontier:
 	.string "FRONTIER has to offer!$"
 
 BattleFrontier_ReceptionGate_Text_IfItIsntPlayerYouCame:
-	.string "???: Well, if it isn't {PLAYER}{KUN}!\n"
-	.string "You came out here!$"
+	.string "???: Well, who do we have here?\n"
+	.string "A new trainer, huh?$"
 
 BattleFrontier_ReceptionGate_Text_OhMrScottGoodDay:
 	.string "GUIDE: Oh! MR. SCOTT, sir!\n"
 	.string "Good day to you, sir!$"
 
 BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere:
-	.string "SCOTT: It's great to see you here,\n"
+	.string "My name’s SCOTT. I’m always on the\n"
+	.string "lookout for talented trainers.\p"
+	.string "And you sure look like one!\n"
+	.string "Can I ask for your name?\p"
+	.string "Oh, so you’re {PLAYER}{KUN}!\p"
+	.string "You came all the way from JOHTO?\n"
+	.string "That’s quite a trip!\p"
+	.string "It's great to see you here,\n"
 	.string "it really is!\p"
 	.string "I hope you'll take your time and\n"
 	.string "explore everywhere.\p"
@@ -431,25 +438,20 @@ BattleFrontier_ReceptionGate_Text_LevelModeInfo:
 	.string "two courses--NORMAL and HARD.$"
 
 BattleFrontier_ReceptionGate_Text_Level50Info:
-	.string "The NORMAL course is open to POKéMON\n"
-	.string "up to and including Level 50.\p"
-	.string "Please keep in mind, however, that\n"
-	.string "no TRAINER you face will have any\l"
-	.string "POKéMON below Level 50.\p"
-	.string "This course is the entry level for\n"
-	.string "battles at the BATTLE FRONTIER.\p"
-	.string "To begin, we hope you will challenge\n"
+	.string "The NORMAL course is now open!\n"
+	.string "All POKéMON will be set to Lv. 50.\p"
+	.string "This course serves as the entry level\n"
+	.string "for battles at the BATTLE FRONTIER.\p"
+	.string "To begin, we hope you’ll challenge\n"
 	.string "this course.$"
 
 BattleFrontier_ReceptionGate_Text_OpenLevelInfo:
-	.string "The HARD course places no limit\n"
-	.string "on the levels of POKéMON entering\l"
-	.string "challenges.\p"
-	.string "The levels of your opponents will\n"
-	.string "be adjusted to match the levels of\l"
-	.string "your POKéMON.\p"
-	.string "However, no TRAINER you face will\n"
-	.string "have any POKéMON below Level 60.$"
+	.string "The HARD course is now open!\n"
+	.string "All POKéMON will be set to Lv. 50.\p"
+	.string "This course offers a greater challenge\n"
+	.string "for experienced trainers.\p"
+	.string "We encourage you to enter this course\n"
+	.string "if you seek a true challenge!$"
 
 BattleFrontier_ReceptionGate_Text_MonEntryInfo:
 	.string "Virtually any kind of POKéMON may take\n"

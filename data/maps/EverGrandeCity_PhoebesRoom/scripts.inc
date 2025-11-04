@@ -50,7 +50,7 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech2, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_PHOEBE2, EverGrandeCity_PhoebesRoom_Text_Defeat2
+	trainerbattle_no_intro TRAINER_LUCY_BF_BRAIN, EverGrandeCity_PhoebesRoom_Text_Defeat2
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 

@@ -26,6 +26,8 @@
 #include "constants/items.h"
 #include "constants/battle_frontier.h"
 #include "tx_randomizer_and_challenges.h"
+#include "script_pokemon_util.h"
+#include "starter_choose.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
@@ -68,7 +70,55 @@ u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 u
     u8 heldItem[2];
     struct Pokemon mon;
 
-    CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    // Starter flags are numbers because Random starters also work!
+    // The flag FORCE_SHINY is immediately cleared so it can't affect the rest of the game.
+    // Starter flags are not used anymore after that, and it's immediately cleared as well.
+    if (FlagGet(FLAG_SHINY_STARTER_1)) //Torchic
+        {
+            FlagSet(FLAG_FORCE_SHINY);
+            CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+            FlagClear(FLAG_FORCE_SHINY);
+            FlagClear(FLAG_SHINY_STARTER_1);
+        }
+    else if (FlagGet(FLAG_SHINY_STARTER_2)) //Treecko
+        {
+            FlagSet(FLAG_FORCE_SHINY);
+            CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+            FlagClear(FLAG_FORCE_SHINY);
+            FlagClear(FLAG_SHINY_STARTER_2);
+        }
+    else if (FlagGet(FLAG_SHINY_STARTER_3)) //Mudkip
+        {
+            FlagSet(FLAG_FORCE_SHINY);
+            CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+            FlagClear(FLAG_FORCE_SHINY);
+            FlagClear(FLAG_SHINY_STARTER_3);
+        }
+    else if ((!FlagGet(FLAG_SHINY_STARTER_3) || !FlagGet(FLAG_SHINY_STARTER_2) || !FlagGet(FLAG_SHINY_STARTER_1)) 
+            && !FlagGet(FLAG_HIDE_SILVER_NEWBARKTOWN))
+    // This is here because even if the starter doesn't pass the previous checks (so, it's not shiny) there's the 1/8192 (or 1/4096, 1/2048, 1/1024, 1/512, depending on 
+    // the player's choice) chance that it could become shiny anyway, as the preview is not connected to the personality that the game creates.
+    // To prevent it, if the SHINY_STARTER_X flag hasn't been set, and "Silver is still looking at Elm's lab" flag hasn't been also set, it just blocks the starter from becoming
+    // shiny. The flag NO_SHINY is immediately cleared to prevent other POKéMON from becoming not shiny.
+    {
+        FlagSet(FLAG_NO_SHINY);
+        CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+        FlagClear(FLAG_NO_SHINY);
+    }
+
+    // Special case added to HnS, as it doesn't handle starters the same way as Emerald does (via Birch's bag)
+    // The flag used is the one that enables the "POKéMON" option in the menu system
+    // So, this is only run once: when you haven't got the "POKéMON" option yet, and when RANDOM STARTER and ONE TYPE CHALLENGE are enabled.
+    // That's why it's set after obtaining the starter. Afterwards, it never works again as the flag never gets disabled, as it should.
+    // All the shiny code above doesn't affect HnS, but it's set anyway in case someone uses the code
+    if (((gSaveBlock1Ptr->tx_Random_Starter) == 1) && (FlagGet(FLAG_SYS_POKEMON_GET) == FALSE) ||
+        IsOneTypeChallengeActive() && (FlagGet(FLAG_SYS_POKEMON_GET) == FALSE))
+    {
+        species = GetStarterPokemon(VarGet(VAR_STARTER_MON));
+        CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    }
+    else
+        CreateMon(&mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     heldItem[0] = item;
     heldItem[1] = item >> 8;
     SetMonData(&mon, MON_DATA_HELD_ITEM, heldItem);
@@ -171,6 +221,7 @@ u32 GenerateShinyPersonalityForOtId(u32 otId)
 void CreateShinyScriptedMon(u16 species, u8 level, u16 item)
 {
     u8 heldItem[2];
+    SetNuzlockeChecks();
     ZeroEnemyPartyMons();
 
     u32 otId = gSaveBlock2Ptr->playerTrainerId[0]

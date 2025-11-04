@@ -110,6 +110,8 @@ BlackthornCity_MoveDeletersHouse_Text_CantForgetSurf:
 BlackthornCity_MoveRelearnersHouse_EventScript_MoveRelearner::
 	lockall
 	faceplayer
+	checkrandomizer
+	goto_if_eq VAR_RESULT, TRUE, BlackthornCity_MoveRelearnersHouse_EventScript_Randomizer
 	goto_if_set FLAG_TEMP_1, BlackthornCity_MoveRelearnersHouse_EventScript_AskTeachMove
 	msgbox BlackthornCity_MoveRelearnersHouse_Text_ImTheMoveTutor, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_1
@@ -158,8 +160,18 @@ BlackthornCity_MoveRelearnersHouse_EventScript_CantTeachEgg::
 
 BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
 	msgbox BlackthornCity_MoveRelearnersHouse_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
+	closemessage
 	releaseall
 	end
+
+BlackthornCity_MoveRelearnersHouse_EventScript_Randomizer::
+	msgbox BlackthornCity_MoveRelearnersHouse_Text_SorryCantHelp, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+BlackthornCity_MoveRelearnersHouse_Text_SorryCantHelp:
+	.string "Sorry, I can't help you.$"
 
 BlackthornCity_MoveRelearnersHouse_Text_ImTheMoveTutor:
 	.string "I'm the MOVE TUTOR.\p"

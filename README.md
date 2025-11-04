@@ -101,7 +101,7 @@ I plan to take a step back from this project once the initial wave of inevitable
 - **pokeemerald-expansion**
 
 #### Art — Sprites
-- **Crystal Dust — Sierraffinity**
+- **Cesare_CBass**
 - **AveonTrainer**
 - **PurpleZaffre**
 - **BatimaTheBat**

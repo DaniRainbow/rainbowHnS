@@ -62,8 +62,8 @@ GoldenrodCity_BillsHouse_EventScript_Bill_Refused::
 BillHouse_Text_TakeThisEevee:
     .string "BILL: Hi, {PLAYER}! Do us a favor and\n"
     .string "take this EEVEE.\p"
-    .string "It came over when I was adjusting\n"
-    .string "the TIME CAPSULE.\p"
+    .string "It was left in our care while\n"
+    .string "I was away working on my system.\p"
     .string "Someone has to take care of it,\n"
     .string "but I don't like being outside.\p"
     .string "Can I count on you to play with it,\n"

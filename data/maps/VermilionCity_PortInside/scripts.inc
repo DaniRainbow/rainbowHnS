@@ -47,7 +47,8 @@ VermilionPort_EventScript_Sailor_AfterKanto::
 	case 1, VermilionPort_EventScript_ChoseSouthernIsland
 	case 2, VermilionPort_EventScript_ChoseBirthIsland
 	case 3, VermilionPort_EventScript_ChoseFarawayIsland
-	case 4, VermilionPort_EventScript_Sailor_Refused
+	case 4, VermilionPort_EventScript_ChoseBattleFrontier
+	case 5, VermilionPort_EventScript_Sailor_Refused
 	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
 	release
 	end
@@ -93,6 +94,14 @@ VermilionPort_EventScript_ChoseFarawayIsland::
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
 	warpsilent MAP_FARAWAY_ISLAND_ENTRANCE, 13, 38
+	release
+	end	
+
+VermilionPort_EventScript_ChoseBattleFrontier::
+	closemessage
+	delay 20
+	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 20, 67
 	release
 	end	
 

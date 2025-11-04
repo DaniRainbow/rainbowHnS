@@ -18,7 +18,7 @@ ReceptionGate_EventScript_Janine::
     end
 
 ReceptionGate_Text_Janine:
-    .string "JAINE: I'm on the way to my dad's\n"
+    .string "JANINE: I'm on the way to my dad's\n"
     .string "house to give him his lunch.\p"
     .string "The ELITE FOUR has no time to rest\n"
     .string "day or night. It's such hard work,\l"

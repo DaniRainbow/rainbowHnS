@@ -33,8 +33,10 @@ LavenderTown_PokemonCenter1F_Text_Gentleman:
 LavenderTown_PokemonCenter1F_Text_Teacher:
 	.string "There's a radio program that plays\n"
 	.string "POKé FLUTE music.\p"
-	.string "Oh? Ah, your radio needs an EXPN\n"
-	.string "CARD to tune into it.$"
+	.string "Oh? Ah, your radio needs a RADIO\n"
+	.string "UPGRADE to tune into it.\p"
+	.string "Maybe the RADIO STATION here\n"
+	.string "in town can provide you one?$"
 
 LavenderTown_PokemonCenter1F_Text_Youngster:
 	.string "If the POWER PLANT isn't running,\n"

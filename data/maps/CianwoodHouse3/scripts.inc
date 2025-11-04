@@ -5,7 +5,6 @@ CianwoodCity_EventScript_Kirk::
 	lock
 	faceplayer
 	goto_if_eq VAR_SHUCKIE, 1, CianwoodCity_EventScript_KirkGivenShuckie
-	goto_if_eq VAR_SHUCKIE, 2, CianwoodCity_EventScript_KirkReturnShuckie
 	goto_if_eq VAR_SHUCKIE, 3, CianwoodCity_EventScript_KirkReturnedShuckie
 	msgbox CianwoodCity_Text_ManiacAskShuckle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_KirkDeclined
@@ -26,6 +25,7 @@ CianwoodCity_EventScript_KirkDeclined::
 	end
 
 CianwoodCity_EventScript_KirkGivenShuckie::
+	goto_if_set FLAG_BADGE01_GET, CianwoodCity_EventScript_KirkReturnShuckie
 	msgbox CianwoodCity_Text_ManiacHowsdoing, MSGBOX_DEFAULT
 	closemessage
 	end

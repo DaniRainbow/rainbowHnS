@@ -933,7 +933,7 @@ u8 LoadGameSave(u8 saveType)
     if (gSaveBlock1Ptr->versionId <2){ 
         FlagSet(FLAG_HIDE_OLIVINE_PORT_OAK);
         FlagSet(FLAG_HIDE_ROUTE22_GIOVANNI_SILVER);
-        FlagSet(FLAG_UNUSED_SET3);
+        FlagSet(FLAG_HIDE_MTMOON_JIRACHI);
         FlagSet(FLAG_UNUSED_SET4);
         FlagSet(FLAG_UNUSED_SET5);
         FlagSet(FLAG_UNUSED_SET6);
@@ -945,7 +945,7 @@ u8 LoadGameSave(u8 saveType)
         FlagClear(FLAG_HIDE_CERULEAN_GYM_POKEMON);
         FlagClear(FLAG_HIDE_NEWBARKTOWN_LAB_AIDE);
         FlagClear(FLAG_HIDE_AZALEA_TOWN_CUT_MASTER);
-        FlagClear(FLAG_UNUSED_UNSET6);
+        FlagClear(FLAG_SUMMONED_MTMOON_JIRACHI);
         FlagClear(FLAG_UNUSED_UNSET7);
         FlagClear(FLAG_UNUSED_UNSET8);
         FlagClear(FLAG_UNUSED_UNSET9);

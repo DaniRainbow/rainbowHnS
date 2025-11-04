@@ -568,6 +568,7 @@ struct SaveBlock2
               u16 optionsRunType:3;
               u16 optionsAutorunSurf:1;
               u16 optionsAutorunDive:1;
+              u16 optionsNewBattleUI:1;
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1108,7 +1109,7 @@ struct SaveBlock1
     /*0x3D5A*/ u8 unused_3D5A[10];
     /*0x3D64*/ struct TrainerHillSave trainerHill;
     /*0x3D70*/ struct WaldaPhrase waldaPhrase;
-    /*0x3D88*/ u8 NuzlockeEncounterFlags[9]; //tx_randomizer_and_challenges
+    /*0x3D88*/ u8 unused_NuzlockeEncounterFlags[9]; //Old nuzlocke encounter list that became to small. Should be [12] since HnS adds new encounter zones
         u8 tx_Random_Chaos:1;
         u8 tx_Random_WildPokemon:1;
         u8 tx_Random_Similar:1;
@@ -1132,7 +1133,7 @@ struct SaveBlock1
         u8 tx_Challenges_NoItemPlayer:1;
         u8 tx_Challenges_NoItemTrainer:1;
         u8 tx_Challenges_PkmnCenter:2;
-        u8 tx_Random_OneForOne:1; //unused
+        u8 tx_Challenges_LessEscapes:1;
         u8 tx_Challenges_BaseStatEqualizer:2;
         u8 tx_Challenges_LevelCap:2;
         u8 tx_Challenges_ExpMultiplier:2;
@@ -1151,25 +1152,32 @@ struct SaveBlock1
         u8 tx_Challenges_MaxPartyIVs:2;
         u8 tx_Mode_InfiniteTMs:1;
         u8 tx_Mode_PoisonSurvive:1;
-        u8 tx_Features_EasierFeebas:1;
-        u8 tx_Features_PkmnDeath:1;
+        u8 tx_Features_ShinyColors:1;
+        u8 tx_Nuzlocke_EasyMode:1;
         u8 tx_Challenges_PCHeal:1;
         u8 tx_Features_RTCType:1;
         u8 tx_Mode_AlternateSpawns:1;
         u8 tx_Features_LimitDifficulty:1;
         u8 tx_Features_ShinyChance:4;
         u8 tx_Features_WildMonDropItems:1;
-        u8 tx_Features_Unlimited_WT:1;
+        u8 tx_Features_Unlimited_WT:1; //unused in HnS
         u8 tx_Mode_Synchronize:1;
         u8 tx_Mode_Mints:1;
         u8 tx_Mode_New_Citrus:1;
-        u8 tx_Mode_Modern_Types:1;
+        u8 tx_Mode_Modern_Types:1; //unused in HnS
         u8 tx_Mode_Fairy_Types:1;
-        u8 tx_Mode_New_Stats:1;
+        u8 tx_Mode_New_Stats:1; //unused in HnS
         u8 tx_Mode_Sturdy:1;
         u8 tx_Mode_Modern_Moves:1;
         u8 tx_Mode_Legendary_Abilities:1;
-        u8 tx_Mode_New_Legendaries:1;
+        u8 tx_Mode_New_Legendaries:1; //unused in HnS
+        u8 tx_Challenges_Expensive:3;
+        u8 tx_Difficulty_EscapeRopeDig:1;
+        u8 tx_Mode_Encounters:2; //unused in HnS
+        u8 tx_Features_FrontierBans:1;
+        u8 tx_Difficulty_HardExp:1; //unused in HnS
+        u8 tx_Mode_TypeEffectiveness:1; //unused in HnS
+        u8 NuzlockeEncounterFlags[12]; //tx_randomizer_and_challenges
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

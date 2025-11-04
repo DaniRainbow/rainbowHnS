@@ -7,11 +7,9 @@ BattleFrontier_BattleTowerCorridor_MapScripts::
 
 BattleFrontier_BattleTowerCorridor_OnLoad:
 	goto_if_eq VAR_0x8006, 1, BattleFrontier_BattleTowerCorridor_EventScript_OpenFarDoor
-	opendoor 12, 1
 	end
 
 BattleFrontier_BattleTowerCorridor_EventScript_OpenFarDoor::
-	opendoor 15, 1
 	end
 
 BattleFrontier_BattleTowerCorridor_OnFrame:
@@ -24,11 +22,23 @@ BattleFrontier_BattleTowerCorridor_EventScript_EnterCorridor::
 	applymovement LOCALID_ATTENDANT, BattleFrontier_BattleTowerCorridor_Movement_AttendantWalkToDoor
 	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerCorridor_Movement_PlayerWalkToDoor
 	waitmovement 0
+	opendoor 12, 1
+	waitdooranim
+	applymovement LOCALID_ATTENDANT, BattleFrontier_BattleTowerCorridor_Movement_LastMoveAttendant
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerCorridor_Movement_LastMovePlayer
+	waitmovement 0
 	goto BattleFrontier_BattleTowerCorridor_EventScript_WarpToBattleRoom
 
 BattleFrontier_BattleTowerCorridor_EventScript_WalkToFarDoor::
 	applymovement LOCALID_ATTENDANT, BattleFrontier_BattleTowerCorridor_Movement_AttendantWalkToFarDoor
 	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerCorridor_Movement_PlayerWalkToFarDoor
+	waitmovement 0
+	opendoor 15, 1
+	waitdooranim
+	applymovement LOCALID_ATTENDANT, BattleFrontier_BattleTowerCorridor_Movement_LastMoveAttendant
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleTowerCorridor_Movement_LastMovePlayer
 	waitmovement 0
 
 BattleFrontier_BattleTowerCorridor_EventScript_WarpToBattleRoom::
@@ -39,14 +49,29 @@ BattleFrontier_BattleTowerCorridor_EventScript_WarpToBattleRoom::
 
 BattleFrontier_BattleTowerCorridor_Movement_PlayerWalkToFarDoor:
 	walk_right
+BattleFrontier_BattleTowerCorridor_Movement_PlayerWalkToDoor:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 BattleFrontier_BattleTowerCorridor_Movement_AttendantWalkToFarDoor:
 	walk_right
 	walk_right
-BattleFrontier_BattleTowerCorridor_Movement_PlayerWalkToDoor:
+	walk_right
 	walk_right
 BattleFrontier_BattleTowerCorridor_Movement_AttendantWalkToDoor:
 	walk_right
 	walk_right
+	walk_right
+	step_end
+
+BattleFrontier_BattleTowerCorridor_Movement_LastMoveAttendant:
+	walk_up
+	set_invisible
+	step_end
+
+BattleFrontier_BattleTowerCorridor_Movement_LastMovePlayer:
 	walk_right
 	walk_up
 	set_invisible

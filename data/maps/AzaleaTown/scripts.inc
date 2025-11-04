@@ -332,8 +332,8 @@ AzaleaTown_Movement_PlayerGSBall:
 	walk_down
 	walk_down
 	face_left
+	delay_16
 	face_right
-	face_down
 	delay_8
 	face_up
 	step_end

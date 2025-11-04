@@ -38,7 +38,7 @@ CianwoodCity_Text_OldManIntro:
 	.string "someone came to visit me.\p"
 	.string "When I was young, I was a\n"
 	.string "POKéMON Trainer, too.\l"
-	.string "I tried to reach the tower and\n"
+	.string "I tried to reach the tower and\l"
 	.string "dive into the ocean.\p"
 	.string "I put a lot of effort into many\n"
 	.string "things.\p"

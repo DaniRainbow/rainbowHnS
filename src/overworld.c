@@ -72,6 +72,8 @@
 #include "item.h"
 #include "constants/items.h"
 #include "bug_contest.h"
+#include "field_effect_helpers.h"
+#include "constants/event_objects.h"
 
 struct CableClubPlayer
 {
@@ -177,6 +179,7 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *, u
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *, u8, u16, u8);
 static u16 GetCenterScreenMetatileBehavior(void);
 static bool8 CanLearnFlashInParty(void);
+static const u8 sMapsecToRegion[];
 
 static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
@@ -369,7 +372,7 @@ static void (*const sMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 // code
 void DoWhiteOut(void)
 {
-    if (IsNuzlockeActive()) //tx_randomizer_and_challenges
+    if (IsNuzlockeActive() || gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) //tx_randomizer_and_challenges
     {
         if (GetFirstBoxPokemon() == IN_BOX_COUNT * TOTAL_BOXES_COUNT)
             DoSoftReset();
@@ -605,18 +608,141 @@ struct MapHeader const *const GetDestinationWarpMapHeader(void)
     return Overworld_GetMapHeaderByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
 }
 
+static const u8 sMapsecToRegion[] = {
+	[MAPSEC_NEW_BARK_TOWN]            	= REGION_JOHTO,	// ------ JOHTO ------
+	[MAPSEC_CHERRYGROVE_CITY]			= REGION_JOHTO,
+	[MAPSEC_VIOLET_CITY]				= REGION_JOHTO,
+	[MAPSEC_AZALEA_TOWN]				= REGION_JOHTO,
+	[MAPSEC_GOLDENROD_CITY]				= REGION_JOHTO,
+	[MAPSEC_ECRUTEAK_CITY]				= REGION_JOHTO,
+	[MAPSEC_OLIVINE_CITY]				= REGION_JOHTO,
+	[MAPSEC_CIANWOOD_CITY]				= REGION_JOHTO,
+	[MAPSEC_SAFARI_ZONE_GATE]			= REGION_JOHTO,
+	[MAPSEC_MAHOGANY_TOWN]				= REGION_JOHTO,
+	[MAPSEC_BLACKTHORN_CITY]			= REGION_JOHTO,
+	[MAPSEC_INDIGO_PLATEAU]				= REGION_JOHTO,	// GSC/HGSS still uses johto themes for 26/27/28 and elite four
+	[MAPSEC_ROUTE_26]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_27]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_28]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_29]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_30]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_31]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_32]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_33]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_34]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_35]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_36]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_37]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_38]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_39]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_40]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_41]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_42]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_43]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_44]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_45]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_46]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_47]					= REGION_JOHTO,
+	[MAPSEC_ROUTE_48]					= REGION_JOHTO,
+	[MAPSEC_SAFARI_ZONE]				= REGION_JOHTO,
+	[MAPSEC_VICTORY_ROAD]				= REGION_JOHTO,
+	[MAPSEC_UNDERGROUND_PATH]			= REGION_JOHTO,
+	[MAPSEC_DARK_CAVE]					= REGION_JOHTO,
+	[MAPSEC_ROCKET_HIDEOUT]				= REGION_JOHTO,
+	[MAPSEC_UNION_CAVE]					= REGION_JOHTO,
+	[MAPSEC_ILEX_FOREST]				= REGION_JOHTO,
+	[MAPSEC_NATIONAL_PARK]				= REGION_JOHTO,
+	[MAPSEC_WHIRL_ISLANDS]				= REGION_JOHTO,
+	[MAPSEC_CLIFF_CAVE]					= REGION_JOHTO,
+	[MAPSEC_MT_MORTAR]					= REGION_JOHTO,
+	[MAPSEC_LAKE_OF_RAGE]				= REGION_JOHTO,
+	[MAPSEC_ICE_PATH]					= REGION_JOHTO,
+	[MAPSEC_MT_SILVER]					= REGION_JOHTO,
+	[MAPSEC_TOHJO_FALLS]				= REGION_JOHTO,
+	[MAPSEC_SPROUT_TOWER]				= REGION_JOHTO,
+	[MAPSEC_SLOWPOKE_WELL]				= REGION_JOHTO,
+	[MAPSEC_BURNED_TOWER]				= REGION_JOHTO,
+	[MAPSEC_TIN_TOWER]					= REGION_JOHTO,
+	[MAPSEC_DRAGONS_DEN]				= REGION_JOHTO,
+	[MAPSEC_RUINS_OF_ALPH]				= REGION_JOHTO,
+	[MAPSEC_SS_AQUA]					= REGION_JOHTO,
+	[MAPSEC_EMBEDDED_TOWER]				= REGION_JOHTO,
+	[MAPSEC_OLIVINE_LIGHTHOUSE]			= REGION_JOHTO,
+	[MAPSEC_BATTLE_FRONTIER]			= REGION_JOHTO,
+	[MAPSEC_PALLET_TOWN]				= REGION_KANTO,	// ------ KANTO ------
+	[MAPSEC_VIRIDIAN_CITY]				= REGION_KANTO,
+	[MAPSEC_PEWTER_CITY]				= REGION_KANTO,
+	[MAPSEC_CERULEAN_CITY]				= REGION_KANTO,
+	[MAPSEC_VERMILION_CITY]				= REGION_KANTO,
+	[MAPSEC_LAVENDER_TOWN]				= REGION_KANTO,
+	[MAPSEC_VERMILION_CITY]				= REGION_KANTO,
+	[MAPSEC_CELADON_CITY]				= REGION_KANTO,
+	[MAPSEC_FUCHSIA_CITY]				= REGION_KANTO,
+	[MAPSEC_SAFFRON_CITY]				= REGION_KANTO,
+	[MAPSEC_CINNABAR_ISLAND]			= REGION_KANTO,
+	[MAPSEC_SOUTHERN_ISLAND]			= REGION_KANTO,
+	[MAPSEC_FARAWAY_ISLAND]				= REGION_KANTO,
+	[MAPSEC_BIRTH_ISLAND]				= REGION_KANTO,
+	[MAPSEC_ROUTE_10_POKECENTER]		= REGION_KANTO,
+	[MAPSEC_ROUTE_1]					= REGION_KANTO,
+	[MAPSEC_ROUTE_2]					= REGION_KANTO,
+	[MAPSEC_ROUTE_3]					= REGION_KANTO,
+	[MAPSEC_ROUTE_4]					= REGION_KANTO,
+	[MAPSEC_ROUTE_5]					= REGION_KANTO,
+	[MAPSEC_ROUTE_6]					= REGION_KANTO,
+	[MAPSEC_ROUTE_7]					= REGION_KANTO,
+	[MAPSEC_ROUTE_8]					= REGION_KANTO,
+	[MAPSEC_ROUTE_9]					= REGION_KANTO,
+	[MAPSEC_ROUTE_10]					= REGION_KANTO,
+	[MAPSEC_ROUTE_11]					= REGION_KANTO,
+	[MAPSEC_ROUTE_12]					= REGION_KANTO,
+	[MAPSEC_ROUTE_13]					= REGION_KANTO,
+	[MAPSEC_ROUTE_14]					= REGION_KANTO,
+	[MAPSEC_ROUTE_15]					= REGION_KANTO,
+	[MAPSEC_ROUTE_16]					= REGION_KANTO,
+	[MAPSEC_ROUTE_17]					= REGION_KANTO,
+	[MAPSEC_ROUTE_18]					= REGION_KANTO,
+	[MAPSEC_ROUTE_19]					= REGION_KANTO,
+	[MAPSEC_ROUTE_20]					= REGION_KANTO,
+	[MAPSEC_ROUTE_21]					= REGION_KANTO,
+	[MAPSEC_ROUTE_22]					= REGION_KANTO,
+	[MAPSEC_ROUTE_23]					= REGION_KANTO,
+	[MAPSEC_ROUTE_24]					= REGION_KANTO,
+	[MAPSEC_ROUTE_25]					= REGION_KANTO,
+	[MAPSEC_VIRIDIAN_FOREST]			= REGION_KANTO,
+	[MAPSEC_MT_MOON]					= REGION_KANTO,
+	[MAPSEC_S_S_ANNE]					= REGION_KANTO,
+	[MAPSEC_UNDERGROUND_PATH_2]			= REGION_KANTO,
+	[MAPSEC_DIGLETTS_CAVE]				= REGION_KANTO,
+	[MAPSEC_SILPH_CO]					= REGION_KANTO,
+	[MAPSEC_ROCK_TUNNEL]				= REGION_KANTO,
+	[MAPSEC_SEAFOAM_ISLANDS]			= REGION_KANTO,
+	[MAPSEC_POKEMON_TOWER]				= REGION_KANTO,
+	[MAPSEC_CERULEAN_CAVE]				= REGION_KANTO,
+	[MAPSEC_SILPH_CO]					= REGION_KANTO,
+	[MAPSEC_ROCK_TUNNEL]				= REGION_KANTO,
+	[MAPSEC_SEAFOAM_ISLANDS]			= REGION_KANTO,
+	[MAPSEC_POKEMON_TOWER]				= REGION_KANTO,
+	[MAPSEC_CERULEAN_CAVE]				= REGION_KANTO,
+	[MAPSEC_POWER_PLANT]				= REGION_KANTO,
+	[MAPSEC_INDIGO_PLATEAU2]			= REGION_KANTO,
+	[MAPSEC_UNDERGROUND_PATH]			= REGION_KANTO
+};
+
 static void LoadCurrentMapData(void)
 {
     sLastMapSectionId = gMapHeader.regionMapSectionId;
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gSaveBlock1Ptr->mapLayoutId = gMapHeader.mapLayoutId;
     gMapHeader.mapLayout = GetMapLayout();
+	gMapHeader.region = sMapsecToRegion[gMapHeader.regionMapSectionId];
 }
 
 static void LoadSaveblockMapHeader(void)
 {
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gMapHeader.mapLayout = GetMapLayout();
+	gMapHeader.region = sMapsecToRegion[gMapHeader.regionMapSectionId];
 }
 
 static void SetPlayerCoordsFromWarp(void)
@@ -1561,9 +1687,9 @@ void CB1_Overworld(void)
 
 const struct BlendSettings gTimeOfDayBlend[] =
 {
-  [TIME_OF_DAY_NIGHT] = {.coeff = 10, .blendColor = TINT_NIGHT, .isTint = TRUE},
-  [TIME_OF_DAY_TWILIGHT] = {.coeff = 4, .blendColor = 0xA8B0E0, .isTint = TRUE},
-  [TIME_OF_DAY_DAY] = {.coeff = 0, .blendColor = 0},
+    [TIME_OF_DAY_NIGHT] = {.coeff = 10, .blendColor = TINT_NIGHT, .isTint = TRUE},
+    [TIME_OF_DAY_TWILIGHT] = {.coeff = 4, .blendColor = 0xA8B0E0, .isTint = TRUE},
+    [TIME_OF_DAY_DAY] = {.coeff = 0, .blendColor = 0},
 };
 
 u8 UpdateTimeOfDay(void) {
@@ -1642,9 +1768,14 @@ u8 UpdateTimeOfDay(void) {
     return gTimeOfDay;
 }
 
-bool8 MapHasNaturalLight(u8 mapType) { // Whether a map type is naturally lit/outside
-  return mapType == MAP_TYPE_TOWN || mapType == MAP_TYPE_CITY || mapType == MAP_TYPE_ROUTE
-      || mapType == MAP_TYPE_OCEAN_ROUTE;
+bool8 MapHasNaturalLight(u8 mapType) 
+{ // Whether a map type is naturally lit/outside
+    return (
+        mapType == MAP_TYPE_TOWN
+        || mapType == MAP_TYPE_CITY
+        || mapType == MAP_TYPE_ROUTE
+        || mapType == MAP_TYPE_OCEAN_ROUTE
+    );
 }
 
 // Update & mix day / night bg palettes (into unfaded)
@@ -1656,7 +1787,7 @@ void UpdateAltBgPalettes(u16 palettes) {
         return;
     palettes &= ~((1 << NUM_PALS_IN_PRIMARY) - 1) | primary->swapPalettes;
     palettes &= ((1 << NUM_PALS_IN_PRIMARY) - 1) | (secondary->swapPalettes << NUM_PALS_IN_PRIMARY);
-    palettes &= 0x1FFE; // don't blend palette 0, [13,15]
+    palettes &= PALETTES_MAP ^ (1 << 0); // don't blend palette 0, [13,15]
     palettes >>= 1; // start at palette 1
     if (!palettes)
         return;
@@ -1672,41 +1803,44 @@ void UpdateAltBgPalettes(u16 palettes) {
     }
 }
 
-void UpdatePalettesWithTime(u32 palettes) {
-  if (MapHasNaturalLight(gMapHeader.mapType)) {
-    u32 i;
-    u32 mask = 1 << 16;
-    if (palettes >= 0x10000)
-      for (i = 0; i < 16; i++, mask <<= 1)
-        if (GetSpritePaletteTagByPaletteNum(i) >> 15) // Don't blend special sprite palette tags
-          palettes &= ~(mask);
+void UpdatePalettesWithTime(u32 palettes) 
+{
+    if (MapHasNaturalLight(gMapHeader.mapType)) {
+        u32 i;
+        u32 mask = 1 << 16;
+        if (palettes >= (1 << 16))
+        for (i = 0; i < 16; i++, mask <<= 1)
+            if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
+                palettes &= ~(mask);
 
-    palettes &= 0xFFFF1FFF; // Don't blend UI BG palettes [13,15]
+    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
     if (!palettes)
       return;
-    TimeMixPalettes(palettes,
-      gPlttBufferUnfaded,
-      gPlttBufferFaded,
-      (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time0],
-      (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time1],
-      currentTimeBlend.weight);
-  }
+    TimeMixPalettes(
+        palettes,
+        gPlttBufferUnfaded,
+        gPlttBufferFaded,
+        (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time0],
+        (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time1],
+        currentTimeBlend.weight
+    );
+    }
 }
 
 u8 UpdateSpritePaletteWithTime(u8 paletteNum) {
   if (MapHasNaturalLight(gMapHeader.mapType)) {
-    u16 offset;
-    if (GetSpritePaletteTagByPaletteNum(paletteNum) >> 15)
-      return paletteNum;
-    offset = (paletteNum + 16) << 4;
-    TimeMixPalettes(1,
-      gPlttBufferUnfaded + offset,
-      gPlttBufferFaded + offset,
-      (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time0],
-      (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time1],
-      currentTimeBlend.weight);
-  }
-  return paletteNum;
+        if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
+        return paletteNum;
+    TimeMixPalettes(
+        1,
+        &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)],
+        &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)],
+        (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time0],
+        (struct BlendSettings *)&gTimeOfDayBlend[currentTimeBlend.time1],
+        currentTimeBlend.weight
+    );
+    }
+    return paletteNum;
 }
 
 static void OverworldBasic(void)
@@ -1723,18 +1857,19 @@ static void OverworldBasic(void)
     // Every minute if no palette fade is active, update TOD blending as needed
     if (!gPaletteFade.active && ++gTimeUpdateCounter >= 3600) {
       struct TimeBlendSettings cachedBlend = {
-        .time0 = currentTimeBlend.time0,
-        .time1 = currentTimeBlend.time1,
-        .weight = currentTimeBlend.weight,
-      };
-      gTimeUpdateCounter = 0;
-      UpdateTimeOfDay();
-      if (cachedBlend.time0 != currentTimeBlend.time0
-       || cachedBlend.time1 != currentTimeBlend.time1
-       || cachedBlend.weight != currentTimeBlend.weight) {
+            .time0 = currentTimeBlend.time0,
+            .time1 = currentTimeBlend.time1,
+            .weight = currentTimeBlend.weight,
+        };
+        gTimeUpdateCounter = 0;
+        UpdateTimeOfDay();
+        if (cachedBlend.time0 != currentTimeBlend.time0
+            || cachedBlend.time1 != currentTimeBlend.time1
+            || cachedBlend.weight != currentTimeBlend.weight)
+        {
            UpdateAltBgPalettes(PALETTES_BG);
            UpdatePalettesWithTime(PALETTES_ALL);
-       }
+        }
     }
 }
 
@@ -3518,6 +3653,8 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         sprite->coordOffsetEnabled = TRUE;
         sprite->data[0] = linkPlayerId;
         objEvent->triggerGroundEffectsOnMove = 0;
+        objEvent->localId = OBJ_EVENT_ID_DYNAMIC_BASE + linkPlayerId;
+        SetUpShadow(objEvent, sprite);
     }
 }
 

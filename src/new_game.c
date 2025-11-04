@@ -123,6 +123,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsMusicOnOff = 0;
     gSaveBlock2Ptr->optionsNewBackgrounds = 1; //HnS
     gSaveBlock2Ptr->optionsRunType = 1;
+    gSaveBlock2Ptr->optionsNewBattleUI= 0;
 }
 
 static void ClearPokedexFlags(void)
@@ -240,8 +241,8 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     RandomizeTypeEffectivenessListEWRAM(Random32());
-    if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (gSaveBlock1Ptr->tx_Challenges_Nuzlocke))
-        gSaveBlock1Ptr->tx_Features_PkmnDeath = 0;
+    if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (gSaveBlock1Ptr->tx_Challenges_Nuzlocke))
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 0;
 
     HardPrev ? FlagSet(FLAG_DIFFICULTY_HARD) : FlagClear(FLAG_DIFFICULTY_HARD);
     TMPrev ? FlagSet(FLAG_FINITE_TMS) : FlagClear(FLAG_FINITE_TMS);
@@ -286,7 +287,6 @@ void CheckIfRandomizerIsActive(void)
         || (gSaveBlock1Ptr->tx_Random_Trainer == 1)
         || (gSaveBlock1Ptr->tx_Random_Evolutions == 1)
         || (gSaveBlock1Ptr->tx_Random_EvolutionMethods == 1)
-        || (gSaveBlock1Ptr->tx_Random_OneForOne == 1)
         || (gSaveBlock1Ptr->tx_Random_Items == 1)))
             FlagSet(FLAG_WT_ENABLED_RANDOMIZER);
 }

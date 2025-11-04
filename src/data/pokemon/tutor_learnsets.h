@@ -36,9 +36,9 @@ const u16 gTutorMoves[TUTOR_MOVE_COUNT] =
     [TUTOR_MOVE_HYDRO_CANNON] = MOVE_HYDRO_CANNON,
 };
 
-#define TUTOR(move) (1u << (TUTOR_##move))
+#define TUTOR(move) (1ULL << (TUTOR_##move))
 
-static const u32 sTutorLearnsets[] =
+static const u64 sTutorLearnsets[] =
 {
     [SPECIES_NONE]             = (0),
 
@@ -3391,12 +3391,14 @@ static const u32 sTutorLearnsets[] =
                                 | TUTOR(MOVE_COUNTER)
                                 | TUTOR(MOVE_SEISMIC_TOSS)
                                 | TUTOR(MOVE_MIMIC)
+                                | TUTOR(MOVE_METRONOME)
                                 | TUTOR(MOVE_SUBSTITUTE)
                                 | TUTOR(MOVE_HEADBUTT)
                                 | TUTOR(MOVE_SNORE)
                                 | TUTOR(MOVE_ICY_WIND)
                                 | TUTOR(MOVE_ENDURE)
                                 | TUTOR(MOVE_MUD_SLAP)
+                                | TUTOR(MOVE_ICE_PUNCH)
                                 | TUTOR(MOVE_SWAGGER)
                                 | TUTOR(MOVE_SLEEP_TALK)
                                 | TUTOR(MOVE_SWIFT)),

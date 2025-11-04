@@ -52,7 +52,7 @@ EverGrandeCity_ChampionsRoom_EventScript_Wallace::
 EverGrandeCity_ChampionsRoom_EventScript_WallaceRematch::
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
 	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech2, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLACE2, EverGrandeCity_ChampionsRoom_Text_Defeat2
+	trainerbattle_no_intro TRAINER_GRETA_BF_BRAIN, EverGrandeCity_ChampionsRoom_Text_Defeat2
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated2
 	end
 

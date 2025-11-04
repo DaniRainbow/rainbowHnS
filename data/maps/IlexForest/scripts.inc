@@ -168,6 +168,7 @@ IlexForest_EventScript_Farfetchd_4B::
 
 IlexForest_EventScript_Farfetchd_Leave::
 	goto_if_eq VAR_FACING, DIR_EAST, IlexForest_EventScript_Farfetchd_Return
+	goto_if_eq VAR_FACING, DIR_SOUTH, IlexForest_EventScript_Farfetchd_Return
 	applymovement LOCALID_ILEX_FOREST_FARFETCHD_1, IlexForest_Movement_Farfetchd_Leave
 	waitmovement 0
 	setobjectxyperm LOCALID_ILEX_FOREST_FARFETCHD_1, 28, 42
@@ -182,6 +183,7 @@ IlexForest_EventScript_Farfetchd_Return::
 	setvar VAR_ILEX_FOREST_FARFETCHD, 0
 	applymovement LOCALID_ILEX_FOREST_FARFETCHD_1, IlexForest_Movement_Farfetchd_Return
 	waitmovement 0
+	setobjectxyperm LOCALID_ILEX_FOREST_FARFETCHD_1, 42, 47
 	release
 	end
 IlexForest_EventScript_Farfetchd_Done::

@@ -3,7 +3,6 @@
 
 #include "constants/moves.h"
 
-#define SPECIES_SHINY_TAG 500
 #define N_FOLLOWER_HAPPY_MESSAGES 31
 #define N_FOLLOWER_NEUTRAL_MESSAGES 14
 #define N_FOLLOWER_SAD_MESSAGES 3
@@ -144,6 +143,7 @@ extern const struct MonCoords gMonBackPicCoords[];
 extern const struct CompressedSpriteSheet gMonBackPicTable[];
 extern const struct CompressedSpritePalette gMonPaletteTable[];
 extern const struct CompressedSpritePalette gMonShinyPaletteTable[];
+extern const struct CompressedSpritePalette gMonShinyPaletteTable_Modern[];
 extern const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[];
 extern const struct MonCoords gTrainerFrontPicCoords[];
 extern const struct CompressedSpriteSheet gTrainerFrontPicTable[];

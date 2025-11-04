@@ -34,8 +34,8 @@ CianwoodPokemoncenter_EventScript_FisherGiveTentacool::
 
 CianwoodPokemoncenter_Text_Fisher1:
 	.string "As far as water POKéMON go,\n"
-	.string "tentacool is the best by a nautical\l"
-	.string "mile!$"
+	.string "TENTACOOL is the best by a\l"
+	.string "nautical mile!$"
 
 CianwoodPokemoncenter_Text_Fisher2:
 	.string "You seem like you need a water\n"

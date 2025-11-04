@@ -33,6 +33,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerBot::
 	removeobject LOCALID_GOLDENROD_UNDERGROUND_KIMONO
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	releaseall
 	end
 
 GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
@@ -60,6 +61,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
 	removeobject LOCALID_GOLDENROD_UNDERGROUND_KIMONO
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	releaseall
 	end
 
 

@@ -3244,6 +3244,36 @@ extern const u32 gMonShinyPalette_DoubleQuestionMark[];
 extern const u32 gMonStillFrontPic_DoubleQuestionMark[];
 extern const u16 gMonIconPalettes[][16];
 
+//Modern Shinies
+extern const u32 gMonShinyPalette_Modern_Pikachu[];
+extern const u32 gMonShinyPalette_Modern_Pichu[];
+extern const u32 gMonShinyPalette_Modern_Raichu[];
+extern const u32 gMonShinyPalette_Modern_Vaporeon[];
+extern const u32 gMonShinyPalette_Modern_Pikachu[];
+extern const u32 gMonShinyPalette_Modern_Raichu[];
+extern const u32 gMonShinyPalette_Modern_Pichu[];
+extern const u32 gMonShinyPalette_Modern_Vaporeon[];
+extern const u32 gMonShinyPalette_Modern_Jolteon[];
+extern const u32 gMonShinyPalette_Modern_Flareon[];
+extern const u32 gMonShinyPalette_Modern_Regice[];
+extern const u32 gMonShinyPalette_Modern_Heracross[];
+extern const u32 gMonShinyPalette_Modern_Haunter[];
+extern const u32 gMonShinyPalette_Modern_Gengar[];
+extern const u32 gMonShinyPalette_Modern_Scyther[];
+extern const u32 gMonShinyPalette_Modern_Blaziken[];
+extern const u32 gMonShinyPalette_Modern_Xatu[];
+extern const u32 gMonShinyPalette_Modern_Paras[];
+extern const u32 gMonShinyPalette_Modern_Chinchou[];
+extern const u32 gMonShinyPalette_Modern_Zapdos[];
+extern const u32 gMonShinyPalette_Modern_Elekid[];
+extern const u32 gMonShinyPalette_Modern_Farfetchd[];
+extern const u32 gMonShinyPalette_Modern_Lanturn[];
+extern const u32 gMonShinyPalette_Modern_Marowak[];
+extern const u32 gMonShinyPalette_Modern_Phanpy[];
+extern const u32 gMonShinyPalette_Modern_Lapras[];
+extern const u32 gMonShinyPalette_Modern_Tentacool[];
+extern const u32 gMonShinyPalette_Modern_Tentacruel[];
+
 // trainer sprites
 extern const u32 gTrainerFrontPic_Hiker[];
 extern const u32 gTrainerFrontPic_RocketGruntM[];
@@ -4675,11 +4705,16 @@ extern const u32 gShopMenu_Tilemap[];
 extern const u32 gShopMenu_Pal[];
 extern const u32 gShopMenuMoney_Gfx[];
 
-extern const u32 gBattleInterface_BallStatusBarGfx[];
-extern const u8 gBattleInterface_BallDisplayGfx[];
-extern const u16 gBattleInterface_BallStatusBarPal[];
-extern const u16 gBattleInterface_BallDisplayPal[];
-extern const u8 gHealthboxElementsGfxTable[][32];
+extern const u32 gBattleInterface_BallStatusBarGfxGen4[];
+extern const u8 gBattleInterface_BallDisplayGfxGen4[];
+extern const u32 gBattleInterface_BallStatusBarGfxGen3[];
+extern const u8 gBattleInterface_BallDisplayGfxGen3[];
+extern const u16 gBattleInterface_BallStatusBarPalGen4[];
+extern const u16 gBattleInterface_BallDisplayPalGen4[];
+extern const u16 gBattleInterface_BallStatusBarPalGen3[];
+extern const u16 gBattleInterface_BallDisplayPalGen3[];
+extern const u8 gHealthboxElementsGfxTableGen4[][32];
+extern const u8 gHealthboxElementsGfxTableGen3[][32];
 extern const u8 ALIGNED(4) gNuzlockeFirstEncounterIndicatorGfx[];
 
 extern const u16 gNamingScreenMenu_Pal[6][16];
@@ -4710,15 +4745,23 @@ extern const u32 gBattleInterfaceGfx_BattleBar[];
 extern const u32 gSubstituteDollBackGfx[];
 extern const u32 gSubstituteDollFrontGfx[];
 extern const u32 gSubstituteDollPal[];
-extern const u32 gHealthboxSinglesPlayerGfx[];
-extern const u32 gHealthboxSinglesPlayerGfx_Frontier[];
-extern const u32 gHealthboxSinglesOpponentGfx[];
-extern const u32 gHealthboxDoublesPlayerGfx[];
-extern const u32 gHealthboxDoublesOpponentGfx[];
-extern const u32 gHealthboxSafariGfx[];
+extern const u32 gHealthboxSinglesPlayerGfxGen4[];
+extern const u32 gHealthboxSinglesPlayerGfx_FrontierGen4[];
+extern const u32 gHealthboxSinglesOpponentGfxGen4[];
+extern const u32 gHealthboxDoublesPlayerGfxGen4[];
+extern const u32 gHealthboxDoublesOpponentGfxGen4[];
+extern const u32 gHealthboxSafariGfxGen4[];
+extern const u32 gHealthboxSinglesPlayerGfxGen3[];
+extern const u32 gHealthboxSinglesPlayerGfx_FrontierGen3[];
+extern const u32 gHealthboxSinglesOpponentGfxGen3[];
+extern const u32 gHealthboxDoublesPlayerGfxGen3[];
+extern const u32 gHealthboxDoublesOpponentGfxGen3[];
+extern const u32 gHealthboxSafariGfxGen3[];
 extern const u32 gBlankGfxCompressed[];
-extern const u16 gBattleInterface_BallStatusBarPal[];
-extern const u16 gBattleInterface_BallDisplayPal[];
+extern const u16 gBattleInterface_BallStatusBarPalGen4[];
+extern const u16 gBattleInterface_BallDisplayPalGen4[];
+extern const u16 gBattleInterface_BallStatusBarPalGen3[];
+extern const u16 gBattleInterface_BallDisplayPalGen3[];
 
 extern const u32 gSwapLineGfx[];
 extern const u32 gSwapLinePal[];
@@ -5427,7 +5470,8 @@ extern const u32 gBattleAnimBgImage_Surf[];
 extern const u32 gBattleAnimBgPalette_Surf[];
 extern const u32 gBattleAnimBackgroundImageMuddyWater_Pal[];
 
-extern const u32 gEnemyMonShadow_Gfx[];
+extern const u32 gEnemyMonShadow_GfxGen4[];
+extern const u32 gEnemyMonShadow_GfxGen3[];
 
 extern const u32 gBattleAnimFogTilemap[];
 
@@ -5704,7 +5748,26 @@ extern const u32 gBattleAnimSpritePal_DragonPulseRing[];
 extern const u32 gBattleAnimSpriteGfx_PurpleJab[];
 extern const u32 gBattleAnimSpritePal_PurpleJab[];
 
+extern const u32 gTrainerFrontPic_SalonMaidenAnabel[];
+extern const u32 gTrainerFrontPic_DomeAceTucker[];
+extern const u32 gTrainerFrontPic_PalaceMavenSpenser[];
+extern const u32 gTrainerFrontPic_ArenaTycoonGreta[];
+extern const u32 gTrainerFrontPic_FactoryHeadNoland[];
+extern const u32 gTrainerFrontPic_PikeQueenLucy[];
+extern const u32 gTrainerFrontPic_PyramidKingBrandon[];
+
+extern const u32 gTrainerPalette_SalonMaidenAnabel[];
+extern const u32 gTrainerPalette_DomeAceTucker[];
+extern const u32 gTrainerPalette_PalaceMavenSpenser[];
+extern const u32 gTrainerPalette_ArenaTycoonGreta[];
+extern const u32 gTrainerPalette_FactoryHeadNoland[];
+extern const u32 gTrainerPalette_PikeQueenLucy[];
+extern const u32 gTrainerPalette_PyramidKingBrandon[];
+
 extern const u8 gMonMarkingsMenu_Gfx[];
 extern const u16 gMonMarkingsMenu_Pal[];
+
+extern const u32 gItemIcon_HealingHeart[];
+extern const u32 gItemIconPalette_HealingHeart[];
 
 #endif //GUARD_GRAPHICS_H

@@ -63,6 +63,9 @@
 #include "easy_chat.h"
 #include "strings.h"
 #include "constants/battle_frontier.h"
+#include "list_menu.h"
+#include "malloc.h"
+#include "starter_choose.h"
 
 //HnS For headbutt
 // From party_menu.c (that TU owns the tutor data)
@@ -90,6 +93,7 @@ extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
+static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 // This is defined in here so the optimizer can't see its value when compiling
 // script.c.
@@ -1036,6 +1040,20 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext *ctx)
     return FALSE;
 }
 
+struct ObjectEvent * ScriptHideFollower(void) {
+    struct ObjectEvent *obj = GetFollowerObject();
+
+    if (obj == NULL || obj->invisible)
+        return NULL;
+
+    ClearObjectEventMovement(obj, &gSprites[obj->spriteId]);
+    gSprites[obj->spriteId].animCmdIndex = 0; // Reset start frame of animation
+    // Note: ScriptMovement_ returns TRUE on error
+    if (ScriptMovement_StartObjectMovementScript(obj->localId, obj->mapGroup, obj->mapNum, EnterPokeballMovement))
+        return NULL;
+    return obj;
+}
+
 bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
@@ -1050,17 +1068,11 @@ bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
     gObjectEvents[GetObjectEventIdByLocalId(localId)].directionOverwrite = DIR_NONE;
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
-    objEvent = GetFollowerObject();
-    // Force follower into pokeball
-    if (localId != OBJ_EVENT_ID_FOLLOWER
-        && !FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT)
-        && (movementScript < Common_Movement_FollowerSafeStart || movementScript > Common_Movement_FollowerSafeEnd)
-        && (objEvent = GetFollowerObject())
-        && !objEvent->invisible)
+    if (localId != OBJ_EVENT_ID_FOLLOWER &&
+        !FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT)
+        && (movementScript < Common_Movement_FollowerSafeStart || movementScript > Common_Movement_FollowerSafeEnd))
     {
-        ClearObjectEventMovement(objEvent, &gSprites[objEvent->spriteId]);
-        gSprites[objEvent->spriteId].animCmdIndex = 0; // Reset start frame of animation
-        ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, EnterPokeballMovement);
+        ScriptHideFollower();
     }
     return FALSE;
 }
@@ -1251,10 +1263,10 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
 {
-    u16 graphicsId = ScriptReadByte(ctx); // Support u16 in createvobject
+    u16 graphicsId = ScriptReadHalfword(ctx); // Support u16 in createvobject
     u8 virtualObjId = ScriptReadByte(ctx);
     u16 x = VarGet(ScriptReadHalfword(ctx));
-    u32 y = VarGet(ScriptReadHalfword(ctx));
+    u16 y = VarGet(ScriptReadHalfword(ctx));
     u8 elevation = ScriptReadByte(ctx);
     u8 direction = ScriptReadByte(ctx);
 
@@ -1281,8 +1293,11 @@ bool8 ScrCmd_lockall(struct ScriptContext *ctx)
     }
     else
     {
+        struct ObjectEvent *followerObj = GetFollowerObject();
         FreezeObjects_WaitForPlayer();
         SetupNativeScript(ctx, IsFreezePlayerFinished);
+        if (FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT) && followerObj) // Unfreeze follower object (conditionally)
+            UnfreezeObjectEvent(followerObj);
         return TRUE;
     }
 }
@@ -1439,6 +1454,101 @@ bool8 ScrCmd_yesnobox(struct ScriptContext *ctx)
     }
 }
 
+static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count)
+{
+    u32 i,j;
+    struct ListMenuItem tmp;
+    for (i = 0; i < count - 1; ++i)
+    {
+        for (j = 0; j < count - i - 1; ++j)
+        {
+            if (items[j].id > items[j+1].id)
+            {
+                tmp = items[j];
+                items[j] = items[j+1];
+                items[j+1] = tmp;
+            }
+        }
+    }
+}
+
+#define DYN_MULTICHOICE_DEFAULT_MAX_BEFORE_SCROLL 6
+
+bool8 ScrCmd_dynmultichoice(struct ScriptContext *ctx)
+{
+    u32 i;
+    u32 left = VarGet(ScriptReadHalfword(ctx));
+    u32 top = VarGet(ScriptReadHalfword(ctx));
+    bool32 ignoreBPress = ScriptReadByte(ctx);
+    u32 maxBeforeScroll = ScriptReadByte(ctx);
+    bool32 shouldSort = ScriptReadByte(ctx);
+    u32 initialSelected = VarGet(ScriptReadHalfword(ctx));
+    u32 callbackSet = ScriptReadByte(ctx);
+    u32 initialRow = 0;
+    // Read vararg
+    u32 argc = ScriptReadByte(ctx);
+    struct ListMenuItem *items;
+
+    if (argc == 0)
+        return FALSE;
+
+    if (maxBeforeScroll == 0xFF)
+        maxBeforeScroll = DYN_MULTICHOICE_DEFAULT_MAX_BEFORE_SCROLL;
+
+    if ((const u8*) ScriptPeekWord(ctx) != NULL)
+    {
+        items = AllocZeroed(sizeof(struct ListMenuItem) * argc);
+        for (i = 0; i < argc; ++i)
+        {
+            u8 *nameBuffer = Alloc(100);
+            const u8 *arg = (const u8 *) ScriptReadWord(ctx);
+            StringExpandPlaceholders(nameBuffer, arg);
+            items[i].name = nameBuffer;
+            items[i].id = i;
+            if (i == initialSelected)
+                initialRow = i;
+        }
+    }
+    else
+    {
+        argc = MultichoiceDynamic_StackSize();
+        items = AllocZeroed(sizeof(struct ListMenuItem) * argc);
+        for (i = 0; i < argc; ++i)
+        {
+            struct ListMenuItem *currentItem = MultichoiceDynamic_PeekElementAt(i);
+            items[i] = *currentItem;
+            if (currentItem->id == initialSelected)
+                initialRow = i;
+        }
+        if (shouldSort)
+            DynamicMultichoiceSortList(items, argc);
+        MultichoiceDynamic_DestroyStack();
+    }
+
+    if (ScriptMenu_MultichoiceDynamic(left, top, argc, items, ignoreBPress, maxBeforeScroll, initialRow, callbackSet))
+    {
+        ScriptContext_Stop();
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+bool8 ScrCmd_dynmultipush(struct ScriptContext *ctx)
+{
+    u8 *nameBuffer = Alloc(100);
+    const u8 *name = (const u8*) ScriptReadWord(ctx);
+    u32 id = VarGet(ScriptReadHalfword(ctx));
+    struct ListMenuItem item;
+    StringExpandPlaceholders(nameBuffer, name);
+    item.name = nameBuffer;
+    item.id = id;
+    MultichoiceDynamic_PushElement(item);
+    return FALSE;
+}
+
 bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
 {
     u8 left = ScriptReadByte(ctx);
@@ -1538,6 +1648,14 @@ bool8 ScrCmd_showmonpic(struct ScriptContext *ctx)
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
 
+    // Needed for starter randomization
+    if (((gSaveBlock1Ptr->tx_Random_Starter) == 1) && (FlagGet(FLAG_SYS_POKEMON_GET) == FALSE) ||
+        IsOneTypeChallengeActive() && (FlagGet(FLAG_SYS_POKEMON_GET) == FALSE))
+    {
+        // copies random starter species into VAR_TEMP_2
+        species = GetStarterPokemon(VarGet(VAR_STARTER_MON));
+        VarSet(VAR_TEMP_2, species);
+    }
     ScriptMenu_ShowPokemonPic(species, x, y);
     return FALSE;
 }
@@ -1641,6 +1759,18 @@ bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
     u16 species = VarGet(ScriptReadHalfword(ctx)) & ((1 << 10) - 1); // ignore possible shiny / form bits
 
     StringCopy(sScriptStringVars[stringVarIndex], gSpeciesNames[species]);
+    return FALSE;
+}
+
+//Needed for starter randomization
+bool8 ScrCmd_buffermoncategory(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 species = VarGet(ScriptReadHalfword(ctx));
+
+    species = GetStarterPokemon(VarGet(VAR_STARTER_MON));
+    VarSet(VAR_TEMP_2, species);
+    StringCopy(sScriptStringVars[stringVarIndex], GetPokedexCategoryName(SpeciesToNationalPokedexNum(species)));
     return FALSE;
 }
 
@@ -2500,6 +2630,26 @@ bool8 ScrCmd_deleteparty(void)
         ZeroMonData(&gPlayerParty[i]);
 }
 
+bool8 ScrFunc_hidefollower(struct ScriptContext *ctx) {
+    bool16 wait = VarGet(ScriptReadHalfword(ctx));
+    struct ObjectEvent *obj;
+
+    if ((obj = ScriptHideFollower()) != NULL && wait) {
+        sMovingNpcId = obj->localId;
+        sMovingNpcMapGroup = obj->mapGroup;
+        sMovingNpcMapNum = obj->mapNum;
+        SetupNativeScript(ctx, WaitForMovementFinish);
+    }
+
+    // Just in case, prevent `applymovement`
+    // from hiding the follower again
+    if (obj)
+        FlagSet(FLAG_SAFE_FOLLOWER_MOVEMENT);
+
+    // execute next script command with no delay
+    return TRUE;
+}
+
 //========================================================================================================================================================================
 //====== Start HnS SCRCMDs ==================================================================================================================================================================
 //========================================================================================================================================================================
@@ -2644,27 +2794,27 @@ bool8 ScrCmd_givenamedmon(struct ScriptContext *ctx)
         personality = Random32();
         break;
     case 4: // DRATINI (always shiny + Adamant)
-        {
-            species  = SPECIES_DRATINI;
-            level    = 15;
-            item     = ITEM_NONE;
-            nickname = NULL;
-            otName   = gSaveBlock2Ptr->playerName;
+    {
+        species  = SPECIES_DRATINI;
+        level    = 15;
+        item     = ITEM_NONE;
+        nickname = NULL;
+        otName   = gSaveBlock2Ptr->playerName;
 
-            // Build full 32-bit Trainer ID (TID|SID)
-            u32 fullId = ((u32)gSaveBlock2Ptr->playerTrainerId[3] << 24)
-                    | ((u32)gSaveBlock2Ptr->playerTrainerId[2] << 16)
-                    | ((u32)gSaveBlock2Ptr->playerTrainerId[1] <<  8)
-                    | ((u32)gSaveBlock2Ptr->playerTrainerId[0]);
-            u16 tid = (u16)(fullId & 0xFFFF);
-            u16 sid = (u16)(fullId >> 16);
+        // Build full 32-bit Trainer ID (TID|SID)
+        u32 fullId = ((u32)gSaveBlock2Ptr->playerTrainerId[3] << 24)
+                   | ((u32)gSaveBlock2Ptr->playerTrainerId[2] << 16)
+                   | ((u32)gSaveBlock2Ptr->playerTrainerId[1] <<  8)
+                   | ((u32)gSaveBlock2Ptr->playerTrainerId[0]);
+        u16 tid = (u16)(fullId & 0xFFFF);
+        u16 sid = (u16)(fullId >> 16);
 
-            // Make a shiny, Adamant PID for this TID/SID
-            personality = MakeShinyPidWithNature(tid, sid, NATURE_ADAMANT);
+        // Make a shiny, Adamant PID for this TID/SID
+        personality = MakeShinyPidWithNature(tid, sid, NATURE_ADAMANT);
 
-            otId = fullId;   // pass full 32-bit ID to CreateBoxMon (OT_ID_PRESET)
-            break;
-        }
+        otId = fullId;   // pass full 32-bit ID to CreateBoxMon (OT_ID_PRESET)
+        break;
+    }
     default:
         gSpecialVar_Result = MON_CANT_GIVE;
         return FALSE;
@@ -3105,5 +3255,26 @@ bool8 ScrCmd_givebp(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_checknuzlocke(struct ScriptContext *ctx)
+{
+    if(gSaveBlock1Ptr->tx_Challenges_Nuzlocke==1){
+        gSpecialVar_Result = TRUE;
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }     
+    return FALSE;
+}
 
-
+bool8 ScrCmd_checkrandomizer(struct ScriptContext *ctx)
+{
+    if(gSaveBlock1Ptr->tx_Random_Moves==1){
+        gSpecialVar_Result = TRUE;
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }     
+    return FALSE;
+}

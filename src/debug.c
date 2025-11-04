@@ -430,7 +430,6 @@ extern const u8 gAbilityNames[][ABILITY_NAME_LENGTH + 1];
 // *******************************
 //Maps per map group COPY FROM /include/constants/map_groups.h
 static const u8 MAP_GROUP_COUNT[] = {71, 5, 5, 6, 5, 29, 9, 10, 6, 6, 6, 5, 5, 7, 6, 9, 7, 18, 10, 12, 1, 7, 27, 28, 87, 0, 27, 126, 113, 126, 74, 97, 0};
-
 // Text
 // General
 static const u8 sDebugText_True[] =          _("TRUE");
@@ -454,7 +453,7 @@ static const u8 sDebugText_Cancel[] =           _("Cancel");
 // Script menu
 static const u8 sDebugText_Util_Script_1[] =               _("Open Challenges Menu");
 static const u8 sDebugText_Util_Script_2[] =               _("Grow Berry Tree");
-static const u8 sDebugText_Util_Script_3[] =               _("Script 3 (Empty)");
+static const u8 sDebugText_Util_Script_3[] =               _("Nuzlocke Mode Info");
 static const u8 sDebugText_Util_Script_4[] =               _("Script 4 (Empty)");
 static const u8 sDebugText_Util_Script_5[] =               _("Script 5 (Empty)");
 static const u8 sDebugText_Util_Script_6[] =               _("Script 6 (Empty)");

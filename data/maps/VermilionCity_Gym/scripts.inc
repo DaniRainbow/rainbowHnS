@@ -358,8 +358,10 @@ VermilionGym_Text_GuitaristVincentBeaten:
 	.string "Ooh, how shocking!$"
 
 VermilionGym_Text_GuitaristVincentAfter:
-	.string "If the GYM's traps were working,\n"
-	.string "you would have been toast…$"
+	.string "Mom told me not to quit my\n"
+	.string "day job, but what am I supposed\l"
+	.string "to do when I'm not finding\l"
+	.string "success there either?$"
 
 VermilionGym_Text_JugglerHortonSeen:
 	.string "I'm going to take you down!\n"
