@@ -155,6 +155,7 @@ static void ClearFrontierRecord(void)
 static void WarpToTruck(void)
 {
     SaveData_TxRandomizerAndChallenges();
+    NewGameInitPCItems();
     SetWarpDestination(MAP_GROUP(NEW_BARK_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(NEW_BARK_TOWN_PLAYERS_HOUSE_2F), 1, 0, 0);
     WarpIntoMap();
 }
@@ -220,7 +221,6 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     gSaveBlock1Ptr->registeredLongItem = 0;
     ClearBag();
-    NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();
