@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 61,
-      "y": 53,
+      "x": 59,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -641,8 +641,8 @@
   ],
   "warp_events": [
     {
-      "x": 31,
-      "y": 11,
+      "x": 30,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_WHIRL_ISLANDS_B1F",
       "dest_warp_id": "4"
