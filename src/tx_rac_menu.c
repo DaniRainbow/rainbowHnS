@@ -901,7 +901,7 @@ static const u8 sText_Description_Difficulty_MaxPartyIvs_On[]           = _("The
 static const u8 sText_Description_Difficulty_MaxPartyIvs_On_HP[]        = _("IVs are set between 30 and 31\nto allow different Hidden Powers.");
 static const u8 *const sOptionMenuItemDescriptionsDifficulty[MENUITEM_DIFFICULTY_COUNT][4] =
 {
-    [MENUITEM_DIFFICULTY_TRAINERS]              = {sText_Description_Difficulty_Trainers_Hard,   sText_Description_Difficulty_Trainers_Normal,       sText_Empty,                                    sText_Empty},
+    [MENUITEM_DIFFICULTY_TRAINERS]              = {sText_Description_Difficulty_Trainers_Normal, sText_Description_Difficulty_Trainers_Hard,         sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_PARTY_LIMIT]           = {sText_Description_Difficulty_Party_Limit,        sText_Empty,                                        sText_Empty,                                    sText_Empty},
     [MENUITEM_DIFFICULTY_LEVEL_CAP]             = {sText_Description_Difficulty_LevelCap_Base,      sText_Description_Difficulty_LevelCap_Normal,       sText_Description_Difficulty_LevelCap_Hard,     sText_Empty},
     [MENUITEM_DIFFICULTY_EXP_MULTIPLIER]        = {sText_Description_Difficulty_ExpMultiplier_1_0,  sText_Description_Difficulty_ExpMultiplier_1_5,     sText_Description_Difficulty_ExpMultiplier_2_0, sText_Description_Difficulty_ExpMultiplier_0_0},
@@ -1481,7 +1481,7 @@ void CB2_InitTxRandomizerChallengesMenu(void)
         sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_DELETION]          = gSaveBlock1Ptr->tx_Nuzlocke_Deletion;
         
         // MENU_DIFFICULTY
-        sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS]       = gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty;
+        sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS]       = gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty; // Direct: 0=normal shows "NO", 1=hard shows "YES"
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_PARTY_LIMIT]    = gSaveBlock1Ptr->tx_Challenges_PartyLimit;
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_LEVEL_CAP]      = gSaveBlock1Ptr->tx_Challenges_LevelCap;
         sOptions->sel_difficulty[MENUITEM_DIFFICULTY_EXP_MULTIPLIER] = gSaveBlock1Ptr->tx_Challenges_ExpMultiplier;
@@ -1863,7 +1863,7 @@ void SaveData_TxRandomizerAndChallenges(void)
         gSaveBlock1Ptr->tx_Nuzlocke_Nicknaming      = FALSE;
     }
     // MENU_DIFFICULTY
-    gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty       = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS];
+    gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty       = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_TRAINERS]; // Direct: "NO"=0 saves as 0 (normal), "YES"=1 saves as 1 (hard)
     gSaveBlock1Ptr->tx_Challenges_PartyLimit    = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_PARTY_LIMIT];
     gSaveBlock1Ptr->tx_Challenges_LevelCap      = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_LEVEL_CAP];
     gSaveBlock1Ptr->tx_Challenges_ExpMultiplier = sOptions->sel_difficulty[MENUITEM_DIFFICULTY_EXP_MULTIPLIER];
@@ -2396,7 +2396,11 @@ static void DrawChoices_Challenges_ItemsPlayer(int selection, int y)
 static void DrawChoices_Challenges_TrainerDifficulty(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_DIFFICULTY_TRAINERS);
-    DrawChoices_Challenges_YesNo(selection, y, active);
+    u8 styles[2] = {0};
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(sText_No, 104, y, styles[0], active);
+    DrawOptionMenuChoice(sText_Yes, GetStringRightAlignXOffset(1, sText_Yes, 198), y, styles[1], active);
 }
 static void DrawChoices_Challenges_ItemsTrainer(int selection, int y)
 {
