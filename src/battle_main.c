@@ -2234,6 +2234,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 CreateMon(&party[i], data[i].species, GetScaledLevel(data[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &data[i].heldItem);
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    SetMonData(&party[i], MON_DATA_MOVE1 + j, &data[i].moves[j]);
+                    SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[data[i].moves[j]].pp);
+                }
             break;
         }
         }
