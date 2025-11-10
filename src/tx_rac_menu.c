@@ -1957,7 +1957,7 @@ void SaveData_TxRandomizerAndChallenges(void)
     }
     if (gSaveBlock1Ptr->tx_Nuzlocke_EasyMode)
     {
-        gSaveBlock1Ptr->tx_Nuzlocke_RareCandy        = sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_RARE_CANDY];
+        gSaveBlock1Ptr->tx_Nuzlocke_RareCandy        = !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_RARE_CANDY];
     }
     if (gSaveBlock1Ptr->tx_Challenges_Nuzlocke)
     {
@@ -1965,7 +1965,7 @@ void SaveData_TxRandomizerAndChallenges(void)
         gSaveBlock1Ptr->tx_Nuzlocke_ShinyClause     = !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_SHINY_CLAUSE];
         gSaveBlock1Ptr->tx_Nuzlocke_Nicknaming      = !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NICKNAMING];
         gSaveBlock1Ptr->tx_Nuzlocke_Deletion        = sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_DELETION];
-        gSaveBlock1Ptr->tx_Nuzlocke_RareCandy        = sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_RARE_CANDY];
+        gSaveBlock1Ptr->tx_Nuzlocke_RareCandy        = !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_RARE_CANDY];
     }
     else
     {
