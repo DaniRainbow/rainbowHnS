@@ -28,7 +28,7 @@ u8 (*const gMovementTypeFuncs_LookAround[])(struct ObjectEvent *, struct Sprite 
     MovementType_LookAround_Step0,
     MovementType_LookAround_Step1,
     MovementType_LookAround_Step2,
-    MovementType_LookAround_Step3,
+    MovementType_Wander_Step3,
     MovementType_LookAround_Step4,
 };
 

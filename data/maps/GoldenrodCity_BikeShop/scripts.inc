@@ -69,15 +69,14 @@ GoldenrodCity_BikeShop_Text_BorrowedBicycle:
     .string "{PLAYER} borrowed a BICYCLE.$"
 
 GoldenrodCity_BikeShop_Text_Mainshop:
+	.string "Business has been hard to come\n"
+	.string "by since we moved from KANTO.\l"
+	.string "We appreciate your help!\p"
 	.string "Can you make sure to show off\n"
 	.string "our patented gear-changing tech?\p"
 	.string "It's as simple as pressing R when\n"
-	.string "you are on your bike but stopped.\p"
-	.string "Beware! You will then go faster!\p"
-	.string "The main shop is at CERULEAN back\n"
-	.string "in KANTO.\p"
-	.string "Say hello to the shop manager if\n"
-	.string "if you happen to go there!$"
+	.string "you are stopped on your bike.\p"
+	.string "Beware! You will then go faster!$"
 
 GoldenrodCity_BikeShop_Text_Refused:
     .string "…sigh… Oh, for the kindness of\n"

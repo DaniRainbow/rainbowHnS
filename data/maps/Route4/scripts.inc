@@ -43,7 +43,7 @@ Route4_Text_BirdKeeperHank_Beaten:
 
 Route4_Text_BirdKeeperHank_AfterBattle:
 	.string "If you have a specific POKéMON that you\n"
-	.string "want to raise, put it out first, then\n"
+	.string "want to raise, put it out first, then\l"
 	.string "switch it right away.\p"
 	.string "That's how to do it.$"
 

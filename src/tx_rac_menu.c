@@ -2307,7 +2307,7 @@ static void DrawChoices_Mode_Classic_Modern_Selector(int selection, int y)
         gSaveBlock1Ptr->tx_Mode_Synchronize = 1;
         sOptions->sel_mode[MENUITEM_MODE_MINTS]                     = !TX_MODE_MINTS;
         gSaveBlock1Ptr->tx_Mode_Mints = 1;
-        FlagClear (FLAG_MINTS_ENABLED);
+        FlagSet (FLAG_MINTS_ENABLED);
         sOptions->sel_mode[MENUITEM_MODE_NEW_CITRUS]                = !TX_MODE_NEW_CITRUS;
         gSaveBlock1Ptr->tx_Mode_New_Citrus = 1;
         //sOptions->sel_mode[MENUITEM_MODE_MODERN_TYPES]              = TX_MODE_MODERN_TYPES;
