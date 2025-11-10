@@ -752,7 +752,7 @@ static bool8 CheckConditions(int selection)
             if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) == 0)
                 return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
             else
-                return !sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
+                return sOptions->sel_nuzlocke[MENUITEM_NUZLOCKE_NUZLOCKE];
         default:                                return TRUE;
         }
     case MENU_DIFFICULTY:
