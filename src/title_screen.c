@@ -449,8 +449,13 @@ static void CreateCopyrightBanner(s16 x, s16 y)
     {
         spriteId = CreateSprite(&sStartCopyrightBannerSpriteTemplate, x, y, 0);
         StartSpriteAnim(&gSprites[spriteId], i + NUM_PRESS_START_FRAMES);
+
+        // Make the version/copyright segments blink like "Press Start"
+        gSprites[spriteId].sAnimate = TRUE;   // <— add this line
+        // (sTimer defaults to 0, so they'll stay in sync with Press Start.)
     }
 }
+
 
 #undef sAnimate
 #undef sTimer
@@ -760,8 +765,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 143); //108 //90
-        CreateCopyrightBanner(START_BANNER_X, 148); 
+        CreatePressStartBanner(START_BANNER_X, 138); //108 //90
+        CreateCopyrightBanner(START_BANNER_X, 148); //version number
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
     }

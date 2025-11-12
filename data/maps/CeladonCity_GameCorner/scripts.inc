@@ -62,6 +62,6 @@ CeladonGameCorner_Text_GymGuide:
 	.string "But I don't have enough coins yet…$"
 
 CeladonGameCorner_Text_Gramps:
-	.string "Hmmm… The odds are surely better\n"
+	.string "Hmmm… The odds are surely\n"
 	.string "better for PIKACHU's line,\l"
 	.string "but... what to do?$"

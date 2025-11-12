@@ -1,5 +1,11 @@
 DarkCave_NorthSide_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, DarkCave_NorthSide_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	.byte 0
+
+DarkCave_NorthSide_OnTransition: 
+	callnative SetTimeBasedEncounters
+	end
 
 DarkCave2_EventScript_Item_BlackFlute::
 	finditem ITEM_BLACK_FLUTE

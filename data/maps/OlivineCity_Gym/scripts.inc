@@ -82,7 +82,7 @@ OlivineCity_Gym_Text_Gent:
 
 OlivineCity_Gym_Text_Gent2:
 	.string "Impressive!\n"
-	.string "You should continue your journey to\n"
+	.string "You should continue your journey to\l"
 	.string "different places.\p"
 	.string "Since you can use SURF, why don't you\n"
 	.string "try it on the LAKE OF RAGE?$"

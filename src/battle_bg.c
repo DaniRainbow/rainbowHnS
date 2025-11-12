@@ -973,13 +973,13 @@ void DrawMainBattleBackground(void)
         {
             LZDecompressVram(gBattleTerrainTiles_Cave, (void *)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTilemap_Cave, (void *)(BG_SCREEN_ADDR(26)));
-            LoadCompressedPalette(gBattleTerrainPalette_Groudon, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
         else
         {
             LZDecompressVram(gBattleTerrainTiles_Cave_2, (void *)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTilemap_Cave_2, (void *)(BG_SCREEN_ADDR(26)));
-            LoadCompressedPalette(gBattleTerrainPalette_Groudon_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            LoadCompressedPalette(gBattleTerrainPalette_Cave_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_KYOGRE)
@@ -988,40 +988,28 @@ void DrawMainBattleBackground(void)
         {
             LZDecompressVram(gBattleTerrainTiles_Water, (void *)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTilemap_Water, (void *)(BG_SCREEN_ADDR(26)));
-            LoadCompressedPalette(gBattleTerrainPalette_Kyogre, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            LoadCompressedPalette(gBattleTerrainPalette_Water, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
         else
         {
             LZDecompressVram(gBattleTerrainTiles_Cave_2, (void *)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTilemap_Cave_2, (void *)(BG_SCREEN_ADDR(26)));
-            LoadCompressedPalette(gBattleTerrainPalette_Underwater_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP); 
+            LoadCompressedPalette(gBattleTerrainPalette_Cave_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_RAYQUAZA)
     {
         if (gSaveBlock2Ptr->optionsNewBackgrounds == 0)
         {
-            LZDecompressVram(gBattleTerrainTiles_Rayquaza, (void *)(BG_CHAR_ADDR(2)));
-            LZDecompressVram(gBattleTerrainTilemap_Rayquaza, (void *)(BG_SCREEN_ADDR(26)));
-            UpdateTimeOfDay();
-            if (gLocalTime.hours >= 0 && gLocalTime.hours < 6)
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza_Night, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-            else if (gLocalTime.hours >= 21 && gLocalTime.hours < 24)
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza_Night, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-            else
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            LZDecompressVram(gBattleTerrainTiles_Cave, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Cave, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
         else
         {
-            LZDecompressVram(gBattleTerrainTiles_Rayquaza_2, (void *)(BG_CHAR_ADDR(2)));
-            LZDecompressVram(gBattleTerrainTilemap_Rayquaza_2, (void *)(BG_SCREEN_ADDR(26)));
-            UpdateTimeOfDay();
-            if (gLocalTime.hours >= 0 && gLocalTime.hours < 6)
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza_2_Night, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-            else if (gLocalTime.hours >= 21 && gLocalTime.hours < 24)
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza_2_Night, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-            else
-                LoadCompressedPalette(gBattleTerrainPalette_Rayquaza_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            LZDecompressVram(gBattleTerrainTiles_Cave_2, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Cave_2, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_Cave_2, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
         }
     }
     else

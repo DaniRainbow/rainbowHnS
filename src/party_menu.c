@@ -1512,18 +1512,21 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
     if (JOY_NEW(START_BUTTON))
         return START_BUTTON;
 
-    if (JOY_NEW(SELECT_BUTTON) && CalculatePlayerPartyCount() >= 2 && !IsInvalidPartyMenuActionType(gPartyMenu.action))
+    if (!InBattlePike())
     {
-        if (gPartyMenu.menuType != PARTY_MENU_TYPE_FIELD)
-            return 0;
-        if (*slotPtr == PARTY_SIZE + 1)
-            return 0;
-        if (gPartyMenu.action != PARTY_ACTION_SWITCH)
+        if (JOY_NEW(SELECT_BUTTON) && CalculatePlayerPartyCount() >= 2 && !IsInvalidPartyMenuActionType(gPartyMenu.action))
         {
-            CreateTask(CursorCb_Switch, 1);
-            return SELECT_BUTTON;
+            if (gPartyMenu.menuType != PARTY_MENU_TYPE_FIELD)
+                return 0;
+            if (*slotPtr == PARTY_SIZE + 1)
+                return 0;
+            if (gPartyMenu.action != PARTY_ACTION_SWITCH)
+            {
+                CreateTask(CursorCb_Switch, 1);
+                return SELECT_BUTTON;
+            }
+            return A_BUTTON; // Select is allowed to act as the A Button while CursorCb_Switch is active.
         }
-        return A_BUTTON; // Select is allowed to act as the A Button while CursorCb_Switch is active.
     }
 
     if (movementDir)
@@ -2541,26 +2544,16 @@ void DisplayPartyMenuStdMessage(u32 stringId)
 
         if (stringId == PARTY_MSG_CHOOSE_MON)
         {
-            u8 enemyNextMonID = *(gBattleStruct->monToSwitchIntoId + B_SIDE_OPPONENT);
-            u16 species = GetMonData(&gEnemyParty[enemyNextMonID], MON_DATA_SPECIES);
-            if (sPartyMenuInternal->chooseHalf)
-                stringId = PARTY_MSG_CHOOSE_MON_AND_CONFIRM;
+            if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD)
+                stringId = PARTY_MSG_CHOOSE_MON_2;
+            else if (gPartyMenu.menuType == PARTY_MENU_TYPE_IN_BATTLE)
+                // Avoid the “Choose a Pokémon for {STR_VAR_2}” template in battle,
+                // since STR_VAR_2 may be unset in some switch paths.
+                stringId = PARTY_MSG_CHOOSE_MON_2;
             else if (!ShouldUseChooseMonText())
                 stringId = PARTY_MSG_CHOOSE_MON_OR_CANCEL;
-            else if (gMain.inBattle){
-               // Checks if the opponent is sending out a new pokemon.
-               if (species >= NUM_SPECIES ||  species == SPECIES_NONE){
-                   species = gBattleMons[B_SIDE_OPPONENT].species;
-                   // Now tries to check if there's any opposing pokemon on the field
-                   if (species >= NUM_SPECIES ||  species == SPECIES_NONE || gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-                       stringId = PARTY_MSG_CHOOSE_MON_2;  // No species on the other side, show the default text.
-               }
-               if (stringId == PARTY_MSG_CHOOSE_MON)
-                   StringCopy(gStringVar2, gSpeciesNames[species]);
-           }
-           else
-               stringId = PARTY_MSG_CHOOSE_MON_2;
         }
+
         DrawStdFrameWithCustomTileAndPalette(*windowPtr, FALSE, 0x4F, 13);
         StringExpandPlaceholders(gStringVar4, sActionStringTable[stringId]);
         AddTextPrinterParameterized(*windowPtr, FONT_NORMAL, gStringVar4, 0, 1, 0, 0);
@@ -4519,9 +4512,18 @@ static bool8 NotUsingHPEVItemOnShedinja(struct Pokemon *mon, u16 item)
 
 static bool8 EV_Item_With_EVs_Disabled(u16 item)
 {
-    if (GetItemEffectType(item) == ITEM_EFFECT_HP_EV || ITEM_EFFECT_ATK_EV || ITEM_EFFECT_SPATK_EV || ITEM_EFFECT_SPDEF_EV || ITEM_EFFECT_SPEED_EV || ITEM_EFFECT_DEF_EV)
+    if ((GetItemEffectType(item) == ITEM_EFFECT_HP_EV) || 
+        (GetItemEffectType(item) == ITEM_EFFECT_ATK_EV) ||
+        (GetItemEffectType(item) == ITEM_EFFECT_SPATK_EV) ||
+        (GetItemEffectType(item) == ITEM_EFFECT_SPDEF_EV) ||
+        (GetItemEffectType(item) == ITEM_EFFECT_SPEED_EV ) ||
+        (GetItemEffectType(item) == ITEM_EFFECT_DEF_EV)) {
         return FALSE;
-    return TRUE;
+    }
+    else 
+    {
+        return TRUE;
+    }
 }
 
 static bool8 IsItemFlute(u16 item)

@@ -6,7 +6,7 @@ Pokémon Heart & Soul brings the classic Johto Region and its iconic story to th
 ![HnS Collage](HnS_Collage_YourAdventure.png)
 
 ## Developer's Note: 
-Development for this project was primarily (95%) a solo-effort that consumed almost all of my free time for the last year. I am not a professional programmer, but I did my best to make the game that I wanted to play. If you'd like to improve, expand upon, or make your own version of HnS, feel free to take advantage of the open source! Please direct any questions to the [Heart & Soul Discord](https://discord.gg/KmuvXJrS9M). I hope you enjoy!
+Development for this project was primarily (95%) a solo-effort that consumed almost all of my free time for the last year. I am not a professional programmer, but I did my best to make the game that I wanted to play. If you'd like to improve, expand upon, or make your own version of HnS, feel free to take advantage of the open source! Please direct any questions to the [Heart & Soul Discord](https://discord.gg/KmuvXJrS9M). Also, the github link in the download section of this post is the ONLY place you will EVER find an official download of this project, and our devs do NOT accept donations. I hope you enjoy!
 
 ## About the game: 
 ### Features
@@ -49,6 +49,7 @@ Development for this project was primarily (95%) a solo-effort that consumed alm
 - Only 50 TMs (The ones from emerald)
 - Swarms are replaced with a 5% Hoenn encounter on each route in Kanto
 - Mom does not take your money
+- No unique Kanto battle music for trainers and gym leaders, only Johto
 - Ruins of alph back room requirements are slightly altered
 - No pokéathalon dome
 - No Battle Frontier

@@ -1,5 +1,6 @@
 #define LEVEL_UP_MOVE(lvl, move) ((lvl << 9) | move)
 
+//There can only be a total of 20 moves in each Pokemon's learnset
 static const u16 sBulbasaurLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 4, MOVE_GROWL),
@@ -4435,7 +4436,7 @@ static const u16 sRaikouLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_EXTREME_SPEED),
     LEVEL_UP_MOVE( 1, MOVE_CHARGE),
     LEVEL_UP_MOVE(11, MOVE_THUNDER_SHOCK),
-    LEVEL_UP_MOVE(21, MOVE_ROAR),
+    LEVEL_UP_MOVE(21, MOVE_THUNDER_WAVE),
     LEVEL_UP_MOVE(31, MOVE_QUICK_ATTACK),
     LEVEL_UP_MOVE(41, MOVE_SPARK),
     LEVEL_UP_MOVE(51, MOVE_REFLECT),
@@ -4455,7 +4456,7 @@ static const u16 sEnteiLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SMOKESCREEN),
     LEVEL_UP_MOVE( 6, MOVE_EMBER),
     LEVEL_UP_MOVE(11, MOVE_FLAME_WHEEL),
-    LEVEL_UP_MOVE(21, MOVE_ROAR),
+    LEVEL_UP_MOVE(21, MOVE_WILL_O_WISP),
     LEVEL_UP_MOVE(31, MOVE_FIRE_SPIN),
     LEVEL_UP_MOVE(36, MOVE_SCARY_FACE),
     LEVEL_UP_MOVE(41, MOVE_STOMP),
@@ -7930,13 +7931,10 @@ static const u16 sTangrowthLevelUpLearnset[] = {
 
 static const u16 sTogekissLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_SKY_ATTACK),
-    LEVEL_UP_MOVE( 1, MOVE_GROWL),
-    LEVEL_UP_MOVE( 1, MOVE_CHARM),
     LEVEL_UP_MOVE( 1, MOVE_AIR_CUTTER),
     LEVEL_UP_MOVE( 1, MOVE_AIR_SLASH),
     LEVEL_UP_MOVE( 1, MOVE_METRONOME),
     LEVEL_UP_MOVE( 1, MOVE_COVET),
-    LEVEL_UP_MOVE( 1, MOVE_SWEET_KISS),
     LEVEL_UP_MOVE( 1, MOVE_YAWN),
     LEVEL_UP_MOVE( 1, MOVE_ENCORE),
     LEVEL_UP_MOVE( 1, MOVE_ANCIENT_POWER),

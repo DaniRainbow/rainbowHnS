@@ -4104,6 +4104,7 @@ const union {
         .ATTRACT = TRUE,
         .OVERHEAT = TRUE,
         .SHADOW_BALL = TRUE,
+        .CALM_MIND = TRUE,
         .CUT = TRUE,
         .STRENGTH = TRUE,
         .ROCK_SMASH = TRUE,

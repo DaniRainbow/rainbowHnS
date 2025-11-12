@@ -1,5 +1,12 @@
 Route43_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route43_MapScript_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	.byte 0
+
+Route43_MapScript_OnTransition::
+	call_if_set FLAG_HIDE_ROUTE42_SUICUNE, Route42_MapScript_HideTrigger
+	callnative SetTimeBasedEncounters
+	end
 
 Route43_EventScript_Ben::
 	trainerbattle_single TRAINER_BEN Route43_Text_PokemaniacBenSeen, Route43_Text_PokemaniacBenBeaten

@@ -392,10 +392,6 @@ PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations:
     .string "foundation of your success.\p"
     .string "But remember, a trainer's journey\n"
     .string "is never truly over.\p"
-    .string "When you have a moment, do visit\n"
-    .string "me in my lab.\p"
-    .string "There's something I'd like to\n"
-    .string "discuss with you.\p"
     .string "Congratulations on your victory,\n"
     .string "{PLAYER}!$"
 
