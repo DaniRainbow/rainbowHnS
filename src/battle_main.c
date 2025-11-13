@@ -804,6 +804,10 @@ static void CB2_InitBattleInternal(void)
         CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A, TRUE);
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], gTrainerBattleOpponent_B, FALSE);
+    }
+    else
+    {
+        // For wild battles, set held items
         SetWildMonHeldItem();
     }
 #else
@@ -814,7 +818,6 @@ static void CB2_InitBattleInternal(void)
             CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A, TRUE);
             if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                 CreateNPCTrainerParty(&gEnemyParty[PARTY_SIZE / 2], gTrainerBattleOpponent_B, FALSE);
-            SetWildMonHeldItem();
             
             if (gSaveBlock1Ptr->tx_Challenges_Mirror && (gBattleTypeFlags & BATTLE_TYPE_TRAINER || gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
             {
@@ -826,6 +829,11 @@ static void CB2_InitBattleInternal(void)
                 for (j = 0; j < PARTY_SIZE; j++)
                     gPlayerParty[j] = gEnemyParty[j];
             }
+        }
+        else
+        {
+            // For wild battles, set held items
+            SetWildMonHeldItem();
         }
     }
 #endif

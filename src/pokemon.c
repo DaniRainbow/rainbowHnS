@@ -10938,13 +10938,13 @@ void SetWildMonHeldItem(void)
     {
         u16 rnd = Random() % 100;
         u16 species = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, 0);
-        u16 chanceNoItem = 45;
-        u16 chanceNotRare = 90;
+        u16 chanceNoItem = 20;      // 20% chance of no item
+        u16 chanceNotRare = 50;     // 20% no item + 30% common = 50% not rare, leaving 50% rare
         if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG, 0)
             && GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES)
         {
-            chanceNoItem = 20;
-            chanceNotRare = 80;
+            chanceNoItem = 10;      // 10% chance of no item with Compound Eyes
+            chanceNotRare = 40;     // 10% no item + 30% common = 40% not rare, leaving 60% rare
         }
         if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
         {
