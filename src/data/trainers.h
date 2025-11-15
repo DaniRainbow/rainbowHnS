@@ -6630,4 +6630,17 @@ const struct Trainer gTrainers[] = {
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Norman),
     },
+
+
+    [TRAINER_ROXANNE] =
+    {
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_GIRL_2,
+        .trainerPic = TRAINER_PIC_EXPERT_F,
+        .trainerName = _("ROXANNE"),
+        .items = {},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_Roxanne),
+    },
 };
