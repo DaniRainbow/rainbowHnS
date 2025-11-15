@@ -6617,4 +6617,17 @@ const struct Trainer gTrainers[] = {
         .party = NO_ITEM_CUSTOM_MOVES(sParty_Ariana2),
         .partyHard = NO_ITEM_CUSTOM_MOVES_HARD(sParty_Ariana2_Hard),
     },
+
+
+    [TRAINER_NORMAN] =
+    {
+        .trainerClass = TRAINER_CLASS_PSYCHIC_M,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_BOY_1,
+        .trainerPic = TRAINER_PIC_PSYCHIC_M,
+        .trainerName = _("NORMAN"),
+        .items = {},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_Norman),
+    },
 };

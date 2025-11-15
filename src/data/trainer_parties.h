@@ -19613,3 +19613,16 @@ static const struct TrainerMonNoItemDefaultMoves sParty_DuffAndEda_Hard[] = {
     .species = SPECIES_CLOYSTER,
     }
 };
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Norman[] = { //PsychicGroup
+    {
+    .iv = 0,
+    .lvl = 22,
+    .species = SPECIES_SLOWPOKE,
+    },
+    {
+    .iv = 0,
+    .lvl = 23,
+    .species = SPECIES_SLOWPOKE,
+    },
+};
