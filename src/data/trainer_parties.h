@@ -19627,6 +19627,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Norman[] = { //PsychicGr
     },
 };
 
+static const struct TrainerMonNoItemDefaultMoves sParty_Roxanne[] = { //SkierGroup
+    {
+    .iv = 0,
+    .lvl = 30,
+    .species = SPECIES_JYNX,
+    },
+};
 static const struct TrainerMonNoItemDefaultMoves sParty_Norman_Hard[] = { //PsychicGroup
     {
     .iv = 0,
