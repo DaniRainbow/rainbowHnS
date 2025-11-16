@@ -19627,6 +19627,19 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Norman[] = { //PsychicGr
     },
 };
 
+static const struct TrainerMonNoItemDefaultMoves sParty_Norman_Hard[] = { //PsychicGroup
+    {
+    .iv = 0,
+    .lvl = 22,
+    .species = SPECIES_SLOWKING,
+    },
+    {
+    .iv = 0,
+    .lvl = 23,
+    .species = SPECIES_SLOWBRO,
+    },
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_Roxanne[] = { //SkierGroup
     {
     .iv = 0,
@@ -19634,15 +19647,16 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Roxanne[] = { //SkierGro
     .species = SPECIES_JYNX,
     },
 };
-static const struct TrainerMonNoItemDefaultMoves sParty_Norman_Hard[] = { //PsychicGroup
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Roxanne_Hard[] = { //SkierGroup
     {
     .iv = 0,
-    .lvl = 22,
-    .species = SPECIES_SLOWPOKE,
+    .lvl = 30,
+    .species = SPECIES_JYNX,
     },
     {
     .iv = 0,
-    .lvl = 23,
-    .species = SPECIES_SLOWPOKE,
+    .lvl = 30,
+    .species = SPECIES_WEAVILE,
     },
 };

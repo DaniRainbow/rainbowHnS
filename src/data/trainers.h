@@ -6629,6 +6629,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Norman),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Norman_Hard),
     },
 
 
@@ -6642,5 +6643,6 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Roxanne),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Roxanne_Hard),
     },
 };
