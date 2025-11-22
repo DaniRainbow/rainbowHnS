@@ -6656,6 +6656,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Anabel),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Anabel_Hard),
     },
 
     [TRAINER_TUCKER_BF_BRAIN] =
@@ -6668,6 +6669,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Tucker),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Tucker_Hard),
     },
 
     [TRAINER_SPENSER_BF_BRAIN] =
@@ -6680,6 +6682,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Spenser),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Spenser_Hard),
     },
 
     [TRAINER_GRETA_BF_BRAIN] =
@@ -6692,6 +6695,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Greta),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Greta_Hard),
     },
 
     [TRAINER_NOLAND_BF_BRAIN] =
@@ -6704,6 +6708,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Noland),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Noland_Hard),
     },
 
     [TRAINER_LUCY_BF_BRAIN] =
@@ -6716,6 +6721,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Lucy),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Lucy_Hard),
     },
 
     [TRAINER_BRANDON_BF_BRAIN] =
@@ -6728,5 +6734,6 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Brandon),
+        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Brandon_Hard),
     },
 };
