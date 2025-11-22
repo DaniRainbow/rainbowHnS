@@ -11,6 +11,7 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_PrizeClerkMons::
 	end
 
 GoldenrodCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon::
+	callnative DisableStaticRandomizer
 	showcoinsbox 1, 1
 	message MauvilleCity_GameCorner_Text_WhichPrize
 	waitmessage
@@ -27,6 +28,7 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon::
 
 GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange::
 	hidecoinsbox 0, 0
+	callnative EnableStaticRandomizer
 	closemessage
 	release
 	end
@@ -118,11 +120,22 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon::
 GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyFull::
 	msgbox Route119_WeatherInstitute_2F_Text_NoRoomForPokemon
 	hidecoinsbox 0, 0
+	callnative EnableStaticRandomizer
 	closemessage
 	release
 	end
 
 GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon::
+	getpartysize
+	subvar VAR_RESULT, 1
+	copyvar VAR_0x8004, VAR_RESULT
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+	end
+
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty_Nickname_Nuzlocke::
+	message GoldenrodGamecorner_Text_GiveNicknameToThisMon
 	getpartysize
 	subvar VAR_RESULT, 1
 	copyvar VAR_0x8004, VAR_RESULT
@@ -150,6 +163,8 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty::
 	message GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, IsNuzlockeNicknamingActive
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty_Nickname_Nuzlocke
 	msgbox GoldenrodGamecorner_Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon
 	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
@@ -184,6 +199,7 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_PcMon::
 	goto GoldenrodCity_GameCorner_EventScript_SendMon
 	closemessage
 	hidecoinsbox 0, 0
+	callnative EnableStaticRandomizer
 	release
 	end
 
@@ -191,6 +207,7 @@ GoldenrodCity_GameCorner_EventScript_SendMon::
 	call Common_EventScript_TransferredToPC
 	closemessage
 	hidecoinsbox 0, 0
+	callnative EnableStaticRandomizer
 	release
 	end
 
@@ -318,7 +335,7 @@ GoldenrodCity_GameCorner_Text_CooltrainerF:
     .string "I won't quit until I win!$"
 
 GoldenrodCity_GameCorner_Text_Gentleman:
-    .string "I taught BLIZZARD to my POKéMON.\p"
+    .string "I taught ICE BEAM to my POKéMON.\p"
     .string "It was hard to get enough coins for\n"
     .string "it, but it was worth it.$"
 

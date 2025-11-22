@@ -6,8 +6,8 @@ MahoganyTown_House1_EventScript_BlackBelt::
 	end
 
 MahoganyTown_House1_EventScript_Teacher::
-	goto_if_eq VAR_GOLDENROD_CITY_STATE, 5, MahoganyTown_House1_EventScript_TeacherBeforeAfter
-	goto_if_lt VAR_GOLDENROD_CITY_STATE, 14, MahoganyTown_House1_EventScript_TeacherDuring
+	goto_if_lt VAR_GOLDENROD_CITY_STATE, 6, MahoganyTown_House1_EventScript_TeacherBeforeAfter
+	goto_if_lt VAR_GOLDENROD_CITY_STATE, 10, MahoganyTown_House1_EventScript_TeacherDuring
 MahoganyTown_House1_EventScript_TeacherBeforeAfter::
 	msgbox MahoganyRedGyaradosHouse_Text_Teacher MSGBOX_NPC
 	end

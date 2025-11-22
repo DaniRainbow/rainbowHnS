@@ -58,7 +58,6 @@ PokemonLeague_HallOfFame_EventScript_SetFirstGameClearFlags::
 	clearflag FLAG_HIDE_LEAGUE_BLACKBELT
 	setflag FLAG_IS_CHAMPION
 	setflag FLAG_HIDE_BATTLEFRONTIER_ENGINEER
-	setvar VAR_SHUCKIE, 2
 	setvar VAR_LEAGUE_STATE, 1
 	setvar VAR_NEWBARK_TOWN_STATE, 6
 	setvar VAR_SSAQUA_STATE, 0
@@ -84,17 +83,20 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_HIDE_LUGIA
 	setvar VAR_COMPLETED_HO_OH, 4
 	clearflag FLAG_HIDE_HO_OH
-	call_if_set FLAG_CAUGHT_RAIKOU, PokemonLeague_HallOfFame_EventScript_SpawnRoamers
+	call PokemonLeague_HallOfFame_EventScript_SpawnRoamers
 	call_if_ge VAR_SUICUNE_ENCOUNTERS, 8, PokemonLeague_HallOfFame_EventScript_SpawnSuicune
 	call_if_set FLAG_CAUGHT_CELEBI, PokemonLeague_HallOfFame_EventScript_SpawnSecondCelebi
 	clearflag FLAG_DEFEATED_MEW
 	clearflag FLAG_CAUGHT_MEW
 	clearflag FLAG_BATTLED_DEOXYS
 	clearflag FLAG_DEFEATED_DEOXYS
+	clearflag FLAG_SUMMONED_MTMOON_JIRACHI
 	setvar VAR_LEAGUE_STATE, 1
 	return
 
 PokemonLeague_HallOfFame_EventScript_SpawnRoamers::
+	clearflag FLAG_CAUGHT_ENTEI
+	clearflag FLAG_CAUGHT_RAIKOU
 	setvar VAR_0x8004, 1
 	special InitRoamer
 	return

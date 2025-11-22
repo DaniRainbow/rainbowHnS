@@ -428,8 +428,8 @@ enum {
     NATIONAL_DEX_GROUDON,
     NATIONAL_DEX_RAYQUAZA,
     NATIONAL_DEX_DEOXYS,
-    //end hoenn and johto expanded dexs
     NATIONAL_DEX_JIRACHI,
+    //end hoenn and johto expanded dexs
     NATIONAL_DEX_ARCEUS,
     NATIONAL_DEX_REGIROCK,
     NATIONAL_DEX_REGICE,
@@ -476,7 +476,7 @@ enum {
 
 #define KANTO_DEX_COUNT     NATIONAL_DEX_MEW
 #define JOHTO_DEX_COUNT     NATIONAL_DEX_CELEBI
-#define NATIONAL_DEX_COUNT  NATIONAL_DEX_DEOXYS
+#define NATIONAL_DEX_COUNT  NATIONAL_DEX_JIRACHI
 
 // Hoenn Pokédex order
 enum {
@@ -908,8 +908,8 @@ enum {
     HOENN_DEX_KYOGRE,
     HOENN_DEX_GROUDON,
     HOENN_DEX_RAYQUAZA,
-    HOENN_DEX_JIRACHI,
     HOENN_DEX_DEOXYS,
+    HOENN_DEX_JIRACHI,
     // End of Hoenn Dex (see HOENN_DEX_COUNT)
     // Here below have values but are excluded from the Pokédex
     

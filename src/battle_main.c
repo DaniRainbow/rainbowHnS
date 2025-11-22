@@ -405,7 +405,266 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 // 10 is ×1.0 TYPE_MUL_NORMAL
 // 05 is ×0.5 TYPE_MUL_NOT_EFFECTIVE
 // 00 is ×0.0 TYPE_MUL_NO_EFFECT
-const u8 gTypeEffectiveness[369] =
+const u8 gTypeEffectiveness[354] = //New type effectiveness from Modern Emerald 3.2+, NOT enabled in HnS.
+{
+    TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_WATER, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_WATER, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_GROUND, TYPE_MUL_NO_EFFECT,
+    TYPE_ELECTRIC, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_WATER, TYPE_ICE, TYPE_MUL_NOT_EFFECTIVE, //Ice resists Water
+    // TYPE_ICE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE, //Water doesn't resist Ice
+    TYPE_ICE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_ICE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_NORMAL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_POISON, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_POISON, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_STEEL, TYPE_MUL_NO_EFFECT,
+    TYPE_GROUND, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_ELECTRIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GROUND, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_FLYING, TYPE_MUL_NO_EFFECT,
+    TYPE_GROUND, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_GROUND, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE, //Ground isn't supper effective against Rock
+    TYPE_GROUND, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FLYING, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FLYING, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_DARK, TYPE_MUL_NO_EFFECT,
+    TYPE_PSYCHIC, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    //TYPE_BUG, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE, //Bug doesn't resist Ghost
+    TYPE_BUG, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ROCK, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_ROCK, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE, //Ground doesn't resist Rock
+    TYPE_ROCK, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ROCK, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE, //Rock resists rock
+    TYPE_GHOST, TYPE_NORMAL, TYPE_MUL_NO_EFFECT,
+    TYPE_GHOST, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GHOST, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_GHOST, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE, //Steel doesn't resist Ghost
+    TYPE_GHOST, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DRAGON, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DRAGON, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DARK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DARK, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DARK, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DARK, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_DARK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE, //Steel doesn't resist Dark
+    TYPE_STEEL, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_STEEL, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE, //Steel is neutral to Ice
+    TYPE_STEEL, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_STEEL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_NORMAL, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+    TYPE_FIGHTING, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+    //Fairy Type
+    TYPE_FAIRY, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FAIRY, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FAIRY, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
+    //TYPE_BUG, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE, //Fairy doesn't resist bug
+    TYPE_DRAGON, TYPE_FAIRY, TYPE_MUL_NO_EFFECT,
+    TYPE_DARK, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
+    //End
+    TYPE_FORESIGHT, TYPE_FORESIGHT, TYPE_MUL_NO_EFFECT,
+    TYPE_ENDTABLE, TYPE_ENDTABLE, TYPE_MUL_NO_EFFECT
+};
+
+const u8 gTypeEffectiveness_Old[366] = //Gen 6 type chart, and it's the one read by HnS by default.
+{
+    TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIRE, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIRE, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_WATER, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_WATER, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_WATER, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_GROUND, TYPE_MUL_NO_EFFECT,
+    TYPE_ELECTRIC, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ELECTRIC, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GRASS, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GRASS, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_ICE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ICE, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ICE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_NORMAL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_POISON, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_POISON, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_STEEL, TYPE_MUL_NO_EFFECT,
+    TYPE_GROUND, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_ELECTRIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GROUND, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_FLYING, TYPE_MUL_NO_EFFECT,
+    TYPE_GROUND, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GROUND, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GROUND, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FLYING, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FLYING, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FLYING, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_PSYCHIC, TYPE_DARK, TYPE_MUL_NO_EFFECT,
+    TYPE_PSYCHIC, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_BUG, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ROCK, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ROCK, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_ROCK, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_ROCK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GHOST, TYPE_NORMAL, TYPE_MUL_NO_EFFECT,
+    TYPE_GHOST, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_GHOST, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+    //TYPE_GHOST, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_GHOST, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DRAGON, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DRAGON, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DARK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DARK, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DARK, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_DARK, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_STEEL, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_STEEL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FAIRY, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FAIRY, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FAIRY, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FAIRY, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_FIGHTING, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_POISON, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_BUG, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DRAGON, TYPE_FAIRY, TYPE_MUL_NO_EFFECT,
+    TYPE_DARK, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_STEEL, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
+    TYPE_FORESIGHT, TYPE_FORESIGHT, TYPE_MUL_NO_EFFECT,
+    TYPE_NORMAL, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+    TYPE_FIGHTING, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+    TYPE_ENDTABLE, TYPE_ENDTABLE, TYPE_MUL_NO_EFFECT
+};
+
+/*const u8 gTypeEffectiveness_Old[372] = //Gen 3 type effectiveness + fairy type. Disabled.
 {
     TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
     TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
@@ -508,6 +767,7 @@ const u8 gTypeEffectiveness[369] =
     TYPE_DARK, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
     TYPE_DARK, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
     TYPE_DARK, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+    TYPE_DARK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
     TYPE_STEEL, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
     TYPE_STEEL, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
     TYPE_STEEL, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
@@ -530,7 +790,7 @@ const u8 gTypeEffectiveness[369] =
     TYPE_NORMAL, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
     TYPE_FIGHTING, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
     TYPE_ENDTABLE, TYPE_ENDTABLE, TYPE_MUL_NO_EFFECT
-};
+};*/
 
 const u8 gTypeNames[NUMBER_OF_MON_TYPES][TYPE_NAME_LENGTH + 1] =
 {
@@ -2223,39 +2483,247 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             else
                 CreateMon(&party[i], data[i].species, GetScaledLevel(data[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
-            SetMonData(&party[i], MON_DATA_HELD_ITEM, &data[i].heldItem);
-            break;
-        }
-        case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
-        {
-            const struct TrainerMonItemCustomMoves *data = partyData.ItemCustomMoves;
-            for (j = 0; gSpeciesNames[data[i].species][j] != EOS; j++)
-                nameHash += gSpeciesNames[data[i].species][j];
-            personalityValue += nameHash << 8;
-            fixedIV = data[i].iv * MAX_PER_STAT_IVS / 255;
-            if (gSaveBlock1Ptr->tx_Random_Trainer)
-            {
-                species = GetSpeciesRandomSeeded(data[i].species, TX_RANDOM_T_TRAINER, trainerNum);
-                CreateMon(&party[i], species, GetScaledLevel(data[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-            }
-            else
-                CreateMon(&party[i], data[i].species, GetScaledLevel(data[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                    helditem = GetMonData(&party[i], MON_DATA_HELD_ITEM);
 
-            SetMonData(&party[i], MON_DATA_HELD_ITEM, &data[i].heldItem);
+                    if (gSaveBlock2Ptr->optionsDifficulty == 2) //only in hard mode
+                    {
+                        if (partyData[i].species == SPECIES_SCEPTILE && gTrainers[trainerNum].trainerPic == TRAINER_PIC_MAY 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        
+                        if (partyData[i].species == SPECIES_BLAZIKEN && gTrainers[trainerNum].trainerPic == TRAINER_PIC_MAY 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_SWAMPERT && gTrainers[trainerNum].trainerPic == TRAINER_PIC_MAY 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_SCEPTILE && gTrainers[trainerNum].trainerPic == TRAINER_PIC_BRENDAN 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_BLAZIKEN && gTrainers[trainerNum].trainerPic == TRAINER_PIC_BRENDAN 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_SWAMPERT && gTrainers[trainerNum].trainerPic == TRAINER_PIC_BRENDAN 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_RIVAL)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                    }
+                break;
+            }
+            case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
+            {
+                const struct TrainerMonItemCustomMoves *partyData = gTrainers[trainerNum].party.ItemCustomMoves;
+
+                for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
+                    nameHash += gSpeciesNames[partyData[i].species][j];
+
+                personalityValue += nameHash << 8;
+                fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
+                //CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                if (gSaveBlock1Ptr->tx_Random_Trainer) //tx_randomizer_and_challenges
+                {
+                    species = GetSpeciesRandomSeeded(partyData[i].species, TX_RANDOM_T_TRAINER, trainerNum);
+                    CreateMon(&party[i], species, GetScaledLevel(partyData[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                }
+                else
+                    CreateMon(&party[i], partyData[i].species, GetScaledLevel(partyData[i].lvl), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                    helditem = GetMonData(&party[i], MON_DATA_HELD_ITEM);
+
+                    if (gSaveBlock2Ptr->optionsDifficulty == 2) //only in hard mode
+                    {
+                        if (partyData[i].species == SPECIES_SLAKING && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER)
+                        {
+                            helditem = ITEM_072; //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_ALTARIA && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE06_GET) == FALSE))
+                        {
+                            helditem = ITEM_073; //sitrus modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        else if (partyData[i].species == SPECIES_ALTARIA && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL 
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE06_GET) == TRUE))
+                        {
+                            helditem = ITEM_074; //chesto modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        
+                        if (partyData[i].species == SPECIES_LUNATONE && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE07_GET) == FALSE))
+                        {
+                            helditem = ITEM_073; //sitrus modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        else if (partyData[i].species == SPECIES_LUNATONE && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE07_GET) == TRUE))
+                        {
+                            helditem = ITEM_074; //chesto modifier, for rematches
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_SOLROCK && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER)
+                        {
+                            helditem = ITEM_073; //sitrus modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        
+                        if (partyData[i].species == SPECIES_KINGDRA && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE08_GET) == FALSE))
+                        {
+                            helditem = ITEM_074; //chesto modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        else if (partyData[i].species == SPECIES_KINGDRA && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_LEADER && (FlagGet(FLAG_BADGE08_GET) == TRUE))
+                        {
+                            helditem = ITEM_076; //liechi modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_ABSOL && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_ELITE_FOUR)
+                        {
+                            helditem = ITEM_SALAC_BERRY;  //Salac Berry
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem); 
+                        }
+                        
+                        if (partyData[i].species == SPECIES_DUSKNOIR && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_ELITE_FOUR && (FlagGet(FLAG_PHOEBE_REMATCH) == FALSE))
+                        {
+                            helditem = ITEM_072;  //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        else if (partyData[i].species == SPECIES_DUSKNOIR && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_ELITE_FOUR && (FlagGet(FLAG_PHOEBE_REMATCH) == TRUE))
+                        {
+                            helditem = ITEM_075;  //leftoverse modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        
+                        if (partyData[i].species == SPECIES_WALREIN && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_ELITE_FOUR)
+                        {
+                            helditem = ITEM_LEFTOVERS;  //Leftovers
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem); 
+                        }
+                        
+                        if (partyData[i].species == SPECIES_SALAMENCE && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_ELITE_FOUR)
+                        {
+                            helditem = ITEM_073;  //sitrus modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem); 
+                        }
+                        
+                        if (partyData[i].species == SPECIES_WHISCASH && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_CHAMPION)
+                        {
+                            helditem = ITEM_072;  //no modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+
+                        if (partyData[i].species == SPECIES_MILOTIC && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_CHAMPION && (FlagGet(FLAG_WALLACE_REMATCH) == FALSE))
+                        {
+                            helditem = ITEM_073;  //sitrus modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                        else if (partyData[i].species == SPECIES_MILOTIC && gTrainers[trainerNum].trainerPic == TRAINER_PIC_ELITE_FOUR_WILL
+                        && gTrainers[trainerNum].trainerClass == TRAINER_CLASS_CHAMPION && (FlagGet(FLAG_WALLACE_REMATCH) == TRUE))
+                        {
+                            helditem = ITEM_075;  //leftoverse modifier
+                            SetMonData(&party[i], MON_DATA_HELD_ITEM, &helditem);
+                        }
+                    }
+
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &data[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[data[i].moves[j]].pp);
                 }
-            break;
+                break;
+            }
+            }
+            for (j = 0; gTrainerBallTable[j].classId != 0xFF; j++)
+            {
+                if (gTrainerBallTable[j].classId == gTrainers[trainerNum].trainerClass)
+                    break;
+            }
+            SetMonData(&party[i], MON_DATA_POKEBALL, &gTrainerBallTable[j].Ball);
         }
+
+        gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
+
+        //tx_randomizer_and_challenges
+        if (gSaveBlock1Ptr->tx_Challenges_TrainerScalingIVs && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER
+                                                                        | BATTLE_TYPE_EREADER_TRAINER
+                                                                        | BATTLE_TYPE_TRAINER_HILL)))
+        {
+            u8 iv = GetCurrentTrainerIVs();
+
+            for (i = 0; i < monsCount; i++)
+            {
+                for (j = 0; j < 6; j++)
+                {
+                    SetMonData(&party[i], MON_DATA_HP_IV + j, &iv);
+                }
+
+                CalculateMonStats(&party[i]);
+            }
         }
+        if (gSaveBlock1Ptr->tx_Challenges_TrainerScalingEVs && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER
+                                                                        | BATTLE_TYPE_EREADER_TRAINER
+                                                                        | BATTLE_TYPE_TRAINER_HILL)))
+        {
+            u8 ev = GetCurrentTrainerEVs();
+
+            for (i = 0; i < monsCount; i++)
+            {
+                // set EVs for HP, speed and the higher of either attack and defense stat
+                SetMonData(&party[i], MON_DATA_HP_EV, &ev);
+                SetMonData(&party[i], MON_DATA_SPEED_EV, &ev);
+                if (GetMonData(&party[i], MON_DATA_ATK) > GetMonData(&party[i], MON_DATA_SPATK))
+                    SetMonData(&party[i], MON_DATA_ATK_EV, &ev);
+                else
+                    SetMonData(&party[i], MON_DATA_SPATK_EV, &ev);
+                if (GetMonData(&party[i], MON_DATA_DEF) > GetMonData(&party[i], MON_DATA_SPDEF))
+                    SetMonData(&party[i], MON_DATA_DEF_EV, &ev);
+                else
+                    SetMonData(&party[i], MON_DATA_SPDEF_EV, &ev);
+
+                CalculateMonStats(&party[i]);
+            }
+        }
+
     }
 
-    gBattleTypeFlags |= trainer->doubleBattle;
-
-
-    return partySize;
+    return gTrainers[trainerNum].partySize;
 }
 
 static void UNUSED HBlankCB_Battle(void)
@@ -3848,7 +4316,7 @@ static void BattleIntroQuickRun(void)
         }
     }
     else if (gSaveBlock2Ptr->optionsRunType == 3)
-        {
+    {
         if (gBattleControllerExecFlags == 0)
         {
             if (JOY_HELD(B_BUTTON))
@@ -3857,6 +4325,7 @@ static void BattleIntroQuickRun(void)
                     gBattleMainFunc = HandleEndTurn_RanFromBattle;
                     return;
                 }
+
                 PrepareStringBattle(STRINGID_CANTESCAPE, 0);
             }
             gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
@@ -4950,7 +5419,7 @@ u8 GetWhoStrikesFirst(u8 battler1, u8 battler2, bool8 ignoreChosenMoves)
     // badge boost
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
         && FlagGet(FLAG_BADGE03_GET)
-        && (gSaveBlock2Ptr->optionsDifficulty == 2)
+        && (gSaveBlock2Ptr->optionsDifficulty != 2)
         && GetBattlerSide(battler1) == B_SIDE_PLAYER)
     {
         speedBattler1 = (speedBattler1 * 110) / 100;
@@ -4985,7 +5454,7 @@ u8 GetWhoStrikesFirst(u8 battler1, u8 battler2, bool8 ignoreChosenMoves)
     // badge boost
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
         && FlagGet(FLAG_BADGE03_GET)
-        && (gSaveBlock2Ptr->optionsDifficulty == 2)
+        && (gSaveBlock2Ptr->optionsDifficulty != 2)
         && GetBattlerSide(battler2) == B_SIDE_PLAYER)
     {
         speedBattler2 = (speedBattler2 * 110) / 100;
@@ -5296,7 +5765,7 @@ static void HandleEndTurn_BattleWon(void)
             {
                 if((Random() % 3) == 1)
                     PlayBGM(MUS_HG_VICTORY_FRONTIER_BRAIN);
-                if((Random() % 3) == 2)
+                else if((Random() % 3) == 2)
                     PlayBGM(MUS_HG_VICTORY_FRONTIER_BRAIN);
                 else
                     PlayBGM(MUS_HG_VICTORY_FRONTIER_BRAIN);
@@ -5314,7 +5783,7 @@ static void HandleEndTurn_BattleWon(void)
             {
                 if((Random() % 3) == 1)
                     PlayBGM(MUS_HG_VICTORY_TRAINER);
-                if((Random() % 3) == 2)
+                else if((Random() % 3) == 2)
                     PlayBGM(MUS_HG_VICTORY_TRAINER);
                 else
                     PlayBGM(MUS_HG_VICTORY_TRAINER);
@@ -5390,7 +5859,7 @@ static void HandleEndTurn_BattleWon(void)
                     {
                         if((Random() % 3) == 1)
                             PlayBGM(MUS_HG_VICTORY_GYM_LEADER);
-                        if((Random() % 3) == 2)
+                        else if((Random() % 3) == 2)
                             PlayBGM(MUS_HG_VICTORY_GYM_LEADER);
                         else
                             PlayBGM(MUS_HG_VICTORY_GYM_LEADER);
@@ -5409,7 +5878,7 @@ static void HandleEndTurn_BattleWon(void)
                 {
                     if((Random() % 3) == 1)
                         PlayBGM(MUS_HG_VICTORY_TRAINER);
-                    if((Random() % 3) == 2)
+                    else if((Random() % 3) == 2)
                         PlayBGM(MUS_HG_VICTORY_TRAINER);
                     else
                         PlayBGM(MUS_HG_VICTORY_TRAINER);
@@ -5556,7 +6025,7 @@ static void HandleEndTurn_FinishBattle(void)
         {
             TryPutBreakingNewsOnAir();
         }
-        if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (!IsNuzlockeActive()))
+        if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (!IsNuzlockeActive()))
         {
             if (!(gBattleTypeFlags &(BATTLE_TYPE_LINK
                                         | BATTLE_TYPE_LINK_IN_BATTLE

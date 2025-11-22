@@ -15,7 +15,9 @@ extern const u8 gText_ExpandedPlaceholder_Maxie[];
 extern const u8 gText_ExpandedPlaceholder_Kyogre[];
 extern const u8 gText_ExpandedPlaceholder_Groudon[];
 extern const u8 gText_ExpandedPlaceholder_Brendan[];
+extern const u8 gText_ExpandedPlaceholder_Silver[];
 extern const u8 gText_ExpandedPlaceholder_May[];
+extern const u8 gText_RivalName[];
 
 extern const u8 gText_FromSpace[];
 
@@ -652,7 +654,8 @@ extern const u8 gText_EVO_LEVEL_FEMALE[];
 extern const u8 gText_EVO_LEVEL_MALE[];
 extern const u8 gText_EVO_LEVEL_NIGHT[];
 extern const u8 gText_EVO_LEVEL_DAY[];
-extern const u8 gText_EVO_LEVEL_DUSK[];
+extern const u8 gText_EVO_LEVEL_TIME_MALE[];
+extern const u8 gText_EVO_LEVEL_TIME_FEMALE[];
 extern const u8 gText_EVO_ITEM_HOLD_DAY[];
 extern const u8 gText_EVO_ITEM_HOLD_NIGHT[];
 extern const u8 gText_EVO_ITEM_HOLD[];
@@ -810,9 +813,9 @@ extern const u8 gText_90Pts[];
 extern const u8 gText_100Pts[];
 extern const u8 gText_QuestionMark[];
 
-extern const u8 gText_KissPoster16BP[];
-extern const u8 gText_KissCushion32BP[];
-extern const u8 gText_SmoochumDoll32BP[];
+extern const u8 gText_TreeckoDoll48BP[];
+extern const u8 gText_TorchicDoll48BP[];
+extern const u8 gText_MudkipDoll48BP[];
 extern const u8 gText_TogepiDoll48BP[];
 extern const u8 gText_MeowthDoll48BP[];
 extern const u8 gText_ClefairyDoll48BP[];
@@ -989,9 +992,9 @@ extern const u8 BattleFrontier_Lounge3_Text_GetToBattlePyramid[];
 extern const u8 gText_BP[];
 
 // Battle Frontier Exchange Corner
-extern const u8 BattleFrontier_ExchangeServiceCorner_Text_KissPosterDesc[];
-extern const u8 BattleFrontier_ExchangeServiceCorner_Text_KissCushionDesc[];
-extern const u8 BattleFrontier_ExchangeServiceCorner_Text_SmoochumDollDesc[];
+extern const u8 BattleFrontier_ExchangeServiceCorner_Text_TreeckoDollDesc[];
+extern const u8 BattleFrontier_ExchangeServiceCorner_Text_TorchicDollDesc[];
+extern const u8 BattleFrontier_ExchangeServiceCorner_Text_MudkipDollDesc[];
 extern const u8 BattleFrontier_ExchangeServiceCorner_Text_TogepiDollDesc[];
 extern const u8 BattleFrontier_ExchangeServiceCorner_Text_MeowthDollDesc[];
 extern const u8 BattleFrontier_ExchangeServiceCorner_Text_ClefairyDollDesc[];
@@ -1203,6 +1206,7 @@ extern const u8 gText_HallOfFame[];
 extern const u8 gText_LogOff[];
 extern const u8 gText_BillsPC[];
 extern const u8 gText_SomeonesPC[];
+extern const u8 gText_Challenges[];
 extern const u8 gText_PlayersPC[];
 extern const u8 gText_WhichPCShouldBeAccessed[];
 
@@ -2236,7 +2240,7 @@ extern const u8 gText_ItemIsNowHeld[];
 extern const u8 gText_ChangedToNewItem[];
 extern const u8 gText_MailCantBeStored[];
 extern const u8 gText_NuzlockeFainted[];
-extern const u8 gText_DeadPokemon[];
+extern const u8 gText_FaintedForever[];
 extern const u8 gPCText_Cancel[];
 extern const u8 gPCText_Store[];
 extern const u8 gPCText_Withdraw[];
@@ -3268,6 +3272,7 @@ extern const u8 gText_ExpShareOff[];
 extern const u8 gText_infiniteRepelOn[];
 extern const u8 gText_infiniteRepelOff[];
 extern const u8 gText_infiniteCandies[];
+extern const u8 gText_HealingHeart[];
 
 //tx_randomizer_and_challenges
 extern const u8 gText_NuzlockeCantThrowPokeBallRoute[];

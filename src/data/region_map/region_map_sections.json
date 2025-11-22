@@ -874,9 +874,9 @@
     },
     {
       "map_section": "MAPSEC_BATTLE_FRONTIER",
-      "name": "",
-      "x": 0,
-      "y": 17,
+      "name": "BATTLE FRONTIER",
+      "x": 14,
+      "y": 14,
       "width": 1,
       "height": 1
     },
@@ -890,7 +890,7 @@
     },
     {
       "map_section": "MAPSEC_LILYCOVE_CITY",
-      "name": "",
+      "name": "CONTEST HALL",
       "x": 2,
       "y": 17,
       "width": 1,
@@ -909,6 +909,14 @@
       "name": "",
       "x": 3,
       "y": 17,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_TRAINER_HILL",
+      "name": "TRAINER HILL",
+      "x": 2,
+      "y": 5,
       "width": 1,
       "height": 1
     }

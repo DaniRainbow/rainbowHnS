@@ -2,8 +2,8 @@
 .set LOCALID_INDIGOPLATEAU_ABRA, 6
 
 IndigoPlateau_PokemonCenter_MapScripts::
-	@map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, IndigoPlateau_PokemonCenter_OnFrame 
+	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_Pokecenter_OnTransition
 	.byte 0
 
 IndigoPlateau_PokemonCenter_OnFrame::
@@ -19,6 +19,11 @@ IndigoPlateau_PokemonCenter_Enter::
 	setflag FLAG_VISITED_INDIGO_PLATEAU
 	setvar VAR_LEAGUE_STATE, 1
 	end
+
+IndigoPlateau_Pokecenter_OnTransition::
+	setrespawn HEAL_LOCATION_INDIGO_PLATEAU
+	end
+
 
 IndigoPlateau_EventScript_Cooltrainer::
 	msgbox IndigoPlateau_Text_CooltrainerM, MSGBOX_NPC
@@ -39,7 +44,7 @@ IndigoPlateau_Text_ShigyNinja:
 	.string "all of them are wonderfully unique.\p"
 	.string "You should be proud of yourself\n"
 	.string "for getting this far!\p"
-	.string "Now, go get em'!$"
+	.string "Now, go get 'em!$"
 
 IndigoPlateau_Text_Blackbelt:
 	.string "The POKéMON LEAGUE is not taking\n"

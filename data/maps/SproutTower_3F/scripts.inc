@@ -184,7 +184,7 @@ SproutTower_Text_RivalOnlyCaresStrong:
 	.string "about weak POKéMON.$"
 
 SproutTower_Text_RivalUsedEscapeRope:
-	.string "SILVER used an ESCAPE ROPE!$"
+	.string "{RIVAL} used an ESCAPE ROPE!$"
 
 SproutTower_Text_SageLi_Seen:
 	.string "So good of you to come here!\p"

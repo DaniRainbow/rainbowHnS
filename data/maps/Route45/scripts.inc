@@ -171,10 +171,10 @@ Route45_Text_CamperQuentinSeen:
     .string "I'm really, really tough!$"
 
 Route45_Text_CamperQuentinBeaten:
-    .string "I was tough at the BATTLE TOWER…$"
+    .string "I was tough at the TRAINER HILL…$"
 
 Route45_Text_CamperQuentinAfter:
-    .string "Have you been to the BATTLE TOWER?\p"
+    .string "Have you been to the TRAINER HILL?\p"
     .string "I never, ever lose there, but…$"
 
 Route45_Text_Sign:

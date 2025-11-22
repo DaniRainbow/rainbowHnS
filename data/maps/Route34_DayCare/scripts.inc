@@ -49,7 +49,7 @@ Route34_DayCare_Text_Bookshelf3:
 	.string "{PLAYER} put away the book.$"
 
 Route34_DayCare_Text_Bookshelf4:
-	.string "A book of POKéMON natures!\p"
+	.string "A book of POKéMON abilities!\p"
 	.string "{PLAYER} flipped through\n"
 	.string "the book.\p"
 	.string "PICHU -> STATIC\l"

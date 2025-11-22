@@ -3,7 +3,7 @@
 .set LOCALID_DOJO_STEELIX, 3
 .set LOCALID_DOJO_ALAKAZAM, 4
 .set LOCALID_DOJO_SLOWKING, 5
-.set LOCALID_DOJO_RAICHU, 6
+.set LOCALID_DOJO_PIDGEOT, 6
 
 SaffronCity_FightingDojo_MapScripts::
 	.byte 0
@@ -168,24 +168,24 @@ SaffronCity_FightingDojo_EventScript_BattleSlowking_EV_SpecialDefense::
 SaffronCity_FightingDojo_Text_Slowking:
 	.string "SLOWKING: HMMM...$"
 
-SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
+SaffronCity_FightingDojo_EventScript_Pidgeot_EV_Speed::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_RAICHU, CRY_MODE_NORMAL
-	msgbox SaffronCity_FightingDojo_Text_Raichu, MSGBOX_DEFAULT
+	playmoncry SPECIES_PIDGEOT, CRY_MODE_NORMAL
+	msgbox SaffronCity_FightingDojo_Text_Pidgeot, MSGBOX_DEFAULT
 	delay 20
 	closemessage
-	goto_if_set FLAG_TEMP_6, SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed
+	goto_if_set FLAG_TEMP_6, SaffronCity_FightingDojo_EventScript_BattlePidgeot_EV_Speed
 	delay 30
-	bufferspeciesname STR_VAR_1, SPECIES_RAICHU
+	bufferspeciesname STR_VAR_1, SPECIES_PIDGEOT
 	bufferstring STR_VAR_2, SaffronCity_FightingDojo_Text_Speed
 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
-SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed::
+SaffronCity_FightingDojo_EventScript_BattlePidgeot_EV_Speed::
 	setflag FLAG_SYS_NO_CATCHING
 	setflag FLAG_NO_SHINY
-	setwildbattle SPECIES_RAICHU, 1, ITEM_NONE
+	setwildbattle SPECIES_PIDGEOT, 1, ITEM_NONE
 	dowildbattle
 	clearflag FLAG_SYS_NO_CATCHING
 	clearflag FLAG_NO_SHINY
@@ -193,8 +193,8 @@ SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed::
 	release
 	end
 
-SaffronCity_FightingDojo_Text_Raichu:
-	.string "RAICHU: CHUUU!$"
+SaffronCity_FightingDojo_Text_Pidgeot:
+	.string "PIDGEOT: GEEEE!$"
 
 SaffronCity_FightingDojo_Text_HP:
 	.string "HP$"

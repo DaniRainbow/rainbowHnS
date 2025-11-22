@@ -44,7 +44,15 @@ GoldenrodCity_BikeShop_EventScript_Bike::
 GoldenrodCity_BikeShop_Text_Clerk2:
 	.string "Riding the bike is as simple as\n"
 	.string "pressing a button if you\l"
-	.string "REGISTER it from the BAG.$"
+	.string "REGISTER it from the BAG.\p"
+	.string "If you need to go faster,\n"
+	.string "you first need to come to a stop!\p"
+	.string "That might seem like strange\n"
+	.string "advice, but you can only change\l"
+	.string "gears on the bike while stopped.\p"
+	.string "Press your R button when stopped\n"
+	.string "and the next time you pedal,\l"
+	.string "you will reach greater speeds!$"
 
 GoldenrodCity_BikeShop_Text_ClerkIntro:
     .string "…sigh… I moved here, but I can't\n"
@@ -61,10 +69,14 @@ GoldenrodCity_BikeShop_Text_BorrowedBicycle:
     .string "{PLAYER} borrowed a BICYCLE.$"
 
 GoldenrodCity_BikeShop_Text_Mainshop:
-	.string "The main shop is at CERULEAN back\n"
-	.string "in KANTO.\p"
-	.string "Say hello to the shop manager if\n"
-	.string "if you happen to go there!$"
+	.string "Business has been hard to come\n"
+	.string "by since we moved from KANTO.\l"
+	.string "We appreciate your help!\p"
+	.string "Can you make sure to show off\n"
+	.string "our patented gear-changing tech?\p"
+	.string "It's as simple as pressing R when\n"
+	.string "you are stopped on your bike.\p"
+	.string "Beware! You will then go faster!$"
 
 GoldenrodCity_BikeShop_Text_Refused:
     .string "…sigh… Oh, for the kindness of\n"

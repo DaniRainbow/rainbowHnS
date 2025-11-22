@@ -121,7 +121,7 @@ GoldenrodCity_RadioTower_4F4_Text_DJMaryCleared:
 	.string "Will you take this as my thanks?$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMaryPinkBow:
-	.string "MARY: It's good for dodging the"
+	.string "MARY: It's good for dodging the\n"
 	.string "enemy's attacks.$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMaryAfter:

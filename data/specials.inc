@@ -585,3 +585,5 @@ gSpecials::
 	def_special DoPokemonLeagueLightingEffect
 	def_special SetVermilionTrashCans
 	def_special SwitchMonAbility
+	def_special NameRival
+	def_special IsRandomMovesActivated 			@ tx_randomizer_and_challenges

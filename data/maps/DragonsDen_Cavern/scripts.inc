@@ -29,11 +29,14 @@ DragonsDen_Text_Clair:
 	.string "DOJO in SAFFRON.$"
 
 DragonsDen_Cavern_Trigger_ClairLeft::
-	lock 
+	lock
+	setflag FLAG_TEMP_HIDE_FOLLOWER 
 	playse SE_PIN
 	applymovement2 LOCALID_DRAGONSDEN2_CLAIR, Common_Movement_ExclamationMark
 	delay 60
 	call DragonsDen_Cavern_EventScript_Clair
+	applymovement OBJ_EVENT_ID_PLAYER, DragonsDen_Cavern_Movement_ClairLeaveLeftPLAYER
+	waitmovement 0
 	applymovement2 LOCALID_DRAGONSDEN2_CLAIR, DragonsDen_Cavern_Movement_ClairLeaveLeft
 	waitmovement 0
 	setflag FLAG_HIDE_DRAGONS_DEN_CAVERN_CLAIR
@@ -41,7 +44,7 @@ DragonsDen_Cavern_Trigger_ClairLeft::
 	playse SE_EXIT
 	setvar VAR_BLACKTHORN_CITY_STATE, 4
 	setrespawn HEAL_LOCATION_BLACKTHORN_CITY
-	release
+	releaseall
 	end
 
 DragonsDen_Cavern_Trigger_ClairMid::
@@ -92,10 +95,15 @@ DragonsDen_Cavern_EventScript_Clair::
 	clearflag FLAG_GOT_DRATINI
 	return
 
+DragonsDen_Cavern_Movement_ClairLeaveLeftPLAYER:
+	walk_fast_down
+	face_up
+	step_end
+
 DragonsDen_Cavern_Movement_ClairLeaveLeft:
+	walk_right
+	walk_right
 	walk_up
-	walk_right
-	walk_right
 	walk_up
 	walk_up
 	walk_up

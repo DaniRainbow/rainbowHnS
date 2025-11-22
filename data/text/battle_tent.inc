@@ -1,6 +1,6 @@
 FallarborTown_BattleTentLobby_Text_WelcomeToBattleTent:
-	.string "I welcome you to the BATTLE TENT\n"
-	.string "FALLARBOR SITE!\p"
+	.string "I welcome you to the BATTLE TENT:\n"
+	.string "ARENA!\p"
 	.string "I am your guide to the Set KO Tourney!$"
 
 FallarborTown_BattleTentLobby_Text_TakeChallenge:
@@ -12,8 +12,8 @@ FallarborTown_BattleTentLobby_Text_AwaitAnotherChallenge:
 	.string "another occasion!$"
 
 FallarborTown_BattleTentLobby_Text_ExplainFallarborTent:
-	.string "In the FALLARBOR BATTLE TENT,\n"
-	.string "we undertake the Set KO Tourney.\p"
+	.string "In the BATTLE TENT: ARENA, we\n"
+	.string "undertake the Set KO Tourney.\p"
 	.string "All participants enter with a team of\n"
 	.string "three POKéMON.\p"
 	.string "The three POKéMON must be lined up\n"
@@ -118,17 +118,17 @@ FallarborTown_BattleTentLobby_Text_LookingForwardToArrival:
 	.string "I must save the game. Please wait.$"
 
 VerdanturfTown_BattleTentLobby_Text_WelcomeToBattleTent:
-	.string "I welcome you to the BATTLE TENT\n"
-	.string "VERDANTURF SITE!\p"
+	.string "I welcome you to the BATTLE TENT:\n"
+	.string "PALACE!\p"
 	.string "Here, the TRAINER's trust toward\n"
 	.string "POKéMON is tested.$"
 
 VerdanturfTown_BattleTentLobby_Text_TakeChallenge:
-	.string "Do you wish to take the VERDANTURF\n"
-	.string "BATTLE TENT challenge?$"
+	.string "Do you wish to take the BATTLE TENT:\n"
+	.string "PALACE challenge?$"
 
 VerdanturfTown_BattleTentLobby_Text_ExplainVerdanturfTent:
-	.string "In the VERDANTURF BATTLE TENT,\n"
+	.string "In the BATTLE TENT: PALACE,\n"
 	.string "there is one crucial rule that must\l"
 	.string "be obeyed.\p"
 	.string "TRAINERS are permitted only to switch\n"
@@ -213,8 +213,8 @@ VerdanturfTown_BattleTentLobby_Text_PresentYouWithPrize:
 	.string "we present you with this prize.$"
 
 SlateportCity_BattleTentLobby_Text_WelcomeToBattleTent:
-	.string "Welcome to the BATTLE TENT\n"
-	.string "SLATEPORT SITE!\p"
+	.string "Welcome to the BATTLE TENT:\n"
+	.string "FACTORY!\p"
 	.string "I am your guide to the Battle Swap\n"
 	.string "Tournament.$"
 
@@ -223,7 +223,7 @@ SlateportCity_BattleTentLobby_Text_TakeChallenge:
 	.string "Swap challenge?$"
 
 SlateportCity_BattleTentLobby_Text_ExplainSlateportTent:
-	.string "Here at the SLATEPORT BATTLE TENT,\n"
+	.string "Here at the BATTLE TENT: FACTORY,\n"
 	.string "we hold Battle Swap events\l"
 	.string "using rental POKéMON.\p"
 	.string "First, you will be loaned three\n"
@@ -351,10 +351,10 @@ SlateportCity_BattleTentLobby_Text_ExplainSwapNotes:
 	.string "even when swaps are made.$"
 
 SlateportCity_BattleTentLobby_Text_ExplainMonRules:
-	.string "The POKéMON of the SLATEPORT\n"
-	.string "BATTLE TENT are all rentals.\p"
+	.string "The POKéMON of the BATTLE TENT:\n"
+	.string "FACTORY are all rentals.\p"
 	.string "All rental POKéMON are kept at\n"
-	.string "Level 30.$"
+	.string "Level 50.$"
 
 @ Unused
 VerdanturfTown_BattleTentLobby_Text_RulesAreListed2:
@@ -423,11 +423,9 @@ VerdanturfTown_BattleTentLobby_Text_ExplainWhenInDangerRules:
 
 BattleTentLobby_Text_ExplainLevelRules:
 	.string "At this BATTLE TENT, the levels of\n"
-	.string "your opponents will be adjusted to\l"
-	.string "match the levels of your POKéMON.\p"
-	.string "However, no TRAINER you face will\n"
-	.string "have any POKéMON below Level 30.$"
+	.string "all POKéMON will be adjusted to\l"
+	.string "Level 50.$"
 
 VerdanturfTown_BattleTentLobby_Text_RulesAreListed:
-	.string "The VERDANTURF BATTLE TENT\n"
+	.string "The BATTLE TENT: PALACE\n"
 	.string "rules are listed.$"

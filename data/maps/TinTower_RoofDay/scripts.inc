@@ -176,8 +176,6 @@ TinTower_RoofDay_EventScript_TalkToKimono::
 TinTower_RoofDay_EventScript_HoOh::
 	lockall
 	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_RoofDay_EventScript_HoOhPostgame
-	setweather WEATHER_NONE
-	doweather
 	waitse
 	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
 	delay 30
@@ -228,6 +226,8 @@ TinTower_RoofDay_EventScript_HoOhPostgame::
 TinTower_RoofDay_EventScript_HoohFlewAway::
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_HO_OH
+	setweather WEATHER_NONE
+	doweather
 	setflag FLAG_HIDE_HO_OH
 	fadescreenswapbuffers FADE_FROM_BLACK
 	bufferspeciesname STR_VAR_1, SPECIES_HO_OH
@@ -238,6 +238,8 @@ TinTower_RoofDay_EventScript_CaughtHooh::
 	setflag FLAG_CAUGHT_HO_OH
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_HO_OH
+	setweather WEATHER_NONE
+	doweather
 	setflag FLAG_HIDE_HO_OH
 	fadescreenswapbuffers FADE_FROM_BLACK
 	return

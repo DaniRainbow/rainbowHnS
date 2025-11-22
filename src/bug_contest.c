@@ -36,6 +36,7 @@ void BugContestRetirePrompt(void)
 
 void EnterBugContestMode(void)
 {
+    FlagClear(FLAG_ADVENTURE_STARTED);//allows multi-catching for nuzlockes
     FlagSet(FLAG_SYS_BUG_CONTEST_MODE);
     sBugContestStartTime = gMain.vblankCounter1;
     sBugContestTimerActive = TRUE;
@@ -43,6 +44,7 @@ void EnterBugContestMode(void)
 
 void ExitBugContestMode(void)
 {
+    FlagSet(FLAG_ADVENTURE_STARTED);//allows multi-catching for nuzlockes
     FlagClear(FLAG_SYS_BUG_CONTEST_MODE);
     sBugContestTimerActive = FALSE;
 }

@@ -56,7 +56,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 EverGrandeCity_SidneysRoom_EventScript_SidneyRematch::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech2, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_SIDNEY2, EverGrandeCity_SidneysRoom_Text_Defeat2
+	trainerbattle_no_intro TRAINER_LUCY_BF_BRAIN, EverGrandeCity_SidneysRoom_Text_Defeat2
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 

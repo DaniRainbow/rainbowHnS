@@ -328,7 +328,8 @@ OlivineCity_Text_LighthouseSign:
 	.string "LIGHTHOUSE$"
 
 OlivineCity_Text_BattleTowerSign:
-	.string "BATTLE TOWER AHEAD\n"
+	.string "TRAINER HILL and\n"
+	.string "BATTLE TENTS AHEAD.\p"
 	.string "Opening Now!$"
 
 OlivineCity_Text_Machoke:

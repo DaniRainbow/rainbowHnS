@@ -117,9 +117,12 @@ GoldenrodDeptStore6_EventScript_Sign::
 
 GoldenrodDeptStore_Text_6FLass:
     .string "Do you listen to LUCKY CHANNEL?\p"
-    .string "If you want to win, trade POKéMON\n"
-    .string "with as many people as possible to\l"
-    .string "get different ID numbers.$"
+    .string "They say if you want to win,\n"
+	.string "you should trade POKéMON with as\l"
+    .string "many people as possible to get\l"
+    .string "different ID numbers.\p"
+	.string "However, trading isn't as widely\n"
+	.string "available as it once was.$"
 
 GoldenrodDeptStore_Text_6FSuperNerd:
     .string "If you're tired, try the vending\n"

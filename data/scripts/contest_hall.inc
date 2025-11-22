@@ -19,8 +19,9 @@ LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist::
 	lock
 	faceplayer
 	goto_if_ne VAR_CONTEST_PRIZE_PICKUP, 0, LilycoveCity_ContestLobby_EventScript_PickUpPrize
-	call_if_set FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_ReceptionWelcome
-	call_if_unset FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_GivePokeblockCase
+	checkitem ITEM_POKEBLOCK_CASE
+	call_if_eq VAR_RESULT, FALSE, LilycoveCity_ContestLobby_EventScript_GivePokeblockCase
+	call_if_eq VAR_RESULT, TRUE,  LilycoveCity_ContestLobby_EventScript_ReceptionWelcome
 	goto LilycoveCity_ContestLobby_EventScript_AskEnterContest
 	end
 
@@ -31,7 +32,6 @@ LilycoveCity_ContestLobby_EventScript_ReceptionWelcome::
 LilycoveCity_ContestLobby_EventScript_GivePokeblockCase::
 	msgbox LilycoveCity_ContestLobby_Text_ReceptionDontHavePokeblockCase, MSGBOX_DEFAULT
 	giveitem ITEM_POKEBLOCK_CASE
-	setflag FLAG_RECEIVED_POKEBLOCK_CASE
 	msgbox LilycoveCity_ContestLobby_Text_NowThatWeveClearedThatUp, MSGBOX_DEFAULT
 	return
 
@@ -194,7 +194,7 @@ LilycoveCity_ContestLobby_EventScript_EnterMon::
 	msgbox LilycoveCity_ContestLobby_Text_YourMonIsEntryNum4, MSGBOX_DEFAULT
 	closemessage
 	releaseall
-	setvar VAR_GARBAGEVAR, 1
+	setvar VAR_CONTEST_HALL_STATE, 1
 	return
 
 ContestHall_EventScript_DoContest::
@@ -217,7 +217,7 @@ ContestHall_EventScript_DoContest::
 	call ContestHall_EventScript_CongratulateWinner
 	call ContestHall_EventScript_AudienceLookAround
 	call ContestHall_EventScript_GiveWinnerPrize
-	setvar VAR_GARBAGEVAR, 2
+	setvar VAR_CONTEST_HALL_STATE, 2
 	return
 
 ContestHall_EventScript_GetContestRankStringId::

@@ -123,6 +123,8 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsMusicOnOff = 0;
     gSaveBlock2Ptr->optionsNewBackgrounds = 1; //HnS
     gSaveBlock2Ptr->optionsRunType = 1;
+    gSaveBlock2Ptr->optionsNewBattleUI= 0;
+    gSaveBlock2Ptr->optionsGenOneRecharge= 0;
 }
 
 static void ClearPokedexFlags(void)
@@ -154,6 +156,7 @@ static void ClearFrontierRecord(void)
 static void WarpToTruck(void)
 {
     SaveData_TxRandomizerAndChallenges();
+    NewGameInitPCItems();
     SetWarpDestination(MAP_GROUP(NEW_BARK_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(NEW_BARK_TOWN_PLAYERS_HOUSE_2F), 1, 0, 0);
     WarpIntoMap();
 }
@@ -181,6 +184,7 @@ void NewGameInitData(void)
     bool8 UnlimitedWT = FlagGet(FLAG_UNLIMITIED_WONDERTRADE);
     bool8 EnableMints = FlagGet(FLAG_MINTS_ENABLED);
     bool8 EnableExtraLegendaries = FlagGet(FLAG_EXTRA_LEGENDARIES);
+    bool8 FasterJoy = FlagGet(FLAG_EVEN_FASTER_JOY);
 
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
         RtcReset();
@@ -219,7 +223,6 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     gSaveBlock1Ptr->registeredLongItem = 0;
     ClearBag();
-    NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();
@@ -240,14 +243,15 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     RandomizeTypeEffectivenessListEWRAM(Random32());
-    if ((gSaveBlock1Ptr->tx_Features_PkmnDeath) && (gSaveBlock1Ptr->tx_Challenges_Nuzlocke))
-        gSaveBlock1Ptr->tx_Features_PkmnDeath = 0;
+    if ((gSaveBlock1Ptr->tx_Nuzlocke_EasyMode) && (gSaveBlock1Ptr->tx_Challenges_Nuzlocke))
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 0;
 
     HardPrev ? FlagSet(FLAG_DIFFICULTY_HARD) : FlagClear(FLAG_DIFFICULTY_HARD);
     TMPrev ? FlagSet(FLAG_FINITE_TMS) : FlagClear(FLAG_FINITE_TMS);
     UnlimitedWT ? FlagSet(FLAG_UNLIMITIED_WONDERTRADE) : FlagClear(FLAG_UNLIMITIED_WONDERTRADE);
     EnableMints ? FlagSet(FLAG_MINTS_ENABLED) : FlagClear(FLAG_MINTS_ENABLED);
     EnableExtraLegendaries ? FlagSet(FLAG_EXTRA_LEGENDARIES) : FlagClear(FLAG_EXTRA_LEGENDARIES);
+    FasterJoy ? FlagSet(FLAG_EVEN_FASTER_JOY) : FlagClear(FLAG_EVEN_FASTER_JOY);
 
     gSaveBlock1Ptr->versionIdMagic = SAVE_MAGIC_NUM;
     gSaveBlock1Ptr->versionId = SAVE_VERSION;
@@ -286,7 +290,6 @@ void CheckIfRandomizerIsActive(void)
         || (gSaveBlock1Ptr->tx_Random_Trainer == 1)
         || (gSaveBlock1Ptr->tx_Random_Evolutions == 1)
         || (gSaveBlock1Ptr->tx_Random_EvolutionMethods == 1)
-        || (gSaveBlock1Ptr->tx_Random_OneForOne == 1)
         || (gSaveBlock1Ptr->tx_Random_Items == 1)))
             FlagSet(FLAG_WT_ENABLED_RANDOMIZER);
 }

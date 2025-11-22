@@ -1949,9 +1949,9 @@ Common_EventScript_LegendaryFlewAway::
 
 	.include "data/maps/TinTower_RoofNight/scripts.inc"
 
-	.include "data/maps/BattleTower_Outside/scripts.inc"
+	.include "data/maps/TrainerHill_Courtyard/scripts.inc"
 
-	.include "data/maps/Gate_Route40_BattleTowerOutside/scripts.inc"
+	.include "data/maps/Gate_Route40_TrainerHill_Courtyard/scripts.inc"
 
 	.include "data/maps/RuinsOfAlph_WordsRoom1/scripts.inc"
 
@@ -1988,3 +1988,11 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/MtSilver_SummitNight/scripts.inc"
 
 	.include "data/maps/Route19_Cave/scripts.inc"
+
+	.include "data/maps/WhirlIslands_LugiaChamber/scripts.inc"
+
+	.include "data/maps/WhirlIslands_Descent/scripts.inc"
+
+	.include "data/maps/WhirlIslands_B3F/scripts.inc"
+
+	.include "data/maps/WhirlIslands_B1F_Inner/scripts.inc"
