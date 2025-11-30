@@ -16902,8 +16902,8 @@ static const struct TrainerMonItemCustomMoves sParty_Morty_Hard[] = {
     .iv = 58,
     .lvl = 24,
     .species = SPECIES_BANETTE,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_SHADOW_BALL, MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_NIGHT_SHADE}
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_SHADOW_BALL, MOVE_WILL_O_WISP, MOVE_CURSE, MOVE_THUNDERBOLT}
     },
     {
     .iv = 55,
@@ -16917,7 +16917,7 @@ static const struct TrainerMonItemCustomMoves sParty_Morty_Hard[] = {
     .lvl = 24,
     .species = SPECIES_MISMAGIUS,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_SHADOW_BALL, MOVE_PAIN_SPLIT, MOVE_PERISH_SONG, MOVE_PSYCHIC}
+    .moves = {MOVE_SHADOW_BALL, MOVE_THUNDERBOLT, MOVE_PERISH_SONG, MOVE_PSYCHIC}
     },
     {
     .iv = 55,
@@ -19473,6 +19473,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Grunt_Hard[] = {
     .iv = 31,
     .lvl = 15,
     .species = SPECIES_HOUNDOUR,
+    },
+    {
+    .iv = 31,
+    .lvl = 14,
+    .species = SPECIES_ZUBAT,
+    },
+    {
+    .iv = 31,
+    .lvl = 16,
+    .species = SPECIES_NIDORINO,
+    },
+    {
+    .iv = 31,
+    .lvl = 16,
+    .species = SPECIES_RHYHORN,
     }
 };
 
@@ -19504,7 +19519,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Proton2_Hard[] = {
     {
     .iv = 132,
     .lvl = 38,
-    .species = SPECIES_RHYDON,
+    .species = SPECIES_RHYPERIOR,
     .moves = {MOVE_EARTHQUAKE, MOVE_SURF, MOVE_FISSURE, MOVE_ROCK_SLIDE}
     },
     {
