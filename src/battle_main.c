@@ -4650,6 +4650,35 @@ static void TryDoEventsBeforeFirstTurn(void)
     SpecialStatusesClear();
     *(&gBattleStruct->absentBattlerFlags) = gAbsentBattlerFlags;
     BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
+    
+    // Permanent rain for Jasmine (or any other trainers of choice)
+    if (gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty && 
+        (gTrainerBattleOpponent_A == TRAINER_JASMINE_1 || 
+         gTrainerBattleOpponent_A == TRAINER_JASMINE_1_2 || 
+         gTrainerBattleOpponent_A == TRAINER_JASMINE_1_3 || 
+         gTrainerBattleOpponent_A == TRAINER_JASMINE_2)) {
+        gBattleWeather = (B_WEATHER_RAIN_PERMANENT | B_WEATHER_RAIN_TEMPORARY);
+    }
+    // Permanent hail for Pryce (or any other trainers of choice)
+    if (gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty && 
+        (gTrainerBattleOpponent_A == TRAINER_PRYCE_1 || 
+         gTrainerBattleOpponent_A == TRAINER_PRYCE_1_2 || 
+         gTrainerBattleOpponent_A == TRAINER_PRYCE_1_3 || 
+         gTrainerBattleOpponent_A == TRAINER_PRYCE_2)) {
+        gBattleWeather = B_WEATHER_HAIL_TEMPORARY;
+    }
+    // Permanent sun for Blaine (or any other trainers of choice)
+    if (gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty && 
+        gTrainerBattleOpponent_A == TRAINER_BLAINE) {
+        gBattleWeather = (B_WEATHER_SUN_PERMANENT | B_WEATHER_SUN_TEMPORARY);
+    }
+
+    // Permanent sandstorm for Brock (or any other trainers of choice)
+    if (gSaveBlock1Ptr->tx_Challenges_TrainerDifficulty && 
+        gTrainerBattleOpponent_A == TRAINER_BROCK) {
+        gBattleWeather = (B_WEATHER_SANDSTORM_PERMANENT | B_WEATHER_SANDSTORM_TEMPORARY);
+    }
+    
     gBattleMainFunc = HandleTurnActionSelectionState;
     ResetSentPokesToOpponentValue();
 
