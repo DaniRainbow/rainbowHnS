@@ -509,9 +509,10 @@ Route39_Movement_WillLeave_Right:
 	step_end
 
 Route39_Text_WillIntro:
-	.string "Oh hey there, I am WILL of the ELITE FOUR!\p"
-	.string "The POKéMON LEAGUE keeps close eyes on\n"
-	.string "promising trainers like yourself.\p"
+	.string "Oh hey there, I am WILL of the\n"
+	.string "ELITE FOUR!\p"
+	.string "The POKéMON LEAGUE keeps close eyes\n"
+	.string "on promising trainers like yourself.\p"
 	.string "I was traveling to see the Lighthouse\n"
 	.string "in OLIVINE CITY when I decided to\l"
 	.string "seek you out.\p"
