@@ -80,7 +80,7 @@
 #define TRAINER_VINCENT                      76
 #define TRAINER_LEROY                        77
 #define TRAINER_WILTON_1                     78
-#define TRAINER_EDGAR                        79
+#define TRAINER_WILL_ROUTE39                 79
 #define TRAINER_ALBERT                       80
 #define TRAINER_SAMUEL                       81
 #define TRAINER_VITO                         82
@@ -251,7 +251,7 @@
 #define TRAINER_KAYLA                       247
 #define TRAINER_BENJAMIN                      248
 #define TRAINER_LANCE_1                     249
-#define TRAINER_LANCE_2                     250
+#define TRAINER_CHAMPIONBLUE_2              250
 #define TRAINER_RIVAL_CHIKORITA_1                     251
 #define TRAINER_RIVAL_CHIKORITA_2                     252
 #define TRAINER_RIVAL_CHIKORITA_3                     253
@@ -804,7 +804,7 @@
 #define TRAINER_JUAN_4                      800
 #define TRAINER_JUAN_5                      801
 #define TRAINER_CARLENE                      802
-#define TRAINER_JIN                      803
+#define TRAINER_WILL_ROUTE39_STRONG      803
 #define TRAINER_STEVEN                      804
 #define TRAINER_BRET                      805
 #define TRAINER_TUCKER                      806

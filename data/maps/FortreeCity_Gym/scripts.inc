@@ -95,7 +95,7 @@ FortreeCity_Gym_EventScript_Humberto::
 	end
 
 FortreeCity_Gym_EventScript_Darius::
-	trainerbattle_single TRAINER_JIN, FortreeCity_Gym_Text_DariusIntro, FortreeCity_Gym_Text_DariusDefeat
+	trainerbattle_single TRAINER_TROY, FortreeCity_Gym_Text_DariusIntro, FortreeCity_Gym_Text_DariusDefeat
 	msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
 	end
 

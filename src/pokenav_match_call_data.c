@@ -446,17 +446,6 @@ static const match_call_text_data_t sFlanneryTextScripts[] = {
     { NULL,                     0xFFFF,              0xFFFF }
 };
 
-static const struct MatchCallStructTrainer sFlanneryMatchCallHeader =
-{
-    .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_GOLDENROD_CITY,
-    .flag = FLAG_ENABLE_FLANNERY_MATCH_CALL,
-    .rematchTableIdx = REMATCH_FLANNERY,
-    .desc = gText_FlanneryMatchCallDesc,
-    .name = NULL,
-    .textData = sFlanneryTextScripts
-};
-
 static const match_call_text_data_t sWinonaTextScripts[] = {
     { MatchCall_Text_Winona1, 0xFFFE,              0xFFFF },
     { MatchCall_Text_Winona2, 0xFFFF,              0xFFFF },
@@ -608,7 +597,6 @@ static const match_call_t sMatchCallHeaders[] = {
     [MC_HEADER_ROXANNE]    = {.leader = &sRoxanneMatchCallHeader},
     [MC_HEADER_BRAWLY]     = {.leader = &sBrawlyMatchCallHeader},
     [MC_HEADER_WATTSON]    = {.leader = &sWattsonMatchCallHeader},
-    [MC_HEADER_FLANNERY]   = {.leader = &sFlanneryMatchCallHeader},
     [MC_HEADER_WINONA]     = {.leader = &sWinonaMatchCallHeader},
     [MC_HEADER_TATE_LIZA]  = {.leader = &sTateLizaMatchCallHeader},
     [MC_HEADER_JUAN]       = {.leader = &sJuanMatchCallHeader},

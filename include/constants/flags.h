@@ -112,7 +112,7 @@
 #define FLAG_WATTSON_REMATCH_AVAILABLE       0x5B
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
 #define FLAG_GOOD_LUCK_SAFARI_ZONE           0x5D // Set after talking to NPC blocking Safari Zone entrance/exit once.
-#define FLAG_GARBAGEFLAG2           0x5E 
+#define FLAG_HIDE_WILL_ROUTE39               0x5E // Hide Will on Route 39
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
@@ -449,7 +449,7 @@
 #define FLAG_REMATCH_ROXANNE                 0x19E
 #define FLAG_REMATCH_BRAWLY                  0x19F
 #define FLAG_REMATCH_WATTSON                 0x1A0
-#define FLAG_REMATCH_FLANNERY                0x1A1
+#define FLAG_DEFEATED_WILL_ROUTE39            0x1A1
 #define FLAG_REMATCH_NORMAN                  0x1A2
 #define FLAG_REMATCH_WINONA                  0x1A3
 #define FLAG_REMATCH_TATE_AND_LIZA           0x1A4
@@ -505,7 +505,6 @@
 #define FLAG_ENABLE_ROXANNE_MATCH_CALL       0x1D3
 #define FLAG_ENABLE_BRAWLY_MATCH_CALL        0x1D4
 #define FLAG_ENABLE_WATTSON_MATCH_CALL       0x1D5
-#define FLAG_ENABLE_FLANNERY_MATCH_CALL      0x1D6
 #define FLAG_ENABLE_WINONA_MATCH_CALL        0x1D7
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
@@ -709,8 +708,8 @@
 #define FLAG_SHINY_STARTER_3  0x296 // Flag for shiny starters, Totodile
 #define FLAG_FORCE_SHINY   0x297 // Needed for shiny starters, not used anywhere else
 #define FLAG_TEMPORALY_DISABLE_STATIC_RANDOMIZER  0x298
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
+#define FLAG_HIDE_CHAMPIONS_ROOM_LANCE  0x299 // Champions Room Lance sprite visibility
+#define FLAG_HIDE_CHAMPIONS_ROOM_BLUE  0x29A // Champions Room Blue sprite visibility
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
 #define FLAG_UNUSED_0x29D  0x29D // Unused Flag

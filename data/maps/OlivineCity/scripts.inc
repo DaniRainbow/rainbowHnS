@@ -334,3 +334,20 @@ OlivineCity_Text_BattleTowerSign:
 
 OlivineCity_Text_Machoke:
 	.string "MACHOKE: CHO!$"
+
+OlivineCity_EventScript_Will::
+	lock
+	faceplayer
+	msgbox OlivineCity_Text_Will, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+OlivineCity_Text_Will:
+	.string "Ah... magnificent.\p"
+	.string "The way the lighthouse's light\n"
+	.string "cuts through the darkness...\l"
+	.string "it reminds me of the clarity\l"
+	.string "one needs in battle.\p"
+	.string "There's something almost hypnotic\n"
+	.string "about watching that beacon turn...$"

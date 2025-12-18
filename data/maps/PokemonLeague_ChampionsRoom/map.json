@@ -25,7 +25,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PokemonLeague_WillsRoom_EventScript_Lance",
-      "flag": "0"
+      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_LANCE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLUE",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PokemonLeague_WillsRoom_EventScript_Lance",
+      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_BLUE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",

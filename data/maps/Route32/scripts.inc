@@ -51,6 +51,8 @@ Route32_EventScript_BirdkeeperPeter::
 	msgbox Route32_Text_BirdKeeperPeter_After, MSGBOX_AUTOCLOSE
 	end
 
+
+
 Route32_EventScript_Roar::
 	lock
 	faceplayer
@@ -519,3 +521,5 @@ Route32_Text_Sign2:
 Route32_Text_Sign3:
 	.string "UNION CAVE\n"
 	.string "AHEAD$"
+
+

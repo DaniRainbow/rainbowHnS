@@ -122,31 +122,32 @@
 #define VAR_CELADON_CITY_STATE                           0x4066 
 #define VAR_SAFFRON_CITY_STATE                           0x4067 
 #define VAR_FUCHSIA_CITY_STATE                           0x4068 
-#define VAR_SPROUT_TOWER                                 0x4069
-#define VAR_VIOLET_CITY_KIMONO_GIRL                      0x406A 
-#define VAR_SLOWPOKE_TAIL                                0x406B 
-#define VAR_ILEX_FOREST_FARFETCHD                        0x406C //0 = CHASING, 1// start going right way, 2 = done
-#define VAR_ELEVATOR                                     0x406D 
-#define VAR_TRAIN                                        0x406E 
-#define VAR_LUGIA_OR_HOOH                                0x406F // 0 = unset, 1 = lugia, 2 = ho-oh
-#define VAR_KENYA                                        0x4070 // 0 = take, 1 = deliver, 2 = delivered, 3 = informed of delivery
-#define VAR_BUG_CONTEST_STATE                            0x4071
-#define VAR_ECRUTEAK_CITY_THEATER                        0x4072 //0 = goto theater, 1 = talk to rocket, 2 = get surf, 3 = wait until 8th badge elm visit. 4 = talktosilver, 5 = enter dojo, 6 = fightkimono, 7 = goto legendary, 8 = done legendary.
-#define VAR_ROUTE39_BARN                                 0x4073 // 0 = give 5 berries. 1 = give 4 berries. 2 = give 3 berries, 3 = give 2 berries, 4 = give 1 berry, 5 = healed, can buy milk.
-#define VAR_RUINSOFALPH_STATE                            0x4074
-#define VAR_SHUCKIE                                      0x4075 // 0 = unset, 1 = given, 2 = GIVEN BEFORE 1.2, 3 = returned
-#define VAR_GETFLY                                       0x4076 
-#define VAR_ROCKET_HIDEOUT_STATUE_1                      0x4077 
-#define VAR_ROCKET_HIDEOUT_STATUE_2                      0x4078 
-#define VAR_ROCKET_HIDEOUT_STATUE_3                      0x4079 
-#define VAR_ROCKET_HIDEOUT_STATUE_4                      0x407A 
-#define VAR_ROCKET_HIDEOUT_STATUE_5                      0x407B
-#define VAR_ROCKET_PASSWORD                              0x407C // 0-2
-#define VAR_ELECTRODES_FAINTED                           0x407D 
-#define VAR_LAKE_OF_RAGE_FISHERMAN                       0x407E // 0 = unmet, 1 = met, 2 = received a magikarp, 3 = received a satisfactory magikarp
-#define VAR_BLACKTHORN_GYM_STATE                         0x407F // Unused Var
-#define VAR_DRAGONS_DEN_QUIZ                             0x4080 // Unused Var
-#define VAR_ROUTE27_STATE                                0x4081 // 0 = enter route 27 via surf, 1 = goto junction, 2 = fight silver, 3 = done
+#define VAR_ROUTE39_STATE                                0x4069 //0 = Will can appear, 1 = Will defeated and hidden
+#define VAR_SPROUT_TOWER                                 0x406A
+#define VAR_VIOLET_CITY_KIMONO_GIRL                      0x406B 
+#define VAR_SLOWPOKE_TAIL                                0x406C 
+#define VAR_ILEX_FOREST_FARFETCHD                        0x406D //0 = CHASING, 1// start going right way, 2 = done
+#define VAR_ELEVATOR                                     0x406E 
+#define VAR_TRAIN                                        0x406F 
+#define VAR_LUGIA_OR_HOOH                                0x4070 // 0 = unset, 1 = lugia, 2 = ho-oh
+#define VAR_KENYA                                        0x4071 // 0 = take, 1 = deliver, 2 = delivered, 3 = informed of delivery
+#define VAR_BUG_CONTEST_STATE                            0x4072
+#define VAR_ECRUTEAK_CITY_THEATER                        0x4073 //0 = goto theater, 1 = talk to rocket, 2 = get surf, 3 = wait until 8th badge elm visit. 4 = talktosilver, 5 = enter dojo, 6 = fightkimono, 7 = goto legendary, 8 = done legendary.
+#define VAR_ROUTE39_BARN                                 0x4074 // 0 = give 5 berries. 1 = give 4 berries. 2 = give 3 berries, 3 = give 2 berries, 4 = give 1 berry, 5 = healed, can buy milk.
+#define VAR_RUINSOFALPH_STATE                            0x4075
+#define VAR_SHUCKIE                                      0x4076 // 0 = unset, 1 = given, 2 = GIVEN BEFORE 1.2, 3 = returned
+#define VAR_GETFLY                                       0x4077 
+#define VAR_ROCKET_HIDEOUT_STATUE_1                      0x4078 
+#define VAR_ROCKET_HIDEOUT_STATUE_2                      0x4079 
+#define VAR_ROCKET_HIDEOUT_STATUE_3                      0x407A 
+#define VAR_ROCKET_HIDEOUT_STATUE_4                      0x407B 
+#define VAR_ROCKET_HIDEOUT_STATUE_5                      0x407C
+#define VAR_ROCKET_PASSWORD                              0x407D // 0-2
+#define VAR_ELECTRODES_FAINTED                           0x407E 
+#define VAR_LAKE_OF_RAGE_FISHERMAN                       0x407F // 0 = unmet, 1 = met, 2 = received a magikarp, 3 = received a satisfactory magikarp
+#define VAR_BLACKTHORN_GYM_STATE                         0x4080 // Unused Var
+#define VAR_DRAGONS_DEN_QUIZ                             0x4081 // Unused Var
+#define VAR_ROUTE27_STATE                                0x4082 // 0 = enter route 27 via surf, 1 = goto junction, 2 = fight silver, 3 = done
 #define VAR_LEAGUE_STATE                                 0x4082
 #define VAR_TIME_BASED_ENCOUNTER                         0x4083 // Different encounter tables
 #define VAR_ICE_PATH_STATE                               0x4084 //0 = meet kimono, 1 = done

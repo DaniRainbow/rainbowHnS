@@ -12,11 +12,6 @@ Route44_EventScript_Wilton::
 	msgbox Route44_Text_FisherWiltonHugePoliwag, MSGBOX_AUTOCLOSE
 	end
 
-Route44_EventScript_Edgar::
-	trainerbattle_single TRAINER_EDGAR Route44_Text_FisherEdgarSeen, Route44_Text_FisherEdgarBeaten
-	msgbox Route44_Text_FisherEdgarAfter, MSGBOX_AUTOCLOSE
-	end
-
 Route44_EventScript_Vance::
 	trainerbattle_single TRAINER_VANCE Route44_Text_BirdKeeperVance1Seen, Route44_Text_BirdKeeperVance1Beaten
 	msgbox Route44_Text_BirdKeeperVanceBirds, MSGBOX_AUTOCLOSE

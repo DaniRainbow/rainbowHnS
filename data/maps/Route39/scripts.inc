@@ -1,5 +1,6 @@
 .set LOCALID_R39_SHADOW, 17
 .set LOCALID_R39_BAOBA, 2
+.set LOCALID_WILL, 21
 
 Route39_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route39_OnTransition
@@ -8,6 +9,18 @@ Route39_MapScripts::
 
 Route39_OnTransition: 
 	callnative SetTimeBasedEncounters
+	goto_if_unset FLAG_DEFEATED_WILL_ROUTE39, Route39_OnTransition_InitializeState
+	goto_if_eq VAR_ROUTE39_STATE, 0, Route39_EventScript_HideWill
+	end
+
+Route39_OnTransition_InitializeState:
+	setvar VAR_ROUTE39_STATE, 0
+	goto_if_eq VAR_ROUTE39_STATE, 0, Route39_EventScript_HideWill
+	end
+
+Route39_EventScript_HideWill::
+	setflag FLAG_HIDE_WILL_ROUTE39
+	removeobject LOCALID_WILL
 	end
 
 Route39_EventScript_Item_TM::
@@ -372,3 +385,155 @@ Route39_Text_TrainerTips:
 	.string "drop out of trees.\p"
 	.string "Use HEADBUTT on any tree\n"
 	.string "you see!$"
+
+Route39_EventScript_WillCutsceneTrigger_Left::
+	lock
+	clearflag FLAG_HIDE_WILL_ROUTE39
+	addobject LOCALID_WILL
+	delay 30
+	playbgm TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR, TRUE
+	applymovement LOCALID_WILL, Route39_Movement_WillApproach_Left
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox Route39_Text_WillIntro, MSGBOX_DEFAULT
+	closemessage
+	call Route39_EventScript_WillSelectTeam
+	goto Route39_EventScript_WillAfterBattleProper_Left
+	end
+
+Route39_EventScript_WillCutsceneTrigger_Right::
+	lock
+	clearflag FLAG_HIDE_WILL_ROUTE39
+	addobject LOCALID_WILL
+	delay 30
+	playbgm TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR, TRUE
+	applymovement LOCALID_WILL, Route39_Movement_WillApproach_Right
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox Route39_Text_WillIntro, MSGBOX_DEFAULT
+	closemessage
+	call Route39_EventScript_WillSelectTeam
+	goto Route39_EventScript_WillAfterBattleProper_Right
+	end
+
+Route39_EventScript_WillSelectTeam::
+	goto_if_ge VAR_NUM_BADGES, 5, Route39_EventScript_WillStrongTeam
+	goto Route39_EventScript_WillWeakTeam
+
+Route39_EventScript_WillWeakTeam::
+	trainerbattle_no_intro TRAINER_WILL_ROUTE39, Route39_Text_WillDefeated
+	return
+
+Route39_EventScript_WillStrongTeam::
+	trainerbattle_no_intro TRAINER_WILL_ROUTE39_STRONG, Route39_Text_WillDefeated
+	return
+
+Route39_EventScript_WillAfterBattleProper_Left::
+	special HealPlayerParty
+	msgbox Route39_Text_WillAfterBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route39_Movement_PlayerStepLeft
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	applymovement LOCALID_WILL, Route39_Movement_WillLeave_Left
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_WILL_ROUTE39
+	removeobject LOCALID_WILL
+	setflag FLAG_DEFEATED_WILL_ROUTE39
+	setvar VAR_ROUTE39_STATE, 1
+	fadedefaultbgm
+	release
+	end
+
+Route39_EventScript_WillAfterBattleProper_Right::
+	special HealPlayerParty
+	msgbox Route39_Text_WillAfterBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route39_Movement_PlayerStepRight
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	applymovement LOCALID_WILL, Route39_Movement_WillLeave_Right
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_WILL_ROUTE39
+	removeobject LOCALID_WILL
+	setflag FLAG_DEFEATED_WILL_ROUTE39
+	setvar VAR_ROUTE39_STATE, 1
+	fadedefaultbgm
+	release
+	end
+
+Route39_EventScript_WillAfterBattle::
+	msgbox Route39_Text_WillAfterBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route39_Movement_WillApproach_Left:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route39_Movement_WillApproach_Right:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route39_Movement_WillLeave_Left:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route39_Movement_WillLeave_Right:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route39_Text_WillIntro:
+	.string "Oh hey there, I am WILL of the ELITE FOUR!\p"
+	.string "The POKéMON LEAGUE keeps close eyes on\n"
+	.string "promising trainers like yourself.\p"
+	.string "I was traveling to see the Lighthouse\n"
+	.string "in OLIVINE CITY when I decided to\l"
+	.string "seek you out.\p"
+	.string "As a little training exercise, I'm\n"
+	.string "carrying some of KAREN's POKéMON\l"
+	.string "with me today.\p"
+	.string "Show me the power of your POKéMON!\n"
+	.string "Entertain me!$"
+
+Route39_Text_WillDefeated:
+	.string "Your POKéMON's power...\p"
+	.string "Impressive indeed!$"
+
+Route39_Text_WillAfterBattle:
+	.string "Continue on your journey.\p"
+	.string "I look forward to our next\n"
+	.string "battle at the POKéMON LEAGUE!$"
+
+Route39_Movement_PlayerStepLeft:
+	walk_left
+	step_end
+
+Route39_Movement_PlayerStepRight:
+	walk_right
+	step_end

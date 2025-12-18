@@ -1,4 +1,5 @@
 .set LOCALID_HALLOFFAME_LANCE, 1
+.set LOCALID_HALLOFFAME_BLUE, 2
 
 PokemonLeague_HallOfFame_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PokemonLeague_HallOfFame_OnFrame
@@ -33,11 +34,11 @@ PokemonLeague_HallOfFame_EventScript_Cutscene::
 	end
 
 PokemonLeague_HallOfFame_EventScript_CutsceneKantoChamp::
-	applymovement LOCALID_HALLOFFAME_LANCE, PokemonLeague_HallOfFame_Movement_LanceEnter
+	applymovement LOCALID_HALLOFFAME_BLUE, PokemonLeague_HallOfFame_Movement_BlueEnter
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonLeague_HallOfFame_Movement_PlayerEnter
 	waitmovement OBJ_EVENT_ID_PLAYER
-	waitmovement LOCALID_HALLOFFAME_LANCE
-	msgbox PokemonLeague_HallOfFame_Rematch_LanceText, MSGBOX_DEFAULT
+	waitmovement LOCALID_HALLOFFAME_BLUE
+	msgbox PokemonLeague_HallOfFame_Rematch_BlueText, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -121,6 +122,18 @@ PokemonLeague_HallOfFame_Movement_LanceEnter:
 	face_left
 	step_end
 
+PokemonLeague_HallOfFame_Movement_BlueEnter:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	face_left
+	step_end
+
 PokemonLeague_HallOfFame_Movement_PlayerEnter:
 	walk_up
 	walk_up
@@ -151,28 +164,25 @@ PokemonLeague_HallOfFame_LanceText:
     .string "{PLAYER}, allow me to register you\n"
     .string "and your partners as CHAMPIONS!$"
 
-PokemonLeague_HallOfFame_Rematch_LanceText:
-    .string "LANCE: I remember, it wasn't long ago\n"
-    .string "I stood here, welcoming you as\p"
-    .string "the CHAMPION of JOHTO.\p"
-    .string "And now, here we are again, in this\n"
-    .string "sacred place where we honor the very\p"
-    .string "best trainers and their POKéMON.\p"
-    .string "Today, you've proven yourself not\n"
-    .string "just in JOHTO, but in KANTO as well,\l"
-    .string "besting even my strongest team.\p"
-    .string "You've shown remarkable compassion\n"
-    .string "and trust in your POKéMON,\l"
-    .string "a bond that has carried you to\l"
-    .string "victory time and again.\p"
-    .string "Your journey, marked by\n"
-    .string "perseverance and unwavering\l"
-    .string "determination,\l"
-    .string "speaks to your true spirit as a\l"
-    .string "trainer.\p"
-    .string "You have all the makings of a true\n"
-    .string "great, perhaps even the greatest.\p"
-    .string "{PLAYER}, it is my honor to register\n"
-    .string "you, and your trusted partners,\l"
-    .string "as champions once again.$"
+PokemonLeague_HallOfFame_Rematch_BlueText:
+    .string "BLUE: Well, well... Here we are\n"
+    .string "again in the HALL OF FAME.\p"
+    .string "I have to admit, {PLAYER}, you've\n"
+    .string "really proven yourself.\p"
+    .string "First you beat the JOHTO LEAGUE,\n"
+    .string "then you took down all of KANTO's\l"
+    .string "GYM LEADERS...me included\p"
+    .string "And now you've beaten me at my\n"
+    .string "absolute strongest.\p"
+    .string "I've been training non-stop since\n"
+    .string "I became CHAMPION, but you still\l"
+    .string "found a way to win.\p"
+    .string "That's what makes a true CHAMPION--\n"
+    .string "never giving up, always pushing\l"
+    .string "forward no matter the odds.\p"
+    .string "You've earned your place here\n"
+    .string "among the greatest trainers.\p"
+    .string "{PLAYER}, let me register you and\n"
+    .string "your POKéMON in the HALL OF FAME\l"
+    .string "once more!$"
 

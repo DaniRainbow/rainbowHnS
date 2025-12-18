@@ -9,13 +9,6 @@ SproutTower_3F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-
-SproutTower_3F_EventScript_SageJin::
-	trainerbattle_single TRAINER_JIN SproutTower_Text_SageJin_Seen, SproutTower_Text_SageJin_Beaten
-	msgbox SproutTower_Text_SageJin_AfterBattle, MSGBOX_AUTOCLOSE
-	end
-
-
 SproutTower_3F_EventScript_SageNeal::
 	trainerbattle_single TRAINER_NEAL SproutTower_Text_SageNeal_Seen, SproutTower_Text_SageNeal_Beaten
 	msgbox SproutTower_Text_SageNeal_AfterBattle, MSGBOX_AUTOCLOSE
@@ -214,20 +207,6 @@ SproutTower_Text_SageLi_FlashExplain:
 SproutTower_Text_SageLi_AfterBattle:
 	.string "I hope you learn and grow from\n"
 	.string "your journey.$"
-
-SproutTower_Text_SageJin_Seen:
-	.string "I train to find enlightenment\n"
-	.string "in POKéMON!$"
-
-SproutTower_Text_SageJin_Beaten:
-	.string "My training is incomplete…$"
-
-SproutTower_Text_SageJin_AfterBattle:
-	.string "As POKéMON grow stronger,\n"
-	.string "so does the trainer.\p"
-	.string "No, wait. As the trainer\n"
-	.string "grows stronger, so do the\l"
-	.string "POKéMON.$"
 
 SproutTower_Text_SageTroy_Seen:
 	.string "Let me see how much you trust\n"

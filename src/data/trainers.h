@@ -2581,20 +2581,6 @@ const struct Trainer gTrainers[] = {
     },
 
 
-    [TRAINER_EDGAR] =
-    {
-        .trainerClass = TRAINER_CLASS_FISHERMAN,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_BOY_2,
-        .trainerPic = TRAINER_PIC_FISHERMAN,
-        .trainerName = _("EDGAR"),
-        .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Edgar),
-        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Edgar_Hard),
-    },
-
-
     [TRAINER_JONAH] =
     {
         .trainerClass = TRAINER_CLASS_FISHERMAN,
@@ -4872,17 +4858,17 @@ const struct Trainer gTrainers[] = {
     },
 
 
-    [TRAINER_JIN] =
+    [TRAINER_WILL_ROUTE39_STRONG] =
     {
-        .trainerClass = TRAINER_CLASS_SAGE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_SAGE,
-        .trainerPic = TRAINER_PIC_SAGE,
-        .trainerName = _("JIN"),
-        .items = {},
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_WILL,
+        .trainerName = _("WILL"),
+        .items = {ITEM_FULL_HEAL, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Jin),
-        .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Jin_Hard),
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .party = ITEM_CUSTOM_MOVES(sParty_Will_Route39_Strong),
+        .partyHard = ITEM_CUSTOM_MOVES_HARD(sParty_Will_Route39_Strong_Hard),
     },
 
 
@@ -6132,17 +6118,17 @@ const struct Trainer gTrainers[] = {
     },
 
 
-    [TRAINER_LANCE_2] =
+    [TRAINER_CHAMPIONBLUE_2] =
     {
         .trainerClass = TRAINER_CLASS_CHAMPION,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HG_CHAMPION,
-        .trainerPic = TRAINER_PIC_CHAMPION_LANCE,
-        .trainerName = _("LANCE"),
+        .trainerPic = TRAINER_PIC_LEADER_BLUE,
+        .trainerName = _("BLUE"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .party = ITEM_CUSTOM_MOVES(sParty_Lance2),
-        .partyHard = ITEM_CUSTOM_MOVES_HARD(sParty_Lance2_Hard),
+        .party = ITEM_CUSTOM_MOVES(sParty_Blue2_Champion),
+        .partyHard = ITEM_CUSTOM_MOVES_HARD(sParty_Blue2_Champion_Hard),
     },
 
 
@@ -6735,5 +6721,18 @@ const struct Trainer gTrainers[] = {
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Brandon),
         .partyHard = NO_ITEM_DEFAULT_MOVES_HARD(sParty_Brandon_Hard),
+    },
+
+    [TRAINER_WILL_ROUTE39] =
+    {
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_WILL,
+        .trainerName = _("WILL"),
+        .items = {ITEM_FULL_HEAL, ITEM_NONE, ITEM_NONE, ITEM_NONE},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .party = ITEM_CUSTOM_MOVES(sParty_Will_Route39),
+        .partyHard = ITEM_CUSTOM_MOVES_HARD(sParty_Will_Route39_Hard),
     },
 };
