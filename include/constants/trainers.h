@@ -120,6 +120,13 @@
 #define TRAINER_PIC_RUNNING_TRIATHLETE_F            101
 #define TRAINER_PIC_RUNNING_TRIATHLETE_M            102
 #define TRAINER_PIC_SWIMMING_TRIATHLETE_M           103
+#define TRAINER_PIC_SALON_MAIDEN_ANABEL             104
+#define TRAINER_PIC_DOME_ACE_TUCKER                 105
+#define TRAINER_PIC_PALACE_MAVEN_SPENSER            106
+#define TRAINER_PIC_ARENA_TYCOON_GRETA              107
+#define TRAINER_PIC_FACTORY_HEAD_NOLAND             108
+#define TRAINER_PIC_PIKE_QUEEN_LUCY                 109
+#define TRAINER_PIC_PYRAMID_KING_BRANDON            110
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -157,7 +164,7 @@
 #define FACILITY_CLASS_POKEMANIAC            0x17
 #define FACILITY_CLASS_MAGMA_GRUNT_F         0x18
 #define FACILITY_CLASS_GUITARIST             0x19
-#define FACILITY_CLASS_SUPER_NERD               0x1a
+#define FACILITY_CLASS_FIREBREATHER          0x1a
 #define FACILITY_CLASS_CAMPER                0x1b
 #define FACILITY_CLASS_PICNICKER             0x1c
 #define FACILITY_CLASS_BUG_MANIAC            0x1d

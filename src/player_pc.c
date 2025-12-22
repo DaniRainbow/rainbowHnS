@@ -228,6 +228,14 @@ static const u16 sNewGamePCItems[][2] =
     { ITEM_NONE, 0 }
 };
 
+
+static const u16 sNewGamePCItemsInfiniteRareCandy[][2] =
+{
+    { ITEM_INFINITE_RARE_CANDIES, 1 },
+    { ITEM_POTION, 1 },
+    { ITEM_NONE, 0 }
+};
+
 const struct MenuAction gMailboxMailOptions[] =
 {
     { gText_Read,      {Mailbox_DoMailRead} },
@@ -360,15 +368,28 @@ void NewGameInitPCItems(void)
     u8 i = 0;
     ClearItemSlots(gSaveBlock1Ptr->pcItems, PC_ITEMS_COUNT);
 
-    while (TRUE)
-    {
-        if (sNewGamePCItems[i][0] == ITEM_NONE || sNewGamePCItems[i][1] == 0)
-            break;
-        if (AddPCItem(sNewGamePCItems[i][0], sNewGamePCItems[i][1]) != TRUE)
-            break;
-        i++;
+    if (gSaveBlock1Ptr->tx_Nuzlocke_RareCandy){  
+        while (TRUE)
+        {
+            if (sNewGamePCItemsInfiniteRareCandy[i][0] == ITEM_NONE || sNewGamePCItemsInfiniteRareCandy[i][1] == 0)
+                break;
+            if (AddPCItem(sNewGamePCItemsInfiniteRareCandy[i][0], sNewGamePCItemsInfiniteRareCandy[i][1]) != TRUE)
+                break;
+            i++;
+        }
     }
-}
+    else
+    {
+        while (TRUE)
+        {
+            if (sNewGamePCItems[i][0] == ITEM_NONE || sNewGamePCItems[i][1] == 0)
+                break;
+            if (AddPCItem(sNewGamePCItems[i][0], sNewGamePCItems[i][1]) != TRUE)
+                break;
+            i++;
+        }
+    }
+};
 
 void BedroomPC(void)
 {

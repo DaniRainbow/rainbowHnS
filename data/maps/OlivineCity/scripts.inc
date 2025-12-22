@@ -158,16 +158,16 @@ OlivineCity_Text_SilverEncounter:
 	.string "I don't bother with wimps\n"
 	.string "like you.\p"
 	.string "Speaking of weaklings, the\n"
-	.string "city's Gym Leader isn't here,\l"
+	.string "city's GYM LEADER isn't here,\l"
 	.string "and is supposedly taking care\l"
 	.string "of a sick POKéMON at the\l"
-	.string "Lighthouse.\p"
+	.string "LIGHTHOUSE.\p"
 	.string "Humph! Boo-hoo!\n"
 	.string "Just let sick POKéMON go!\p"
 	.string "A POKéMON that can't battle\n"
 	.string "is worthless!\p"
 	.string "Why don't you go train at the\n"
-	.string "Lighthouse?\p"
+	.string "LIGHTHOUSE?\p"
 	.string "Who knows? It may make you a\n"
 	.string "bit of a better Trainer!$"
 
@@ -303,7 +303,7 @@ OlivineCity_Text_Sailor2:
 	.string "strongest GYM LEADER!\p"
 	.string "Hah! That's a load of crud.\p"
 	.string "There's no way PRYCE could\n"
-	.string "hurt JASMINE's Steel-type\l"
+	.string "hurt JASMINE's STEEL-type\l"
 	.string "POKéMON!\p"
 	.string "Bureaucracy if you ask me.\p"
 	.string "She's something to be feared,\n"
@@ -328,7 +328,8 @@ OlivineCity_Text_LighthouseSign:
 	.string "LIGHTHOUSE$"
 
 OlivineCity_Text_BattleTowerSign:
-	.string "BATTLE TOWER AHEAD\n"
+	.string "TRAINER HILL and\n"
+	.string "BATTLE TENTS AHEAD.\p"
 	.string "Opening Now!$"
 
 OlivineCity_Text_Machoke:

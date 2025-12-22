@@ -306,8 +306,8 @@ GoldenrodCity_Text_MrMime:
 	.string "............................$"
 
 GoldenrodCity_Text_ElmCall:
-	.string "ELM: Hello, {PLAYER}?\n"
-	.string "Has that egg hatched yet?\p"
+	.string "PROF.ELM: Hello, {PLAYER}?\n"
+	.string "Has that EGG hatched yet?\p"
 	.string "Once it hatches, don't forget to\n"
 	.string "bring it by the lab! I need to\l"
 	.string "see it!$"

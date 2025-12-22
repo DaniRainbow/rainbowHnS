@@ -81,9 +81,9 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChooseDecor1::
 	waitstate
 	special CloseFrontierExchangeCornerItemIconWindow
 	switch VAR_RESULT
-	case 0, BattleFrontier_ExchangeServiceCorner_EventScript_KissPoster
-	case 1, BattleFrontier_ExchangeServiceCorner_EventScript_KissCushion
-	case 2, BattleFrontier_ExchangeServiceCorner_EventScript_SmoochumDoll
+	case 0, BattleFrontier_ExchangeServiceCorner_EventScript_TreeckoDoll
+	case 1, BattleFrontier_ExchangeServiceCorner_EventScript_TorchicDoll
+	case 2, BattleFrontier_ExchangeServiceCorner_EventScript_MudkipDoll
 	case 3, BattleFrontier_ExchangeServiceCorner_EventScript_TogepiDoll
 	case 4, BattleFrontier_ExchangeServiceCorner_EventScript_MeowthDoll
 	case 5, BattleFrontier_ExchangeServiceCorner_EventScript_ClefairyDoll
@@ -95,27 +95,27 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChooseDecor1::
 	case MULTI_B_PRESSED, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
 	end
 
-BattleFrontier_ExchangeServiceCorner_EventScript_KissPoster::
-	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissPoster, MSGBOX_YESNO
+BattleFrontier_ExchangeServiceCorner_EventScript_TreeckoDoll::
+	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmTreeckoDoll, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BattleFrontier_ExchangeServiceCorner_EventScript_ChooseDecor1
-	setvar VAR_0x8008, 16
-	setvar VAR_0x8009, DECOR_KISS_POSTER
+	setvar VAR_0x8008, 48
+	setvar VAR_0x8009, DECOR_TREECKO_DOLL
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_TryPurchasePrize
 	end
 
-BattleFrontier_ExchangeServiceCorner_EventScript_KissCushion::
-	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissCushion, MSGBOX_YESNO
+BattleFrontier_ExchangeServiceCorner_EventScript_TorchicDoll::
+	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmTorchicDoll, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BattleFrontier_ExchangeServiceCorner_EventScript_ChooseDecor1
-	setvar VAR_0x8008, 32
-	setvar VAR_0x8009, DECOR_KISS_CUSHION
+	setvar VAR_0x8008, 48
+	setvar VAR_0x8009, DECOR_TORCHIC_DOLL
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_TryPurchasePrize
 	end
 
-BattleFrontier_ExchangeServiceCorner_EventScript_SmoochumDoll::
-	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmSmoochumDoll, MSGBOX_YESNO
+BattleFrontier_ExchangeServiceCorner_EventScript_MudkipDoll::
+	msgbox BattleFrontier_ExchangeServiceCorner_Text_ConfirmMudkipDoll, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BattleFrontier_ExchangeServiceCorner_EventScript_ChooseDecor1
-	setvar VAR_0x8008, 32
-	setvar VAR_0x8009, DECOR_SMOOCHUM_DOLL
+	setvar VAR_0x8008, 48
+	setvar VAR_0x8009, DECOR_MUDKIP_DOLL
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_TryPurchasePrize
 	end
 
@@ -471,15 +471,15 @@ BattleFrontier_ExchangeServiceCorner_Text_WelcomePleaseChoosePrize:
 BattleFrontier_ExchangeServiceCorner_Text_PleaseChoosePrize:
 	.string "Please choose a prize from this list.$"
 
-BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissPoster:
+BattleFrontier_ExchangeServiceCorner_Text_ConfirmTreeckoDoll:
 	.string "You've chosen the KISS POSTER.\n"
 	.string "Is that correct?$"
 
-BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissCushion:
+BattleFrontier_ExchangeServiceCorner_Text_ConfirmTorchicDoll:
 	.string "You've chosen the KISS CUSHION.\n"
 	.string "Is that correct?$"
 
-BattleFrontier_ExchangeServiceCorner_Text_ConfirmSmoochumDoll:
+BattleFrontier_ExchangeServiceCorner_Text_ConfirmMudkipDoll:
 	.string "You've chosen the SMOOCHUM DOLL.\n"
 	.string "Is that correct?$"
 
@@ -648,15 +648,16 @@ BattleFrontier_ExchangeServiceCorner_Text_MoreBattlePointsForRecord:
 	.string "the BATTLE facilities, they start\l"
 	.string "giving you more and more Battle Points.$"
 
-BattleFrontier_ExchangeServiceCorner_Text_KissPosterDesc::
-	.string "A large poster with a SMOOCHUM print.$"
-
-BattleFrontier_ExchangeServiceCorner_Text_KissCushionDesc::
-	.string "A SMOOCHUM cushion.\n"
+BattleFrontier_ExchangeServiceCorner_Text_TreeckoDollDesc::
+	.string "A TREECKO DOLL.\n"
 	.string "Place it on a mat or a desk.$"
 
-BattleFrontier_ExchangeServiceCorner_Text_SmoochumDollDesc::
-	.string "A SMOOCHUM DOLL.\n"
+BattleFrontier_ExchangeServiceCorner_Text_TorchicDollDesc::
+	.string "A TORCHIC DOLL.\n"
+	.string "Place it on a mat or a desk.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_MudkipDollDesc::
+	.string "A MUDKIP DOLL.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_TogepiDollDesc::

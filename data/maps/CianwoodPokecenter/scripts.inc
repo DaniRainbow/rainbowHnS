@@ -23,19 +23,21 @@ CianwoodPokemoncenter_EventScript_FisherNormal::
 CianwoodPokemoncenter_EventScript_FisherGiveTentacool::
 	msgbox CianwoodPokemoncenter_Text_Fisher2, MSGBOX_DEFAULT
 	@HnS gift pokemon setup
+	callnative DisableStaticRandomizer
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TENTACOOL
 	bufferspeciesname STR_VAR_1, SPECIES_TENTACOOL
 	givemon SPECIES_TENTACOOL, 25
 	call Common_EventScript_GiftMon
 	setflag FLAG_TEMP_1
+	callnative EnableStaticRandomizer
 	closemessage
 	release
 	end
 
 CianwoodPokemoncenter_Text_Fisher1:
 	.string "As far as water POKéMON go,\n"
-	.string "tentacool is the best by a nautical\l"
-	.string "mile!$"
+	.string "TENTACOOL is the best by a\l"
+	.string "nautical mile!$"
 
 CianwoodPokemoncenter_Text_Fisher2:
 	.string "You seem like you need a water\n"

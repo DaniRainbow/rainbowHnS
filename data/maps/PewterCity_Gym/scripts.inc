@@ -40,7 +40,7 @@ PewterCity_Gym_Text_Brock_Intro:
 	.string "BROCK: Wow, it's not often that we get a\n"
 	.string "challenger from JOHTO.\p"
 	.string "I'm BROCK, the PEWTER GYM LEADER.\p"
-	.string "I'm an expert on rock-type POKéMON.\p"
+	.string "I'm an expert on ROCK-type POKéMON.\p"
 	.string "My POKéMON are impervious to most\n"
 	.string "physical attacks. You'll have a hard\l"
 	.string "time inflicting any damage.\p"
@@ -69,9 +69,9 @@ PewterCity_Gym_Text_Brock_FightDone:
 	.string "a lot stronger too.$"
 
 PewterCity_Gym_Text_CamperJerry_Seen:
-	.string "The trainers of this GYM use rock-type\n"
+	.string "The trainers of this GYM use ROCK-type\n"
 	.string "POKéMON.\p"
-	.string "The rock-type has high DEFENSE.\p"
+	.string "The ROCK-type has high DEFENSE.\p"
 	.string "Battles could end up going a long time.\n"
 	.string "Are you ready for this?$"
 

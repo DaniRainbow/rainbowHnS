@@ -54,7 +54,7 @@ EWRAM_DATA struct BattleMsgData *gBattleMsgDataPtr = NULL;
 
 static const u8 sText_Trainer1LoseText[] = _("{B_TRAINER1_LOSE_TEXT}");
 static const u8 sText_PkmnGainedEXP[] = _("{B_BUFF1} gained{B_BUFF2}\n{B_BUFF3} EXP. Points!\p");
-static const u8 sText_PkmnGainedEXPAll[] = _("The rest of your team gained EXP.\nPoints thanks to the EXP SHARE.\p");
+static const u8 sText_PkmnGainedEXPAll[] = _("The rest of your team gained EXP.\nPoints thanks to the EXP. SHARE.\p");
 static const u8 sText_EmptyString4[] = _("");
 static const u8 sText_ABoosted[] = _(" a boosted");
 static const u8 sText_PkmnGrewToLv[] = _("{B_BUFF1} grew to\nLV. {B_BUFF2}!{WAIT_SE}\p");
@@ -382,7 +382,7 @@ static const u8 sText_ThrewPokeblockAtPkmn[] = _("{B_PLAYER_NAME} threw a {POKEB
 static const u8 sText_OutOfSafariBalls[] = _("{PLAY_SE SE_DING_DONG}ANNOUNCER: You're out of\nSAFARI BALLS! Game over!\p");
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppeared[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\nRun? {L_BUTTON}+{R_BUTTON}+{A_BUTTON}\p");
-static const u8 sText_WildPkmnAppeared_B[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\nRun? Hold {B_BUTTON}.\p");
+static const u8 sText_WildPkmnAppeared_B[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\nRun? Press {B_BUTTON}.\p");
 static const u8 sText_WildPkmnAppearedOld[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("A legendary {B_OPPONENT_MON1_NAME} appeared!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("Wild {B_OPPONENT_MON1_NAME} appeared!{PAUSE 127}");
@@ -2163,6 +2163,8 @@ void BufferStringBattle(u16 stringID)
                         stringPtr = sText_WildPkmnAppeared;
                     else if (gSaveBlock2Ptr->optionsRunType == 3)
                         stringPtr = sText_WildPkmnAppeared_B;
+                    else 
+                        stringPtr = sText_WildPkmnAppearedOld;
                 }
                 else if (gSaveBlock2Ptr->optionsLRtoRun == 1)
                     stringPtr = sText_WildPkmnAppearedOld;
@@ -2708,6 +2710,9 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 else
                 {
                     toCpy = gTrainers[gTrainerBattleOpponent_A].trainerName;
+                    if (toCpy[0] == B_BUFF_PLACEHOLDER_BEGIN && toCpy[1] == B_TXT_RIVAL_NAME){
+                        toCpy = GetExpandedPlaceholder(PLACEHOLDER_ID_RIVAL);
+                    }
                 }
                 break;
             case B_TXT_LINK_PLAYER_NAME: // link player name
@@ -2862,6 +2867,9 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_PARTNER_NAME:
                 GetFrontierTrainerName(text, gPartnerTrainerId);
                 toCpy = text;
+                break;
+            case B_TXT_RIVAL_NAME:
+                toCpy = gSaveBlock2Ptr->rivalName;
                 break;
             }
 

@@ -14,13 +14,13 @@ FallarborTown_BattleTentCorridor_EventScript_EnterCorridor::
 	applymovement LOCALID_ATTENDANT, FallarborTown_BattleTentCorridor_Movement_WalkToDoor
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_BattleTentCorridor_Movement_WalkToDoor
 	waitmovement 0
-	opendoor 2, 1
-	waitdooranim
+	@opendoor 2, 1
+	@waitdooranim
 	applymovement LOCALID_ATTENDANT, FallarborTown_BattleTentCorridor_Movement_AttendantEnterDoor
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_BattleTentCorridor_Movement_PlayerEnterDoor
 	waitmovement 0
-	closedoor 2, 1
-	waitdooranim
+	@closedoor 2, 1
+	@waitdooranim
 	setvar VAR_0x8006, 0
 	warp MAP_FALLARBOR_TOWN_BATTLE_TENT_BATTLE_ROOM, 4, 4
 	waitstate

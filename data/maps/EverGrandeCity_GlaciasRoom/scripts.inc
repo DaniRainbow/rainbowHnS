@@ -49,7 +49,7 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia::
 
 EverGrandeCity_GlaciasRoom_EventScript_GlaciaRematch::
 	msgbox EverGrandeCity_GlaciasRoom_Text_IntroSpeech2, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_PHOEBE2, EverGrandeCity_GlaciasRoom_Text_Defeat2
+	trainerbattle_no_intro TRAINER_LUCY_BF_BRAIN, EverGrandeCity_GlaciasRoom_Text_Defeat2
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 

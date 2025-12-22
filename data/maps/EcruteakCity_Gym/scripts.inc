@@ -201,7 +201,7 @@ MediumGraceAfterBattleText:
 EcruteakCity_GymGuideText:
 	.string "Hey CHAMP! You're almost\n"
 	.string "halfway there!\p"
-	.string "Trainers here use GHOST- and\n"
+	.string "Trainers here use GHOST and\n"
 	.string "DARK-type POKéMON.\p"
 	.string "While MORTY is a GHOST-type\n"
 	.string "expert, be wary of his mystic\l"

@@ -184,7 +184,7 @@ SproutTower_Text_RivalOnlyCaresStrong:
 	.string "about weak POKéMON.$"
 
 SproutTower_Text_RivalUsedEscapeRope:
-	.string "SILVER used an ESCAPE ROPE!$"
+	.string "{RIVAL} used an ESCAPE ROPE!$"
 
 SproutTower_Text_SageLi_Seen:
 	.string "So good of you to come here!\p"
@@ -209,7 +209,7 @@ SproutTower_Text_SageLi_FlashExplain:
 	.string "FLASH illuminates even the\n"
 	.string "darkest of all places.\p"
 	.string "But to use it out of battle, you\n"
-	.string "need the BADGE from VIOLET'S GYM.$"
+	.string "need the BADGE from VIOLET's GYM.$"
 
 SproutTower_Text_SageLi_AfterBattle:
 	.string "I hope you learn and grow from\n"

@@ -321,7 +321,7 @@ Route35NationalParkGate_EventScript_Beauty::
 
 Route35NationalParkGate_Text_Rocker:
 	.string "I love bird POKéMON! I found a\n"
-	.string "DARK-TYPE bird in the park\l"
+	.string "DARK-type bird in the park\l"
 	.string "last night!$"
 
 Route35NationalParkGate_Text_BC2:

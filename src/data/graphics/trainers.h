@@ -327,3 +327,24 @@ const u32 gTrainerPalette_RunningTriathleteM[] = INCBIN_U32("graphics/trainers/f
 
 const u32 gTrainerFrontPic_SwimmingTriathleteM[] = INCBIN_U32("graphics/trainers/front_pics/swimming_triathlete_m.4bpp.lz");
 const u32 gTrainerPalette_SwimmingTriathleteM[] = INCBIN_U32("graphics/trainers/front_pics/swimming_triathlete_m.gbapal.lz");
+
+const u32 gTrainerFrontPic_SalonMaidenAnabel[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/salon_maiden_anabel.4bpp.lz");
+const u32 gTrainerPalette_SalonMaidenAnabel[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/salon_maiden_anabel.gbapal.lz");
+
+const u32 gTrainerFrontPic_DomeAceTucker[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/dome_ace_tucker.4bpp.lz");
+const u32 gTrainerPalette_DomeAceTucker[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/dome_ace_tucker.gbapal.lz");
+
+const u32 gTrainerFrontPic_PalaceMavenSpenser[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/palace_maven_spenser.4bpp.lz");
+const u32 gTrainerPalette_PalaceMavenSpenser[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/palace_maven_spenser.gbapal.lz");
+
+const u32 gTrainerFrontPic_ArenaTycoonGreta[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/arena_tycoon_greta.4bpp.lz");
+const u32 gTrainerPalette_ArenaTycoonGreta[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/arena_tycoon_greta.gbapal.lz");
+
+const u32 gTrainerFrontPic_FactoryHeadNoland[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/factory_head_noland.4bpp.lz");
+const u32 gTrainerPalette_FactoryHeadNoland[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/factory_head_noland.gbapal.lz");
+
+const u32 gTrainerFrontPic_PikeQueenLucy[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/pike_queen_lucy.4bpp.lz");
+const u32 gTrainerPalette_PikeQueenLucy[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/pike_queen_lucy.gbapal.lz");
+
+const u32 gTrainerFrontPic_PyramidKingBrandon[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/pyramid_king_brandon.4bpp.lz");
+const u32 gTrainerPalette_PyramidKingBrandon[] = INCBIN_U32("graphics/trainers/front_pics/frontier_brain/pyramid_king_brandon.gbapal.lz");

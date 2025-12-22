@@ -178,7 +178,7 @@ Route35_Text_OfficerDirkBeaten:
 	.string "Whoops!$"
 
 Route35_Text_OfficerDirkAfter:
-	.string "You know, nighttime is fun in its\n"
+	.string "You know, night time is fun in its\n"
 	.string "own ways.\p"
 	.string "But don't overdo it, OK?$"
 

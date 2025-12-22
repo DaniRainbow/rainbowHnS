@@ -158,7 +158,7 @@ SaffronCity_Text_Youngster1:
 
 SaffronCity_Text_Youngster2:
 	.string "There's a place called TRAINER\n"
-	.string "HOUSE in VIRIDIAN where trainers\p"
+	.string "HOUSE in VIRIDIAN where trainers\l"
 	.string "gather from all over the place.$"
 
 SaffronCity_Text_Lass2:

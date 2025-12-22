@@ -90,7 +90,7 @@ RocketHideout_B3F_Movement_DragoniteLeave:
 
 RocketHideout_B3F_Text_LanceGetPassword:
     .string "LANCE: It takes two passwords\n"
-    .string "to get into the boss's quarters.\p"
+    .string "to get into the boss' quarters.\p"
     .string "Those passwords are known only\n"
     .string "to a few ROCKETS.\p"
     .string "That ROCKET there very graciously\n"
@@ -605,7 +605,7 @@ RocketHideout_B3F_Text_PetrelBeaten:
 RocketHideout_B3F_Text_PetrelAfterBattle:
     .string "PETREL: Since disbanding Team\n"
     .string "Rocket three years ago, our\l"
-    .string "Giovanni has been missing.\p"
+    .string "GIOVANNI has been missing.\p"
     .string "But we're certain he's been\n"
     .string "waiting for the right time for\l"
     .string "our revival... Wahahaha!\p"
@@ -646,7 +646,7 @@ RocketHideout_B3F_Text_GruntF5Beaten:
     .string "All right. Stop. I'll tell you.$"
 
 RocketHideout_B3F_Text_GruntF5After:
-    .string "The password to the boss's room\n"
+    .string "The password to the boss' room\n"
     .string "is SLOWPOKETAIL.\p"
     .string "But it's useless unless you have\n"
     .string "two passwords.$"
@@ -659,7 +659,7 @@ RocketHideout_B3F_Text_GruntM28Seen:
     .string "guts!\p"
     .string "I'll warn you, I got better!\p"
     .string "If you can beat me, I'll tell\l"
-    .string "you a password to the boss's\n"
+    .string "you a password to the boss'\n"
     .string "room!$"
 
 RocketHideout_B3F_Text_GruntM28Beaten:
@@ -667,7 +667,7 @@ RocketHideout_B3F_Text_GruntM28Beaten:
 
 RocketHideout_B3F_Text_GruntM28After:
     .string "Hyuck-hyuck-hyuck!\p"
-    .string "The password to the boss's room…\p"
+    .string "The password to the boss' room…\p"
     .string "Uh…, I think it is RATICATE TAIL.$"
 
 RocketHideout_B3F_Text_ScientistRossSeen:

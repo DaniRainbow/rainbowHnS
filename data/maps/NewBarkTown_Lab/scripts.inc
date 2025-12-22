@@ -169,11 +169,14 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
 	end
 
 NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
+	callnative DisableStaticRandomizer
+	setvar VAR_STARTER_MON, 0
 	setvar PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
 	msgbox NewBarkTown_Lab_Text_ChooseChikorita, MSGBOX_YESNO
-	setvar VAR_STARTER_MON, 0
 	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
 	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
 	end
@@ -188,11 +191,14 @@ NewBarkTown_Lab_EventScript_CyndaquilBall::
 	end
 
 NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
+	callnative DisableStaticRandomizer
+	setvar VAR_STARTER_MON, 1
 	setvar PLAYER_STARTER_SPECIES, SPECIES_CYNDAQUIL
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	msgbox NewBarkTown_Lab_Text_ChooseCyndaquil, MSGBOX_YESNO
-	setvar VAR_STARTER_MON, 1
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
+	msgbox NewBarkTown_Lab_Text_ChooseCyndaquil, MSGBOX_YESNO	
 	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
 	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
 	end
@@ -207,11 +213,14 @@ NewBarkTown_Lab_EventScript_TotodileBall::
 	end
 
 NewBarkTown_Lab_EventScript_TotodileBall_Choice::
+	callnative DisableStaticRandomizer
+	setvar VAR_STARTER_MON, 2
 	setvar PLAYER_STARTER_SPECIES, SPECIES_TOTODILE
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
 	msgbox NewBarkTown_Lab_Text_ChooseTotodile, MSGBOX_YESNO
-	setvar VAR_STARTER_MON, 2
 	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
 	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
 	end
@@ -220,27 +229,40 @@ NewBarkTown_Lab_EventScript_DeclinedStarter::
 	hidemonpic
 	msgbox NewBarkTown_Lab_Text_DidntChooseStarter, MSGBOX_DEFAULT
 	closemessage
+	callnative EnableStaticRandomizer
 	release
 	end
 
 NewBarkTown_Lab_EventScript_ChoseStarter::
+	callnative EnableStaticRandomizer
 	hidemonpic
 	removeobject VAR_LAST_TALKED
-	setflag FLAG_SYS_POKEMON_GET
 	msgbox NewBarkTown_Lab_Text_ChoseStarter, MSGBOX_DEFAULT
 	givemon PLAYER_STARTER_SPECIES, 5
+	setflag FLAG_SYS_POKEMON_GET
 	playfanfare MUS_OBTAIN_ITEM
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	message NewBarkTown_Lab_Text_ReceivedStarter
 	waitfanfare
+	specialvar VAR_RESULT, IsNuzlockeNicknamingActive
+	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_Lab_EventScript_ChoseStarter_NicknameStarter_Nuzlocke
 	msgbox NewBarkTown_Lab_Text_Nickname, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_NicknameStarter
+	callnative UpdateFollowingPokemon
 	release
 	end
 
 NewBarkTown_Lab_EventScript_NicknameStarter::
 	setvar VAR_0x8004, 0
 	call Common_EventScript_NameReceivedPartyMon
+	end
+
+NewBarkTown_Lab_EventScript_ChoseStarter_NicknameStarter_Nuzlocke::
+	message NewBarkTown_Lab_Text_Nickname
+	waitmessage
+	setvar VAR_0x8004, 0
+	call Common_EventScript_NameReceivedPartyMon
+	release
 	end
 
 NewBarkTown_Lab_EventScript_MrPokemon::
@@ -341,6 +363,11 @@ NewBarkTown_Lab_EventScript_PoliceNo::
 	end
 
 NewBarkTown_Lab_EventScript_PoliceYes::
+	closemessage
+	special NameRival
+	waitstate
+	msgbox NewBarkTown_Lab_Text_Officer2_1, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_Lab_EventScript_PoliceYes
 	msgbox NewBarkTown_Lab_Text_Officer2, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_COP, NewBarkTown_Lab_Movement_CopLeaves
@@ -645,7 +672,7 @@ NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
 	.string "I want you to raise one of\n"
-	.string "the POKéMON contained in these Balls.\p"
+	.string "the POKéMON contained in these BALLS.\p"
 	.string "You'll be that POKéMON's\n"
 	.string "first partner, {PLAYER}!\p"
 	.string "Go on. Pick one!$"
@@ -655,16 +682,16 @@ NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "going?$"
 
 NewBarkTown_Lab_Text_ChooseCyndaquil:
-	.string "ELM: You'll take CYNDAQUIL,\n"
-	.string "the fire POKéMON?$"
+	.string "ELM: You'll take {STR_VAR_1},\n"
+	.string "the {STR_VAR_2} POKéMON?$"
 
 NewBarkTown_Lab_Text_ChooseTotodile:
-	.string "ELM: Do you want TOTODILE,\n"
-	.string "the water POKéMON?$"
+	.string "ELM: Do you want {STR_VAR_1},\n"
+	.string "the {STR_VAR_2} POKéMON?$"
 
 NewBarkTown_Lab_Text_ChooseChikorita:
-	.string "ELM: So, you like CHIKORITA,\n"
-	.string "the grass POKéMON?$"
+	.string "ELM: So, you like {STR_VAR_1},\n"
+	.string "the {STR_VAR_2} POKéMON?$"
 
 NewBarkTown_Lab_Text_DidntChooseStarter:
 	.string "ELM: Think it over carefully.\p"
@@ -846,14 +873,14 @@ NewBarkTown_Lab_Text_KimonoGirls:
 	.string "I hope you'll carry through it.$"
 
 NewBarkTown_Lab_Text_KimonoWaiting:
-	.string "PROF. ELM: The KIMONO\n"
+	.string "PROF.ELM: The KIMONO\n"
 	.string "GIRLS are waiting for you at\l"
 	.string "the ECRUTEAK DANCE THEATER.$"
 
 NewBarkTown_Lab_Text_League:
-	.string "PROF. ELM: Hahaha...\n"
+	.string "PROF.ELM: Hahaha...\n"
 	.string "Good job!\p"
-	.string "That rare Egg has brought you\n"
+	.string "That rare EGG has brought you\n"
 	.string "a lot of trouble, huh?\p"
 	.string "The KIMONO GIRLS said something\n"
 	.string "about me?\p"
@@ -861,9 +888,9 @@ NewBarkTown_Lab_Text_League:
 	.string "You made your decision and went\n"
 	.string "through with it.\p"
 	.string "Having done so much, you should\n"
-	.string "be able to face the League now!\p"
-	.string "You should head for Indigo\n"
-	.string "Plateau!\p"
+	.string "be able to face the LEAGUE now!\p"
+	.string "You should head for INDIGO\n"
+	.string "PLATEAU!\p"
 	.string "Do you know how to get there?\n"
 	.string "Follow ROUTE 27 to ROUTE 26.\p"
 	.string "Once there, go straight north!$"
@@ -941,8 +968,10 @@ NewBarkTown_Lab_Text_Officer1:
 	.string "Did you happen to get his\n"
 	.string "name?$"
 
+NewBarkTown_Lab_Text_Officer2_1:
+	.string "OK! So {RIVAL} was his name?$"
+
 NewBarkTown_Lab_Text_Officer2:
-	.string "OK! So SILVER was his name.\p"
 	.string "Thanks for helping my\n"
 	.string "investigation!$"
 

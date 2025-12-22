@@ -141,7 +141,7 @@ OlivineLighthouse_Text_GentlemanPrestonBeaten:
 	.string "…sigh… I must train some more…$"
 
 OlivineLighthouse_Text_GentlemanPrestonAfter:
-	.string "JASMINE used to use rock-type\n"
+	.string "JASMINE used to use ROCK-type\n"
 	.string "POKéMON like ONIX.$"
 
 @4th floor==============================================================================================================================
@@ -356,7 +356,7 @@ OlivineLighthouse_EventScript_JasmineRefuse::
 	end
 
 OlivineLighthouse_Text_PlayerHandedSecretpotion:
-	.string "{PLAYER} handed the SECRETPOTION to\n"
+	.string "{PLAYER} handed the SECRET POTION to\n"
 	.string "JASMINE.$"
 
 OlivineLighthouse_Text_JasmineDontBeOffended:
@@ -374,7 +374,7 @@ OlivineLighthouse_Text_JasmineThankYou:
 	.string "This is just so wonderful…\p"
 	.string "Thank you so very, very much.\p"
 	.string "…I will return to the GYM…\p"
-	.string "I'll also warn you, steel types\n"
+	.string "I'll also warn you, STEEL types\n"
 	.string "are powerful.$"
 
 OlivineLighthouse_Text_JasmineISee:

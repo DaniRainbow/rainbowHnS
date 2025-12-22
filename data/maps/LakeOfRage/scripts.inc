@@ -420,7 +420,7 @@ LakeOfRage_Text_WesleyGivesGift:
     .string "souvenir.$"
 
 LakeOfRage_Text_WesleyGaveGift:
-    .string "WESLEY: BLACKBELT beefs up the\n"
+    .string "WESLEY: BLACK BELT beefs up the\n"
     .string "power of fighting moves.$"
 
 LakeOfRage_Text_WesleyWednesday:

@@ -19,6 +19,8 @@ int GameClear(void)
     } ribbonCounts[6];
 
     HealPlayerParty();
+    if (FlagGet(FLAG_DEFEATED_RED) == 1)
+        gSaveBlock1Ptr->tx_Nuzlocke_EasyMode = 0;
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
     {

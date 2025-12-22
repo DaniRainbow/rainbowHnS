@@ -174,7 +174,7 @@ NationalPark_BugContest_Text_Trash:
 	.string "Nothing here.$"
 
 NationlParkBugContest_Text_EnjoyTheContest:
-	.string "ATTENDANT: Enjoy the contest!$"
+	.string "ATTENDANT: Enjoy the Contest!$"
 
 NationalParkBugContest_Text_Attendant:
 	.string "ATTENDANT: Would you like to end\n"

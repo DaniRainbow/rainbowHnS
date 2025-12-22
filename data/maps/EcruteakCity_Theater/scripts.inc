@@ -255,7 +255,7 @@ EcruteakCity_Theater_EventScript_ZukiDuringRocket::
 	end
 
 EcruteakCity_Theater_Text_Kimono:
-	.string "For KIMONO GIRLs like me,\n"
+	.string "For KIMONO GIRLS like me,\n"
 	.string "dancing is everything.\p"
 	.string "I have never gone a day\n"
 	.string "without a dance practice.\p"
@@ -429,7 +429,7 @@ EcruteakCity_Theater_Text_SurfGuyGaveSurf:
 	.string "swim across water with ease.$"
 
 EcruteakCity_Theater_Text_SurfGuyAfter:
-	.string "Not only are the KIMONO GIRLs\n"
+	.string "Not only are the KIMONO GIRLS\n"
 	.string "great dancers, they're also\l"
 	.string "skilled at POKéMON.\p"
 	.string "But they battle only for good\n"
@@ -464,7 +464,7 @@ EcruteakCity_Theater_Text_GrannyBefore:
 	.string "that if not for this pain...!$"
 
 EcruteakCity_Theater_Text_Gramps:
-	.string "The KIMONO GIRLs are so\n"
+	.string "The KIMONO GIRLS are so\n"
 	.string "beautiful...\p"
 	.string "But they have to go through\n"
 	.string "rigorous training.\p"
@@ -978,11 +978,11 @@ EcruteakCity_Theater_Text_ZukiSeen:
 	.string "To bring back {STR_VAR_1}, we\n"
 	.string "needed someone with the right bond\l"
 	.string "with POKéMON.\p"
-	.string "We asked Mr. POKéMON to give this\n"
-	.string "Mystery Egg to\l"
+	.string "We asked MR. POKéMON to give this\n"
+	.string "MYSTERY EGG to\l"
 	.string "whoever showed potential.\p"
-	.string "The Egg went from MR. POKéMON\n"
-	.string "to PROF. ELM, then to you.\p"
+	.string "The EGG went from MR. POKéMON\n"
+	.string "to PROF.ELM, then to you.\p"
 	.string "But being pure alone is not enough\n"
 	.string "to face the power of this POKéMON.$"
 
@@ -1002,8 +1002,8 @@ EcruteakCity_Theater_Text_NaokoSeen:
 	.string "I'm NAOKO--not so good with\n"
 	.string "directions.\p"
 	.string "I saw you defeat Team Rocket\n"
-	.string "when Kurt was in trouble at\l"
-	.string "the SLOWPOKE Well.\p"
+	.string "when KURT was in trouble at\l"
+	.string "the SLOWPOKE WELL.\p"
 	.string "Let me challenge you and your\n"
 	.string "POKéMON!$"
 
@@ -1024,7 +1024,7 @@ EcruteakCity_Theater_Text_SayoSeen:
 	.string "off the ice by pushing me.\p"
 	.string "I skate in sandals.\n"
 	.string "I am SAYO--the KIMONO GIRL!\p"
-	.string "I listened in the Dragon's Den\n"
+	.string "I listened in the DRAGON'S DEN\n"
 	.string "when you passed the Elder's test.\p"
 	.string "Let me challenge you and your\n"
 	.string "POKéMON!$"
@@ -1080,9 +1080,9 @@ EcruteakCity_Theater_Text_ZukiAfterAll:
 	.string "to our hopes, {PLAYER}!\p"
 	.string "If you learned anything from\n"
 	.string "this, thank MR. POKéMON and\l"
-	.string "PROF. ELM...$"
+	.string "PROF.ELM...$"
 
 EcruteakCity_Theater_Text_KimonoGirlsBeforeBattle:
-	.string "Talk to Zuki in the middle\n"
+	.string "Talk to ZUKI in the middle\n"
 	.string "when you are ready.$"
 

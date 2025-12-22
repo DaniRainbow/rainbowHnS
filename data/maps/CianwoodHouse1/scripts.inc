@@ -38,7 +38,7 @@ CianwoodCity_Text_OldManIntro:
 	.string "someone came to visit me.\p"
 	.string "When I was young, I was a\n"
 	.string "POKéMON Trainer, too.\l"
-	.string "I tried to reach the tower and\n"
+	.string "I tried to reach the tower and\l"
 	.string "dive into the ocean.\p"
 	.string "I put a lot of effort into many\n"
 	.string "things.\p"
@@ -55,7 +55,7 @@ CianwoodCity_Text_BellTowerStory:
 	.string "in strong winds.\p"
 	.string "There is only one way to make them\n"
 	.string "ring.\p"
-	.string "It is to obtain another Clear Bell\n"
+	.string "It is to obtain another CLEAR BELL\n"
 	.string "just like the ones at the top of the\l"
 	.string "tower.\p"
 	.string "I went after it when I was young.\n"
@@ -77,7 +77,7 @@ CianwoodCity_Text_WhirlIslandsStory:
 
 CianwoodCity_Text_ClearBellReaction:
 	.string "Oh! You've managed to get a\n"
-	.string "Clear Bell?\p"
+	.string "CLEAR BELL?\p"
 	.string "The old-time dream of mine...\n"
 	.string "I see...\p"
 	.string "You've done it...\n"

@@ -267,7 +267,7 @@ static const struct PikeWildMon *const *const sWildMons[2] =
 static const struct PikeRoomNPC sNPCTable[] =
 {
     {
-        .graphicsId = OBJ_EVENT_GFX_BILL,
+        .graphicsId = OBJ_EVENT_GFX_MAN,
         .speechId1 = 3,
         .speechId2 = 5,
         .speechId3 = 6
@@ -291,13 +291,13 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 33
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_OLD_MAN_1,
+        .graphicsId = OBJ_EVENT_GFX_SUPER_NERD,
         .speechId1 = 0,
         .speechId2 = 0,
         .speechId3 = 0
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_ATTENDANT,
+        .graphicsId = OBJ_EVENT_GFX_OLD_WOMAN,
         .speechId1 = 1,
         .speechId2 = 1,
         .speechId3 = 1
@@ -327,7 +327,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 17
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_BIKER,
+        .graphicsId = OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M,
         .speechId1 = 30,
         .speechId2 = 20,
         .speechId3 = 36
@@ -351,7 +351,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 11
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_PSYCHIC_M,
+        .graphicsId = OBJ_EVENT_GFX_LASS,
         .speechId1 = 15,
         .speechId2 = 19,
         .speechId3 = 14
@@ -363,7 +363,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 26
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M,
+        .graphicsId = OBJ_EVENT_GFX_COOLTRAINER_M,
         .speechId1 = 37,
         .speechId2 = 12,
         .speechId3 = 32
@@ -375,7 +375,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 38
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_COOLTRAINER_F,
+        .graphicsId = OBJ_EVENT_GFX_WOMAN_3,
         .speechId1 = 5,
         .speechId2 = 22,
         .speechId3 = 4
@@ -387,7 +387,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 35
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_ENGINEER,
+        .graphicsId = OBJ_EVENT_GFX_LITTLE_BOY_3,
         .speechId1 = 39,
         .speechId2 = 14,
         .speechId3 = 13

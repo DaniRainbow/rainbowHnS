@@ -36,9 +36,9 @@ CianwoodCity_Text_PharmacistGivePotion:
 	.string "This ought to do the trick.$"
 
 CianwoodCity_Text_ReceivedSecretpotion:
-	.string "{PLAYER} received SECRETPOTION.$"
+	.string "{PLAYER} received SECRET POTION.$"
 
 CianwoodCity_Text_PharmacistDescribePotion:
-	.string "My SECRETPOTION is a tad too\n"
+	.string "My SECRET POTION is a tad too\n"
 	.string "strong, so I only offer it in an\l"
 	.string "emergency.$"

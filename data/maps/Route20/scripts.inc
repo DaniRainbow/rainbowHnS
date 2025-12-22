@@ -1,3 +1,6 @@
+.set LOCALID_ROUTE20_DENNIS, 17
+.set LOCALID_ROUTE20_HEADLOCKER, 16
+
 Route20_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route20_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -54,9 +57,27 @@ Route20_EventScript_Dewgong::
 	release
 	end
 
-Route20_EventScript_Headlocker::
-	msgbox Route20_Text_Headlocker, MSGBOX_NPC
+Route20_EventScript_Dennis::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_MAGIKARP, CRY_MODE_NORMAL
+	msgbox Route20_Text_Dennis, MSGBOX_DEFAULT
+	waitmoncry
+	release
 	end
+
+Route20_EventScript_Headlocker::
+	lock
+	faceplayer
+	msgbox Route20_Text_Headlocker, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_ROUTE20_HEADLOCKER, DIR_SOUTH
+	release
+	end
+
+Route20_Text_Dennis:
+	.string "DENNIS: SHAAAAAAAA!$"
 
 Route20_Text_Headlocker:
 	.string "There's a rare POKéMON on this\n"

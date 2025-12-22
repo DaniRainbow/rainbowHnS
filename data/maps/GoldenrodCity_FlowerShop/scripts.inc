@@ -1,5 +1,29 @@
+.set LOCALID_MINT_CLERK, 3
+
 GoldenrodCity_FlowerShop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_FlowerShop_OnTransition
 	.byte 0
+
+GoldenrodCity_FlowerShop_OnTransition::
+	call_if_unset FLAG_MINTS_ENABLED, GoldenrodCity_FlowerShop_HideMintClerk
+	call_if_set FLAG_MINTS_ENABLED, GoldenrodCity_FlowerShop_ShowMintClerk
+	end
+
+GoldenrodCity_FlowerShop_HideMintClerk::
+	goto_if_set FLAG_SYS_GAME_CLEAR, GoldenrodCity_FlowerShop_ShowMintClerkPostgame
+	setflag FLAG_MINTS_CLERK
+	removeobject LOCALID_MINT_CLERK
+	return
+
+GoldenrodCity_FlowerShop_ShowMintClerkPostgame::
+	clearflag FLAG_MINTS_CLERK
+	addobject LOCALID_MINT_CLERK
+	end
+
+GoldenrodCity_FlowerShop_ShowMintClerk::
+	clearflag FLAG_MINTS_CLERK
+	addobject LOCALID_MINT_CLERK
+	return
 
 GoldenrodCity_FlowerShop_EventScript_Owner::
 	lock
@@ -68,7 +92,7 @@ GoldenrodCity_FlowerShop_Text_Floria:
 
 GoldenrodCity_FlowerShop_Text_Owner1:
 .string "Apparently, there is an odd tree\n"
-.string "on Route 36.\p"
+.string "on ROUTE 36.\p"
 .string "They say it dances when you water\n"
 .string "it...\p"
 .string "Oh, of course not!\p"
@@ -82,7 +106,7 @@ GoldenrodCity_FlowerShop_Text_Owner1:
 
 GoldenrodCity_FlowerShop_Text_Owner2:
 .string "Apparently, there is an odd tree\n"
-.string "on Route 36.\p"
+.string "on ROUTE 36.\p"
 .string "They say it dances when you water\n"
 .string "it...\p"
 .string "Oh, that's a PLAINBADGE from\n"

@@ -123,12 +123,12 @@ EcruteakCity_Text_Silver1:
 	.string "THUD!!$"
 
 EcruteakCity_Text_Silver2:
-	.string "SILVER: How...? How is this\n"
+	.string "{RIVAL}: How...? How is this\n"
 	.string "possible? How can I lose to mere\l"
 	.string "KIMONO GIRLS...?$"
 
 EcruteakCity_Text_Silver3:
-	.string "SILVER: You were watching me,\n"
+	.string "{RIVAL}: You were watching me,\n"
 	.string "{PLAYER}...\p"
 	.string "Yeah, that's right!\p"
 	.string "I never thought defeating five\n"
@@ -369,7 +369,7 @@ EcruteakCity_Text_TinTowerSign:
 
 EcruteakCity_Text_OfficeSign:
 	.string "Barrier Station to TIN TOWER\p"
-	.string "No Tresspassing by the Unworthy.$"
+	.string "No Trespassing by the Unworthy.$"
 
 EcruteakCity_Text_GymSign:
 	.string "ECRUTEAK CITY POKéMON GYM\n"

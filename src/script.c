@@ -6,6 +6,7 @@
 #include "constants/event_objects.h"
 #include "constants/map_scripts.h"
 #include "rtc.h"
+#include "constants/flags.h"
 
 #define RAM_SCRIPT_MAGIC 51
 
@@ -190,6 +191,16 @@ u32 ScriptReadWord(struct ScriptContext *ctx)
     return (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
 }
 
+u32 ScriptPeekWord(struct ScriptContext *ctx)
+{
+    u32 value0 = *(ctx->scriptPtr);
+    u32 value1 = *(ctx->scriptPtr + 1);
+    u32 value2 = *(ctx->scriptPtr + 2);
+    u32 value3 = *(ctx->scriptPtr + 3);
+    return (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
+}
+
+
 void LockPlayerFieldControls(void)
 {
     sLockFieldControls = TRUE;
@@ -254,6 +265,8 @@ void ScriptContext_SetupScript(const u8 *ptr)
     InitScriptContext(&sGlobalScriptContext, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sGlobalScriptContext, ptr);
     LockPlayerFieldControls();
+    if (OW_MON_SCRIPT_MOVEMENT)
+        FlagSet(FLAG_SAFE_FOLLOWER_MOVEMENT);
     sGlobalScriptContextStatus = CONTEXT_RUNNING;
 }
 
@@ -483,7 +496,7 @@ void InitRamScript_NoObjectEvent(u8 *script, u16 scriptSize)
 void SetTimeBasedEncounters(void)
 {
 	RtcCalcLocalTime();
-    if ((gLocalTime.hours >= 6 && gLocalTime.hours <= 19) && (gSaveBlock1Ptr->tx_Mode_AlternateSpawns == 1))
+    if ((gLocalTime.hours >= 6 && gLocalTime.hours <= 17) && (gSaveBlock1Ptr->tx_Mode_AlternateSpawns == 1)) //6am-6pm DAY
     {
 		VarSet(VAR_TIME_BASED_ENCOUNTER, 3); // Modern Spawns, Day
 	}
@@ -491,7 +504,7 @@ void SetTimeBasedEncounters(void)
     {
 		VarSet(VAR_TIME_BASED_ENCOUNTER, 4); // Modern Spawns, Night
 	}
-	else if ((gLocalTime.hours >= 6 && gLocalTime.hours <= 19) && (gSaveBlock1Ptr->tx_Mode_AlternateSpawns == 0))
+	else if ((gLocalTime.hours >= 6 && gLocalTime.hours <= 17) && (gSaveBlock1Ptr->tx_Mode_AlternateSpawns == 0)) //6am-6pm DAY
 	{
 		VarSet(VAR_TIME_BASED_ENCOUNTER, 1); // Day
 	}
@@ -500,3 +513,83 @@ void SetTimeBasedEncounters(void)
 		VarSet(VAR_TIME_BASED_ENCOUNTER, 2); // Night
 	}
 }    
+
+void DisableChallengesAfterBeatingGameEvoLimit(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_EvoLimit = 0;
+}
+
+void DisableChallengesAfterBeatingGameMirror(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_Mirror = 0;
+}
+void DisableChallengesAfterBeatingGameMirrorThief(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_Mirror_Thief = 0;
+}
+
+void DisableChallengesAfterBeatingGameExpensiveChallenge(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_Expensive = 0;
+}
+
+void DisableChallengesAfterBeatingGameOneType(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_OneTypeChallenge = 0;
+}
+
+void DisableChallengesAfterBeatingGamePartyLimit(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_PartyLimit = 0;
+}
+
+void DisableChallengesAfterBeatingGameNoItemPlayer(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_NoItemPlayer = 0;
+}
+
+void DisableChallengesAfterBeatingGameNoItemTrainer(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_NoItemTrainer = 0;
+}
+
+void DisableChallengesAfterBeatingGamePkmCenterChallenge(void)
+{
+    gSaveBlock1Ptr->tx_Challenges_PkmnCenter = 0;
+}
+
+void CheckNuzlockeMode(void)
+{
+    if (!gSaveBlock1Ptr->tx_Nuzlocke_EasyMode)
+        VarSet(VAR_UNUSED_0x40DB, 0);
+    else if (gSaveBlock1Ptr->tx_Nuzlocke_EasyMode)
+        VarSet(VAR_UNUSED_0x40DB, 1);
+
+    if (!gSaveBlock1Ptr->tx_Challenges_Nuzlocke)
+        VarSet(VAR_UNUSED_0x40DC, 0);
+    else if (gSaveBlock1Ptr->tx_Challenges_Nuzlocke)
+        VarSet(VAR_UNUSED_0x40DC, 1);
+    
+    if (!gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore)
+        VarSet(VAR_UNUSED_0x40FB, 0);
+    else if (gSaveBlock1Ptr->tx_Challenges_NuzlockeHardcore)
+        VarSet(VAR_UNUSED_0x40FB, 1);
+}
+
+void DisableStaticRandomizer(void)
+{
+    if (gSaveBlock1Ptr->tx_Random_Static == 1)
+    {
+        FlagSet(FLAG_TEMPORALY_DISABLE_STATIC_RANDOMIZER);
+        gSaveBlock1Ptr->tx_Random_Static = 0;
+    }
+}
+
+void EnableStaticRandomizer(void)
+{
+    if (FlagGet(FLAG_TEMPORALY_DISABLE_STATIC_RANDOMIZER) == 1)
+    {
+        gSaveBlock1Ptr->tx_Random_Static = 1;
+        FlagClear(FLAG_TEMPORALY_DISABLE_STATIC_RANDOMIZER);
+    }
+}

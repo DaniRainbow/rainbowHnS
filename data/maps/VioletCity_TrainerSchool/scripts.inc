@@ -66,16 +66,16 @@ VioletCity_TrainerSchool_Text_Twin:
 	.string "In the old games, you had to battle\n"
 	.string "a lot of wild POKéMON to get enough\l"
 	.string "EXP.\p"
-	.string "But in newer games, the EXP share\n"
+	.string "But in newer games, the EXP. SHARE\n"
 	.string "makes your POKéMON level up too fast.\p"
-	.string "In this game, the EXP share is\n"
+	.string "In this game, the EXP. SHARE is\n"
 	.string "balanced to put your POKéMON at just\l"
 	.string "the right level. Or slightly higher,\l"
 	.string "depending on how many battles you do.\p"
 	.string "If you want a traditional GEN 1-4\n"
-	.string "experience, turn EXP SHARE off.\l"
+	.string "experience, turn EXP. SHARE off.\l"
 	.string "If you want a modern experience,\l"
-	.string "turn EXP SHARE ON.\p"
+	.string "turn EXP. SHARE ON.\p"
 	.string "You choose how you want to play!$"
 
 VioletCity_TrainerSchool_Text_EarlIntro:
@@ -143,9 +143,9 @@ VioletCity_TrainerSchool_Text_GameboyKid1:
 	.string "at DAY and NIGHT!$"
 
 VioletCity_TrainerSchool_Text_GameboyKid2:
-	.string "Berries in the JOHTO region are\n"
-	.string "good for healing and making balls.\p"
-	.string "Berries in KANTO are good for\n"
+	.string "BERRIES in the JOHTO region are\n"
+	.string "good for healing and making BALLS.\p"
+	.string "BERRIES in KANTO are good for\n"
 	.string "reducing a POKéMON's stats.\p"
 	.string "The DOJO in KANTO helps POKéMON\n"
 	.string "perfect individual stats.$"

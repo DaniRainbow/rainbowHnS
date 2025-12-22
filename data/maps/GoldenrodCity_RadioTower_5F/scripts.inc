@@ -422,7 +422,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorLegendary:
 GoldenrodCity_RadioTower_5F_Text_DirectorFakeout:
 	.string "Are you expecting something?\n"
 	.string "This is what they call FAKE OUT.\p"
-	.string "I really must go back to my office\n"
+	.string "I really must go back to my OFFICE\n"
 	.string "this time. See ya!$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorIntro:

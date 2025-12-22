@@ -2,8 +2,8 @@
   "id": "MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY",
   "name": "VerdanturfTown_BattleTentLobby",
   "layout": "LAYOUT_BATTLE_TENT_LOBBY",
-  "music": "MUS_B_TOWER_RS",
-  "region_map_section": "MAPSEC_OLIVINE_CITY",
+  "music": "MUS_PL_B_CASTLE",
+  "region_map_section": "MAPSEC_TRAINER_HILL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -29,10 +29,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
-      "x": 0,
-      "y": 5,
+      "x": 2,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -67,19 +67,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
-      "x": 12,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "VerdanturfTown_BattleTentLobby_EventScript_Scott",
-      "flag": "FLAG_GARBAGEFLAG"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
       "x": 2,
       "y": 8,
@@ -98,15 +85,15 @@
       "x": 6,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_VERDANTURF_TOWN",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_TRAINER_HILL_COURTYARD",
+      "dest_warp_id": "2"
     },
     {
       "x": 7,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_VERDANTURF_TOWN",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_TRAINER_HILL_COURTYARD",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
@@ -115,8 +102,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 4,
-      "y": 5,
+      "x": 1,
+      "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VerdanturfTown_BattleTentLobby_EventScript_RulesBoard"

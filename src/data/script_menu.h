@@ -828,6 +828,7 @@ static const struct MenuAction MultichoiceList_OlivineHarbor[] =
     {gText_SouthernIsland},
     {gText_BirthIsland},
     {gText_FarawayIsland},
+    {gText_BattleFrontier},
     {gText_Exit},
 };
 static const struct MenuAction MultichoiceList_VermilionHarbor[] =
@@ -836,6 +837,7 @@ static const struct MenuAction MultichoiceList_VermilionHarbor[] =
     {gText_SouthernIsland},
     {gText_BirthIsland},
     {gText_FarawayIsland},
+    {gText_BattleFrontier},
     {gText_Exit},
 };
 
@@ -1109,6 +1111,7 @@ static const u8 *const sPCNameStrings[] =
     gText_SomeonesPC,
     gText_BillsPC,
     gText_PlayersPC,
+    gText_Challenges,
     gText_LogOff,
 };
 

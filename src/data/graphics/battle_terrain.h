@@ -7,6 +7,7 @@ const u32 gBattleTerrainTiles_TallGrass_2[] = INCBIN_U32("graphics/battle_terrai
 const u32 gBattleTerrainPalette_TallGrass_2[] = INCBIN_U32("graphics/battle_terrain/tall_grass_2/palette.gbapal.lz");
 const u32 gBattleTerrainTilemap_TallGrass_2[] = INCBIN_U32("graphics/battle_terrain/tall_grass_2/map.bin.lz");
 const u32 gBattleTerrainPalette_TallGrass_2_Night[] = INCBIN_U32("graphics/battle_terrain/tall_grass_2/palette_night.gbapal.lz");
+const u32 gBattleTerrainPalette_TallGrass_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/tall_grass_2/palette_morning.gbapal.lz");
 
 const u32 gBattleTerrainTiles_LongGrass[] = INCBIN_U32("graphics/battle_terrain/long_grass/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_LongGrass[] = INCBIN_U32("graphics/battle_terrain/long_grass/palette.gbapal.lz");
@@ -16,6 +17,7 @@ const u32 gBattleTerrainTilemap_LongGrass[] = INCBIN_U32("graphics/battle_terrai
 const u32 gBattleTerrainTiles_LongGrass_2[] = INCBIN_U32("graphics/battle_terrain/long_grass_2/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_LongGrass_2[] = INCBIN_U32("graphics/battle_terrain/long_grass_2/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_LongGrass_2_Night[] = INCBIN_U32("graphics/battle_terrain/long_grass_2/palette_night.gbapal.lz"); //unused
+const u32 gBattleTerrainPalette_LongGrass_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/tall_grass_2/palette_morning.gbapal.lz"); 
 const u32 gBattleTerrainTilemap_LongGrass_2[] = INCBIN_U32("graphics/battle_terrain/long_grass_2/map.bin.lz");
 
 const u32 gBattleTerrainTiles_Sand[] = INCBIN_U32("graphics/battle_terrain/sand/tiles.4bpp.lz");
@@ -26,6 +28,7 @@ const u32 gBattleTerrainTilemap_Sand[] = INCBIN_U32("graphics/battle_terrain/san
 const u32 gBattleTerrainTiles_Sand_2[] = INCBIN_U32("graphics/battle_terrain/sand_2/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_Sand_2[] = INCBIN_U32("graphics/battle_terrain/sand_2/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_Sand_2_Night[] = INCBIN_U32("graphics/battle_terrain/sand_2/palette_night.gbapal.lz");
+const u32 gBattleTerrainPalette_Sand_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/sand_2/palette_morning.gbapal.lz");
 const u32 gBattleTerrainTilemap_Sand_2[] = INCBIN_U32("graphics/battle_terrain/sand_2/map.bin.lz");
 
 const u32 gBattleTerrainTiles_Underwater[] = INCBIN_U32("graphics/battle_terrain/underwater/tiles.4bpp.lz");
@@ -44,6 +47,7 @@ const u32 gBattleTerrainTilemap_Water[] = INCBIN_U32("graphics/battle_terrain/wa
 const u32 gBattleTerrainTiles_Water_2[] = INCBIN_U32("graphics/battle_terrain/water_2/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_Water_2[] = INCBIN_U32("graphics/battle_terrain/water_2/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_Water_2_Night[] = INCBIN_U32("graphics/battle_terrain/water_2/palette_night.gbapal.lz");
+const u32 gBattleTerrainPalette_Water_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/water_2/palette_morning.gbapal.lz");
 const u32 gBattleTerrainTilemap_Water_2[] = INCBIN_U32("graphics/battle_terrain/water_2/map.bin.lz");
 
 const u32 gBattleTerrainTiles_PondWater[] = INCBIN_U32("graphics/battle_terrain/pond_water/tiles.4bpp.lz");
@@ -55,6 +59,7 @@ const u32 gBattleTerrainTilemap_PondWater[] = INCBIN_U32("graphics/battle_terrai
 const u32 gBattleTerrainTiles_PondWater_2[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_PondWater_2[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_PondWater_2_Night[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/palette_night.gbapal.lz");
+const u32 gBattleTerrainPalette_PondWater_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/palette_morning.gbapal.lz");
 const u32 gBattleTerrainPalette_PondWater_2_Cave[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/palette_cave.gbapal.lz");
 const u32 gBattleTerrainTilemap_PondWater_2[] = INCBIN_U32("graphics/battle_terrain/pond_water_2/map.bin.lz");
 
@@ -66,6 +71,7 @@ const u32 gBattleTerrainTilemap_Rock[] = INCBIN_U32("graphics/battle_terrain/roc
 const u32 gBattleTerrainTiles_Rock_2[] = INCBIN_U32("graphics/battle_terrain/rock_2/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_Rock_2[] = INCBIN_U32("graphics/battle_terrain/rock_2/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_Rock_2_Night[] = INCBIN_U32("graphics/battle_terrain/rock_2/palette_night.gbapal.lz");
+const u32 gBattleTerrainPalette_Rock_2_Twilight[] = INCBIN_U32("graphics/battle_terrain/rock_2/palette_morning.gbapal.lz");
 const u32 gBattleTerrainTilemap_Rock_2[] = INCBIN_U32("graphics/battle_terrain/rock_2/map.bin.lz");
 
 const u32 gBattleTerrainTiles_Cave[] = INCBIN_U32("graphics/battle_terrain/cave/tiles.4bpp.lz");

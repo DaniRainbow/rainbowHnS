@@ -945,7 +945,14 @@ u16 ItemId_GetId(u16 itemId)
 
 u16 ItemId_GetPrice(u16 itemId)
 {
-    return gItems[SanitizeItemId(itemId)].price;
+    if (gSaveBlock1Ptr->tx_Challenges_Expensive == 0)
+        return gItems[SanitizeItemId(itemId)].price;
+    else if (gSaveBlock1Ptr->tx_Challenges_Expensive == 1)
+        return gItems[SanitizeItemId(itemId)].price * 5;
+    else if (gSaveBlock1Ptr->tx_Challenges_Expensive == 2)
+        return gItems[SanitizeItemId(itemId)].price * 10;
+    else if (gSaveBlock1Ptr->tx_Challenges_Expensive == 3)
+        return gItems[SanitizeItemId(itemId)].price * 50;
 }
 
 u8 ItemId_GetHoldEffect(u16 itemId)
@@ -1024,6 +1031,14 @@ static const u16 sRandomValidItems[] =
     ITEM_TIMER_BALL,
     ITEM_LUXURY_BALL,
     ITEM_PREMIER_BALL,
+    ITEM_LOVE_BALL,
+    ITEM_LURE_BALL,
+    ITEM_FRIEND_BALL,
+    ITEM_HEAVY_BALL,
+    ITEM_MOON_BALL,
+    ITEM_LEVEL_BALL,
+    ITEM_FAST_BALL,
+    ITEM_GS_BALL,
     // Pokemon Items,
     ITEM_POTION,
     ITEM_ANTIDOTE,
@@ -1064,7 +1079,6 @@ static const u16 sRandomValidItems[] =
     ITEM_BLUE_SHARD,
     ITEM_YELLOW_SHARD,
     ITEM_GREEN_SHARD,
-    ITEM_FERTILIZER,
     ITEM_HP_UP,
     ITEM_PROTEIN,
     ITEM_IRON,

@@ -3,7 +3,7 @@
   "name": "BattleFrontier_BattleTowerLobby",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_TOWER_LOBBY",
   "music": "MUS_HG_B_TOWER",
-  "region_map_section": "MAPSEC_ROUTE_40",
+  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -128,7 +128,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BattleFrontier_BattleTowerLobby_EventScript_LinkMultisAttendant",
+      "script": "BattleFrontier_BattleTowerLobby_EventScript_LinkMultisAttendantNotAvailable",
       "flag": "0"
     }
   ],
@@ -137,7 +137,7 @@
       "x": 12,
       "y": 9,
       "elevation": 3,
-      "dest_map": "MAP_BATTLE_TOWER_OUTSIDE",
+      "dest_map": "MAP_BATTLE_FRONTIER_OUTSIDE_EAST",
       "dest_warp_id": "0"
     },
     {
@@ -161,19 +161,43 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 2,
-      "y": 1,
+      "x": 7,
+      "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "BattleFrontier_BattleTowerLobby_EventScript_ShowSinglesResults"
     },
     {
       "type": "sign",
-      "x": 1,
+      "x": 2,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BattleFrontier_BattleTowerLobby_EventScript_RulesBoard"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "BattleFrontier_BattleTowerLobby_EventScript_ShowDoublesResults"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "BattleFrontier_BattleTowerLobby_EventScript_ShowMultisResults"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "BattleFrontier_BattleTowerLobby_EventScript_LinkMultisAttendantNotAvailable"
     }
   ]
 }

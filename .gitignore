@@ -29,8 +29,8 @@ build/
 .DS_Store
 *.ddump
 .idea/
-porymap.user.cfg
-porymap.project.cfg
+/porymap.user.cfg
+/porymap.project.cfg
 .vscode/
 *.a
 .fuse_hidden*
@@ -40,3 +40,4 @@ porymap.project.cfg
 *.js
 /pokeemerald-*.png
 /pokeemerald_modern-*.png
+*.cfg

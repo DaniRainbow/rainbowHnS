@@ -49,7 +49,7 @@ Route34_DayCare_Text_Bookshelf3:
 	.string "{PLAYER} put away the book.$"
 
 Route34_DayCare_Text_Bookshelf4:
-	.string "A book of POKéMON natures!\p"
+	.string "A book of POKéMON abilities!\p"
 	.string "{PLAYER} flipped through\n"
 	.string "the book.\p"
 	.string "PICHU -> STATIC\l"
@@ -147,8 +147,8 @@ Route34_DayCare_EventScript_ClerkAfter::
 	end
 
 Route34_DayCare_Text_ClerkBefore:
-	.string "I'm the DAYCARE couple's son.\p"
-	.string "An ODD EGG was found with a trainer's\n"
+	.string "I'm the DAY-CARE couple's son.\p"
+	.string "An ODD EGG was found with a TRAINER's\n"
 	.string "POKéMON, but they didn't want it...\p"
 	.string "I'd offer it to you...\n"
 	.string "But how can I know you'll take good\l"
@@ -163,7 +163,7 @@ Route34_DayCare_Text_ClerkQuestion:
 	.string "How do you feel about this ODD EGG?$"
 
 Route34_DayCare_Text_Rejection:
-	.string "Hmm, I think this egg isn't for you.\p"
+	.string "Hmm, I think this EGG isn't for you.\p"
 	.string "It would be irresponsible of me to\n"
 	.string "give out a precious EGG like this\l"
 	.string "to someone who isn't as well-read\l"

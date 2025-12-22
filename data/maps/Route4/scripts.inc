@@ -43,7 +43,7 @@ Route4_Text_BirdKeeperHank_Beaten:
 
 Route4_Text_BirdKeeperHank_AfterBattle:
 	.string "If you have a specific POKéMON that you\n"
-	.string "want to raise, put it out first, then\n"
+	.string "want to raise, put it out first, then\l"
 	.string "switch it right away.\p"
 	.string "That's how to do it.$"
 
@@ -69,6 +69,7 @@ Route4_Text_PicnickerSharon_AfterBattle:
 	.string "……I'll go train some more…$"
 
 Route4_Text_MtMoonSquareSign:
-	.string "MT.MOON SQUARE\p"
-	.string "Just go up the stairs.$"
+	.string "MT.MOON NEW ENTRANCE\n"
+	.string "DUE TO CAVE-IN\p"
+	.string "WATCH YOUR STEP$"
 

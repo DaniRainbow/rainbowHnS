@@ -2,7 +2,7 @@
   "id": "MAP_DIGLETTS_CAVE_ENTRANCE_SOUTH",
   "name": "DiglettsCave_EntranceSouth",
   "layout": "LAYOUT_DIGLETTS_CAVE_ENTRANCE_SOUTH",
-  "music": "MUS_HG_UNION_CAVE",
+  "music": "MUS_HG_ROCK_TUNNEL",
   "region_map_section": "MAPSEC_DIGLETTS_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

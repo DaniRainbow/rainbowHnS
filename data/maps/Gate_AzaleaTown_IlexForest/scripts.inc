@@ -23,6 +23,6 @@ Gate_AzaleaTown_IlexForest_Text_Officer:
 	.string "Don't get lost.$"
 
 Gate_AzaleaTown_IlexForest_Text_Granny:
-	.string "The FOREST is watched\n"
+	.string "The ILEX FOREST is watched\n"
 	.string "over by its protector.\p"
 	.string "Stay out of mischief!$"

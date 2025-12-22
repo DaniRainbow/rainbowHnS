@@ -1,5 +1,10 @@
 TinTower_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, TinTower_OnTransition
 	.byte 0
+
+TinTower_OnTransition::
+	setescapewarp MAP_BELLCHIME_TRAIL, 35, 42
+	end
 
 TinTower_1F_EventScript_SageA::
 	lock

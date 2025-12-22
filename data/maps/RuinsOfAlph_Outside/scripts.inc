@@ -1,5 +1,11 @@
 RuinsOfAlph_Outside_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RuinsOfAlph_Outside_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	.byte 0
+
+RuinsOfAlph_Outside_OnTransition: 
+	callnative SetTimeBasedEncounters
+	end	
 
 RuinsOfAlph_Outside_EventScript_Quagsire::
 	lock

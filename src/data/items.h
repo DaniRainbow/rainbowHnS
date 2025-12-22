@@ -1506,15 +1506,15 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_078] =
+    [ITEM_HEALING_HEART] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("HEALING HEART"),
+        .itemId = ITEM_HEALING_HEART,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .description = sHealingHeart,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .fieldUseFunc = ItemUseOutOfBattle_HealingHeart,
     },
 
 // Mail
@@ -2757,7 +2757,7 @@ const struct Item gItems[] =
 
     [ITEM_SEA_INCENSE] =
     {
-        .name = _("BLUE INCENSE"),
+        .name = _("SEA INCENSE"),
         .itemId = ITEM_SEA_INCENSE,
         .price = 9600,
         .holdEffect = HOLD_EFFECT_WATER_POWER,
@@ -4604,7 +4604,7 @@ const struct Item gItems[] =
 [ITEM_RAGE_CANDY_BAR] = {    
     .name = _("RAGECANDYBAR"),
     .itemId = ITEM_RAGE_CANDY_BAR,
-    .price = 2000,
+    .price = 100,
     .holdEffectParam = 20,
     .description = sRageCandyBarDesc,
     .pocket = POCKET_ITEMS,
@@ -6393,15 +6393,15 @@ const struct Item gItems2[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_078] =
+    [ITEM_HEALING_HEART] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("HEALING HEART"),
+        .itemId = ITEM_HEALING_HEART,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .description = sHealingHeart,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .fieldUseFunc = ItemUseOutOfBattle_HealingHeart,
     },
 
 // Mail

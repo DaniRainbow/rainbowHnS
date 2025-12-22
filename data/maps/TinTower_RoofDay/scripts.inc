@@ -176,8 +176,6 @@ TinTower_RoofDay_EventScript_TalkToKimono::
 TinTower_RoofDay_EventScript_HoOh::
 	lockall
 	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_RoofDay_EventScript_HoOhPostgame
-	setweather WEATHER_NONE
-	doweather
 	waitse
 	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
 	delay 30
@@ -228,6 +226,8 @@ TinTower_RoofDay_EventScript_HoOhPostgame::
 TinTower_RoofDay_EventScript_HoohFlewAway::
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_HO_OH
+	setweather WEATHER_NONE
+	doweather
 	setflag FLAG_HIDE_HO_OH
 	fadescreenswapbuffers FADE_FROM_BLACK
 	bufferspeciesname STR_VAR_1, SPECIES_HO_OH
@@ -238,6 +238,8 @@ TinTower_RoofDay_EventScript_CaughtHooh::
 	setflag FLAG_CAUGHT_HO_OH
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_HO_OH
+	setweather WEATHER_NONE
+	doweather
 	setflag FLAG_HIDE_HO_OH
 	fadescreenswapbuffers FADE_FROM_BLACK
 	return
@@ -574,7 +576,7 @@ TinTower_RoofDay_Text_Kimono_Opening::
 	.string "This is where we welcome HO-OH.\p"
 	.string "When the dance we practiced many\n"
 	.string "days becomes one with the sound of the\p"
-	.string "Clear Bell we entrusted to you, then\n"
+	.string "CLEAR BELL we entrusted to you, then\n"
 	.string "HO-OH shall come down from the great\l"
 	.string "arch of the sky once again. $"
 
@@ -585,7 +587,7 @@ TinTower_RoofDay_Text_Kimono_Closing1::
 	.string "So many have tried again and again,\n"
 	.string "only to fail...\p"
 	.string "{PLAYER}, your heart in complete\n"
-	.string "harmony with the Clear Bell has finally\p"
+	.string "harmony with the CLEAR BELL has finally\p"
 	.string "allowed it to appear...\n"
 	.string "{PLAYER}, don't you see?\p"
 	.string "HO-OH... It must have been waiting for\n"
@@ -594,4 +596,4 @@ TinTower_RoofDay_Text_Kimono_Closing1::
 
 TinTower_RoofDay_Text_Kimono_After::
 	.string "You have done a great job.\n"
-	.string "Say hello to PROF. ELM for us.$"
+	.string "Say hello to PROF.ELM for us.$"

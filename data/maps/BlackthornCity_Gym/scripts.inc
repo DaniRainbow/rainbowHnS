@@ -250,7 +250,7 @@ BlackthornGym_Text_ClairText_GoToDragonsDen:
     .string "I won't admit this.\p"
     .string "I may have lost, but you're still\n"
     .string "not ready for the POKéMON LEAGUE.\p"
-    .string "I know. You should take the dragon\n"
+    .string "I know. You should take the dragon-\n"
     .string "user challenge.\p"
     .string "Behind this GYM is a place called\n"
     .string "DRAGON'S DEN.\p"

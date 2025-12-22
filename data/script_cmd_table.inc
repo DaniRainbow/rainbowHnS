@@ -240,7 +240,13 @@ gScriptCmdTable::
 	.4byte ScrCmd_removegenericmon					@ 0xed
 	.4byte ScrCmd_baobacheckmon						@ 0xee
 	.4byte ScrCmd_giveoddegg						@ 0xef
-	.4byte ScrCmd_givebp						@ 0xf0
+	.4byte ScrCmd_givebp							@ 0xf0
+	.4byte ScrCmd_dynmultichoice                    @ 0xf1 From Modern Emerald 2.3.3
+	.4byte ScrCmd_dynmultipush                      @ 0xf2 From Modern Emerald 2.3.3
+	.4byte ScrCmd_buffermoncategory                 @ 0xf3 needed for random starters
+	.4byte ScrCmd_checknuzlocke						@ 0xf4 checks if nuzlocking
+	.4byte ScrCmd_checkrandomizer					@ 0xf5 checks if randomized
+
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

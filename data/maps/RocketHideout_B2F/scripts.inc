@@ -286,7 +286,7 @@ RocketHideout_B2F_Text_LanceInterrupt:
 RocketHideout_B2F_Text_ArianaOutraged:
     .string "ARIANA: What? You had an accomplice?\n"
     .string "Where is your sense of dignity?\p"
-    .string "As interim boss in place of Giovanni,\n"
+    .string "As interim boss in place of GIOVANNI,\n"
     .string "I'll show you how wrong it is to meddle\l"
     .string "with Team Rocket!$"
 
@@ -538,6 +538,11 @@ RocketHideout_B2F_EventScript_ElectrodeDone::
 	setvar VAR_MAHOGANY_TOWN_STATE, 14
 	clearflag FLAG_HIDE_MAHOGANY_COP
 	setflag FLAG_HIDE_MAHOGANY_TOWN_FATMAN
+	setvar VAR_ROCKET_HIDEOUT_STATUE_1, 2
+	setvar VAR_ROCKET_HIDEOUT_STATUE_2, 2
+	setvar VAR_ROCKET_HIDEOUT_STATUE_3, 2
+	setvar VAR_ROCKET_HIDEOUT_STATUE_4, 2
+	setvar VAR_ROCKET_HIDEOUT_STATUE_5, 2
 	release
 	end
 
