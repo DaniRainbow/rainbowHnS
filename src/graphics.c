@@ -370,7 +370,8 @@ const u8 gHealthboxElementsGfxTableGen4[] = INCBIN_U8("graphics/battle_interface
                                                   "graphics/battle_interface/status3.4bpp",
                                                   "graphics/battle_interface/status4.4bpp",
                                                   "graphics/battle_interface/healthbox_doubles_frameend.4bpp",
-                                                  "graphics/battle_interface/healthbox_doubles_frameend_bar.4bpp");
+                                                  "graphics/battle_interface/healthbox_doubles_frameend_bar.4bpp",
+                                                  "graphics/battle_interface/shiny_icon.4bpp");
 const u8 gHealthboxElementsGfxTableGen3[] = INCBIN_U8("graphics/battle_interface/hpbargen3.4bpp",
                                                   "graphics/battle_interface/expbargen3.4bpp",
                                                   "graphics/battle_interface/statusgen3.4bpp",
@@ -383,7 +384,8 @@ const u8 gHealthboxElementsGfxTableGen3[] = INCBIN_U8("graphics/battle_interface
                                                   "graphics/battle_interface/status3gen3.4bpp",
                                                   "graphics/battle_interface/status4gen3.4bpp",
                                                   "graphics/battle_interface/healthbox_doubles_frameendgen3.4bpp",
-                                                  "graphics/battle_interface/healthbox_doubles_frameend_bargen3.4bpp");                                                  
+                                                  "graphics/battle_interface/healthbox_doubles_frameend_bargen3.4bpp",
+                                                  "graphics/battle_interface/shiny_icongen3.4bpp");                        
 const u32 gBattleInterfaceGfx_UnusedWindow3[] = INCBIN_U32("graphics/battle_interface/unused_window3.4bpp.lz");
 const u32 gBattleInterfaceGfx_UnusedWindow4[] = INCBIN_U32("graphics/battle_interface/unused_window4.4bpp.lz");
 
