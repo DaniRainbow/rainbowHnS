@@ -274,6 +274,7 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_PEWTER_CITY]      = 0x5D,
     [MAPSEC_LAVENDER_TOWN]    = 0x5E,
     [MAPSEC_BATTLE_FRONTIER]  = 0x5F
+    [MAPSEC_FARAWAY_ISLAND]   = 0x60,
 };
 
 //tx_randomizer_and_challenges
