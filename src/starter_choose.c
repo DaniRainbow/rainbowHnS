@@ -706,6 +706,21 @@ static u8 CreatePokemonFrontSpriteCyndaquil(u16 species, u8 x, u8 y)
         FlagSet(FLAG_SHINY_STARTER_1);
         spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     }
+    else if ((isShinyCyndaquil < 256) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 5)) // 1/256
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyCyndaquil < 512) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 6)) // 1/128
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyCyndaquil < 1024) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 7)) // 1/64
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
     else
         spriteId = CreateMonPicSprite_Affine(species, 8, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     gSprites[spriteId].oam.priority = 0;
@@ -745,6 +760,21 @@ static u8 CreatePokemonFrontSpriteChikorita(u16 species, u8 x, u8 y)
         FlagSet(FLAG_SHINY_STARTER_2);
         spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     }
+    else if ((isShinyChikorita < 256) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 5)) // 1/256
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyChikorita < 512) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 6)) // 1/128
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyChikorita < 1024) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 7)) // 1/64
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
     else
         spriteId = CreateMonPicSprite_Affine(species, 8, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     gSprites[spriteId].oam.priority = 0;
@@ -782,6 +812,21 @@ static u8 CreatePokemonFrontSpriteTotodile(u16 species, u8 x, u8 y)
     else if ((isShinyTotodile < 128) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 4)) // 1/512
     {
         FlagSet(FLAG_SHINY_STARTER_3);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyTotodile < 256) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 5)) // 1/256
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyTotodile < 512) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 6)) // 1/128
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
+        spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    }
+    else if ((isShinyTotodile < 1024) && (gSaveBlock1Ptr->tx_Features_ShinyChance == 7)) // 1/64
+    {
+        FlagSet(FLAG_SHINY_STARTER_1);
         spriteId = CreateMonPicSprite_Affine(species, TRUE, 1, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     }
     else

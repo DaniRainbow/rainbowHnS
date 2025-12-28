@@ -4975,6 +4975,24 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 value = Random32();
                 shinyValue = GET_SHINY_VALUE(value, personality);
             } while (shinyValue < 128);
+        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
+            do
+            {
+                value = Random32();
+                shinyValue = GET_SHINY_VALUE(value, personality);
+            } while (shinyValue < 256);
+        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
+            do
+            {
+                value = Random32();
+                shinyValue = GET_SHINY_VALUE(value, personality);
+            } while (shinyValue < 512);
+        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
+            do
+            {
+                value = Random32();
+                shinyValue = GET_SHINY_VALUE(value, personality);
+            } while (shinyValue < 1024);
     }
     else if (otIdType == OT_ID_PRESET)
     {
@@ -10923,6 +10941,120 @@ const u32 *GetMonSpritePalFromSpeciesAndPersonality(u16 species, u32 otId, u32 p
             return gMonPaletteTable[species].data;
         }
     }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
+    {
+        if (shinyValue < 256 && personality !=0)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return gMonShinyPaletteTable_Modern[species].data;
+            else
+                return gMonShinyPaletteTable[species].data;
+        }
+        else
+        {
+            return gMonPaletteTable[species].data;
+        }
+    }
+     else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
+    {
+        if (shinyValue < 512 && personality !=0)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return gMonShinyPaletteTable_Modern[species].data;
+            else
+                return gMonShinyPaletteTable[species].data;
+        }
+        else
+        {
+            return gMonPaletteTable[species].data;
+        }
+    }
+     else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
+    {
+        if (shinyValue < 1024 && personality !=0)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return gMonShinyPaletteTable_Modern[species].data;
+            else
+                return gMonShinyPaletteTable[species].data;
+        }
+        else
+        {
+            return gMonPaletteTable[species].data;
+        }
+    }
 }
 const struct CompressedSpritePalette *GetMonSpritePalStruct(struct Pokemon *mon)
 {
@@ -11093,6 +11225,120 @@ const struct CompressedSpritePalette *GetMonSpritePalStructFromOtIdPersonality(u
     else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 4) // 1/512
     {
         if (shinyValue < 128)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return &gMonShinyPaletteTable_Modern[species];
+            else
+                return &gMonShinyPaletteTable[species];
+        }
+        else
+        {
+            return &gMonPaletteTable[species];
+        }
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
+    {
+        if (shinyValue < 256)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return &gMonShinyPaletteTable_Modern[species];
+            else
+                return &gMonShinyPaletteTable[species];
+        }
+        else
+        {
+            return &gMonPaletteTable[species];
+        }
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
+    {
+        if (shinyValue < 512)
+        {
+            if ((species == SPECIES_PIKACHU
+                || species == SPECIES_RAICHU
+                || species == SPECIES_PICHU
+                || species == SPECIES_VAPOREON
+                || species == SPECIES_JOLTEON
+                || species == SPECIES_FLAREON
+                || species == SPECIES_REGICE
+                || species == SPECIES_HERACROSS
+                || species == SPECIES_HAUNTER
+                || species == SPECIES_GENGAR
+                || species == SPECIES_SCYTHER
+                || species == SPECIES_BLAZIKEN
+                || species == SPECIES_XATU
+                || species == SPECIES_PARAS
+                || species == SPECIES_CHINCHOU
+                || species == SPECIES_LANTURN
+                || species == SPECIES_ZAPDOS
+                || species == SPECIES_ELEKID
+                || species == SPECIES_FARFETCHD
+                || species == SPECIES_MAROWAK
+                || species == SPECIES_PHANPY
+                || species == SPECIES_LAPRAS
+                || species == SPECIES_TENTACOOL
+                || species == SPECIES_TENTACRUEL)
+                && (gSaveBlock1Ptr->tx_Features_ShinyColors == 1))
+                return &gMonShinyPaletteTable_Modern[species];
+            else
+                return &gMonShinyPaletteTable[species];
+        }
+        else
+        {
+            return &gMonPaletteTable[species];
+        }
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
+    {
+        if (shinyValue < 1024)
         {
             if ((species == SPECIES_PIKACHU
                 || species == SPECIES_RAICHU
@@ -11328,6 +11574,24 @@ bool8 IsShinyOtIdPersonality(u32 otId, u32 personality)
     else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 4) // 1/512
     {
         if (shinyValue < 128)
+            retVal = TRUE;
+        return retVal;
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
+    {
+        if (shinyValue < 256)
+            retVal = TRUE;
+        return retVal;
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
+    {
+        if (shinyValue < 512)
+            retVal = TRUE;
+        return retVal;
+    }
+    else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
+    {
+        if (shinyValue < 1024)
             retVal = TRUE;
         return retVal;
     }

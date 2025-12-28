@@ -238,6 +238,7 @@ static int ProcessInput_Options_Three(int selection);
 static int ProcessInput_Options_Four(int selection);
 static int ProcessInput_Options_Five(int selection);
 static int ProcessInput_Options_Six(int selection);
+static int ProcessInput_Options_Eight(int selection);
 static int ProcessInput_Options_Eleven(int selection);
 static int ProcessInput_Options_OneTypeChallenge(int selection);
 static int ProcessInput_Sound(int selection);
@@ -252,6 +253,9 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, bool8 act
 static void DrawChoices_Options_Three(const u8 *const *const strings, int selection, int y, bool8 active);
 static void DrawChoices_Options_Four(const u8 *const *const strings, int selection, int y, bool8 active);
 static void DrawChoices_Options_Five(const u8 *const *const strings, int selection, int y, bool8 active);
+static void DrawChoices_Options_Six(const u8 *const *const strings, int selection, int y, bool8 active);
+static void DrawChoices_Options_Seven(const u8 *const *const strings, int selection, int y, bool8 active);
+static void DrawChoices_Options_Eight(const u8 *const *const strings, int selection, int y, bool8 active);
 static void ReDrawAll(void);
 static void DrawBgWindowFrames(void);
 
@@ -384,7 +388,7 @@ struct // MENU_FEATURES
 } static const sItemFunctionsFeatures[MENUITEM_FEATURES_COUNT] =
 {
     [MENUITEM_FEATURES_RTC_TYPE]              = {DrawChoices_Features_Rtc_Type,             ProcessInput_Options_Two},
-    [MENUITEM_FEATURES_SHINY_CHANCE]          = {DrawChoices_Features_ShinyChance,          ProcessInput_Options_Five},
+    [MENUITEM_FEATURES_SHINY_CHANCE]          = {DrawChoices_Features_ShinyChance,          ProcessInput_Options_Eight},
     [MENUITEM_FEATURES_ITEM_DROP]             = {DrawChoices_Features_ItemDrop,             ProcessInput_Options_Two},
     //[MENUITEM_FEATURES_EASY_FEEBAS]           = {DrawChoices_Features_EasyFeebas,           ProcessInput_Options_Two},
     //[MENUITEM_FEATURES_UNLIMITED_WT]          = {DrawChoices_Features_Unlimited_WT,         ProcessInput_Options_Two},
@@ -837,6 +841,9 @@ static const u8 sText_Description_Features_ShinyChance_4096[]         = _("Low c
 static const u8 sText_Description_Features_ShinyChance_2048[]         = _("Decent chance of SHINY encounter.");
 static const u8 sText_Description_Features_ShinyChance_1024[]         = _("High chance of SHINY encounter.");
 static const u8 sText_Description_Features_ShinyChance_512[]          = _("Very high chance of SHINY encounter.");
+static const u8 sText_Description_Features_ShinyChance_256[]          = _("Mega high chance of SHINY encounter.");
+static const u8 sText_Description_Features_ShinyChance_128[]          = _("Giga high chance of SHINY encounter.");
+static const u8 sText_Description_Features_ShinyChance_64[]           = _("What is the point at this setting?");
 static const u8 sText_Description_Features_EasyFeebas_On[]            = _("FEEBAS is easier to catch and spawns\neverywhere in ROUTE 119.");
 static const u8 sText_Description_Features_EasyFeebas_Off[]           = _("FEEBAS is encountered in random\nspots in ROUTE 119.");
 static const u8 sText_Description_Features_Unlimited_WT_On[]          = _("Enables a daily limit of 3\nWonderTrades. Recommended.");
@@ -848,16 +855,16 @@ static const u8 sText_Description_Features_Shiny_Colors_Modern[]      = _("Some 
 
 static const u8 sText_Description_Features_Next[]                     = _("Continue to Randomizer options.");
 
-static const u8 *const sOptionMenuItemDescriptionsFeatures[MENUITEM_FEATURES_COUNT][5] =
+static const u8 *const sOptionMenuItemDescriptionsFeatures[MENUITEM_FEATURES_COUNT][8] =
 {
-    [MENUITEM_FEATURES_RTC_TYPE]              = {sText_Description_Features_RTC_Type_RTC,           sText_Description_Features_RTC_Type_FakeRTC,      sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    [MENUITEM_FEATURES_SHINY_CHANCE]          = {sText_Description_Features_ShinyChance_8192,       sText_Description_Features_ShinyChance_4096,      sText_Description_Features_ShinyChance_2048,        sText_Description_Features_ShinyChance_1024,        sText_Description_Features_ShinyChance_512},
-    [MENUITEM_FEATURES_ITEM_DROP]             = {sText_Description_Features_ItemDrop_Off,           sText_Description_Features_ItemDrop_On,           sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    //[MENUITEM_FEATURES_EASY_FEEBAS]           = {sText_Description_Features_EasyFeebas_Off,         sText_Description_Features_EasyFeebas_On,         sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    //[MENUITEM_FEATURES_UNLIMITED_WT]          = {sText_Description_Features_Unlimited_WT_On,        sText_Description_Features_Unlimited_WT_Off,      sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    [MENUITEM_FEATURES_FRONTIER_BANS]         = {sText_Description_Features_FrontierBans_Ban,       sText_Description_Features_FrontierBans_Unban,    sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    [MENUITEM_FEATURES_SHINY_COLOR]           = {sText_Description_Features_Shiny_Colors_Original,  sText_Description_Features_Shiny_Colors_Modern,    sText_Empty,                                        sText_Empty,                                        sText_Empty},
-    [MENUITEM_FEATURES_NEXT]                  = {sText_Description_Features_Next,                   sText_Empty,                                      sText_Empty,                                        sText_Empty,                                        sText_Empty},
+    [MENUITEM_FEATURES_RTC_TYPE]              = {sText_Description_Features_RTC_Type_RTC,           sText_Description_Features_RTC_Type_FakeRTC,      sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    [MENUITEM_FEATURES_SHINY_CHANCE]          = {sText_Description_Features_ShinyChance_8192,       sText_Description_Features_ShinyChance_4096,      sText_Description_Features_ShinyChance_2048,        sText_Description_Features_ShinyChance_1024,        sText_Description_Features_ShinyChance_512,       sText_Description_Features_ShinyChance_256,     sText_Description_Features_ShinyChance_128,     sText_Description_Features_ShinyChance_64},
+    [MENUITEM_FEATURES_ITEM_DROP]             = {sText_Description_Features_ItemDrop_Off,           sText_Description_Features_ItemDrop_On,           sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    //[MENUITEM_FEATURES_EASY_FEEBAS]           = {sText_Description_Features_EasyFeebas_Off,         sText_Description_Features_EasyFeebas_On,         sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    //[MENUITEM_FEATURES_UNLIMITED_WT]          = {sText_Description_Features_Unlimited_WT_On,        sText_Description_Features_Unlimited_WT_Off,      sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    [MENUITEM_FEATURES_FRONTIER_BANS]         = {sText_Description_Features_FrontierBans_Ban,       sText_Description_Features_FrontierBans_Unban,    sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    [MENUITEM_FEATURES_SHINY_COLOR]           = {sText_Description_Features_Shiny_Colors_Original,  sText_Description_Features_Shiny_Colors_Modern,    sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
+    [MENUITEM_FEATURES_NEXT]                  = {sText_Description_Features_Next,                   sText_Empty,                                      sText_Empty,                                        sText_Empty,                                        sText_Empty,      sText_Empty,        sText_Empty,        sText_Empty},
 };
 
 static const u8 sText_Description_Randomizer_Off[]                  = _("Game will not be randomized.");
@@ -2120,6 +2127,11 @@ static int ProcessInput_Options_Six(int selection)
     return XOptions_ProcessInput(6, selection);
 }
 
+static int ProcessInput_Options_Eight(int selection)
+{
+    return XOptions_ProcessInput(8, selection);
+}
+
 static int ProcessInput_Options_Eleven(int selection)
 {
     return XOptions_ProcessInput(11, selection);
@@ -2226,6 +2238,30 @@ static void DrawChoices_Options_Five(const u8 *const *const strings, int selecti
         {2, 3, 4},
     };
     u8 styles[5] = {0};
+    int xMid;
+    const u8 *order = choiceOrders[selection];
+    styles[selection] = 1;
+    xMid = GetMiddleX(strings[order[0]], strings[order[1]], strings[order[2]]);
+
+    DrawOptionMenuChoice(strings[order[0]], 104, y, styles[order[0]], active);
+    DrawOptionMenuChoice(strings[order[1]], xMid, y, styles[order[1]], active);
+    DrawOptionMenuChoice(strings[order[2]], GetStringRightAlignXOffset(1, strings[order[2]], 198), y, styles[order[2]], active);
+}
+
+static void DrawChoices_Options_Eight(const u8 *const *const strings, int selection, int y, bool8 active)
+{
+    static const u8 choiceOrders[][3] =
+    {
+        {0, 1, 2},
+        {0, 1, 2},
+        {1, 2, 3},
+        {2, 3, 4},
+        {3, 4, 5},
+        {4, 5, 6},
+        {5, 6, 7},
+        {5, 6, 7},
+    };
+    u8 styles[8] = {0};
     int xMid;
     const u8 *order = choiceOrders[selection];
     styles[selection] = 1;
@@ -2868,11 +2904,14 @@ static const u8 sText_Challenges_ShinyChance_4096[]   = _("4096");
 static const u8 sText_Challenges_ShinyChance_2048[]   = _("2048");
 static const u8 sText_Challenges_ShinyChance_1024[]   = _("1024");
 static const u8 sText_Challenges_ShinyChance_512[]    = _("512");
-static const u8 *const sText_Challenges_ShinyChance_Strings[] = {sText_Challenges_ShinyChance_8192,  sText_Challenges_ShinyChance_4096,  sText_Challenges_ShinyChance_2048,  sText_Challenges_ShinyChance_1024,  sText_Challenges_ShinyChance_512};
+static const u8 sText_Challenges_ShinyChance_256[]    = _("256");
+static const u8 sText_Challenges_ShinyChance_128[]    = _("128");
+static const u8 sText_Challenges_ShinyChance_64[]    = _("64");
+static const u8 *const sText_Challenges_ShinyChance_Strings[] = {sText_Challenges_ShinyChance_8192,  sText_Challenges_ShinyChance_4096,  sText_Challenges_ShinyChance_2048,  sText_Challenges_ShinyChance_1024,  sText_Challenges_ShinyChance_512, sText_Challenges_ShinyChance_256, sText_Challenges_ShinyChance_128, sText_Challenges_ShinyChance_64};
 static void DrawChoices_Features_ShinyChance(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_FEATURES_SHINY_CHANCE);
-    DrawChoices_Options_Five(sText_Challenges_ShinyChance_Strings, selection, y, active);
+    DrawChoices_Options_Eight(sText_Challenges_ShinyChance_Strings, selection, y, active);
     
     if (selection == 0)
     {
@@ -2890,9 +2929,21 @@ static void DrawChoices_Features_ShinyChance(int selection, int y)
     {
         gSaveBlock1Ptr->tx_Features_ShinyChance = 3; // 1/1024
     }
-    else //(selection == 4)
+    else if (selection == 4)
     {
         gSaveBlock1Ptr->tx_Features_ShinyChance = 4; // 1/512
+    }
+    else if (selection == 5)
+    {
+        gSaveBlock1Ptr->tx_Features_ShinyChance = 5; // 1/256
+    }
+    else if (selection == 6)
+    {
+        gSaveBlock1Ptr->tx_Features_ShinyChance = 6; // 1/128
+    }
+    else //(selection == 7)
+    {
+        gSaveBlock1Ptr->tx_Features_ShinyChance = 7; // 1/64
     }
 }
 

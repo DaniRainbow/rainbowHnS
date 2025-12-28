@@ -1160,7 +1160,7 @@ struct SaveBlock1
         u8 tx_Features_RTCType:1;
         u8 tx_Mode_AlternateSpawns:1;
         u8 tx_Features_LimitDifficulty:1;
-        u8 tx_Features_ShinyChance:4;
+        u8 tx_Features_ShinyChance:7;
         u8 tx_Features_WildMonDropItems:1;
         u8 tx_Features_Unlimited_WT:1; //unused in HnS
         u8 tx_Mode_Synchronize:1;
