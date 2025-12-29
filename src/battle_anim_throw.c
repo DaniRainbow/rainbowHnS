@@ -2396,12 +2396,12 @@ void TryShinyAnimation(u8 battler, struct Pokemon *mon)
             if (shinyValue < 256)
                 isShiny = TRUE;
         }
-        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/128
+        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
         {
             if (shinyValue < 512)
                 isShiny = TRUE;
         }
-        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/64
+        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
         {
             if (shinyValue < 1024)
                 isShiny = TRUE;
