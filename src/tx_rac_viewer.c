@@ -1040,7 +1040,7 @@ static void Viewer_RedrawList(void)
 
 void Task_ChallengeViewer(u8 taskId)
 {
-    gMain.savedCallback = CB2_ReturnToField; // return straight to field
+    gMain.savedCallback = CB2_ReturnToFieldContinueScript; // return straight to field
     SetMainCallback2(CB2_InitChallengeViewer);
     DestroyTask(taskId);
 }
