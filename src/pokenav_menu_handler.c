@@ -57,10 +57,9 @@ static void SetMenuInputHandler(struct Pokenav_Menu *);
 // Number of entries - 1 for that menu type
 static const u8 sLastCursorPositions[] =
 {
-    [POKENAV_MENU_TYPE_DEFAULT]           = 1,
-    [POKENAV_MENU_TYPE_UNLOCK_MC]         = 2,
-    [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] = 3,
-    //below are unused
+    [POKENAV_MENU_TYPE_DEFAULT]           = 2,
+    [POKENAV_MENU_TYPE_UNLOCK_MC]         = 3,
+    [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] = 4,
     [POKENAV_MENU_TYPE_CONDITION]         = 2,
     [POKENAV_MENU_TYPE_CONDITION_SEARCH]  = 5
 };
@@ -70,23 +69,23 @@ static const u8 sMenuItems[][MAX_POKENAV_MENUITEMS] =
     [POKENAV_MENU_TYPE_DEFAULT] =
     {
         POKENAV_MENUITEM_MAP,
-        //POKENAV_MENUITEM_CONDITION,
-        POKENAV_MENUITEM_SWITCH_OFF
+        POKENAV_MENUITEM_CONDITION,
+        [2 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_UNLOCK_MC] =
     {
         POKENAV_MENUITEM_MAP,
-        //POKENAV_MENUITEM_CONDITION,
+        POKENAV_MENUITEM_CONDITION,
         POKENAV_MENUITEM_MATCH_CALL,
-        POKENAV_MENUITEM_SWITCH_OFF
+        [3 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] =
     {
         POKENAV_MENUITEM_MAP,
-        //POKENAV_MENUITEM_CONDITION,
+        POKENAV_MENUITEM_CONDITION,
         POKENAV_MENUITEM_MATCH_CALL,
         POKENAV_MENUITEM_RIBBONS,
-        POKENAV_MENUITEM_SWITCH_OFF
+        [4 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_CONDITION] =
     {
@@ -114,11 +113,12 @@ static u8 GetPokenavMainMenuType(void)
     {
         menuType = POKENAV_MENU_TYPE_UNLOCK_MC;
 
-     }
+        if (FlagGet(FLAG_SYS_RIBBON_GET))
+            menuType = POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS;
+    }
 
     return menuType;
 }
-
 
 bool32 PokenavCallback_Init_MainMenuCursorOnMap(void)
 {
@@ -248,21 +248,35 @@ static u32 HandleMainMenuInput(struct Pokenav_Menu *menu)
             SetMenuIdAndCB(menu, POKENAV_REGION_MAP);
             return POKENAV_MENU_FUNC_OPEN_FEATURE;
         case POKENAV_MENUITEM_CONDITION:
-            menu->menuType = POKENAV_MENU_TYPE_CONDITION;
-            menu->cursorPos = 0;
-            menu->currMenuItem = sMenuItems[POKENAV_MENU_TYPE_CONDITION][0];
-            menu->callback = HandleConditionMenuInput;
-            return POKENAV_MENU_FUNC_OPEN_CONDITION;
+            if (FlagGet(FLAG_SYS_POKEMON_GET) == 0)
+            {
+                PlaySE(SE_FAILURE);
+                return POKENAV_MENU_FUNC_NONE;
+            }
+            else
+            {
+                menu->menuType = POKENAV_MENU_TYPE_CONDITION;
+                menu->cursorPos = 0;
+                menu->currMenuItem = sMenuItems[POKENAV_MENU_TYPE_CONDITION][0];
+                menu->callback = HandleConditionMenuInput;
+                return POKENAV_MENU_FUNC_OPEN_CONDITION;
+            }
         case POKENAV_MENUITEM_MATCH_CALL:
             menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
             SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
             return POKENAV_MENU_FUNC_OPEN_FEATURE;
-            
         case POKENAV_MENUITEM_RIBBONS:
-            //HnS
-            PrintRandomRibbonMessage();
-            return POKENAV_MENU_FUNC_NONE;
-
+            if (CanViewRibbonsMenu())
+            {
+                menu->helpBarIndex = HELPBAR_RIBBONS_MON_LIST;
+                SetMenuIdAndCB(menu, POKENAV_RIBBONS_MON_LIST);
+                return POKENAV_MENU_FUNC_OPEN_FEATURE;
+            }
+            else
+            {
+                menu->callback = HandleCantOpenRibbonsInput;
+                return POKENAV_MENU_FUNC_NO_RIBBON_WINNERS;
+            }
         case POKENAV_MENUITEM_SWITCH_OFF:
             return POKENAV_MENU_FUNC_EXIT;
         }

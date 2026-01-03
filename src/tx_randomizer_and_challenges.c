@@ -135,6 +135,7 @@ bool8 IsPokecenterChallengeActivated(void)
 bool8 HMsOverwriteOptionActive(void)
 {
     return (gSaveBlock1Ptr->tx_Challenges_Nuzlocke 
+            || gSaveBlock1Ptr->tx_Nuzlocke_EasyMode
             || gSaveBlock1Ptr->tx_Challenges_Mirror 
             || gSaveBlock1Ptr->tx_Random_Moves
             || IsOneTypeChallengeActive());
@@ -273,7 +274,8 @@ const u8 NuzlockeLUT[] =
     [MAPSEC_VIRIDIAN_CITY]    = 0x5C,
     [MAPSEC_PEWTER_CITY]      = 0x5D,
     [MAPSEC_LAVENDER_TOWN]    = 0x5E,
-    [MAPSEC_BATTLE_FRONTIER]  = 0x5F
+    [MAPSEC_BATTLE_FRONTIER]  = 0x5F,
+    [MAPSEC_FARAWAY_ISLAND]   = 0x60,
 };
 
 //tx_randomizer_and_challenges
