@@ -5008,57 +5008,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
     
-        if (shinyRolls)
-        {
-            if (gSaveBlock1Ptr->tx_Features_ShinyChance == 0) // 1/8192
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= SHINY_ODDS && rolls < shinyRolls);    
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 1) // 1/4096
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 16 && rolls < shinyRolls);
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 2) // 1/2048
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 32 && rolls < shinyRolls);
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 3) // 1/1024
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 64 && rolls < shinyRolls);
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 4) // 1/512
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 128 && rolls < shinyRolls);   
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 256 && rolls < shinyRolls);
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 6) // 1/128
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 512 && rolls < shinyRolls);
-            else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 7) // 1/64
-                do {
-                    personality = Random32();
-                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                    rolls++;
-                } while (shinyValue >= 1024 && rolls < shinyRolls);
-        }
         if (FlagGet(FLAG_FORCE_SHINY))
         {
             u8 nature = personality % NUM_NATURES;  // keep current nature
