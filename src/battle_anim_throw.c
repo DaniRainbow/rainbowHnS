@@ -2391,22 +2391,7 @@ void TryShinyAnimation(u8 battler, struct Pokemon *mon)
             if (shinyValue < 128)
                 isShiny = TRUE;
         }
-        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/256
-        {
-            if (shinyValue < 256)
-                isShiny = TRUE;
-        }
-        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/128
-        {
-            if (shinyValue < 512)
-                isShiny = TRUE;
-        }
-        else if (gSaveBlock1Ptr->tx_Features_ShinyChance == 5) // 1/64
-        {
-            if (shinyValue < 1024)
-                isShiny = TRUE;
-        }
-
+        
         if (isShiny)
         {
             if (GetSpriteTileStartByTag(ANIM_TAG_GOLD_STARS) == 0xFFFF)

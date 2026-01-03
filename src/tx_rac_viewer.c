@@ -350,10 +350,7 @@ static const u8 sText_Challenges_ShinyChance_4096[]   = _("4096");
 static const u8 sText_Challenges_ShinyChance_2048[]   = _("2048");
 static const u8 sText_Challenges_ShinyChance_1024[]   = _("1024");
 static const u8 sText_Challenges_ShinyChance_512[]    = _("512");
-static const u8 sText_Challenges_ShinyChance_256[]    = _("256");
-static const u8 sText_Challenges_ShinyChance_128[]    = _("128");
-static const u8 sText_Challenges_ShinyChance_64[]    = _("64");
-static const u8 *const sText_Challenges_ShinyChance_Strings[8] = {sText_Challenges_ShinyChance_8192,  sText_Challenges_ShinyChance_4096,  sText_Challenges_ShinyChance_2048,  sText_Challenges_ShinyChance_1024,  sText_Challenges_ShinyChance_512,  sText_Challenges_ShinyChance_256,   sText_Challenges_ShinyChance_128,    sText_Challenges_ShinyChance_64};
+static const u8 *const sText_Challenges_ShinyChance_Strings[] = {sText_Challenges_ShinyChance_8192,  sText_Challenges_ShinyChance_4096,  sText_Challenges_ShinyChance_2048,  sText_Challenges_ShinyChance_1024,  sText_Challenges_ShinyChance_512};
 
 static inline void Viewer_ClearRow(u8 visRow, bool8 selected)
 {
@@ -712,7 +709,7 @@ static void Viewer_DrawRow_Page2(u8 visRow, u16 idx)
     case 1: // SHINY CHANCE
     {
         u8 sc = gSaveBlock1Ptr->tx_Features_ShinyChance;
-        if (sc > 7) sc = 0;
+        if (sc > 4) sc = 0;
         Viewer_DrawSingleValueRow(visRow, sText_ShinyChance_Label,
                                   sText_Challenges_ShinyChance_Strings[sc], selected);
         break;
