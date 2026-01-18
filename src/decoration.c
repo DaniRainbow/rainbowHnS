@@ -637,9 +637,8 @@ static void DecorationMenuAction_Decorate(u8 taskId)
     }
     else
     {
-        gTasks[taskId].tDecorationMenuCommand = DECOR_MENU_PLACE;
-        sCurDecorationCategory = DECORCAT_DESK;
-        SecretBasePC_PrepMenuForSelectingStoredDecors(taskId);
+        StringExpandPlaceholders(gStringVar4, gText_NoDecorations);
+        DisplayItemMessageOnField(taskId, gStringVar4, ReturnToDecorationActionsAfterInvalidSelection);
     }
 }
 
