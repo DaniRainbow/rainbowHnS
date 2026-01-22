@@ -1343,7 +1343,7 @@ void Overworld_PlaySpecialMapMusic(void)
                 music = MUS_HG_ROCKET_TAKEOVER;
     }
 
-    /* REMOVED SURF MUSIC
+    // REMOVED SURF MUSIC
     if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
     {
         if (gSaveBlock1Ptr->savedMusic)
@@ -1353,7 +1353,6 @@ void Overworld_PlaySpecialMapMusic(void)
         else if ((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && (gSaveBlock2Ptr->optionsSurfMusic == 0))
             music = MUS_SURF;
     }
-    */
 
     if (music != GetCurrentMapMusic())
         PlayNewMapMusic(music);
@@ -1376,7 +1375,7 @@ static void TransitionMapMusic(void)
     {
         u16 newMusic = GetWarpDestinationMusic();
         u16 currentMusic = GetCurrentMapMusic();
-        /*REMOVED SURF MUSIC AGAIN
+        //REMOVED SURF MUSIC AGAIN
         if (newMusic != MUS_ABNORMAL_WEATHER && newMusic != MUS_NONE)
         {
             if (currentMusic == MUS_UNDERWATER || (currentMusic == MUS_SURF && (gSaveBlock2Ptr->optionsSurfMusic == 0)))
@@ -1384,7 +1383,6 @@ static void TransitionMapMusic(void)
             if ((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && (gSaveBlock2Ptr->optionsSurfMusic == 0))
                 newMusic = MUS_SURF;
         }
-        */
         if (newMusic != currentMusic)
         {
             if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
