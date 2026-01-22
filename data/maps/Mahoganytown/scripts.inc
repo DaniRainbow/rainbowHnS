@@ -204,7 +204,21 @@ MahoganyTown_EventScript_GrampsAfter::
 MahoganyTown_EventScript_Fisher::
 	lock
 	faceplayer
+	goto_if_unset FLAG_HIDE_MAHOGANY_TOWN_FATMAN, MahoganyTown_EventScript_LoR
+	goto_if_unset FLAG_ENABLE_BAOBA_MATCH_CALL, MahoganyTown_EventScript_BaobaHanging
 	msgbox MahoganyTown_Text_Fisher, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MahoganyTown_EventScript_LoR::
+	msgbox MahoganyTown_Text_Fisher, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MahoganyTown_EventScript_BaobaHanging::
+	msgbox MahoganyTown_Text_FisherHungry, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -317,3 +331,12 @@ ElmPhoneRadioTowerRocketTakeoverText:
 	.string "Sorry to bug you.\n"
 	.string "Take care!$"
 
+MahoganyTown_Text_FisherHungry:
+	.string "Sorry, I know you've come this\n"
+	.string "far, but the gym is closed.\p"
+	.string "PRYCE and his trainers are\n"
+	.string "grabbing food in OLIVINE CITY.\l"
+	.string "Have you ever been there?\p"
+	.string "It's a beautiful port city. The\n"
+	.string "CAFE and LIGHTHOUSE make it\l"
+	.string "really worth the trip!$"

@@ -130,11 +130,19 @@ Route39_EventScript_BaobaIntro::
 	closemessage
 	applymovement LOCALID_R39_BAOBA, Route39_Movement_BaobaLeave
 	waitmovement 0
+	goto_if_set FLAG_HIDE_MAHOGANY_TOWN_FATMAN, Route39_EventScript_BaobaIntroAfterHideout
 	setflag FLAG_ENABLE_BAOBA_MATCH_CALL
 	removeobject LOCALID_R39_BAOBA
 	release
 	end
 
+Route39_EventScript_BaobaIntroAfterHideout::
+	setflag FLAG_ENABLE_BAOBA_MATCH_CALL
+	setflag FLAG_MET_BAOBA_HIDEOUT_CLEAR
+	removeobject LOCALID_R39_BAOBA
+	release
+	end
+	
 Route39_Text_ChooseLegend::
 	.string "BAOBA: GOOD HEAVENS! Did that\n"
 	.string "shadow belong to a POKéMON?\p"
