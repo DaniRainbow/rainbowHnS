@@ -520,6 +520,7 @@ static const u16 sShopInventory_EightBadges_PC[] = {
     ITEM_MAX_REPEL,
     ITEM_FLUFFY_TAIL,
     ITEM_ESCAPE_ROPE,
+    ITEM_PP_MAX,
     ITEM_NONE
 };
 
