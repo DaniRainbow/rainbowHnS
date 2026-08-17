@@ -1236,9 +1236,32 @@ static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
     return FALSE;
 }
 
+#define IS_MAP(mapGroupId, mapNumId) \
+    (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(mapGroupId) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(mapNumId))
+
+static bool16 IsRocketTakeover(struct WarpData *warp)
+{
+    // Inject Rocket Takeover override logic
+    if (VarGet(VAR_MAHOGANY_TOWN_STATE) == 16)
+    {
+        if (IS_MAP(GOLDENROD_CITY, GOLDENROD_CITY) ||
+            IS_MAP(GOLDENROD_CITY_RADIO_TOWER_4F, GOLDENROD_CITY_RADIO_TOWER_4F) ||
+            IS_MAP(GOLDENROD_CITY_RADIO_TOWER_1F, GOLDENROD_CITY_RADIO_TOWER_1F) ||
+            IS_MAP(GOLDENROD_CITY_RADIO_TOWER_2F, GOLDENROD_CITY_RADIO_TOWER_2F) ||
+            IS_MAP(GOLDENROD_CITY_RADIO_TOWER_3F, GOLDENROD_CITY_RADIO_TOWER_3F) ||
+            IS_MAP(GOLDENROD_CITY_RADIO_TOWER_5F, GOLDENROD_CITY_RADIO_TOWER_5F) ||
+            IS_MAP(GOLDENROD_CITY_UNDERGROUND_ENTRANCE, GOLDENROD_CITY_UNDERGROUND_ENTRANCE) ||
+            IS_MAP(GOLDENROD_CITY_UNDERGROUND_TUNNEL, GOLDENROD_CITY_UNDERGROUND_TUNNEL))
+            return TRUE;
+    }
+    return FALSE;
+}
+
 u16 GetLocationMusic(struct WarpData *warp)
 {
-    if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
+    if (IsRocketTakeover(warp) == TRUE)
+        return MUS_HG_ROCKET_TAKEOVER;
+    else if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
         return MUS_NONE;
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
         return MUS_ABNORMAL_WEATHER;
@@ -1320,7 +1343,7 @@ void Overworld_PlaySpecialMapMusic(void)
                 music = MUS_HG_ROCKET_TAKEOVER;
     }
 
-    /* REMOVED SURF MUSIC
+    // REMOVED SURF MUSIC
     if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
     {
         if (gSaveBlock1Ptr->savedMusic)
@@ -1330,7 +1353,6 @@ void Overworld_PlaySpecialMapMusic(void)
         else if ((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && (gSaveBlock2Ptr->optionsSurfMusic == 0))
             music = MUS_SURF;
     }
-    */
 
     if (music != GetCurrentMapMusic())
         PlayNewMapMusic(music);
@@ -1353,7 +1375,7 @@ static void TransitionMapMusic(void)
     {
         u16 newMusic = GetWarpDestinationMusic();
         u16 currentMusic = GetCurrentMapMusic();
-        /*REMOVED SURF MUSIC AGAIN
+        //REMOVED SURF MUSIC AGAIN
         if (newMusic != MUS_ABNORMAL_WEATHER && newMusic != MUS_NONE)
         {
             if (currentMusic == MUS_UNDERWATER || (currentMusic == MUS_SURF && (gSaveBlock2Ptr->optionsSurfMusic == 0)))
@@ -1361,7 +1383,6 @@ static void TransitionMapMusic(void)
             if ((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && (gSaveBlock2Ptr->optionsSurfMusic == 0))
                 newMusic = MUS_SURF;
         }
-        */
         if (newMusic != currentMusic)
         {
             if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))

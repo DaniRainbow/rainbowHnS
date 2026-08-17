@@ -709,7 +709,7 @@
 #define FLAG_SHINY_STARTER_3  0x296 // Flag for shiny starters, Totodile
 #define FLAG_FORCE_SHINY   0x297 // Needed for shiny starters, not used anywhere else
 #define FLAG_TEMPORALY_DISABLE_STATIC_RANDOMIZER  0x298
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
+#define FLAG_MET_BAOBA_HIDEOUT_CLEAR  0x299 // Intended to prevent a possibility where the player cannot receive the legendary item
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag

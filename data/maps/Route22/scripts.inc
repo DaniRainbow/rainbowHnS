@@ -310,7 +310,6 @@ Route22_Text_Giovanni2:
 	.string "GIOVANNI: Putting together the\n"
 	.string "potential of many is how you\l"
 	.string "produce a huge power...\l"
-	.string "That's what an organization is...\l"
 	.string "That's the strength of organization\p"
 	.string "I failed... to make the best use of\n"
 	.string "my subordinates' potential...!\p"
